@@ -38,6 +38,7 @@
 		2B39B8BF16ABE98000243077 /* image11Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B39B8BB16ABE98000243077 /* image11Hi@2x.png */; };
 		2B3C2FF316273DD90006C766 /* FaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C2FF216273DD90006C766 /* FaceCell.m */; };
 		2B3DD401163253190093EEA7 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3DD3FF163253190093EEA7 /* SMPageControl.m */; };
+		2B4D72EF177961E900B6057F /* ImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */; };
 		2B5135A4172AECFD009F54B0 /* ACLoupe.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B51359D172AECFD009F54B0 /* ACLoupe.m */; };
 		2B5135A5172AECFD009F54B0 /* ACMagnifyingGlass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B51359F172AECFD009F54B0 /* ACMagnifyingGlass.m */; };
 		2B5135A6172AECFD009F54B0 /* ACMagnifyingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5135A1172AECFD009F54B0 /* ACMagnifyingView.m */; };
@@ -385,6 +386,8 @@
 		2B3C2FF216273DD90006C766 /* FaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceCell.m; sourceTree = "<group>"; };
 		2B3DD3FF163253190093EEA7 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 		2B3DD400163253190093EEA7 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
+		2B4D72ED177961E900B6057F /* ImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePreviewViewController.h; sourceTree = "<group>"; };
+		2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePreviewViewController.m; sourceTree = "<group>"; };
 		2B51359C172AECFD009F54B0 /* ACLoupe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACLoupe.h; sourceTree = "<group>"; };
 		2B51359D172AECFD009F54B0 /* ACLoupe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACLoupe.m; sourceTree = "<group>"; };
 		2B51359E172AECFD009F54B0 /* ACMagnifyingGlass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMagnifyingGlass.h; sourceTree = "<group>"; };
@@ -1196,6 +1199,8 @@
 				2BD7617816EA688A00706600 /* ConfirmViewController.m */,
 				2BD870A516EFEA0E0079C389 /* AVCamCaptureManager.h */,
 				2BD870A616EFEA0E0079C389 /* AVCamCaptureManager.m */,
+				2B4D72ED177961E900B6057F /* ImagePreviewViewController.h */,
+				2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */,
 				2B53A41E17337A8D0091A74D /* Translation.h */,
 				2B53A41F17337A8D0091A74D /* Translation.m */,
 				2B53A42017337A8D0091A74D /* FacePoint.h */,
@@ -1633,6 +1638,7 @@
 				2B5135A6172AECFD009F54B0 /* ACMagnifyingView.m in Sources */,
 				2B53A42217337A8D0091A74D /* Translation.m in Sources */,
 				2B53A42317337A8D0091A74D /* FacePoint.m in Sources */,
+				2B4D72EF177961E900B6057F /* ImagePreviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
