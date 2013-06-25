@@ -6,45 +6,12 @@
 //  Copyright (c) 2013 Daniel Rak. All rights reserved.
 //
 
-#import "Translation.h"
+#import "PointsView.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIBezierPath-Points.h"
 
-@interface Translation ()
-{
-    /*
-    CGPoint zeroPoint;
-    
-    CGPoint topCurvePoint;
-    CGPoint topCurveFirstControlPoint;
-    CGPoint topCurveSecondControlPoint;
-    
-    CGPoint topRightPoint;
-    CGPoint topRightControlPoint;
-    
-    CGPoint midRightPoint;
-    CGPoint midRightControlPoint;
-    
-    CGPoint lowerRightPoint;
-    CGPoint lowerRightControlPoint;
-    
-    
-    CGPoint bottomQuadCurvePoint;
-    CGPoint bottomQuardCurveControlPoint;
-    
-    
-    CGPoint lowerLeftPoint;
-    CGPoint lowerLeftControlPoint;
-    
-    CGPoint midLeftPoint;
-    CGPoint midLeftControlPoint;
-    
-    CGPoint topLeftPoint;
-    CGPoint topLeftControlPoint;
-    
-    */
-    
-}
+@interface PointsView ()
+
 
 @property (nonatomic, strong) FacePoint *facePoint;
 @property (nonatomic) CGPoint midPoint;
@@ -54,7 +21,7 @@
 @end
 
 
-@implementation Translation
+@implementation PointsView
 
 
 #pragma mark
@@ -143,32 +110,7 @@
     CGPoint topLeftFirstControlPoint = CGPointMake(-3, 40);
     CGPoint topLeftSecondControlPoint = CGPointMake(0, 0.01);
     
-    /*
-     CGPoint topRightPoint = CGPointMake(180, 60);
-     CGPoint topRightControlPoint = CGPointMake(185, 40);
-     
-     CGPoint midRightPoint = CGPointMake(176, 118);
-     CGPoint midRightControlPoint = CGPointMake(194, 62);
-     
-     CGPoint lowerRightPoint = CGPointMake(154, 178);
-     CGPoint lowerRightControlPoint = CGPointMake(173, 148);
-     
-     
-     
-     
-     
-     CGPoint lowerLeftPoint = CGPointMake(6, 118);
-     CGPoint lowerLeftControlPoint = CGPointMake(9, 148);
-     
-     
-     CGPoint midLeftPoint = CGPointMake(2, 60);
-     CGPoint midLeftControlPoint = CGPointMake(-12, 62);
-     
-     CGPoint topLeftPoint = CGPointMake(0, 0.01);
-     CGPoint topLeftControlPoint = CGPointMake(-3, 40);
-     
-     */
-    
+
     UIBezierPath *aPath = [UIBezierPath bezierPath];
     
     
@@ -185,22 +127,6 @@
     [aPath addCurveToPoint:midLeftPoint controlPoint1:midLeftFirstControlPoint controlPoint2:midLeftSecondControlPoint];
     [aPath addCurveToPoint:topLeftPoint controlPoint1:topLeftFirstControlPoint controlPoint2:topLeftSecondControlPoint];
     
-
-    
-    
-    
-    
-    
-    /*
-     [aPath addQuadCurveToPoint:topRightPoint controlPoint:topRightControlPoint];
-     [aPath addQuadCurveToPoint:midRightPoint controlPoint:midRightControlPoint];
-     [aPath addQuadCurveToPoint:lowerRightPoint controlPoint:lowerRightControlPoint];
-     [aPath addQuadCurveToPoint:bottomQuadCurvePoint controlPoint:bottomQuardCurveControlPoint];
-     [aPath addQuadCurveToPoint:lowerLeftPoint controlPoint:lowerLeftControlPoint];
-     [aPath addQuadCurveToPoint:midLeftPoint controlPoint:midLeftControlPoint];
-     [aPath addQuadCurveToPoint:topLeftPoint controlPoint:topLeftControlPoint];
-     */
-    
     
     
     [aPath closePath];
@@ -209,7 +135,7 @@
     
     
     
-    [aPath applyTransform:CGAffineTransformMakeScale(0.9, 0.9)];
+    [aPath applyTransform:CGAffineTransformMakeScale(0.8, 0.8)];
     
     
     float yOrigin = CGPathGetBoundingBox(aPath.CGPath).origin.y;
@@ -377,7 +303,6 @@
     UIView *midRightCurveFirstControlPoint = [self.viewArray objectAtIndex:7];
     UIView *midRightCurveSecondControlPoint = [self.viewArray objectAtIndex:8];
     
-    UIView *something;
     
     UIView *lowerRightCurvePoint = [self.viewArray objectAtIndex:12];
     UIView *lowerRightCurveFirstControlPoint = [self.viewArray objectAtIndex:10];
@@ -402,33 +327,7 @@
     UIView *topLeftCurveFirstControlPoint = [self.viewArray objectAtIndex:22];
     UIView *topLeftCurveSecondControlPoint = [self.viewArray objectAtIndex:23];
     
-    
-    /*
-     UIView *topRightPoint = [self.viewArray objectAtIndex:5];
-     UIView *topRightControlPoint = [self.viewArray objectAtIndex:4];
-     
-     UIView *midRightPoint =[self.viewArray objectAtIndex:7];
-     UIView * midRightControlPoint =[self.viewArray objectAtIndex:6];
-     
-     UIView *lowerRightPoint = [self.viewArray objectAtIndex:9];
-     UIView *lowerRightControlPoint = [self.viewArray objectAtIndex:8];
-     
-     
-     UIView *bottomQuadCurvePoint = [self.viewArray objectAtIndex:11];
-     UIView *bottomQuardCurveControlPoint = [self.viewArray objectAtIndex:10];
-     
-     
-     UIView *lowerLeftPoint = [self.viewArray objectAtIndex:13];
-     UIView *lowerLeftControlPoint = [self.viewArray objectAtIndex:12];
-     
-     
-     UIView *midLeftPoint = [self.viewArray objectAtIndex:15];
-     UIView *midLeftControlPoint = [self.viewArray objectAtIndex:14];
-     
-     UIView *topLeftPoint = [self.viewArray objectAtIndex:17];
-     UIView *topLeftControlPoint = [self.viewArray objectAtIndex:16];
-     
-     */
+
     
     
     
@@ -452,18 +351,7 @@
       [aPath addCurveToPoint:midLeftCurvePoint.center controlPoint1:midLeftCurveFirstControlPoint.center controlPoint2:midLeftCurveSecondControlPoint.center];
     [aPath addCurveToPoint:topLeftCurvePoint.center controlPoint1:topLeftCurveFirstControlPoint.center controlPoint2:topLeftCurveSecondControlPoint.center];
     
-    
-    
-    /*
-     [aPath addQuadCurveToPoint:topRightPoint.center controlPoint:topRightControlPoint.center];
-     [aPath addQuadCurveToPoint:midRightPoint.center controlPoint:midRightControlPoint.center];
-     [aPath addQuadCurveToPoint:lowerRightPoint.center controlPoint:lowerRightControlPoint.center];
-     [aPath addQuadCurveToPoint:bottomQuadCurvePoint.center controlPoint:bottomQuardCurveControlPoint.center];
-     [aPath addQuadCurveToPoint:lowerLeftPoint.center controlPoint:lowerLeftControlPoint.center];
-     [aPath addQuadCurveToPoint:midLeftPoint.center controlPoint:midLeftControlPoint.center];
-     [aPath addQuadCurveToPoint:topLeftPoint.center controlPoint:topLeftControlPoint.center];
-     
-     */
+
      
     [aPath closePath];
      

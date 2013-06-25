@@ -10,4 +10,6 @@
 
 @interface ImagePreviewViewController : UIViewController
 
+@property (nonatomic, strong) UIImage *faceImage; 
+
 @end

@@ -101,7 +101,7 @@
     
     [aPath closePath];
     
-    [aPath applyTransform:CGAffineTransformMakeScale(0.9, 0.9)];
+    [aPath applyTransform:CGAffineTransformMakeScale(0.8, 0.8)];
 
 
     
@@ -118,32 +118,7 @@
         
     [aPath stroke];
     
-    NSArray *pointsArray = aPath.bezierElements;
-
-    
-    NSLog(@"Transformed Overlay TopCurvePoint is %@",                               [[pointsArray objectAtIndex:7]objectAtIndex:2]);
-
-    
-    
-    CGRect pathBoundingBox = CGPathGetBoundingBox(aPath.CGPath);
-    
-        
-    UIBezierPath *bezPath = [UIBezierPath bezierPathWithRect:pathBoundingBox];
-    [[UIColor redColor]setStroke];
-    bezPath.lineWidth = 3.0;
-    [bezPath stroke];
-    
-
-    
-
-    
-    UIBezierPath *rectPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 56, 320,371)];
-    
-    [[UIColor blueColor]setStroke];
-    rectPath.lineWidth = 2.0;
-    [rectPath stroke];
-    
-    
+       
     
     
 }

@@ -10,7 +10,7 @@
 #import "FacePoint.h"
 
 
-@interface Translation : UIView <FacePointDragged>
+@interface PointsView : UIView <FacePointDragged>
 
 -(id)initWithImageView:(UIImageView *)imageView;
 

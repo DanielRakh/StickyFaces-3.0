@@ -16,9 +16,8 @@
 #import <ImageIO/ImageIO.h>
 #import "OverlayView.h"
 #import "AVCamCaptureManager.h"
-#import "Translation.h"
-#import "EditViewController.h"
 #import "UIImage+Resize.h"
+#import "ImagePreviewViewController.h"
 
 
 
@@ -32,13 +31,14 @@ BOOL frontCameraIsOn;
 }
 
 
-@property (nonatomic, strong) Translation *pointsView;
 
 
 
 @property (strong, nonatomic) IBOutlet UIView *cameraView;
-@property (strong, nonatomic) IBOutlet UIImageView *faceImageView;
 @property (nonatomic, strong) AVCamCaptureManager *captureManager;
+@property (nonatomic, strong) UIImage *faceImage;
+
+
 
 -(IBAction)cameraButtonPressed:(id)sender;
 
@@ -59,14 +59,6 @@ BOOL frontCameraIsOn;
     
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -103,35 +95,18 @@ BOOL frontCameraIsOn;
         frontCameraIsOn = NO;
     }
 
-self.faceImageView.hidden = YES;
 
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addFaceCrop:) name:kImageCapturedSuccessfully object:nil];
    
 }
 
 
 
-//INIT JBCROPPABLEVIEW
--(void)addFaceCrop:(id)sender {
-    
-    self.pointsView = [[Translation alloc]initWithImageView:self.faceImageView];
-    
-    [self.view addSubview:self.pointsView];
-}
+
 
 
 //DELETE BACKGROUND
-- (IBAction)cropTapped:(id)sender {
-    
-//    self.faceImageView.image = [self.pointsView deleteBackgroundOfImage:self.faceImageView];
-}
 
 
--(IBAction)repositionPoints:(id)sender
-{
-    
-    [self.pointsView repositionPoints];
-}
 
 
 
@@ -152,7 +127,7 @@ self.faceImageView.hidden = YES;
     
     [[UIApplication sharedApplication]setStatusBarHidden:YES];
     
-    OverlayView *overlayView = [[OverlayView alloc]initWithFrame:CGRectMake(0, 0, 320, 427)];
+    OverlayView *overlayView = [[OverlayView alloc]initWithFrame:CGRectMake(0, 0, self.cameraView.bounds.size.width, self.cameraView.bounds.size.height)];
     
     overlayView.userInteractionEnabled = YES;
     
@@ -210,40 +185,36 @@ self.faceImageView.hidden = YES;
         NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
         UIImage *originalImage = [UIImage imageWithData:imageData];
         
-        self.faceImageView.hidden = NO;
 
         if (frontCameraIsOn) {
             
             //Flip the image if it is taken from the front facing camera.
             UIImage *newImage = [self flipFrontFacingCameraImage:originalImage];
             UIImage *resizedImage = [newImage resizedImageToSize:CGSizeMake(320, 427)];
+            
+            self.faceImage = resizedImage;
 
+            [self performSegueWithIdentifier:@"goToImageView" sender:self];
         
         
-        self.faceImageView.image = resizedImage;
             
         }
         
         else if (!frontCameraIsOn)
         
         {
-            self.faceImageView.image =originalImage;
+            //
         }
         
         
         
         [self.captureManager.captureSession stopRunning];
-        [self.cameraView removeFromSuperview];
        
-        [[NSNotificationCenter defaultCenter]postNotificationName:kImageCapturedSuccessfully object:nil];
         
 
     }];
     
 
-    NSLog(@"faceImageView Frame: %@",NSStringFromCGRect(self.faceImageView.frame));
-    NSLog(@"faceImageView Bounds:%@",NSStringFromCGRect(self.faceImageView.bounds));
-    
 }
 
 - (NSUInteger) cameraCount
@@ -329,10 +300,9 @@ self.faceImageView.hidden = YES;
 
 }
 
-- (IBAction)restartCamera:(id)sender {
+- (IBAction)restartCamera:(UIStoryboardSegue *)segue {
     
     [self.captureManager.captureSession startRunning];
-    self.faceImageView.hidden = YES;
     
 }
 
@@ -341,10 +311,17 @@ self.faceImageView.hidden = YES;
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     
-    if ([segue.identifier isEqualToString:@"pushVC"]) {
+    if ([segue.identifier isEqualToString:@"goToImageView"]) {
+       
+        NSLog(@"The Segue is being called!");
         
-        EditViewController *editVC = segue.destinationViewController;
-        editVC.passedImage = self.faceImageView.image;
+        ImagePreviewViewController *imagePreviewController = (ImagePreviewViewController *)segue.destinationViewController;
+        
+        imagePreviewController.faceImage = self.faceImage;
+        
+        
+        
+        
     }
 }
 
