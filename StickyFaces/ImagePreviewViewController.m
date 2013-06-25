@@ -110,10 +110,14 @@
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
     UIImage *backButtonImage = [UIImage imageNamed:@"BackToCameraButton"];
+    UIImage *backButtonPressedImage = [UIImage imageNamed:@"BackToCameraButtonPressed"];
+
     
-    backButton.frame = CGRectMake(12, 7, backButtonImage.size.width, backButtonImage.size.height);
+    backButton.frame = CGRectMake(12, 7, backButtonPressedImage.size.width, backButtonPressedImage.size.height);
     
     [backButton setImage:backButtonImage forState:UIControlStateNormal];
+    [backButton setImage:backButtonPressedImage forState:UIControlStateHighlighted];
+
     
     [backButton addTarget:self action:@selector(performUnwindSegue) forControlEvents:UIControlEventTouchUpInside];
     

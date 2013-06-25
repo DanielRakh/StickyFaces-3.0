@@ -101,15 +101,15 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="0.61222518469999998" blue="0.41659053489999998" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rb6-rj-C3w">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rb6-rj-C3w">
                                 <rect key="frame" x="118" y="460" width="85" height="81"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="Test">
+                                <state key="normal" image="StickyFaceCropButton@2x.png">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
+                                <state key="highlighted" image="StickyFaceCropButtonPressed@2x.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -370,6 +370,8 @@
     <resources>
         <image name="CameraButton@2x.png" width="170" height="162"/>
         <image name="CameraButtonPressed@2x.png" width="170" height="162"/>
+        <image name="StickyFaceCropButton@2x.png" width="170" height="162"/>
+        <image name="StickyFaceCropButtonPressed@2x.png" width="170" height="162"/>
     </resources>
     <classes>
         <class className="ConfirmViewController" superclassName="UIViewController">
