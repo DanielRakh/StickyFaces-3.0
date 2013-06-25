@@ -18,7 +18,7 @@
 #import "AVCamCaptureManager.h"
 #import "UIImage+Resize.h"
 #import "ImagePreviewViewController.h"
-
+#import "CameraOverlay.h"
 
 
 
@@ -60,6 +60,8 @@ BOOL frontCameraIsOn;
 }
 
 
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -72,6 +74,11 @@ BOOL frontCameraIsOn;
     [self.captureManager addVideoInput];
     [self.captureManager addVideoPreviewLayer];
     [self.captureManager addStillImageOutput];
+    
+    
+    CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
+    
+    [self.view addSubview:cameraOverlay];
     
 
     self.captureManager.previewLayer.frame = self.cameraView.bounds;
