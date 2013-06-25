@@ -11,5 +11,7 @@
 @interface ConfirmViewController : UIViewController
 
 
+//Unwind Segue for ImagePreviewController to use to go back to Camera View
+-(IBAction)goBackToCameraView:(UIStoryboardSegue *)segue;
 
 @end

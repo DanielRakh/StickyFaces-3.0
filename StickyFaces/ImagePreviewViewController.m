@@ -9,7 +9,7 @@
 #import "ImagePreviewViewController.h"
 #import "PointsView.h"
 #import "EditViewController.h"
-
+#import "CameraOverlay.h"
 
 @interface ImagePreviewViewController ()
 
@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) PointsView *pointsView;
 
+@property (weak, nonatomic) IBOutlet UIButton *cropButton;
 
 @end
 
@@ -86,13 +87,52 @@
     
 }
 
+-(void)performUnwindSegue {
+    
+    
+    [self performSegueWithIdentifier:@"goBackToCameraView" sender:self];
+}
+
+
+-(void)setupElements {
+    
+    self.pointsView = [[PointsView alloc]initWithImageView:self.imageView];
+    
+    [self.view addSubview:self.pointsView];
+    
+    CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
+    
+    [self.view addSubview:cameraOverlay];
+    
+    
+    
+    
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    UIImage *backButtonImage = [UIImage imageNamed:@"BackToCameraButton"];
+    
+    backButton.frame = CGRectMake(12, 7, backButtonImage.size.width, backButtonImage.size.height);
+    
+    [backButton setImage:backButtonImage forState:UIControlStateNormal];
+    
+    [backButton addTarget:self action:@selector(performUnwindSegue) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:backButton];
+    
+    [self.view bringSubviewToFront:self.cropButton];
+    
+
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.pointsView = [[PointsView alloc]initWithImageView:self.imageView];
+
     
-    [self.view addSubview:self.pointsView];
+    
+    [self setupElements];
     
     
     

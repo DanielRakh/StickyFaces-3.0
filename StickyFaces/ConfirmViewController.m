@@ -38,6 +38,7 @@ BOOL frontCameraIsOn;
 @property (nonatomic, strong) AVCamCaptureManager *captureManager;
 @property (nonatomic, strong) UIImage *faceImage;
 
+@property (weak, nonatomic) IBOutlet UIButton *captureButton;
 
 
 -(IBAction)cameraButtonPressed:(id)sender;
@@ -60,6 +61,74 @@ BOOL frontCameraIsOn;
 }
 
 
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:YES];
+    
+    [[UIApplication sharedApplication]setStatusBarHidden:YES];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:YES];
+    
+    
+    AVCaptureDeviceInput *currentInput = [self.captureManager.captureSession.inputs objectAtIndex:0];
+    if (currentInput.device.position == AVCaptureDevicePositionFront) {
+        frontCameraIsOn = YES;
+    } else if (currentInput.device.position == AVCaptureDevicePositionBack) {
+        frontCameraIsOn = NO;
+    }
+    
+    
+}
+
+
+-(void)performUnwindSegue
+{
+    [self performSegueWithIdentifier:@"goBackToCustomFacesViewController" sender:self];
+    
+    
+}
+
+
+-(void)setupElements {
+    
+    OverlayView *overlayView = [[OverlayView alloc]initWithFrame:self.cameraView.bounds];
+    
+    [self.cameraView addSubview:overlayView];
+    
+    
+    
+    CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
+    
+    [self.view addSubview:cameraOverlay];
+    
+    
+    [self.view bringSubviewToFront:self.captureButton];
+    
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    UIImage *cancelButtonImage = [UIImage imageNamed:@"CancelButton"];
+    UIImage *cancelButtonPressedImage = [UIImage imageNamed:@"CancelButtonPressed"];
+    
+    
+    
+    cancelButton.frame = CGRectMake(12, 7, cancelButtonPressedImage.size.width, cancelButtonPressedImage.size.height);
+    
+    [cancelButton setImage:cancelButtonImage forState:UIControlStateNormal];
+    [cancelButton setImage:cancelButtonPressedImage forState:UIControlStateHighlighted];
+    
+    [cancelButton addTarget:self action:@selector(performUnwindSegue) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:cancelButton];
+    
+    
+    
+    
+}
 
 
 - (void)viewDidLoad
@@ -75,11 +144,6 @@ BOOL frontCameraIsOn;
     [self.captureManager addVideoPreviewLayer];
     [self.captureManager addStillImageOutput];
     
-    
-    CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
-    
-    [self.view addSubview:cameraOverlay];
-    
 
     self.captureManager.previewLayer.frame = self.cameraView.bounds;
     [self.cameraView.layer addSublayer:self.captureManager.previewLayer];
@@ -93,15 +157,17 @@ BOOL frontCameraIsOn;
 
     
     
-    [self.captureManager.captureSession startRunning];
-    
-    AVCaptureDeviceInput *currentInput = [self.captureManager.captureSession.inputs objectAtIndex:0];
-    if (currentInput.device.position == AVCaptureDevicePositionFront) {
-        frontCameraIsOn = YES;
-    } else if (currentInput.device.position == AVCaptureDevicePositionBack) {
-        frontCameraIsOn = NO;
-    }
+ 
 
+    
+
+    [self setupElements];
+    
+    
+
+    
+    
+    [self.captureManager.captureSession startRunning];
 
    
 }
@@ -127,21 +193,6 @@ BOOL frontCameraIsOn;
 
 
 
-
--(void)viewDidAppear:(BOOL)animated {
-    
-    [super viewDidAppear:YES];
-    
-    [[UIApplication sharedApplication]setStatusBarHidden:YES];
-    
-    OverlayView *overlayView = [[OverlayView alloc]initWithFrame:CGRectMake(0, 0, self.cameraView.bounds.size.width, self.cameraView.bounds.size.height)];
-    
-    overlayView.userInteractionEnabled = YES;
-    
-    [self.cameraView addSubview:overlayView];
-    
-    
-}
 
 
 
@@ -307,12 +358,6 @@ BOOL frontCameraIsOn;
 
 }
 
-- (IBAction)restartCamera:(UIStoryboardSegue *)segue {
-    
-    [self.captureManager.captureSession startRunning];
-    
-}
-
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -331,6 +376,19 @@ BOOL frontCameraIsOn;
         
     }
 }
+
+-(IBAction)goBackToCameraView:(UIStoryboardSegue *)segue {
+    
+    //Unwind Segue for ImagePreviewController to use to go back to Camera View
+    [self.captureManager.captureSession startRunning];
+
+
+}
+
+
+
+
+
 
 
 @end
