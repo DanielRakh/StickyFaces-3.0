@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B0766CE16D9595F008B1AE0 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B0766CD16D9595F008B1AE0 /* CustomViewController.m */; };
 		2B1A2D4A16AC847B00AA2965 /* image24@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1A2D4216AC847400AA2965 /* image24@2x.png */; };
 		2B1A2D4C16AC847B00AA2965 /* image26@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1A2D4416AC847700AA2965 /* image26@2x.png */; };
 		2B1A2D4D16AC847B00AA2965 /* image27@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1A2D4516AC847A00AA2965 /* image27@2x.png */; };
@@ -40,12 +39,13 @@
 		2B3DD401163253190093EEA7 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3DD3FF163253190093EEA7 /* SMPageControl.m */; };
 		2B4D72EF177961E900B6057F /* ImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */; };
 		2B4D72F31779650500B6057F /* goToImageViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72F21779650500B6057F /* goToImageViewSegue.m */; };
+		2B4D72F6177975F900B6057F /* FacePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72F5177975F900B6057F /* FacePoint.m */; };
+		2B4D72F91779763C00B6057F /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72F81779763B00B6057F /* AVCamCaptureManager.m */; };
 		2B5135A4172AECFD009F54B0 /* ACLoupe.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B51359D172AECFD009F54B0 /* ACLoupe.m */; };
 		2B5135A5172AECFD009F54B0 /* ACMagnifyingGlass.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B51359F172AECFD009F54B0 /* ACMagnifyingGlass.m */; };
 		2B5135A6172AECFD009F54B0 /* ACMagnifyingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B5135A1172AECFD009F54B0 /* ACMagnifyingView.m */; };
 		2B5135A7172AECFD009F54B0 /* kb-loupe-hi.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B5135A3172AECFD009F54B0 /* kb-loupe-hi.png */; };
 		2B53A42217337A8D0091A74D /* PointsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B53A41F17337A8D0091A74D /* PointsView.m */; };
-		2B53A42317337A8D0091A74D /* FacePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B53A42117337A8D0091A74D /* FacePoint.m */; };
 		2B59C3D216ABBBF000DB8185 /* image64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B59C3D016ABBBEE00DB8185 /* image64@2x.png */; };
 		2B59C3D316ABBBF000DB8185 /* image64Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B59C3D116ABBBEF00DB8185 /* image64Hi@2x.png */; };
 		2B59C3DF16ABBE4700DB8185 /* image59Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B59C3DD16ABBE4500DB8185 /* image59Hi@2x.png */; };
@@ -240,7 +240,6 @@
 		2BD7617416E97FBD00706600 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7617316E97FBD00706600 /* CoreMedia.framework */; };
 		2BD7617616E97FC300706600 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7617516E97FC300706600 /* CoreVideo.framework */; };
 		2BD7617916EA688A00706600 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7617816EA688A00706600 /* ConfirmViewController.m */; };
-		2BD870A716EFEA0E0079C389 /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD870A616EFEA0E0079C389 /* AVCamCaptureManager.m */; };
 		2BF1CD3716D5B0970064363B /* sticky10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CCE316D5B0970064363B /* sticky10@2x.png */; };
 		2BF1CD3816D5B0970064363B /* sticky11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CCE416D5B0970064363B /* sticky11@2x.png */; };
 		2BF1CD3916D5B0970064363B /* sticky12@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CCE516D5B0970064363B /* sticky12@2x.png */; };
@@ -351,8 +350,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B0766CC16D9595F008B1AE0 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewController.h; sourceTree = "<group>"; };
-		2B0766CD16D9595F008B1AE0 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewController.m; sourceTree = "<group>"; };
 		2B1A2D4216AC847400AA2965 /* image24@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image24@2x.png"; sourceTree = "<group>"; };
 		2B1A2D4416AC847700AA2965 /* image26@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image26@2x.png"; sourceTree = "<group>"; };
 		2B1A2D4516AC847A00AA2965 /* image27@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image27@2x.png"; sourceTree = "<group>"; };
@@ -391,6 +388,10 @@
 		2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePreviewViewController.m; sourceTree = "<group>"; };
 		2B4D72F11779650500B6057F /* goToImageViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goToImageViewSegue.h; sourceTree = "<group>"; };
 		2B4D72F21779650500B6057F /* goToImageViewSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goToImageViewSegue.m; sourceTree = "<group>"; };
+		2B4D72F4177975F900B6057F /* FacePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacePoint.h; sourceTree = "<group>"; };
+		2B4D72F5177975F900B6057F /* FacePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacePoint.m; sourceTree = "<group>"; };
+		2B4D72F71779763B00B6057F /* AVCamCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamCaptureManager.h; sourceTree = "<group>"; };
+		2B4D72F81779763B00B6057F /* AVCamCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamCaptureManager.m; sourceTree = "<group>"; };
 		2B51359C172AECFD009F54B0 /* ACLoupe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACLoupe.h; sourceTree = "<group>"; };
 		2B51359D172AECFD009F54B0 /* ACLoupe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACLoupe.m; sourceTree = "<group>"; };
 		2B51359E172AECFD009F54B0 /* ACMagnifyingGlass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACMagnifyingGlass.h; sourceTree = "<group>"; };
@@ -400,8 +401,6 @@
 		2B5135A3172AECFD009F54B0 /* kb-loupe-hi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kb-loupe-hi.png"; sourceTree = "<group>"; };
 		2B53A41E17337A8D0091A74D /* PointsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsView.h; sourceTree = "<group>"; };
 		2B53A41F17337A8D0091A74D /* PointsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsView.m; sourceTree = "<group>"; };
-		2B53A42017337A8D0091A74D /* FacePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacePoint.h; sourceTree = "<group>"; };
-		2B53A42117337A8D0091A74D /* FacePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacePoint.m; sourceTree = "<group>"; };
 		2B59C3D016ABBBEE00DB8185 /* image64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image64@2x.png"; sourceTree = "<group>"; };
 		2B59C3D116ABBBEF00DB8185 /* image64Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image64Hi@2x.png"; sourceTree = "<group>"; };
 		2B59C3DD16ABBE4500DB8185 /* image59Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image59Hi@2x.png"; sourceTree = "<group>"; };
@@ -617,8 +616,6 @@
 		2BD7617516E97FC300706600 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2BD7617716EA688900706600 /* ConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmViewController.h; sourceTree = "<group>"; };
 		2BD7617816EA688A00706600 /* ConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
-		2BD870A516EFEA0E0079C389 /* AVCamCaptureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVCamCaptureManager.h; sourceTree = "<group>"; };
-		2BD870A616EFEA0E0079C389 /* AVCamCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamCaptureManager.m; sourceTree = "<group>"; };
 		2BF1CCE316D5B0970064363B /* sticky10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticky10@2x.png"; sourceTree = "<group>"; };
 		2BF1CCE416D5B0970064363B /* sticky11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticky11@2x.png"; sourceTree = "<group>"; };
 		2BF1CCE516D5B0970064363B /* sticky12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticky12@2x.png"; sourceTree = "<group>"; };
@@ -1202,22 +1199,20 @@
 				2BA644FD14F3006A00292BFD /* StickyFacesViewController.m */,
 				2B65DBA81658658F0024D2EA /* FavoritesViewController.h */,
 				2B65DBA91658658F0024D2EA /* FavoritesViewController.m */,
-				2B0766CC16D9595F008B1AE0 /* CustomViewController.h */,
-				2B0766CD16D9595F008B1AE0 /* CustomViewController.m */,
 				2B9EB10116D9D67D0059EB04 /* OverlayView.h */,
 				2B9EB10216D9D67D0059EB04 /* OverlayView.m */,
 				2BFF379416DC458200879DCF /* EditViewController.h */,
 				2BFF379516DC458300879DCF /* EditViewController.m */,
 				2BD7617716EA688900706600 /* ConfirmViewController.h */,
 				2BD7617816EA688A00706600 /* ConfirmViewController.m */,
-				2BD870A516EFEA0E0079C389 /* AVCamCaptureManager.h */,
-				2BD870A616EFEA0E0079C389 /* AVCamCaptureManager.m */,
 				2B4D72ED177961E900B6057F /* ImagePreviewViewController.h */,
 				2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */,
+				2B4D72F71779763B00B6057F /* AVCamCaptureManager.h */,
+				2B4D72F81779763B00B6057F /* AVCamCaptureManager.m */,
 				2B53A41E17337A8D0091A74D /* PointsView.h */,
 				2B53A41F17337A8D0091A74D /* PointsView.m */,
-				2B53A42017337A8D0091A74D /* FacePoint.h */,
-				2B53A42117337A8D0091A74D /* FacePoint.m */,
+				2B4D72F4177975F900B6057F /* FacePoint.h */,
+				2B4D72F5177975F900B6057F /* FacePoint.m */,
 			);
 			name = "Main Classes";
 			sourceTree = "<group>";
@@ -1637,12 +1632,10 @@
 				2B93968616C4895F0027F139 /* UIViewController+RECurtainViewController.m in Sources */,
 				2B93968916C48F3F0027F139 /* MyUnwindSegue.m in Sources */,
 				2B93968C16C4CF400027F139 /* MyTabBarController.m in Sources */,
-				2B0766CE16D9595F008B1AE0 /* CustomViewController.m in Sources */,
 				2B9EB10316D9D67D0059EB04 /* OverlayView.m in Sources */,
 				2BFF379616DC458300879DCF /* EditViewController.m in Sources */,
 				2BFF37CB16E44CAC00879DCF /* JBCroppableView.m in Sources */,
 				2BD7617916EA688A00706600 /* ConfirmViewController.m in Sources */,
-				2BD870A716EFEA0E0079C389 /* AVCamCaptureManager.m in Sources */,
 				2B59E98217038A1600DA82AA /* UIImage+Resize.m in Sources */,
 				2B59E9851705370A00DA82AA /* UIView-Transform.m in Sources */,
 				2B67237E1710A3670062513B /* UIBezierPath-Points.m in Sources */,
@@ -1650,9 +1643,10 @@
 				2B5135A5172AECFD009F54B0 /* ACMagnifyingGlass.m in Sources */,
 				2B5135A6172AECFD009F54B0 /* ACMagnifyingView.m in Sources */,
 				2B53A42217337A8D0091A74D /* PointsView.m in Sources */,
-				2B53A42317337A8D0091A74D /* FacePoint.m in Sources */,
 				2B4D72EF177961E900B6057F /* ImagePreviewViewController.m in Sources */,
 				2B4D72F31779650500B6057F /* goToImageViewSegue.m in Sources */,
+				2B4D72F6177975F900B6057F /* FacePoint.m in Sources */,
+				2B4D72F91779763C00B6057F /* AVCamCaptureManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,8 +12,14 @@
 
 @interface PointsView : UIView <FacePointDragged>
 
+@property (nonatomic, strong) UIBezierPath *aPath;
+
+
+
 -(id)initWithImageView:(UIImageView *)imageView;
 
 -(void)repositionPoints;
+
+
 
 @end

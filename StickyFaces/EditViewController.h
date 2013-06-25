@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface EditViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIImageView *editImageView;
-@property (strong, nonatomic) UIImage *passedImage; 
-
+@property (nonatomic, strong) IBOutlet UIView *faceView;
+@property (nonatomic, strong) UIImage *faceImage;
 
 @end

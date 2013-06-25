@@ -18,10 +18,10 @@
 @interface FacePoint : UIView
 
 
+@property (nonatomic, strong) UIView *controlPointView;
+@property (nonatomic, strong) UIView *secondControlPointView;
+@property (nonatomic, strong) UIView *thirdControlPointView;
 
-
-@property (nonatomic) CGPoint origC;
-@property (nonatomic) CGPoint delta;
 
 @property (nonatomic, weak) id <FacePointDragged> delegate;
 

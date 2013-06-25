@@ -7,8 +7,8 @@
 //
 
 #import "EditViewController.h"
-#import "JBCroppableView.h"
-#import <QuartzCore/QuartzCore.h>
+#import "UIImage+Resize.h"
+
 
 @interface EditViewController ()
 
@@ -22,31 +22,50 @@
     [self.presentingViewController dismissViewControllerAnimated:NO completion:nil];
 }
 
--(id)initWithCoder:(NSCoder *)aDecoder {
-    
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-
-    }
-    return self;
-}
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-
+    
+    
+    self.faceView.backgroundColor = [UIColor colorWithRed:0.000 green:0.502 blue:1.000 alpha:1.000];
+    
+    
+    
+    
+    
+    CALayer *faceLayer = [CALayer layer];
+    faceLayer.contents = (id)self.faceImage.CGImage; //Size of Image is 320 x 427
+    faceLayer.bounds = CGRectMake(0, 0, self.faceImage.size.width, self.faceImage.size.height);
+    faceLayer.position = CGPointMake(CGRectGetMidX(self.faceView.bounds), CGRectGetMidY(self.faceView.bounds));
+    faceLayer.shadowColor = [UIColor blackColor].CGColor;
+    faceLayer.shadowOpacity = 1.0;
+    faceLayer.shadowOffset = CGSizeMake(0, 1.0);
+    
+    [self.faceView.layer addSublayer:faceLayer];
+    
+    
+    
+    
+    
+    //
+    //    CAShapeLayer *shape = [CAShapeLayer layer];
+    //
+    //    shape.path = self.facePath.CGPath;
+    //
+    //    shape.strokeColor = [UIColor blackColor].CGColor;
+    //    shape.lineWidth  = 4.0f;
+    //
+    //    shape.fillColor = [UIColor greenColor].CGColor;
+    //    shape.bounds = CGRectMake(0, 0, 320, 427);
+    //    shape.position = CGPointMake(CGRectGetMidX(self.faceView.bounds), CGRectGetMidY(self.faceView.bounds));
+    //    shape.zPosition = 0.0;
+    //    [self.faceView.layer addSublayer:shape];
+    
 }
+
+
+
 
 
 - (void)didReceiveMemoryWarning
@@ -59,8 +78,6 @@
     
     [super viewWillAppear:YES];
     
-    self.editImageView.image = self.passedImage;
-//      self.editImageView.frame = [JBCroppableView scaleRespectAspectFromRect1:CGRectMake(0, 0, self.editImageView.image.size.width, self.editImageView.image.size.height) toRect2:self.editImageView.frame];
     
     
     
