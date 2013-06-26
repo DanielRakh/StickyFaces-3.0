@@ -97,7 +97,7 @@ BOOL frontCameraIsOn;
     
     OverlayView *overlayView = [[OverlayView alloc]initWithFrame:self.cameraView.bounds];
     
-    [self.cameraView addSubview:overlayView];
+//    [self.cameraView addSubview:overlayView];
     
     
     
