@@ -155,7 +155,7 @@
     
     
     
-    [aPath applyTransform:CGAffineTransformMakeScale(0.9, 0.9)];
+    [aPath applyTransform:CGAffineTransformMakeScale(0.85, 0.85)];
     
     
     float yOrigin = CGPathGetBoundingBox(aPath.CGPath).origin.y;
@@ -170,7 +170,7 @@
     
     
     
-    [aPath applyTransform:CGAffineTransformMakeTranslation(0, 30)];
+    [aPath applyTransform:CGAffineTransformMakeTranslation(0, 8)];
     
     
     
@@ -566,12 +566,12 @@
     
     
 
-    
-    CAShapeLayer *background = [self createTransparentBackgroundWithPath:self.aPath];
-    [self.layer addSublayer:background];
-    
-    CAShapeLayer *facePath = [self createFaceOutlineWithPath:self.aPath];
-    [self.layer addSublayer:facePath];
+//    
+//    CAShapeLayer *background = [self createTransparentBackgroundWithPath:self.aPath];
+//    [self.layer addSublayer:background];
+//    
+//    CAShapeLayer *facePath = [self createFaceOutlineWithPath:self.aPath];
+//    [self.layer addSublayer:facePath];
     
 //    CGRect boundingBox = CGPathGetBoundingBox(self.aPath.CGPath);
 //    

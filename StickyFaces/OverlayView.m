@@ -10,10 +10,15 @@
 #import "UIBezierPath-Points.h"
 #import <QuartzCore/QuartzCore.h>
 
+static const NSInteger CAMERAFRAME_WIDTH = 5;
+
+
 @interface OverlayView ()
 
 @property (retain) UIColor *fillColor;
 @property (retain) UIBezierPath *punchedOutPath;
+
+@property (nonatomic, strong) CAShapeLayer *faceLayer;
 
 @end
 
@@ -36,8 +41,8 @@
         CAShapeLayer *backgroundLayer = [self createTransparentBackground];
         [self.layer addSublayer:backgroundLayer];
 
-        CAShapeLayer *faceLayer = [self createFaceOutline];
-        [self.layer addSublayer:faceLayer];
+        self.faceLayer = [self createFaceOutline];
+        [self.layer addSublayer:self.faceLayer];
         
         CAShapeLayer *topLine = [self createTopVerticalLine];
         [self.layer addSublayer:topLine];
@@ -62,10 +67,10 @@
     UIBezierPath *facePath = [self drawFacePath];
     
     CGRect boundingBoxPath = CGPathGetPathBoundingBox(facePath.CGPath);
-    CGPoint topPoint = CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMinY(boundingBoxPath)-2);
+    CGPoint topPoint = CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMinY(boundingBoxPath)-self.faceLayer.lineWidth);
 
     UIBezierPath *line = [UIBezierPath bezierPath];
-    [line moveToPoint:CGPointMake(160, 44)];
+    [line moveToPoint:CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMinY(self.bounds)+CAMERAFRAME_WIDTH)];
     [line addLineToPoint:topPoint];
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
@@ -88,11 +93,11 @@
     UIBezierPath *facePath = [self drawFacePath];
     
     CGRect boundingBoxPath = CGPathGetPathBoundingBox(facePath.CGPath);
-    CGPoint bottomPoint = CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMaxY(boundingBoxPath)+2);
+    CGPoint bottomPoint = CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMaxY(boundingBoxPath)+self.faceLayer.lineWidth);
     
     UIBezierPath *line = [UIBezierPath bezierPath];
     [line moveToPoint:bottomPoint];
-    [line addLineToPoint:CGPointMake(bottomPoint.x, bottomPoint.y + 70)];
+    [line addLineToPoint:CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMaxY(self.bounds)-CAMERAFRAME_WIDTH-1)];
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = line.CGPath;
@@ -115,13 +120,13 @@
     UIBezierPath *facePath = [self drawFacePath];
     
     CGRect boundingBoxPath = CGPathGetPathBoundingBox(facePath.CGPath);
-    CGPoint leftPoint = CGPointMake(CGRectGetMinX(boundingBoxPath)-2, CGRectGetMidY(boundingBoxPath));
+    CGPoint leftPoint = CGPointMake(CGRectGetMinX(boundingBoxPath)-self.faceLayer.lineWidth, CGRectGetMidY(boundingBoxPath));
     
     UIBezierPath *line = [UIBezierPath bezierPath];
     [line moveToPoint:leftPoint];
     
     
-    [line addLineToPoint:CGPointMake(leftPoint.x - 66, leftPoint.y)];
+    [line addLineToPoint:CGPointMake(CGRectGetMinX(self.bounds)+CAMERAFRAME_WIDTH, CGRectGetMidY(boundingBoxPath))];
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = line.CGPath;
@@ -143,13 +148,13 @@
     UIBezierPath *facePath = [self drawFacePath];
     
     CGRect boundingBoxPath = CGPathGetPathBoundingBox(facePath.CGPath);
-   CGPoint rightPoint = CGPointMake(CGRectGetMaxX(boundingBoxPath)+2, CGRectGetMidY(boundingBoxPath));
+   CGPoint rightPoint = CGPointMake(CGRectGetMaxX(boundingBoxPath)+self.faceLayer.lineWidth, CGRectGetMidY(boundingBoxPath));
     
     UIBezierPath *line = [UIBezierPath bezierPath];
     [line moveToPoint:rightPoint];
     
     
-    [line addLineToPoint:CGPointMake(rightPoint.x + 66, rightPoint.y)];
+    [line addLineToPoint:CGPointMake(CGRectGetMaxX(self.bounds)-CAMERAFRAME_WIDTH, CGRectGetMidY(boundingBoxPath))];
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = line.CGPath;
@@ -275,7 +280,7 @@
     
     
     
-    [aPath applyTransform:CGAffineTransformMakeScale(0.9, 0.9)];
+    [aPath applyTransform:CGAffineTransformMakeScale(0.85, 0.85)];
     
     
     float yOrigin = CGPathGetBoundingBox(aPath.CGPath).origin.y;
@@ -290,7 +295,7 @@
     
     
     
-    [aPath applyTransform:CGAffineTransformMakeTranslation(0, 30)];
+    [aPath applyTransform:CGAffineTransformMakeTranslation(0, 8)];
     
     
     

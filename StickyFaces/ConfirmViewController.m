@@ -116,7 +116,7 @@ BOOL frontCameraIsOn;
     
     
     
-    cancelButton.frame = CGRectMake(12, 7, cancelButtonPressedImage.size.width, cancelButtonPressedImage.size.height);
+    cancelButton.frame = CGRectMake(18, 484, cancelButtonImage.size.width, cancelButtonImage.size.height);
     
     [cancelButton setImage:cancelButtonImage forState:UIControlStateNormal];
     [cancelButton setImage:cancelButtonPressedImage forState:UIControlStateHighlighted];

@@ -96,16 +96,18 @@
 
 -(void)setupElements {
     
-    self.pointsView = [[PointsView alloc]initWithImageView:self.imageView];
-    
-    [self.view addSubview:self.pointsView];
-    
     CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
     
     [self.view addSubview:cameraOverlay];
     
+    self.pointsView = [[PointsView alloc]initWithImageView:self.imageView];
+    
+    [self.view addSubview:self.pointsView];
+    
+  
     
     
+ 
     
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -124,6 +126,8 @@
     [self.view addSubview:backButton];
     
     [self.view bringSubviewToFront:self.cropButton];
+    
+
     
 
     

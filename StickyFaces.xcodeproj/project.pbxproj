@@ -37,13 +37,14 @@
 		2B39B8BF16ABE98000243077 /* image11Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B39B8BB16ABE98000243077 /* image11Hi@2x.png */; };
 		2B3C2FF316273DD90006C766 /* FaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C2FF216273DD90006C766 /* FaceCell.m */; };
 		2B3DD401163253190093EEA7 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3DD3FF163253190093EEA7 /* SMPageControl.m */; };
+		2B4C558F177CE88900078613 /* CameraFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C558E177CE88900078613 /* CameraFrame@2x.png */; };
+		2B4C5593177CEA1D00078613 /* CancelButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C5591177CEA1D00078613 /* CancelButtonPressed@2x.png */; };
+		2B4C5595177CF3BE00078613 /* CancelButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C5594177CF3BE00078613 /* CancelButton@2x.png */; };
 		2B4D72EF177961E900B6057F /* ImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */; };
 		2B4D72F31779650500B6057F /* goToImageViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72F21779650500B6057F /* goToImageViewSegue.m */; };
 		2B4D72F6177975F900B6057F /* FacePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72F5177975F900B6057F /* FacePoint.m */; };
 		2B4D72F91779763C00B6057F /* AVCamCaptureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72F81779763B00B6057F /* AVCamCaptureManager.m */; };
 		2B4D72FC17797DE000B6057F /* CameraOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72FB17797DE000B6057F /* CameraOverlay.m */; };
-		2B4D730317797E3800B6057F /* CancelButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D72FF17797E3800B6057F /* CancelButtonPressed@2x.png */; };
-		2B4D730417797E3800B6057F /* CancelButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D730017797E3800B6057F /* CancelButton@2x.png */; };
 		2B4D730B177A02F600B6057F /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D730A177A02F600B6057F /* OverlayView.m */; };
 		2B4D730D177A04B100B6057F /* Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D730C177A04B100B6057F /* Portrait@2x.png */; };
 		2B4D7310177A067100B6057F /* CustomFacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D730F177A067100B6057F /* CustomFacesViewController.m */; };
@@ -390,6 +391,9 @@
 		2B3C2FF216273DD90006C766 /* FaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceCell.m; sourceTree = "<group>"; };
 		2B3DD3FF163253190093EEA7 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 		2B3DD400163253190093EEA7 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
+		2B4C558E177CE88900078613 /* CameraFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraFrame@2x.png"; sourceTree = "<group>"; };
+		2B4C5591177CEA1D00078613 /* CancelButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButtonPressed@2x.png"; sourceTree = "<group>"; };
+		2B4C5594177CF3BE00078613 /* CancelButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButton@2x.png"; sourceTree = "<group>"; };
 		2B4D72ED177961E900B6057F /* ImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePreviewViewController.h; sourceTree = "<group>"; };
 		2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePreviewViewController.m; sourceTree = "<group>"; };
 		2B4D72F11779650500B6057F /* goToImageViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goToImageViewSegue.h; sourceTree = "<group>"; };
@@ -400,8 +404,6 @@
 		2B4D72F81779763B00B6057F /* AVCamCaptureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVCamCaptureManager.m; sourceTree = "<group>"; };
 		2B4D72FA17797DE000B6057F /* CameraOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraOverlay.h; sourceTree = "<group>"; };
 		2B4D72FB17797DE000B6057F /* CameraOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraOverlay.m; sourceTree = "<group>"; };
-		2B4D72FF17797E3800B6057F /* CancelButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButtonPressed@2x.png"; sourceTree = "<group>"; };
-		2B4D730017797E3800B6057F /* CancelButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButton@2x.png"; sourceTree = "<group>"; };
 		2B4D7309177A02F500B6057F /* OverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OverlayView.h; sourceTree = "<group>"; };
 		2B4D730A177A02F600B6057F /* OverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OverlayView.m; sourceTree = "<group>"; };
 		2B4D730C177A04B100B6057F /* Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Portrait@2x.png"; sourceTree = "<group>"; };
@@ -935,6 +937,7 @@
 		2B4D72F0177964E900B6057F /* Segue Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2B4C558E177CE88900078613 /* CameraFrame@2x.png */,
 				2B4D7329177AAA0300B6057F /* StickyFaceCropButtonPressed@2x.png */,
 				2B4D732A177AAA0300B6057F /* StickyFaceCropButton@2x.png */,
 				2B4D7321177AA2C100B6057F /* CameraButton@2x.png */,
@@ -942,8 +945,8 @@
 				2B4D7313177A365D00B6057F /* BackToCameraButton@2x.png */,
 				2B4D7319177A3D4B00B6057F /* BackToCameraButtonPressed@2x.png */,
 				2B4D730C177A04B100B6057F /* Portrait@2x.png */,
-				2B4D72FF17797E3800B6057F /* CancelButtonPressed@2x.png */,
-				2B4D730017797E3800B6057F /* CancelButton@2x.png */,
+				2B4C5594177CF3BE00078613 /* CancelButton@2x.png */,
+				2B4C5591177CEA1D00078613 /* CancelButtonPressed@2x.png */,
 				2B4D72F11779650500B6057F /* goToImageViewSegue.h */,
 				2B4D72F21779650500B6057F /* goToImageViewSegue.m */,
 			);
@@ -1601,8 +1604,6 @@
 				2BF1CDA416D6AEFA0064363B /* Icon-Small@2x.png in Resources */,
 				2BF1CDA616D6B0C70064363B /* LogoBackground(4)@2x.png in Resources */,
 				2BF1CDA816D6D8F20064363B /* Default.png in Resources */,
-				2B4D730317797E3800B6057F /* CancelButtonPressed@2x.png in Resources */,
-				2B4D730417797E3800B6057F /* CancelButton@2x.png in Resources */,
 				2B4D730D177A04B100B6057F /* Portrait@2x.png in Resources */,
 				2B4D7314177A365D00B6057F /* BackToCameraButton@2x.png in Resources */,
 				2B4D731A177A3D4B00B6057F /* BackToCameraButtonPressed@2x.png in Resources */,
@@ -1610,6 +1611,9 @@
 				2B4D7324177AA2C300B6057F /* CameraButtonPressed@2x.png in Resources */,
 				2B4D732B177AAA0300B6057F /* StickyFaceCropButtonPressed@2x.png in Resources */,
 				2B4D732C177AAA0300B6057F /* StickyFaceCropButton@2x.png in Resources */,
+				2B4C558F177CE88900078613 /* CameraFrame@2x.png in Resources */,
+				2B4C5593177CEA1D00078613 /* CancelButtonPressed@2x.png in Resources */,
+				2B4C5595177CF3BE00078613 /* CancelButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

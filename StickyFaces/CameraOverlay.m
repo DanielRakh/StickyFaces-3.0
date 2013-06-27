@@ -16,10 +16,10 @@
     if (self) {
         
         
-        UIImage *overlayView = [UIImage imageNamed:@"Portrait.png"];
+        UIImage *overlayView = [UIImage imageNamed:@"CameraFrame.png"];
         
         UIImageView *imageView = [[UIImageView alloc]initWithImage:overlayView];
-        
+        imageView.userInteractionEnabled = YES;
         
         [self addSubview:imageView];
         
