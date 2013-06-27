@@ -32,69 +32,180 @@
         NSLog(@"OverlayView Bounds:%@",NSStringFromCGRect(self.bounds));
         
         
-        UIBezierPath *windowRect = [UIBezierPath bezierPathWithRect:self.bounds];
-    
-        CAShapeLayer *tintedBackground = [CAShapeLayer layer];
-        tintedBackground.path = windowRect.CGPath;
-        tintedBackground.fillColor = [UIColor colorWithWhite:0.000 alpha:0.760].CGColor;
-    
-//        [self.layer addSublayer:tintedBackground];
         
-        UIBezierPath *facePath = [self drawFacePath];
+        CAShapeLayer *backgroundLayer = [self createTransparentBackground];
+        [self.layer addSublayer:backgroundLayer];
+
+        CAShapeLayer *faceLayer = [self createFaceOutline];
+        [self.layer addSublayer:faceLayer];
         
+        CAShapeLayer *topLine = [self createTopVerticalLine];
+        [self.layer addSublayer:topLine];
         
+        CAShapeLayer *bottomLine = [self createBottomVerticalLine];
+        [self.layer addSublayer:bottomLine];
         
-        CAShapeLayer *theOuterRect = [CAShapeLayer layer];
-        theOuterRect.path = facePath.CGPath;
-        //        theOuterRect.bounds = CGRectMake(0,0, radius, radius);
-        //        theDonut.position = CGPointMake(self.bounds.size.width/2.0f, self.bounds.size.height/2.0f);
-        //        theDonut.cornerRadius = radius/2;
-        theOuterRect.fillColor = [UIColor blackColor].CGColor;
-        theOuterRect.fillMode = kCAFillModeBackwards;
-//        theOuterRect.lineWidth  = 320.0f;
-//        theOuterRect.strokeColor = [UIColor colorWithWhite:0.000 alpha:0.500].CGColor;
+        CAShapeLayer *leftLine = [self createMidLeftLine];
+        [self.layer addSublayer:leftLine];
         
-//        [self.layer addSublayer:theOuterRect];
-        
-        
-        
-        
-        
-//        static float radius = 150;
-        
-        
-        UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height) cornerRadius:0];
-        
-        UIBezierPath *circlePath = [self drawFacePath];
-        [path appendPath:circlePath];
-        [path setUsesEvenOddFillRule:YES];
-        
-        CAShapeLayer *fillLayer = [CAShapeLayer layer];
-        fillLayer.path = path.CGPath;
-        fillLayer.fillRule = kCAFillRuleEvenOdd;
-        fillLayer.fillColor = [UIColor colorWithWhite:0.000 alpha:0.600].CGColor;
-        fillLayer.opacity = 0.5;
-        [self.layer addSublayer:fillLayer];
-        
-        
-        
-        CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-        shapeLayer.path = facePath.CGPath;
-        shapeLayer.strokeColor = [UIColor colorWithWhite:0.902 alpha:1.000].CGColor;
-        shapeLayer.fillColor = [UIColor clearColor].CGColor;
-        shapeLayer.shadowColor = [UIColor blackColor].CGColor;
-        shapeLayer.shadowOpacity = 0.5;
-        shapeLayer.shadowRadius = 4.0;
-        shapeLayer.lineWidth = 3.0;
-        
-        
-        
-        [self.layer addSublayer:shapeLayer];
+        CAShapeLayer *rightLine = [self createMidRightLine];
+        [self.layer addSublayer:rightLine];
         
     }
     return self;
 }
 
+
+
+-(CAShapeLayer *)createTopVerticalLine {
+    
+    UIBezierPath *facePath = [self drawFacePath];
+    
+    CGRect boundingBoxPath = CGPathGetPathBoundingBox(facePath.CGPath);
+    CGPoint topPoint = CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMinY(boundingBoxPath)-2);
+
+    UIBezierPath *line = [UIBezierPath bezierPath];
+    [line moveToPoint:CGPointMake(160, 44)];
+    [line addLineToPoint:topPoint];
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = line.CGPath;
+    shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+    shapeLayer.shadowOpacity = 1.0;
+    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+    shapeLayer.shadowRadius = 3.0;
+    shapeLayer.lineWidth = 4.0;
+    
+    return shapeLayer;
+    
+    
+}
+
+-(CAShapeLayer *)createBottomVerticalLine {
+    
+    UIBezierPath *facePath = [self drawFacePath];
+    
+    CGRect boundingBoxPath = CGPathGetPathBoundingBox(facePath.CGPath);
+    CGPoint bottomPoint = CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMaxY(boundingBoxPath)+2);
+    
+    UIBezierPath *line = [UIBezierPath bezierPath];
+    [line moveToPoint:bottomPoint];
+    [line addLineToPoint:CGPointMake(bottomPoint.x, bottomPoint.y + 70)];
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = line.CGPath;
+    shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+    shapeLayer.shadowOpacity = 1.0;
+    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+    shapeLayer.shadowRadius = 3.0;
+    shapeLayer.lineWidth = 4.0;
+    
+    return shapeLayer;
+    
+    
+}
+
+
+-(CAShapeLayer *)createMidLeftLine {
+    
+    UIBezierPath *facePath = [self drawFacePath];
+    
+    CGRect boundingBoxPath = CGPathGetPathBoundingBox(facePath.CGPath);
+    CGPoint leftPoint = CGPointMake(CGRectGetMinX(boundingBoxPath)-2, CGRectGetMidY(boundingBoxPath));
+    
+    UIBezierPath *line = [UIBezierPath bezierPath];
+    [line moveToPoint:leftPoint];
+    
+    
+    [line addLineToPoint:CGPointMake(leftPoint.x - 66, leftPoint.y)];
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = line.CGPath;
+    shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+    shapeLayer.shadowOpacity = 1.0;
+    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+    shapeLayer.shadowRadius = 3.0;
+    shapeLayer.lineWidth = 4.0;
+    
+    return shapeLayer;
+    
+    
+}
+
+-(CAShapeLayer *)createMidRightLine {
+    
+    UIBezierPath *facePath = [self drawFacePath];
+    
+    CGRect boundingBoxPath = CGPathGetPathBoundingBox(facePath.CGPath);
+   CGPoint rightPoint = CGPointMake(CGRectGetMaxX(boundingBoxPath)+2, CGRectGetMidY(boundingBoxPath));
+    
+    UIBezierPath *line = [UIBezierPath bezierPath];
+    [line moveToPoint:rightPoint];
+    
+    
+    [line addLineToPoint:CGPointMake(rightPoint.x + 66, rightPoint.y)];
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = line.CGPath;
+    shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+    shapeLayer.shadowOpacity = 1.0;
+    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+    shapeLayer.shadowRadius = 3.0;
+    shapeLayer.lineWidth = 4.0;
+    
+    return shapeLayer;
+    
+    
+}
+
+
+-(CAShapeLayer *)createTransparentBackground {
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height) cornerRadius:0];
+    
+    UIBezierPath *circlePath = [self drawFacePath];
+    [path appendPath:circlePath];
+    [path setUsesEvenOddFillRule:YES];
+    
+    CAShapeLayer *fillLayer = [CAShapeLayer layer];
+    fillLayer.path = path.CGPath;
+    fillLayer.fillRule = kCAFillRuleEvenOdd;
+    fillLayer.fillColor = [UIColor colorWithWhite:0.000 alpha:0.750].CGColor;
+    fillLayer.opacity = 0.5;
+    
+    return fillLayer;
+    
+}
+
+
+-(CAShapeLayer *)createFaceOutline {
+    
+    
+    UIBezierPath *facePath = [self drawFacePath];
+    
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = facePath.CGPath;
+    shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+    shapeLayer.shadowOpacity = 1.0;
+    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+    shapeLayer.shadowRadius = 3.0;
+    shapeLayer.lineWidth = 4.0;
+    
+    return shapeLayer;
+    
+    
+}
 
 
 -(UIBezierPath *)drawFacePath {
@@ -164,7 +275,7 @@
     
     
     
-    [aPath applyTransform:CGAffineTransformMakeScale(0.8, 0.8)];
+    [aPath applyTransform:CGAffineTransformMakeScale(0.9, 0.9)];
     
     
     float yOrigin = CGPathGetBoundingBox(aPath.CGPath).origin.y;
@@ -183,7 +294,6 @@
     
     
     
-    aPath.lineWidth = 2.0f;
     
     
     return aPath;

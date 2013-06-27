@@ -155,7 +155,7 @@
     
     
     
-    [aPath applyTransform:CGAffineTransformMakeScale(0.8, 0.8)];
+    [aPath applyTransform:CGAffineTransformMakeScale(0.9, 0.9)];
     
     
     float yOrigin = CGPathGetBoundingBox(aPath.CGPath).origin.y;
@@ -442,6 +442,45 @@
     
 }
 
+
+-(CAShapeLayer *)createTransparentBackgroundWithPath:(UIBezierPath *)bezPath {
+    
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height) cornerRadius:0];
+    
+    [path appendPath:bezPath];
+    [path setUsesEvenOddFillRule:YES];
+    
+    CAShapeLayer *fillLayer = [CAShapeLayer layer];
+    fillLayer.path = path.CGPath;
+    fillLayer.fillRule = kCAFillRuleEvenOdd;
+    fillLayer.fillColor = [UIColor colorWithWhite:0.000 alpha:0.750].CGColor;
+    fillLayer.opacity = 0.5;
+    
+    return fillLayer;
+}
+
+
+-(CAShapeLayer *)createFaceOutlineWithPath:(UIBezierPath *)bezPath {
+    
+    
+    
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = bezPath.CGPath;
+    shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+    shapeLayer.shadowOpacity = 1.0;
+    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+    shapeLayer.shadowRadius = 3.0;
+    shapeLayer.lineWidth = 4.0;
+    
+    return shapeLayer;
+    
+    
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
@@ -526,24 +565,27 @@
     [self.aPath stroke];
     
     
+
     
+    CAShapeLayer *background = [self createTransparentBackgroundWithPath:self.aPath];
+    [self.layer addSublayer:background];
     
+    CAShapeLayer *facePath = [self createFaceOutlineWithPath:self.aPath];
+    [self.layer addSublayer:facePath];
     
-    
-    
-    CGRect boundingBox = CGPathGetBoundingBox(self.aPath.CGPath);
-    
-    UIBezierPath *boundBox = [UIBezierPath bezierPathWithRect:boundingBox];
-    boundBox.lineWidth = 3.0f;
-    [boundBox stroke];
-    
-    
-    UIBezierPath *bounceBox = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 320, 371)];
-    [bounceBox applyTransform:CGAffineTransformMakeTranslation(0, 44)];
-    
-    [[UIColor orangeColor]setStroke];
-    [bounceBox stroke];
-    
+//    CGRect boundingBox = CGPathGetBoundingBox(self.aPath.CGPath);
+//    
+//    UIBezierPath *boundBox = [UIBezierPath bezierPathWithRect:boundingBox];
+//    boundBox.lineWidth = 3.0f;
+//    [boundBox stroke];
+//    
+//    
+//    UIBezierPath *bounceBox = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 320, 371)];
+//    [bounceBox applyTransform:CGAffineTransformMakeTranslation(0, 44)];
+//    
+//    [[UIColor orangeColor]setStroke];
+//    [bounceBox stroke];
+//    
     
     UIBezierPath *topLeftCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:startingPoint.center atControlPoint:topLeftCurveControlPoint.center atEndingPoint:topLeftCurvePoint.center withTouchPointAtIndex:1 withPercentage:0.9];
     [topLeftCurvePathLine stroke];
