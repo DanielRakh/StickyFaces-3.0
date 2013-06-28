@@ -9,6 +9,20 @@
 
 @implementation UIImage (ResizeCategory)
 
+
+- (UIImage*)imageByNormalizingOrientation {
+    if (self.imageOrientation == UIImageOrientationUp)
+        return self;
+    
+    CGSize size = self.size;
+    UIGraphicsBeginImageContextWithOptions(size, NO, self.scale);
+    [self drawInRect:(CGRect){{0, 0}, size}];
+    UIImage* normalizedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return normalizedImage;
+}
+
 -(UIImage*)resizedImageToSize:(CGSize)dstSize
 {
 	CGImageRef imgRef = self.CGImage;

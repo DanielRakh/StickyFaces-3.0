@@ -37,6 +37,10 @@
 
 @property (nonatomic, strong) NSMutableArray *facePointArray;
 
+
+@property (nonatomic, strong) CAShapeLayer *faceLayer;
+
+
 @end
 
 
@@ -60,9 +64,15 @@
     self = [super initWithFrame:imageView.frame];
     if (self) {
         
+
+        
         [self setUp];
         [self pointForObjectAtIndex];
         [self createPointView];
+        
+        
+
+        
         
         
     }
@@ -562,7 +572,11 @@
     [self.aPath closePath];
     
     
-    [self.aPath stroke];
+//    [self.aPath stroke];
+    
+
+
+    
     
     
 
@@ -570,8 +584,7 @@
 //    CAShapeLayer *background = [self createTransparentBackgroundWithPath:self.aPath];
 //    [self.layer addSublayer:background];
 //    
-//    CAShapeLayer *facePath = [self createFaceOutlineWithPath:self.aPath];
-//    [self.layer addSublayer:facePath];
+//    self.faceLayer = [self createFaceOutlineWithPath:self.aPath];
     
 //    CGRect boundingBox = CGPathGetBoundingBox(self.aPath.CGPath);
 //    
@@ -588,46 +601,80 @@
 //    
     
     UIBezierPath *topLeftCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:startingPoint.center atControlPoint:topLeftCurveControlPoint.center atEndingPoint:topLeftCurvePoint.center withTouchPointAtIndex:1 withPercentage:0.9];
-    [topLeftCurvePathLine stroke];
+//    [topLeftCurvePathLine stroke];
     
     
     
     UIBezierPath *topCurveFirstControlPathLine = [self findPointOfAttachementWithCubicPath:self.aPath  withStartingPoint:topLeftCurvePoint.center atFirstControlPoint:topCurveFirstControlPoint.center andSecondControlPoint:topCurveSecondControlPoint.center atEndingPoint:topCurvePoint.center withTouchPointAtIndex:3 withPercentage:0.3];
-    [topCurveFirstControlPathLine stroke];
+//    [topCurveFirstControlPathLine stroke];
     
     UIBezierPath *topCurveSecondControlPathLine = [self findPointOfAttachementWithCubicPath:self.aPath  withStartingPoint:topLeftCurvePoint.center atFirstControlPoint:topCurveFirstControlPoint.center andSecondControlPoint:topCurveSecondControlPoint.center atEndingPoint:topCurvePoint.center withTouchPointAtIndex:4 withPercentage:0.7];
-    [topCurveSecondControlPathLine stroke];
+//    [topCurveSecondControlPathLine stroke];
     
     
     UIBezierPath *topRightCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:topCurvePoint.center atControlPoint:topRightCurveFirstControlPoint.center atEndingPoint:topRightCurvePoint.center withTouchPointAtIndex:6 withPercentage:0.1];
-    [topRightCurvePathLine stroke];
+//    [topRightCurvePathLine stroke];
     
     
     
     
     UIBezierPath *midRightCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:topRightCurvePoint.center atControlPoint:midRightCurveFirstControlPoint.center atEndingPoint:midRightCurvePoint.center withTouchPointAtIndex:8 withPercentage:0.5];
-    [midRightCurvePathLine stroke];
+//    [midRightCurvePathLine stroke];
     
     
     
     
     UIBezierPath *lowerRightCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:midRightCurvePoint.center atControlPoint:lowerRightCurveFirstControlPoint.center atEndingPoint:lowerRightCurvePoint.center withTouchPointAtIndex:10 withPercentage:0.5];
-    [lowerRightCurvePathLine stroke];
+//    [lowerRightCurvePathLine stroke];
     
     
     UIBezierPath *bottomQuadCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:lowerRightCurvePoint.center atControlPoint:bottomQuadCurveFirstControlPoint.center atEndingPoint:bottomQuadCurvePoint.center withTouchPointAtIndex:12 withPercentage:0.5];
-    [bottomQuadCurvePathLine stroke];
+//    [bottomQuadCurvePathLine stroke];
     
     
     
     UIBezierPath *lowerLeftCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:bottomQuadCurvePoint.center atControlPoint:lowerLeftCurveFirstControlPoint.center atEndingPoint:lowerLeftCurvePoint.center withTouchPointAtIndex:14 withPercentage:0.5];
-    [lowerLeftCurvePathLine stroke];
+//    [lowerLeftCurvePathLine stroke];
     
     
     UIBezierPath *midLeftCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:lowerLeftCurvePoint.center atControlPoint:midLeftCurveFirstControlPoint.center atEndingPoint:midLeftCurvePoint.center withTouchPointAtIndex:16 withPercentage:0.5];
     
-    [midLeftCurvePathLine stroke];
+//    [midLeftCurvePathLine stroke];
     
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSaveGState(context);
+    
+    CGContextAddPath(context, self.aPath.CGPath);
+    CGContextAddPath(context, topLeftCurvePathLine.CGPath);
+    CGContextAddPath(context, topCurveFirstControlPathLine.CGPath);
+    CGContextAddPath(context, topCurveSecondControlPathLine.CGPath);
+    CGContextAddPath(context, topRightCurvePathLine.CGPath);
+    CGContextAddPath(context, midRightCurvePathLine.CGPath);
+    CGContextAddPath(context, lowerRightCurvePathLine.CGPath);
+    CGContextAddPath(context, bottomQuadCurvePathLine.CGPath);
+    CGContextAddPath(context, lowerLeftCurvePathLine.CGPath);
+    CGContextAddPath(context, midRightCurvePathLine.CGPath);
+    CGContextAddPath(context, midLeftCurvePathLine.CGPath);
+
+    
+    CGContextSetLineWidth(context, 4.0);
+    CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 3.0, [UIColor blackColor].CGColor);
+    
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.000 alpha:0.800].CGColor);
+    
+    CGContextStrokePath(context);
+    
+    CGContextRestoreGState(context);
+    
+    
+
+
+
+
+
+
     
     
 }

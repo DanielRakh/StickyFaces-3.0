@@ -34,6 +34,7 @@
     
     
     
+    
     CALayer *faceLayer = [CALayer layer];
     faceLayer.contents = (id)self.faceImage.CGImage; //Size of Image is 320 x 427
     faceLayer.bounds = CGRectMake(0, 0, self.faceImage.size.width, self.faceImage.size.height);

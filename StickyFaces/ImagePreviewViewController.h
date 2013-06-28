@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) UIImage *faceImage; 
 
+-(IBAction)resetPoints:(id)sender;
+
 @end

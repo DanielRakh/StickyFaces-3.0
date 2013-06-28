@@ -18,6 +18,7 @@
 @property (nonatomic, strong) PointsView *pointsView;
 
 @property (weak, nonatomic) IBOutlet UIButton *cropButton;
+@property (weak, nonatomic) IBOutlet UIButton *repositionPoints;
 
 @end
 
@@ -81,7 +82,6 @@
     
     [super viewWillAppear:YES];
     
-    self.imageView.image = self.faceImage;
 
 
     
@@ -115,7 +115,7 @@
     UIImage *backButtonPressedImage = [UIImage imageNamed:@"BackToCameraButtonPressed"];
 
     
-    backButton.frame = CGRectMake(12, 7, backButtonPressedImage.size.width, backButtonPressedImage.size.height);
+    backButton.frame = CGRectMake(12, 460, backButtonPressedImage.size.width, backButtonPressedImage.size.height);
     
     [backButton setImage:backButtonImage forState:UIControlStateNormal];
     [backButton setImage:backButtonPressedImage forState:UIControlStateHighlighted];
@@ -126,6 +126,7 @@
     [self.view addSubview:backButton];
     
     [self.view bringSubviewToFront:self.cropButton];
+    [self.view bringSubviewToFront:self.repositionPoints];
     
 
     
@@ -137,6 +138,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
+    self.imageView.image = self.faceImage;
 
     
     

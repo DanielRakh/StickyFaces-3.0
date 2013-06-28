@@ -39,6 +39,7 @@ BOOL frontCameraIsOn;
 @property (nonatomic, strong) UIImage *faceImage;
 
 @property (weak, nonatomic) IBOutlet UIButton *captureButton;
+@property (weak, nonatomic) IBOutlet UIButton *toggleButton;
 
 
 -(IBAction)cameraButtonPressed:(id)sender;
@@ -107,6 +108,7 @@ BOOL frontCameraIsOn;
     
     
     [self.view bringSubviewToFront:self.captureButton];
+    [self.view bringSubviewToFront:self.toggleButton];
     
     
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -191,11 +193,6 @@ BOOL frontCameraIsOn;
 
 
 
-
-
-
-
-
 -(UIImage *)flipFrontFacingCameraImage:(UIImage *)image {
     
     
@@ -225,7 +222,11 @@ BOOL frontCameraIsOn;
                 break;
             }
         }
-        if (videoConnection) {
+        if ([videoConnection isVideoOrientationSupported])  {
+            
+            NSLog(@"Video orientation is called!");
+            [videoConnection setVideoOrientation:AVCaptureVideoOrientationPortrait];
+            
             break;
         }
     }
@@ -248,9 +249,19 @@ BOOL frontCameraIsOn;
             
             //Flip the image if it is taken from the front facing camera.
             UIImage *newImage = [self flipFrontFacingCameraImage:originalImage];
+            
+
+            NSLog(@"Front Camera Image Orientation:%d",newImage.imageOrientation);
+
+            
             UIImage *resizedImage = [newImage resizedImageToSize:CGSizeMake(320, 427)];
             
+            
+            NSLog(@"Front Camera Resized Image Orientation:%d",resizedImage.imageOrientation);
+
+            
             self.faceImage = resizedImage;
+
 
             [self performSegueWithIdentifier:@"goToImageView" sender:self];
         
@@ -261,7 +272,26 @@ BOOL frontCameraIsOn;
         else if (!frontCameraIsOn)
         
         {
-            //
+        
+            NSLog(@"Front Camera is not on!");
+            
+     
+            
+            UIImage *newImage = [originalImage imageByNormalizingOrientation];
+            
+            NSLog(@"Back Camera Image Orientation:%d",newImage.
+                  imageOrientation);
+
+            UIImage *resizedImage = [newImage resizedImageToSize:CGSizeMake(320, 427)];
+            
+            
+            NSLog(@"Back Camera Resized Image Orientation:%d",resizedImage.imageOrientation);
+
+            
+            self.faceImage = resizedImage;
+
+            
+            [self performSegueWithIdentifier:@"goToImageView" sender:self];
         }
         
         
@@ -371,6 +401,7 @@ BOOL frontCameraIsOn;
         
         imagePreviewController.faceImage = self.faceImage;
         
+        NSLog(@"FaceImage Size:%@",NSStringFromCGSize(self.faceImage.size));
         
         
         

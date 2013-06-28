@@ -86,11 +86,32 @@
             if (device.position == AVCaptureDevicePositionBack) {
             
             backCamera = device;
-                
-             }
+                if ([backCamera isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
+                    NSError *error = nil;
+                    if ([device lockForConfiguration:&error]) {
+                        device.focusMode = AVCaptureFocusModeContinuousAutoFocus;
+                        [device unlockForConfiguration];
+                    }
+                    else {
+                        // Respond to the failure as appropriate.
+                        NSLog(@"There was an error:%@",[error localizedDescription]);
+                    }
+                }
+            }
         
         else {
             frontCamera = device;
+            if ([frontCamera isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
+                NSError *error = nil;
+                if ([device lockForConfiguration:&error]) {
+                    device.focusMode = AVCaptureFocusModeContinuousAutoFocus;
+                    [device unlockForConfiguration];
+                }
+                else {
+                    // Respond to the failure as appropriate.
+                    NSLog(@"There was an error:%@",[error localizedDescription]);
+                }
+
         }
     }
 }
@@ -108,5 +129,8 @@
     }
     
 }
+    
+}
+
 
 @end
