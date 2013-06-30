@@ -12,5 +12,6 @@
 
 -(void)performFirstSplitAnimation;
 -(void)performCustomSplitAnimation;
+-(void)firstPositionOfCameraShutter;
 
 @end

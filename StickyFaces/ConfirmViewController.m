@@ -185,37 +185,14 @@ BOOL frontCameraIsOn;
 
     [self.captureManager.captureSession startRunning];
     
-
-
-    
-
-    
-
-   
 }
-
-
-
-
-
-
 
 -(void)captureSessionIsRunning:(id)sender {
+    
     [self.shutterView performFirstSplitAnimation];
-
-
     
 }
-
-
-
-
-
 //DELETE BACKGROUND
-
-
-
-
 
 - (void)didReceiveMemoryWarning
 {

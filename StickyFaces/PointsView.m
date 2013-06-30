@@ -644,9 +644,27 @@
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     
+    
+
+
     CGContextSaveGState(context);
     
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height) cornerRadius:0];
+    
+    [path appendPath:self.aPath];
+    [path setUsesEvenOddFillRule:YES];
+    
+    [[UIColor colorWithWhite:0.000 alpha:0.500] setFill];
+    [path fill];
+    
+    
+    
+    CGContextRestoreGState(context);
+    
     CGContextAddPath(context, self.aPath.CGPath);
+
+    
     CGContextAddPath(context, topLeftCurvePathLine.CGPath);
     CGContextAddPath(context, topCurveFirstControlPathLine.CGPath);
     CGContextAddPath(context, topCurveSecondControlPathLine.CGPath);
@@ -666,7 +684,6 @@
     
     CGContextStrokePath(context);
     
-    CGContextRestoreGState(context);
     
     
 
