@@ -33,15 +33,15 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-                
+        
+        UIImage *point = [UIImage imageNamed:@"Point"];
         
         CGFloat cornerRadius = frame.size.width/2.0f;
         
 
         self.backgroundColor = [UIColor clearColor];
         self.layer.cornerRadius = cornerRadius;
-        self.layer.borderWidth = 2.0;
-        self.layer.borderColor = [UIColor blackColor].CGColor;
+        self.layer.contents = (__bridge id)(point.CGImage);
         
         
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragging:)];

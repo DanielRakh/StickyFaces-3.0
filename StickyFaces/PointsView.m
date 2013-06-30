@@ -70,7 +70,7 @@
         [self pointForObjectAtIndex];
         [self createPointView];
         
-        
+     
 
         
         
@@ -244,7 +244,7 @@
     
     for (NSValue *value in sortArray) {
         
-        self.facePoint = [[FacePoint alloc]initWithFrame:CGRectMake(0, 0, 38, 38)];
+        self.facePoint = [[FacePoint alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
         self.facePoint.center = value.CGPointValue;
         self.facePoint.delegate = self;
         
@@ -260,7 +260,7 @@
         
         
         
-        self.touchPoint = [[FacePoint alloc]initWithFrame:CGRectMake(0, 0, 38, 38)];
+        self.touchPoint = [[FacePoint alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
         self.touchPoint.center = self.facePoint.center;
         self.touchPoint.delegate =self;
         self.touchPoint.controlPointView = self.facePoint;
@@ -298,8 +298,7 @@
         
         switch (i) {
             case 1:
-                
-                tPoint.backgroundColor = [UIColor colorWithRed:1.000 green:0.400 blue:0.400 alpha:0.450];
+                tPoint.layer.contents = (__bridge id)([UIImage imageNamed:@"Point"].CGImage);
                 tPoint.center = CGPointMake(fPoint.center.x - 30, fPoint.center.y - 30);
                 tPoint.secondControlPointView = upperLeftSecondControlPoint;
                 [self addSubview:tPoint];
@@ -310,14 +309,12 @@
                 
                 
             case 3:
-                tPoint.backgroundColor = [UIColor colorWithWhite:0.702 alpha:1.000];
                 tPoint.center = CGPointMake(fPoint.center.x - 12, fPoint.center.y);
                 [self addSubview:tPoint];
                 
                 break;
                 
             case 4:
-                tPoint.backgroundColor = [UIColor colorWithWhite:0.702 alpha:1.000];
                 tPoint.center = CGPointMake(fPoint.center.x + 12, fPoint.center.y);
                 [self addSubview:tPoint];
                 
@@ -325,14 +322,12 @@
                 
                 
             case 6:
-                tPoint.backgroundColor = [UIColor colorWithRed:1.000 green:0.000 blue:0.000 alpha:0.470];
                 tPoint.center = CGPointMake(fPoint.center.x +  30, fPoint.center.y - 30);
                 tPoint.secondControlPointView = upperRightSecondControlPoint;
                 [self addSubview:tPoint];
                 break;
                 
             case 8:
-                tPoint.backgroundColor = [UIColor colorWithRed:0.400 green:0.800 blue:1.000 alpha:0.470];
                 tPoint.center = CGPointMake(fPoint.center.x +  20.0, fPoint.center.y);
                 [self addSubview:tPoint];
                 break;
@@ -340,7 +335,6 @@
                 
                 
             case 10:
-                tPoint.backgroundColor = [UIColor colorWithRed:1.000 green:1.000 blue:0.400 alpha:0.470];
                 tPoint.center = CGPointMake(fPoint.center.x + 30, fPoint.center.y + 10);
                 tPoint.secondControlPointView = midRightCurveControlPoint;
                 tPoint.thirdControlPointView = lowerRightCuveControlPoint;
@@ -352,14 +346,12 @@
                 
                 
             case 12:
-                tPoint.backgroundColor = [UIColor colorWithRed:0.400 green:0.800 blue:1.000 alpha:0.470];
                 tPoint.center = CGPointMake(fPoint.center.x, fPoint.center.y);
                 [self addSubview:tPoint];
                 break;
                 
                 
             case 14:
-                tPoint.backgroundColor = [UIColor colorWithRed:0.400 green:0.800 blue:1.000 alpha:0.470];
                 tPoint.center = CGPointMake(fPoint.center.x - 30, fPoint.center.y + 10);
                 tPoint.secondControlPointView = bottomQuadCurveControlPoint;
                 tPoint.thirdControlPointView = lowerLeftCurveControlPoint;
@@ -368,7 +360,6 @@
                 break;
                 
             case 16:
-                tPoint.backgroundColor = [UIColor colorWithRed:0.400 green:0.800 blue:1.000 alpha:0.470];
                 tPoint.center = CGPointMake(fPoint.center.x - 20.0, fPoint.center.y);
                 [self addSubview:tPoint];
                 break;
@@ -675,6 +666,8 @@
     CGContextAddPath(context, lowerLeftCurvePathLine.CGPath);
     CGContextAddPath(context, midRightCurvePathLine.CGPath);
     CGContextAddPath(context, midLeftCurvePathLine.CGPath);
+
+    CGContextSetShouldAntialias(context, YES);
 
     
     CGContextSetLineWidth(context, 4.0);

@@ -26,7 +26,7 @@
         UIImage *overlayView = [UIImage imageNamed:@"CameraFrame.png"];
         
         UIImageView *overLayImageView = [[UIImageView alloc]initWithImage:overlayView];
-        overLayImageView.userInteractionEnabled = YES;
+        overLayImageView.userInteractionEnabled = NO;
         [self addSubview:overLayImageView];
         
         

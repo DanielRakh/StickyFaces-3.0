@@ -18,11 +18,16 @@
 @property (nonatomic, strong) PointsView *pointsView;
 
 @property (weak, nonatomic) IBOutlet UIButton *cropButton;
-@property (weak, nonatomic) IBOutlet UIButton *repositionPoints;
 
 @end
 
 @implementation ImagePreviewViewController
+
+
+
+
+
+
 
 - (UIImage *)maskImage:(UIImage *)originalImage toPath:(UIBezierPath *)path {
     UIGraphicsBeginImageContextWithOptions(originalImage.size, NO, 0);
@@ -98,7 +103,7 @@
   
     
     CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
-    cameraOverlay.userInteractionEnabled = YES;
+    cameraOverlay.userInteractionEnabled = NO;
     cameraOverlay.opaque = NO;
     
     
@@ -130,8 +135,21 @@
     
     [self.view addSubview:backButton];
     
+    
+    UIButton *repositionPoints = [UIButton buttonWithType:UIButtonTypeCustom];
+   
+    UIImage *refreshButton = [UIImage imageNamed:@"RefreshButton"];
+    repositionPoints.frame = CGRectMake(231, 444, refreshButton.size.width, refreshButton.size.height);
+    [repositionPoints setImage:refreshButton forState:UIControlStateNormal];
+    [repositionPoints setImage:[UIImage imageNamed:@"RefreshButtonPressed"] forState:UIControlStateHighlighted];
+    [repositionPoints addTarget:self
+                         action:@selector(resetPoints:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:repositionPoints];
+    
+    
     [self.view bringSubviewToFront:self.cropButton];
-    [self.view bringSubviewToFront:self.repositionPoints];
+    [self.view bringSubviewToFront:repositionPoints];
     
 
     
@@ -165,7 +183,7 @@
 
 
 
--(IBAction)resetPoints:(id)sender {
+-(void)resetPoints:(id)sender {
     
     [self.pointsView repositionPoints];
     

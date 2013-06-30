@@ -52,6 +52,8 @@ BOOL frontCameraIsOn;
 @implementation ConfirmViewController
 
 
+
+
 -(id)initWithCoder:(NSCoder *)aDecoder {
     
     self = [super initWithCoder:aDecoder];
