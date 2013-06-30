@@ -27,7 +27,7 @@
     
     
     
-    [source curtainRevealViewController:destination withPresentingViewController:source andTransitionStyle:RECurtainTransitionHorizontal andIsUnwinding:YES];
+    [source curtainRevealViewController:destination withPresentingViewController:source andTransitionStyle:RECurtainTransitionVertical andIsUnwinding:YES];
     
 
 

@@ -20,6 +20,6 @@
     UIViewController *destination = self.destinationViewController;
     
     
-    [source curtainRevealViewController:destination withPresentingViewController:source andTransitionStyle:RECurtainTransitionVertical andIsUnwinding:NO];
+    [source curtainRevealViewController:destination withPresentingViewController:source andTransitionStyle:RECurtainTransitionHorizontal andIsUnwinding:NO];
 }
 @end

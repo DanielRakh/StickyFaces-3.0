@@ -19,6 +19,7 @@
 #import "UIImage+Resize.h"
 #import "ImagePreviewViewController.h"
 #import "CameraOverlay.h"
+#import "CameraShutterView.h"
 
 
 
@@ -40,6 +41,8 @@ BOOL frontCameraIsOn;
 
 @property (weak, nonatomic) IBOutlet UIButton *captureButton;
 @property (weak, nonatomic) IBOutlet UIButton *toggleButton;
+
+@property (nonatomic, strong) CameraShutterView *shutterView;
 
 
 -(IBAction)cameraButtonPressed:(id)sender;
@@ -67,6 +70,8 @@ BOOL frontCameraIsOn;
     [super viewWillAppear:YES];
     
     [[UIApplication sharedApplication]setStatusBarHidden:YES];
+    
+
 }
 
 
@@ -75,6 +80,7 @@ BOOL frontCameraIsOn;
     [super viewDidAppear:YES];
     
     
+
     AVCaptureDeviceInput *currentInput = [self.captureManager.captureSession.inputs objectAtIndex:0];
     if (currentInput.device.position == AVCaptureDevicePositionFront) {
         frontCameraIsOn = YES;
@@ -82,6 +88,7 @@ BOOL frontCameraIsOn;
         frontCameraIsOn = NO;
     }
     
+        
     
 }
 
@@ -101,11 +108,15 @@ BOOL frontCameraIsOn;
     [self.cameraView addSubview:overlayView];
     
     
+    self.shutterView = [[CameraShutterView alloc]initWithFrame:self.view.bounds];
+    self.shutterView.tag = 100;
     
-    CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
+    [self.view addSubview:self.shutterView];
     
-    [self.view addSubview:cameraOverlay];
+    CameraOverlay *cameraOverlayView = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
     
+    [self.view addSubview:cameraOverlayView];
+
     
     [self.view bringSubviewToFront:self.captureButton];
     [self.view bringSubviewToFront:self.toggleButton];
@@ -147,6 +158,7 @@ BOOL frontCameraIsOn;
     [self.captureManager addStillImageOutput];
     
 
+    
     self.captureManager.previewLayer.frame = self.cameraView.bounds;
     [self.cameraView.layer addSublayer:self.captureManager.previewLayer];
     
@@ -166,14 +178,34 @@ BOOL frontCameraIsOn;
     [self setupElements];
     
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(captureSessionIsRunning:) name:AVCaptureSessionDidStartRunningNotification object:nil];
 
     
     
+
     [self.captureManager.captureSession startRunning];
+    
+
+
+    
+
+    
 
    
 }
 
+
+
+
+
+
+
+-(void)captureSessionIsRunning:(id)sender {
+    [self.shutterView performFirstSplitAnimation];
+
+
+    
+}
 
 
 
@@ -213,6 +245,8 @@ BOOL frontCameraIsOn;
 
 
 -(IBAction)cameraButtonPressed:(id)sender {
+    [self.shutterView performCustomSplitAnimation];
+
     
     AVCaptureConnection *videoConnection = nil;
     for (AVCaptureConnection *connection in self.captureManager.stillImageOutput.connections) {
@@ -262,8 +296,18 @@ BOOL frontCameraIsOn;
             
             self.faceImage = resizedImage;
 
+            
+            double delayInSeconds = 0.3;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self performSegueWithIdentifier:@"goToImageView" sender:self];
+                [self.captureManager.captureSession stopRunning];
 
-            [self performSegueWithIdentifier:@"goToImageView" sender:self];
+            });
+
+
+//            
+            
         
         
             
@@ -296,7 +340,6 @@ BOOL frontCameraIsOn;
         
         
         
-        [self.captureManager.captureSession stopRunning];
        
         
 
@@ -396,6 +439,7 @@ BOOL frontCameraIsOn;
     if ([segue.identifier isEqualToString:@"goToImageView"]) {
        
         NSLog(@"The Segue is being called!");
+        
         
         ImagePreviewViewController *imagePreviewController = (ImagePreviewViewController *)segue.destinationViewController;
         

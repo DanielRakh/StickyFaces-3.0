@@ -465,6 +465,7 @@
         <class className="StickyFacesViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/StickyFacesViewController.h"/>
             <relationships>
+                <relationship kind="action" name="changePage:"/>
                 <relationship kind="outlet" name="pageControl" candidateClass="SMPageControl"/>
                 <relationship kind="outlet" name="trueView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="tutorialButton" candidateClass="UIButton"/>

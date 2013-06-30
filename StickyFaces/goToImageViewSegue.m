@@ -7,6 +7,7 @@
 //
 
 #import "goToImageViewSegue.h"
+#import "CameraShutterView.h"
 
 @implementation goToImageViewSegue
 
@@ -18,8 +19,6 @@
     
     
     [source presentViewController:destination animated:NO completion:nil];
-    
-    
     
 }
 

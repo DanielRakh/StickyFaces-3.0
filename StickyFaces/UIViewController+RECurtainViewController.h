@@ -25,8 +25,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 typedef enum _RECurtainTransitionStyle {
-    RECurtainTransitionHorizontal = 0,
-    RECurtainTransitionVertical = 1
+    RECurtainTransitionVertical = 0,
+    RECurtainTransitionHorizontal = 1
 } RECurtainTransitionStyle;
 
 @interface UIViewController (RECurtainViewController)

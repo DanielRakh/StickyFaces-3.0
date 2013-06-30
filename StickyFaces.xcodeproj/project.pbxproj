@@ -252,6 +252,9 @@
 		2BD7617416E97FBD00706600 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7617316E97FBD00706600 /* CoreMedia.framework */; };
 		2BD7617616E97FC300706600 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7617516E97FC300706600 /* CoreVideo.framework */; };
 		2BD7617916EA688A00706600 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7617816EA688A00706600 /* ConfirmViewController.m */; };
+		2BD7BCA4177F8C8900A70EC9 /* BottomShutter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCA2177F8C8900A70EC9 /* BottomShutter@2x.png */; };
+		2BD7BCA5177F8C8900A70EC9 /* UpperShutter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCA3177F8C8900A70EC9 /* UpperShutter@2x.png */; };
+		2BD7BCA8177F9D4400A70EC9 /* CameraShutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7BCA7177F9D4400A70EC9 /* CameraShutterView.m */; };
 		2BF1CD3716D5B0970064363B /* sticky10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CCE316D5B0970064363B /* sticky10@2x.png */; };
 		2BF1CD3816D5B0970064363B /* sticky11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CCE416D5B0970064363B /* sticky11@2x.png */; };
 		2BF1CD3916D5B0970064363B /* sticky12@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CCE516D5B0970064363B /* sticky12@2x.png */; };
@@ -638,6 +641,10 @@
 		2BD7617516E97FC300706600 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		2BD7617716EA688900706600 /* ConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmViewController.h; sourceTree = "<group>"; };
 		2BD7617816EA688A00706600 /* ConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
+		2BD7BCA2177F8C8900A70EC9 /* BottomShutter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BottomShutter@2x.png"; sourceTree = "<group>"; };
+		2BD7BCA3177F8C8900A70EC9 /* UpperShutter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpperShutter@2x.png"; sourceTree = "<group>"; };
+		2BD7BCA6177F9D4400A70EC9 /* CameraShutterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraShutterView.h; sourceTree = "<group>"; };
+		2BD7BCA7177F9D4400A70EC9 /* CameraShutterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraShutterView.m; sourceTree = "<group>"; };
 		2BF1CCE316D5B0970064363B /* sticky10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticky10@2x.png"; sourceTree = "<group>"; };
 		2BF1CCE416D5B0970064363B /* sticky11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticky11@2x.png"; sourceTree = "<group>"; };
 		2BF1CCE516D5B0970064363B /* sticky12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticky12@2x.png"; sourceTree = "<group>"; };
@@ -945,6 +952,8 @@
 		2B4D72F0177964E900B6057F /* Segue Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2BD7BCA2177F8C8900A70EC9 /* BottomShutter@2x.png */,
+				2BD7BCA3177F8C8900A70EC9 /* UpperShutter@2x.png */,
 				2B4C559B177D6E7E00078613 /* FlipCamera@2x.png */,
 				2B4C559C177D6E7E00078613 /* FlipCameraPressed@2x.png */,
 				2B4C5596177D015B00078613 /* BlackCameraButton@2x.png */,
@@ -1210,6 +1219,8 @@
 				2B65DBA91658658F0024D2EA /* FavoritesViewController.m */,
 				2B4D72FA17797DE000B6057F /* CameraOverlay.h */,
 				2B4D72FB17797DE000B6057F /* CameraOverlay.m */,
+				2BD7BCA6177F9D4400A70EC9 /* CameraShutterView.h */,
+				2BD7BCA7177F9D4400A70EC9 /* CameraShutterView.m */,
 				2BFF379416DC458200879DCF /* EditViewController.h */,
 				2BFF379516DC458300879DCF /* EditViewController.m */,
 				2BD7617716EA688900706600 /* ConfirmViewController.h */,
@@ -1630,6 +1641,8 @@
 				2B4C559D177D6E7E00078613 /* CancelButton@2x.png in Resources */,
 				2B4C559E177D6E7E00078613 /* FlipCamera@2x.png in Resources */,
 				2B4C559F177D6E7E00078613 /* FlipCameraPressed@2x.png in Resources */,
+				2BD7BCA4177F8C8900A70EC9 /* BottomShutter@2x.png in Resources */,
+				2BD7BCA5177F8C8900A70EC9 /* UpperShutter@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1671,6 +1684,7 @@
 				2B4D72FC17797DE000B6057F /* CameraOverlay.m in Sources */,
 				2B4D730B177A02F600B6057F /* OverlayView.m in Sources */,
 				2B4D7310177A067100B6057F /* CustomFacesViewController.m in Sources */,
+				2BD7BCA8177F9D4400A70EC9 /* CameraShutterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
