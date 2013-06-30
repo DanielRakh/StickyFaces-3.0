@@ -95,17 +95,22 @@
 
 
 -(void)setupElements {
-    
-    CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
-    
-    [self.view addSubview:cameraOverlay];
-    
-    self.pointsView = [[PointsView alloc]initWithImageView:self.imageView];
-    
-    [self.view addSubview:self.pointsView];
-    
   
     
+    CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
+    cameraOverlay.userInteractionEnabled = YES;
+    cameraOverlay.opaque = NO;
+    
+    
+    
+    self.pointsView = [[PointsView alloc]initWithImageView:self.imageView];
+    self.pointsView.userInteractionEnabled = YES;
+    
+    
+     [self.view addSubview:self.pointsView];
+
+    [self.view addSubview:cameraOverlay];
+
     
  
     
@@ -115,7 +120,7 @@
     UIImage *backButtonPressedImage = [UIImage imageNamed:@"BackToCameraButtonPressed"];
 
     
-    backButton.frame = CGRectMake(12, 460, backButtonPressedImage.size.width, backButtonPressedImage.size.height);
+    backButton.frame = CGRectMake(10, 484, backButtonImage.size.width, backButtonImage.size.height);
     
     [backButton setImage:backButtonImage forState:UIControlStateNormal];
     [backButton setImage:backButtonPressedImage forState:UIControlStateHighlighted];
