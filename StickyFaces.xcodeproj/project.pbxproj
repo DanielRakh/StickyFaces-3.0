@@ -150,6 +150,7 @@
 		2BAC73B8178138CF004D227F /* CheckmarkButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B4178138CF004D227F /* CheckmarkButtonPressed@2x.png */; };
 		2BAC73B9178138CF004D227F /* ClosePreviewButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B5178138CF004D227F /* ClosePreviewButton@2x.png */; };
 		2BAC73BA178138CF004D227F /* ClosePreviewButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */; };
+		2BAC73BD1781525E004D227F /* goBackToCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC73BC1781525E004D227F /* goBackToCameraView.m */; };
 		2BB2A4071672BAA1007AA1A7 /* SpringboardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2A4061672BAA1007AA1A7 /* SpringboardLayout.m */; };
 		2BB2A4121672D782007AA1A7 /* SpringBoardLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2A4111672D781007AA1A7 /* SpringBoardLayoutAttributes.m */; };
 		2BBDFBBD16460BAA00642533 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFBBC16460BAA00642533 /* QuartzCore.framework */; };
@@ -540,6 +541,8 @@
 		2BAC73B4178138CF004D227F /* CheckmarkButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckmarkButtonPressed@2x.png"; sourceTree = "<group>"; };
 		2BAC73B5178138CF004D227F /* ClosePreviewButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClosePreviewButton@2x.png"; sourceTree = "<group>"; };
 		2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClosePreviewButtonPressed@2x.png"; sourceTree = "<group>"; };
+		2BAC73BB1781525E004D227F /* goBackToCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goBackToCameraView.h; sourceTree = "<group>"; };
+		2BAC73BC1781525E004D227F /* goBackToCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goBackToCameraView.m; sourceTree = "<group>"; };
 		2BB2A4051672BAA1007AA1A7 /* SpringboardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringboardLayout.h; sourceTree = "<group>"; };
 		2BB2A4061672BAA1007AA1A7 /* SpringboardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringboardLayout.m; sourceTree = "<group>"; };
 		2BB2A4101672D781007AA1A7 /* SpringBoardLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBoardLayoutAttributes.h; sourceTree = "<group>"; };
@@ -985,6 +988,8 @@
 				2B4C5591177CEA1D00078613 /* CancelButtonPressed@2x.png */,
 				2B4D72F11779650500B6057F /* goToImageViewSegue.h */,
 				2B4D72F21779650500B6057F /* goToImageViewSegue.m */,
+				2BAC73BB1781525E004D227F /* goBackToCameraView.h */,
+				2BAC73BC1781525E004D227F /* goBackToCameraView.m */,
 			);
 			name = "Segue Classes";
 			sourceTree = "<group>";
@@ -1705,6 +1710,7 @@
 				2B4D730B177A02F600B6057F /* OverlayView.m in Sources */,
 				2B4D7310177A067100B6057F /* CustomFacesViewController.m in Sources */,
 				2BD7BCA8177F9D4400A70EC9 /* CameraShutterView.m in Sources */,
+				2BAC73BD1781525E004D227F /* goBackToCameraView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

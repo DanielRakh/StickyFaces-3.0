@@ -21,7 +21,7 @@
 #import "CameraOverlay.h"
 #import "CameraShutterView.h"
 
-
+#import "goBackToCameraView.h"
 
 
 @interface ConfirmViewController () 
@@ -432,6 +432,22 @@ BOOL frontCameraIsOn;
         
     }
 }
+
+
+
+//UIStoryborad Unwind Segue Methods from ImagePreviewController
+- (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
+	
+	if ([identifier isEqualToString:@"goBackToCameraView"])
+        
+    return [[goBackToCameraView alloc]initWithIdentifier:identifier source:fromViewController destination:toViewController];
+    
+		
+	return [super segueForUnwindingToViewController:toViewController
+								 fromViewController:fromViewController
+										 identifier:identifier];
+}
+
 
 -(IBAction)goBackToCameraView:(UIStoryboardSegue *)segue {
     

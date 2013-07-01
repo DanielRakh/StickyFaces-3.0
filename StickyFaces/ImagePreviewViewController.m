@@ -26,6 +26,53 @@
 
 
 
+-(CAShapeLayer *)createTransparentBackground {
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.imageView.bounds.size.width, self.imageView.bounds.size.height) cornerRadius:0];
+    
+    
+    CAShapeLayer *fillLayer = [CAShapeLayer layer];
+    fillLayer.path = path.CGPath;
+    fillLayer.fillRule = kCAFillRuleEvenOdd;
+    fillLayer.fillColor = [UIColor colorWithWhite:0.902 alpha:0.800].CGColor;
+    fillLayer.opacity = 1.0;
+    
+    return fillLayer;
+    
+}
+
+-(IBAction)cropFace:(id)sender {
+    
+    
+    CAShapeLayer *transparentBackground = [self createTransparentBackground];
+    [self.imageView.layer addSublayer:transparentBackground];
+    
+    
+    UIImage *passedImage = [self maskImage:self.imageView.image toPath:self.pointsView.aPath];
+    
+    
+    [self.pointsView removeFromSuperview];
+
+    
+    
+    CALayer *faceLayer = [CALayer layer];
+    faceLayer.contents = (id)passedImage.CGImage; //Size of Image is 320 x 427
+    faceLayer.bounds = CGRectMake(0, 0, self.imageView.bounds.size.width, self.imageView.bounds.size.height);
+    faceLayer.position = CGPointMake(CGRectGetMidX(self.imageView.bounds), CGRectGetMidY(self.imageView.bounds));
+    faceLayer.shadowColor = [UIColor blackColor].CGColor;
+    faceLayer.shadowOpacity = 1.0;
+    faceLayer.shadowOffset = CGSizeMake(0, 1.0);
+    
+    
+    
+    
+    
+    [self.imageView.layer addSublayer:faceLayer];
+    
+    
+}
+
+
 
 
 
@@ -93,8 +140,7 @@
 }
 
 -(void)performUnwindSegue {
-    
-    
+        
     [self performSegueWithIdentifier:@"goBackToCameraView" sender:self];
 }
 
@@ -104,7 +150,7 @@
     
     CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
     cameraOverlay.userInteractionEnabled = NO;
-    cameraOverlay.opaque = NO;
+//    cameraOverlay.opaque = NO;
     
     
     
@@ -189,19 +235,19 @@
     
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    
-    if ([segue.identifier isEqualToString:@"goToEditViewController"]) {
-        
-        UIImage *passedImage = [self maskImage:self.imageView.image toPath:self.pointsView.aPath];
-        
-        EditViewController *editViewController = (EditViewController *)segue.destinationViewController;
-        editViewController.faceImage = passedImage;
-        
-    }
-    
-}
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    
+//    
+//    if ([segue.identifier isEqualToString:@"goToEditViewController"]) {
+//        
+//        UIImage *passedImage = [self maskImage:self.imageView.image toPath:self.pointsView.aPath];
+//        
+//        EditViewController *editViewController = (EditViewController *)segue.destinationViewController;
+//        editViewController.faceImage = passedImage;
+//        
+//    }
+//    
+//}
 
 
 @end
