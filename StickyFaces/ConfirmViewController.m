@@ -73,6 +73,8 @@ BOOL frontCameraIsOn;
     
     [[UIApplication sharedApplication]setStatusBarHidden:YES];
     
+    [self.shutterView performFirstSplitAnimation];
+    
 
 }
 
@@ -191,8 +193,7 @@ BOOL frontCameraIsOn;
 
 -(void)captureSessionIsRunning:(id)sender {
     
-    [self.shutterView performFirstSplitAnimation];
-    
+//
 }
 //DELETE BACKGROUND
 
@@ -275,12 +276,13 @@ BOOL frontCameraIsOn;
             
             self.faceImage = resizedImage;
 
+            [self.captureManager.captureSession stopRunning];
+
             
             double delayInSeconds = 0.3;
             dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
             dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
                 [self performSegueWithIdentifier:@"goToImageView" sender:self];
-                [self.captureManager.captureSession stopRunning];
 
             });
 

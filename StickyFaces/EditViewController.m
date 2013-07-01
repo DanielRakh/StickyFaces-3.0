@@ -8,9 +8,14 @@
 
 #import "EditViewController.h"
 #import "UIImage+Resize.h"
+#import "CameraOverlay.h"
+#import "UIDevice+Resolutions.h"
+
 
 
 @interface EditViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *checkMarkButton;
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
 
 
 
@@ -28,9 +33,24 @@
     [super viewDidLoad];
     
     
-    self.faceView.backgroundColor = [UIColor colorWithRed:0.000 green:0.502 blue:1.000 alpha:1.000];
+    if ([UIDevice deviceType] & iPhone5) {
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background(5).png"]];
+    }
+    else {
+        
+        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background(4).png"]];
+    }
+    
+  
+    CameraOverlay *overlayView = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
+    
+    [self.view addSubview:overlayView];
     
     
+    
+    
+    CAShapeLayer *transparentBackground = [self createTransparentBackground];
+//    [self.faceView.layer addSublayer:transparentBackground];
     
     
     
@@ -45,28 +65,27 @@
     
     [self.faceView.layer addSublayer:faceLayer];
     
-    
-    
-    
-    
-    //
-    //    CAShapeLayer *shape = [CAShapeLayer layer];
-    //
-    //    shape.path = self.facePath.CGPath;
-    //
-    //    shape.strokeColor = [UIColor blackColor].CGColor;
-    //    shape.lineWidth  = 4.0f;
-    //
-    //    shape.fillColor = [UIColor greenColor].CGColor;
-    //    shape.bounds = CGRectMake(0, 0, 320, 427);
-    //    shape.position = CGPointMake(CGRectGetMidX(self.faceView.bounds), CGRectGetMidY(self.faceView.bounds));
-    //    shape.zPosition = 0.0;
-    //    [self.faceView.layer addSublayer:shape];
+    [self.view bringSubviewToFront:self.closeButton];
+    [self.view bringSubviewToFront:self.checkMarkButton];
+
     
 }
 
 
 
+-(CAShapeLayer *)createTransparentBackground {
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.faceView.bounds.size.width, self.faceView.bounds.size.height) cornerRadius:0];
+
+    CAShapeLayer *fillLayer = [CAShapeLayer layer];
+    fillLayer.path = path.CGPath;
+    fillLayer.fillRule = kCAFillRuleEvenOdd;
+    fillLayer.fillColor = [UIColor colorWithWhite:0.000 alpha:0.750].CGColor;
+    fillLayer.opacity = 0.5;
+    
+    return fillLayer;
+    
+}
 
 
 - (void)didReceiveMemoryWarning

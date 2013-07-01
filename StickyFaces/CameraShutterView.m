@@ -26,6 +26,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.upperImageView.opaque = YES;
+        self.bottomImageView.opaque = YES;
         
     [self firstPositionOfCameraShutter];
     }
@@ -47,6 +49,8 @@
     self.bottomImageView.image = bottomImage;
     [self addSubview:self.bottomImageView];
     
+    [self insertSubview:self.upperImageView aboveSubview:self.bottomImageView];
+    
     
  
     
@@ -57,7 +61,7 @@
 -(void)performFirstSplitAnimation {
                
         
-        [UIView animateWithDuration:0.3 delay:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:0.3 delay:0.7 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.upperImageView.frame = CGRectMake(0, 0-self.upperImageView.bounds.size.height, self.upperImageView.bounds.size.width, self.upperImageView.bounds.size.height);
             
             self.bottomImageView.frame = CGRectMake(0, 212+self.upperImageView.bounds.size.height, self.bottomImageView.bounds.size.width, self.bottomImageView.bounds.size.height);
@@ -97,14 +101,14 @@
     CGRect originalUpperFrame = self.upperImageView.frame;
     CGRect originalBottomFrame = self.bottomImageView.frame;
     
-    [UIView animateWithDuration:0.4 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.upperImageView.frame = CGRectMake(0, 0, self.upperImageView.bounds.size.width, self.upperImageView.bounds.size.height);
         
         self.bottomImageView.frame = CGRectMake(0, 212, self.bottomImageView.bounds.size.width, self.bottomImageView.bounds.size.height);
         
     } completion:^(BOOL finished) {
         
-        [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:0.3 delay:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             self.upperImageView.frame = originalUpperFrame;
             self.bottomImageView.frame = originalBottomFrame;
         } completion:^(BOOL finished) {

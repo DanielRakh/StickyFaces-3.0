@@ -559,8 +559,11 @@
     [self.aPath addQuadCurveToPoint:midLeftCurvePoint.center controlPoint:midLeftCurveFirstControlPoint.center];
     
     
+    self.aPath.lineJoinStyle = kCGLineJoinRound;
+
     
     [self.aPath closePath];
+    
     
     
 //    [self.aPath stroke];
@@ -670,7 +673,7 @@
     CGContextSetShouldAntialias(context, YES);
 
     
-    CGContextSetLineWidth(context, 4.0);
+    CGContextSetLineWidth(context, 3.0);
     CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 3.0, [UIColor blackColor].CGColor);
     
     CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.000 alpha:0.800].CGColor);

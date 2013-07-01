@@ -144,6 +144,12 @@
 		2BAB52D616A4D1720095549F /* image50Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB52A416A4D1710095549F /* image50Hi@2x.png */; };
 		2BAB52DC16A4D1720095549F /* image53Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB52AA16A4D1710095549F /* image53Hi@2x.png */; };
 		2BAB52DE16A4D1720095549F /* image54Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB52AC16A4D1710095549F /* image54Hi@2x.png */; };
+		2BAC73B11780F250004D227F /* BottomShutter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73AF1780F250004D227F /* BottomShutter@2x.png */; };
+		2BAC73B21780F250004D227F /* UpperShutter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B01780F250004D227F /* UpperShutter@2x.png */; };
+		2BAC73B7178138CF004D227F /* CheckmarkButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B3178138CF004D227F /* CheckmarkButton@2x.png */; };
+		2BAC73B8178138CF004D227F /* CheckmarkButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B4178138CF004D227F /* CheckmarkButtonPressed@2x.png */; };
+		2BAC73B9178138CF004D227F /* ClosePreviewButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B5178138CF004D227F /* ClosePreviewButton@2x.png */; };
+		2BAC73BA178138CF004D227F /* ClosePreviewButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */; };
 		2BB2A4071672BAA1007AA1A7 /* SpringboardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2A4061672BAA1007AA1A7 /* SpringboardLayout.m */; };
 		2BB2A4121672D782007AA1A7 /* SpringBoardLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2A4111672D781007AA1A7 /* SpringBoardLayoutAttributes.m */; };
 		2BBDFBBD16460BAA00642533 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFBBC16460BAA00642533 /* QuartzCore.framework */; };
@@ -254,8 +260,6 @@
 		2BD7BCB3177FF6C900A70EC9 /* RefreshButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCB1177FF6C900A70EC9 /* RefreshButton@2x.png */; };
 		2BD7BCB4177FF6C900A70EC9 /* RefreshButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCB2177FF6C900A70EC9 /* RefreshButtonPressed@2x.png */; };
 		2BD7BCBA1780063D00A70EC9 /* Point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCB91780063C00A70EC9 /* Point@2x.png */; };
-		2BD7BCBD1780164A00A70EC9 /* BottomShutter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCBB1780164900A70EC9 /* BottomShutter@2x.png */; };
-		2BD7BCBE1780164A00A70EC9 /* UpperShutter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCBC1780164A00A70EC9 /* UpperShutter@2x.png */; };
 		2BF1CD3716D5B0970064363B /* sticky10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CCE316D5B0970064363B /* sticky10@2x.png */; };
 		2BF1CD3816D5B0970064363B /* sticky11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CCE416D5B0970064363B /* sticky11@2x.png */; };
 		2BF1CD3916D5B0970064363B /* sticky12@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CCE516D5B0970064363B /* sticky12@2x.png */; };
@@ -530,6 +534,12 @@
 		2BAB52A416A4D1710095549F /* image50Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image50Hi@2x.png"; sourceTree = "<group>"; };
 		2BAB52AA16A4D1710095549F /* image53Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image53Hi@2x.png"; sourceTree = "<group>"; };
 		2BAB52AC16A4D1710095549F /* image54Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image54Hi@2x.png"; sourceTree = "<group>"; };
+		2BAC73AF1780F250004D227F /* BottomShutter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BottomShutter@2x.png"; sourceTree = "<group>"; };
+		2BAC73B01780F250004D227F /* UpperShutter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpperShutter@2x.png"; sourceTree = "<group>"; };
+		2BAC73B3178138CF004D227F /* CheckmarkButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckmarkButton@2x.png"; sourceTree = "<group>"; };
+		2BAC73B4178138CF004D227F /* CheckmarkButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckmarkButtonPressed@2x.png"; sourceTree = "<group>"; };
+		2BAC73B5178138CF004D227F /* ClosePreviewButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClosePreviewButton@2x.png"; sourceTree = "<group>"; };
+		2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClosePreviewButtonPressed@2x.png"; sourceTree = "<group>"; };
 		2BB2A4051672BAA1007AA1A7 /* SpringboardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringboardLayout.h; sourceTree = "<group>"; };
 		2BB2A4061672BAA1007AA1A7 /* SpringboardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringboardLayout.m; sourceTree = "<group>"; };
 		2BB2A4101672D781007AA1A7 /* SpringBoardLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBoardLayoutAttributes.h; sourceTree = "<group>"; };
@@ -645,8 +655,6 @@
 		2BD7BCB1177FF6C900A70EC9 /* RefreshButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RefreshButton@2x.png"; sourceTree = "<group>"; };
 		2BD7BCB2177FF6C900A70EC9 /* RefreshButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RefreshButtonPressed@2x.png"; sourceTree = "<group>"; };
 		2BD7BCB91780063C00A70EC9 /* Point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Point@2x.png"; sourceTree = "<group>"; };
-		2BD7BCBB1780164900A70EC9 /* BottomShutter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BottomShutter@2x.png"; sourceTree = "<group>"; };
-		2BD7BCBC1780164A00A70EC9 /* UpperShutter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpperShutter@2x.png"; sourceTree = "<group>"; };
 		2BF1CCE316D5B0970064363B /* sticky10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticky10@2x.png"; sourceTree = "<group>"; };
 		2BF1CCE416D5B0970064363B /* sticky11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticky11@2x.png"; sourceTree = "<group>"; };
 		2BF1CCE516D5B0970064363B /* sticky12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sticky12@2x.png"; sourceTree = "<group>"; };
@@ -954,8 +962,12 @@
 		2B4D72F0177964E900B6057F /* Segue Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2BD7BCBB1780164900A70EC9 /* BottomShutter@2x.png */,
-				2BD7BCBC1780164A00A70EC9 /* UpperShutter@2x.png */,
+				2BAC73B3178138CF004D227F /* CheckmarkButton@2x.png */,
+				2BAC73B4178138CF004D227F /* CheckmarkButtonPressed@2x.png */,
+				2BAC73B5178138CF004D227F /* ClosePreviewButton@2x.png */,
+				2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */,
+				2BAC73AF1780F250004D227F /* BottomShutter@2x.png */,
+				2BAC73B01780F250004D227F /* UpperShutter@2x.png */,
 				2BD7BCB91780063C00A70EC9 /* Point@2x.png */,
 				2BD7BCB1177FF6C900A70EC9 /* RefreshButton@2x.png */,
 				2BD7BCB2177FF6C900A70EC9 /* RefreshButtonPressed@2x.png */,
@@ -1645,8 +1657,12 @@
 				2BD7BCB3177FF6C900A70EC9 /* RefreshButton@2x.png in Resources */,
 				2BD7BCB4177FF6C900A70EC9 /* RefreshButtonPressed@2x.png in Resources */,
 				2BD7BCBA1780063D00A70EC9 /* Point@2x.png in Resources */,
-				2BD7BCBD1780164A00A70EC9 /* BottomShutter@2x.png in Resources */,
-				2BD7BCBE1780164A00A70EC9 /* UpperShutter@2x.png in Resources */,
+				2BAC73B11780F250004D227F /* BottomShutter@2x.png in Resources */,
+				2BAC73B21780F250004D227F /* UpperShutter@2x.png in Resources */,
+				2BAC73B7178138CF004D227F /* CheckmarkButton@2x.png in Resources */,
+				2BAC73B8178138CF004D227F /* CheckmarkButtonPressed@2x.png in Resources */,
+				2BAC73B9178138CF004D227F /* ClosePreviewButton@2x.png in Resources */,
+				2BAC73BA178138CF004D227F /* ClosePreviewButtonPressed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
