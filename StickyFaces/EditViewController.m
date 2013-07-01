@@ -47,11 +47,7 @@
     [self.view addSubview:overlayView];
     
     
-    
-    
-    CAShapeLayer *transparentBackground = [self createTransparentBackground];
-//    [self.faceView.layer addSublayer:transparentBackground];
-    
+
     
     
     
