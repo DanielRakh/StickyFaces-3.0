@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="7z9-yb-mgv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="JEC-DP-jIy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -423,89 +423,6 @@
         <image name="StickyFaceCropButton@2x.png" width="194" height="194"/>
         <image name="StickyFaceCropButtonPressed@2x.png" width="194" height="194"/>
     </resources>
-    <classes>
-        <class className="ConfirmViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cameraButtonPressed:"/>
-                <relationship kind="action" name="goBackToCameraView:" candidateClass="UIStoryboardSegue"/>
-                <relationship kind="outlet" name="cameraView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="captureButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="toggleButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="ContainerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ContainerViewController.h"/>
-        </class>
-        <class className="CustomFacesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomFacesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="goBackToCustomFacesViewController:" candidateClass="UIStoryboardSegue"/>
-            </relationships>
-        </class>
-        <class className="EditViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="checkMarkButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="faceView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="FavoritesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="toggleDeleteMode:"/>
-                <relationship kind="outlet" name="editButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="trueView" candidateClass="UICollectionView"/>
-            </relationships>
-        </class>
-        <class className="ImagePreviewViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImagePreviewViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resetPoints:"/>
-                <relationship kind="outlet" name="cropButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="LogoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogoViewController.h"/>
-        </class>
-        <class className="MyTabBarController" superclassName="UITabBarController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MyTabBarController.h"/>
-            <relationships>
-                <relationship kind="action" name="dismissLastPage:" candidateClass="UIStoryboardSegue"/>
-            </relationships>
-        </class>
-        <class className="SMPageControl" superclassName="UIControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMPageControl.h"/>
-        </class>
-        <class className="SpringboardLayout" superclassName="UICollectionViewFlowLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpringboardLayout.h"/>
-        </class>
-        <class className="StickyFacesViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StickyFacesViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="pageControl" candidateClass="SMPageControl"/>
-                <relationship kind="outlet" name="trueView" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="tutorialButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="TutorialView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TutorialView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
