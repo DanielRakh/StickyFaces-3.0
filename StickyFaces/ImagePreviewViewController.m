@@ -153,7 +153,6 @@
 //    cameraOverlay.opaque = NO;
     
     
-    
     self.pointsView = [[PointsView alloc]initWithImageView:self.imageView];
     self.pointsView.userInteractionEnabled = YES;
     

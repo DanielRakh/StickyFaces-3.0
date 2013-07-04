@@ -49,7 +49,7 @@
     self.dataModel = [[DataModel alloc]init];
     
 
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"SFNavFinal.png"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBarSF.png"] forBarMetrics:UIBarMetricsDefault];
  
 
 

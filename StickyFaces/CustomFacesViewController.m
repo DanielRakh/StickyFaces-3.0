@@ -7,6 +7,7 @@
 //
 
 #import "CustomFacesViewController.h"
+#import "goBackToCustomFaces.h"
 
 @interface CustomFacesViewController ()
 
@@ -27,6 +28,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+//UIStoryborad Unwind Segue Methods from ImagePreviewController
+- (UIStoryboardSegue *)segueForUnwindingToViewController:(UIViewController *)toViewController fromViewController:(UIViewController *)fromViewController identifier:(NSString *)identifier {
+	
+	if ([identifier isEqualToString:@"goBackToCustomFaces"])
+        NSLog(@"The identifier is being registerd");
+        
+        return [[goBackToCustomFaces alloc]initWithIdentifier:identifier source:fromViewController destination:toViewController];
+    
+        
+
+	return [super segueForUnwindingToViewController:toViewController
+								 fromViewController:fromViewController
+										 identifier:identifier];
+    
+}
 
 -(IBAction)goBackToCustomFacesViewController:(UIStoryboardSegue *)segue {
     

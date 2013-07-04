@@ -73,6 +73,7 @@ BOOL frontCameraIsOn;
     
     [[UIApplication sharedApplication]setStatusBarHidden:YES];
     
+    self.shutterView.hidden = NO;
     [self.shutterView performFirstSplitAnimation];
     
 
@@ -97,9 +98,16 @@ BOOL frontCameraIsOn;
 }
 
 
+
+-(void)viewWillDisappear:(BOOL)animated {
+    
+    self.shutterView.hidden = YES;
+}
+
+
 -(void)performUnwindSegue
 {
-    [self performSegueWithIdentifier:@"goBackToCustomFacesViewController" sender:self];
+    [self performSegueWithIdentifier:@"goBackToCustomFaces" sender:self];
     
     
 }
@@ -453,7 +461,7 @@ BOOL frontCameraIsOn;
     
     //Unwind Segue for ImagePreviewController to use to go back to Camera View
     [self.captureManager.captureSession startRunning];
-
+    
 
 }
 

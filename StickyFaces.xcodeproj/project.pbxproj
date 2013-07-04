@@ -37,6 +37,9 @@
 		2B39B8BF16ABE98000243077 /* image11Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B39B8BB16ABE98000243077 /* image11Hi@2x.png */; };
 		2B3C2FF316273DD90006C766 /* FaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C2FF216273DD90006C766 /* FaceCell.m */; };
 		2B3DD401163253190093EEA7 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3DD3FF163253190093EEA7 /* SMPageControl.m */; };
+		2B49D8551783A5A8008AB361 /* NavBarSF@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B49D8541783A5A8008AB361 /* NavBarSF@2x.png */; };
+		2B49D8861784BCBD008AB361 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B49D8851784BCBD008AB361 /* Storyboard.storyboard */; };
+		2B49D8C21785034B008AB361 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B49D8C11785034B008AB361 /* ContainerViewController.m */; };
 		2B4C558F177CE88900078613 /* CameraFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C558E177CE88900078613 /* CameraFrame@2x.png */; };
 		2B4C5593177CEA1D00078613 /* CancelButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C5591177CEA1D00078613 /* CancelButtonPressed@2x.png */; };
 		2B4C5598177D015B00078613 /* BlackCameraButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C5596177D015B00078613 /* BlackCameraButton@2x.png */; };
@@ -151,6 +154,7 @@
 		2BAC73B9178138CF004D227F /* ClosePreviewButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B5178138CF004D227F /* ClosePreviewButton@2x.png */; };
 		2BAC73BA178138CF004D227F /* ClosePreviewButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */; };
 		2BAC73BD1781525E004D227F /* goBackToCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC73BC1781525E004D227F /* goBackToCameraView.m */; };
+		2BAE96FB1781FCDF002FCAB9 /* goBackToCustomFaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE96FA1781FCDF002FCAB9 /* goBackToCustomFaces.m */; };
 		2BB2A4071672BAA1007AA1A7 /* SpringboardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2A4061672BAA1007AA1A7 /* SpringboardLayout.m */; };
 		2BB2A4121672D782007AA1A7 /* SpringBoardLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2A4111672D781007AA1A7 /* SpringBoardLayoutAttributes.m */; };
 		2BBDFBBD16460BAA00642533 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFBBC16460BAA00642533 /* QuartzCore.framework */; };
@@ -404,6 +408,10 @@
 		2B3C2FF216273DD90006C766 /* FaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceCell.m; sourceTree = "<group>"; };
 		2B3DD3FF163253190093EEA7 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 		2B3DD400163253190093EEA7 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
+		2B49D8541783A5A8008AB361 /* NavBarSF@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBarSF@2x.png"; sourceTree = "<group>"; };
+		2B49D8851784BCBD008AB361 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		2B49D8C01785034B008AB361 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		2B49D8C11785034B008AB361 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		2B4C558E177CE88900078613 /* CameraFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraFrame@2x.png"; sourceTree = "<group>"; };
 		2B4C5591177CEA1D00078613 /* CancelButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButtonPressed@2x.png"; sourceTree = "<group>"; };
 		2B4C5596177D015B00078613 /* BlackCameraButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlackCameraButton@2x.png"; sourceTree = "<group>"; };
@@ -543,6 +551,8 @@
 		2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClosePreviewButtonPressed@2x.png"; sourceTree = "<group>"; };
 		2BAC73BB1781525E004D227F /* goBackToCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goBackToCameraView.h; sourceTree = "<group>"; };
 		2BAC73BC1781525E004D227F /* goBackToCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goBackToCameraView.m; sourceTree = "<group>"; };
+		2BAE96F91781FCDF002FCAB9 /* goBackToCustomFaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goBackToCustomFaces.h; sourceTree = "<group>"; };
+		2BAE96FA1781FCDF002FCAB9 /* goBackToCustomFaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goBackToCustomFaces.m; sourceTree = "<group>"; };
 		2BB2A4051672BAA1007AA1A7 /* SpringboardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringboardLayout.h; sourceTree = "<group>"; };
 		2BB2A4061672BAA1007AA1A7 /* SpringboardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringboardLayout.m; sourceTree = "<group>"; };
 		2BB2A4101672D781007AA1A7 /* SpringBoardLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBoardLayoutAttributes.h; sourceTree = "<group>"; };
@@ -962,9 +972,19 @@
 			name = "Display Faces (@2x)";
 			sourceTree = "<group>";
 		};
+		2B49D8BF1785032D008AB361 /* ContainerViewController  */ = {
+			isa = PBXGroup;
+			children = (
+				2B49D8C01785034B008AB361 /* ContainerViewController.h */,
+				2B49D8C11785034B008AB361 /* ContainerViewController.m */,
+			);
+			name = "ContainerViewController ";
+			sourceTree = "<group>";
+		};
 		2B4D72F0177964E900B6057F /* Segue Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2B49D8541783A5A8008AB361 /* NavBarSF@2x.png */,
 				2BAC73B3178138CF004D227F /* CheckmarkButton@2x.png */,
 				2BAC73B4178138CF004D227F /* CheckmarkButtonPressed@2x.png */,
 				2BAC73B5178138CF004D227F /* ClosePreviewButton@2x.png */,
@@ -990,6 +1010,8 @@
 				2B4D72F21779650500B6057F /* goToImageViewSegue.m */,
 				2BAC73BB1781525E004D227F /* goBackToCameraView.h */,
 				2BAC73BC1781525E004D227F /* goBackToCameraView.m */,
+				2BAE96F91781FCDF002FCAB9 /* goBackToCustomFaces.h */,
+				2BAE96FA1781FCDF002FCAB9 /* goBackToCustomFaces.m */,
 			);
 			name = "Segue Classes";
 			sourceTree = "<group>";
@@ -1041,6 +1063,7 @@
 				2BD3A9CA153689FC00BDEA55 /* copyHUD.xib */,
 				2B80184F16AE0172001271FC /* iPhone5Storyboard.storyboard */,
 				2B8CE0531609732A00EA5996 /* MainStoryboard.storyboard */,
+				2B49D8851784BCBD008AB361 /* Storyboard.storyboard */,
 			);
 			name = "User Interfaces";
 			sourceTree = "<group>";
@@ -1081,6 +1104,7 @@
 		2BA644F014F3006A00292BFD /* StickyFaces */ = {
 			isa = PBXGroup;
 			children = (
+				2B49D8BF1785032D008AB361 /* ContainerViewController  */,
 				2B4D72F0177964E900B6057F /* Segue Classes */,
 				2BA644F914F3006A00292BFD /* StickyFacesAppDelegate.h */,
 				2BA644FA14F3006A00292BFD /* StickyFacesAppDelegate.m */,
@@ -1668,6 +1692,8 @@
 				2BAC73B8178138CF004D227F /* CheckmarkButtonPressed@2x.png in Resources */,
 				2BAC73B9178138CF004D227F /* ClosePreviewButton@2x.png in Resources */,
 				2BAC73BA178138CF004D227F /* ClosePreviewButtonPressed@2x.png in Resources */,
+				2B49D8551783A5A8008AB361 /* NavBarSF@2x.png in Resources */,
+				2B49D8861784BCBD008AB361 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1711,6 +1737,8 @@
 				2B4D7310177A067100B6057F /* CustomFacesViewController.m in Sources */,
 				2BD7BCA8177F9D4400A70EC9 /* CameraShutterView.m in Sources */,
 				2BAC73BD1781525E004D227F /* goBackToCameraView.m in Sources */,
+				2BAE96FB1781FCDF002FCAB9 /* goBackToCustomFaces.m in Sources */,
+				2B49D8C21785034B008AB361 /* ContainerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

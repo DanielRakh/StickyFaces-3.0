@@ -83,10 +83,6 @@
 
 
 
-
-
-
-
 -(void)startQuivering
 {
     self.faceButton.userInteractionEnabled = NO;
