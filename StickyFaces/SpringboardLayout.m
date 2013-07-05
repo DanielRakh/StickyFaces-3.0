@@ -63,7 +63,7 @@
         }
 
 
-      NSLog(@"SpringBoardLayout is setup");
+      NSLog(@"iPhone 4 layout is setup");
     }
 }
 

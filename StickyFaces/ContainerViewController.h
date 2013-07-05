@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface ContainerViewController : UIViewController
+
+
+- (IBAction)favoritesButtonTapped:(id)sender;
+
+- (IBAction)catalogButtonTapped:(id)sender;
 
 @end

@@ -46,36 +46,37 @@
     // Override point for customization after application launch.
     
     
-    self.dataModel = [[DataModel alloc]init];
+//    self.dataModel = [[DataModel alloc]init];
     
 
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBarSF.png"] forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"NavBarSF.png"] forBarMetrics:UIBarMetricsDefault];
  
 
 
     if ([UIDevice deviceType] & iPhone5) {
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"iPhone5Storyboard" bundle:nil];
-        self.tabBarController = [storyBoard instantiateInitialViewController];
+        self.containerViewController = [storyBoard instantiateInitialViewController];
 
     
     } else {
         UIStoryboard *theStoryBoard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
         
-        self.tabBarController = [theStoryBoard instantiateInitialViewController];
+        self.containerViewController = [theStoryBoard instantiateInitialViewController];
         
     }
 
         
-        self.window.rootViewController = self.tabBarController;
+        self.window.rootViewController = self.containerViewController;
     
-        FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
-        StickyFacesViewController *svc = (StickyFacesViewController *)[self.tabBarController.viewControllers objectAtIndex:0];
+//        FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
+//    StickyFacesViewController *svc = (StickyFacesViewController *)[self.containerViewController.childViewControllers objectAtIndex:0];
 
-        svc.dataModel = self.dataModel;
-        fvc.dataModel = self.dataModel;
-        
-        svc.delegate = fvc;
+//    StickyFacesViewController *svc = (StickyFacesViewController *)[self.containerViewController.childViewControllers objectAtIndex:0];
+//        svc.dataModel = self.dataModel;
+//        fvc.dataModel = self.dataModel;
+    
+//        svc.delegate = fvc;
 
     
     [WCAlertView setDefaultStyle:WCAlertViewStyleWhite];
@@ -86,19 +87,19 @@
 
     [self.window makeKeyAndVisible];
 
- 
-    
-    [[UITabBar appearance]setBackgroundImage:[UIImage imageNamed:@"TB3.png"]];
-    [[UITabBar appearance]setSelectionIndicatorImage:[UIImage imageNamed:@"TabSel.png"]];
-    
-    UITabBarItem *tabBarItem1 = [self.tabBarController.tabBar.items objectAtIndex:0];
-    UITabBarItem *tabBarItem2 = [self.tabBarController.tabBar.items objectAtIndex:1];
-        
-    
-    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"FaceSel.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"FaceUnSel.png"]];
-    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"FavSel.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"FavUnSel.png"]];
-    
-
+// 
+//    
+//    [[UITabBar appearance]setBackgroundImage:[UIImage imageNamed:@"TB3.png"]];
+//    [[UITabBar appearance]setSelectionIndicatorImage:[UIImage imageNamed:@"TabSel.png"]];
+//    
+//    UITabBarItem *tabBarItem1 = [self.tabBarController.tabBar.items objectAtIndex:0];
+//    UITabBarItem *tabBarItem2 = [self.tabBarController.tabBar.items objectAtIndex:1];
+//        
+//    
+//    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"FaceSel.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"FaceUnSel.png"]];
+//    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"FavSel.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"FavUnSel.png"]];
+//    
+//
     
     [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     
@@ -114,12 +115,12 @@
      */
     
     
-    
-    FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
-    
-    SpringboardLayout *layout = (SpringboardLayout *)fvc.trueView.collectionViewLayout;
-    
-    [layout invalidateLayout];
+//    
+//    FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
+//    
+//    SpringboardLayout *layout = (SpringboardLayout *)fvc.trueView.collectionViewLayout;
+//    
+//    [layout invalidateLayout];
     
 }
 
@@ -129,9 +130,9 @@
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
-    
-    FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
-    [fvc.trueView.collectionViewLayout invalidateLayout];
+//    
+//    FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
+//    [fvc.trueView.collectionViewLayout invalidateLayout];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -139,8 +140,8 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
-    FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
-    [fvc.trueView.collectionViewLayout invalidateLayout];
+//    FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
+//    [fvc.trueView.collectionViewLayout invalidateLayout];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -148,9 +149,9 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
-    
-    FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
-    [fvc.trueView.collectionViewLayout invalidateLayout];
+//    
+//    FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
+//    [fvc.trueView.collectionViewLayout invalidateLayout];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

@@ -17,17 +17,26 @@
 #import "TutorialView.h"
 #import "MyUnwindSegue.h"
 
+#import "ContainerViewController.h"
+
 
 @interface StickyFacesViewController  ()
 {
     BOOL pageControlUsed;
     int numberOfFaces;
     BOOL appOpenedForTheFirstTime;
+    
+
+    IBOutlet UINavigationBar *navBar;
 }
+
+
 
 @property (nonatomic, readwrite) IBOutlet SMPageControl *pageControl;
 @property (nonatomic, weak) IBOutlet UIButton *tutorialButton;
 
+
+@property (nonatomic, strong) ContainerViewController *containerViewController;
 
 @end
 
@@ -98,7 +107,9 @@
     
  
     
-
+    
+    
+    NSLog(@"This is called");
     
     [self.trueView registerClass:[FaceCell class] forCellWithReuseIdentifier:@"Face"];
     
@@ -149,15 +160,11 @@
 {
     [super viewWillAppear:animated];
     
+    [navBar setBackgroundImage:[UIImage imageNamed:@"CatalogNavBar"] forBarMetrics:UIBarMetricsDefault];
+    [navBar setShadowImage:[[UIImage alloc]init]];
     
-    if ([UIDevice deviceType] & iPhone5) {
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background(5).png"]];
-    }
-    else {
-        
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background(4).png"]];
-    }
-    
+    NSLog(@"Catalog View Controller has appeared!");
+   
     
  
 }
@@ -461,14 +468,25 @@
                 } cancelButtonTitle:@"Got it!" otherButtonTitles:nil];
                 
             } else {
+                
 
-            [self.delegate getIndexPathOfPressedCell:indexPath];
+                [self.delegate getIndexPathOfPressedCell:indexPath];
+
+
             
             NSLog(@"Point:%d",indexPath.item);
 
             SpringboardLayout *layout = (SpringboardLayout *)self.trueView.collectionViewLayout;
             [layout invalidateLayout];
-            [self.tabBarController setSelectedIndex:1];
+                
+                
+                
+
+             //Present Favorites View
+
+                self.containerViewController = (ContainerViewController *)self.parentViewController;
+                [self.containerViewController favoritesButtonTapped:self];
+                
             }
         }
     }

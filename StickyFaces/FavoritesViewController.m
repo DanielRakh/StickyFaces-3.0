@@ -12,11 +12,13 @@
 #import "WCAlertView.h"
 
 @interface FavoritesViewController ()
+{
+    IBOutlet UINavigationBar *navBar;
+}
 
 @property (nonatomic, assign) int itemNumber;
 
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
-
 @property (strong, nonatomic) UIImage *deleteButton;
 @property (strong, nonatomic) UIImage *checkmarkButton;
 
@@ -74,11 +76,16 @@
 
     [self.trueView registerClass:[FaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
     
+    
+    
+    
+    //Add the long press gesture recognizer 
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(activateLongPressRecognizer:)];
     longPress.delegate = self;
     [self.trueView addGestureRecognizer:longPress];
     
 
+    
 
 }
 
@@ -102,16 +109,12 @@
     [super viewWillAppear:animated];
     
     
-    if ([UIDevice deviceType] & iPhone5) {
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background(5).png"]];
-    }
-    else {
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background(4).png"]];
-
-        
-    }
+    
+    [navBar setBackgroundImage:[UIImage imageNamed:@"CatalogNavBar"] forBarMetrics:UIBarMetricsDefault];
+    [navBar setShadowImage:[[UIImage alloc]init]];
 
     
+
     
     if (([self.dataModel favoritesFaceCount] > 0) && (!isDeletionModeActive)) {
         
@@ -242,6 +245,9 @@
 
 -(void)getIndexPathOfPressedCell:(NSIndexPath *)indexPath {
  
+    
+    NSLog(@"GETINDEXPATHMESSAGECALLED");
+
     NSString *imageString = [NSString stringWithFormat:@"image%d@2x",indexPath.item+1];
     
     if (![self.dataModel.favorites containsObject:imageString]) {
@@ -259,7 +265,6 @@
         
     if ([self.dataModel favoritesFaceCount] > 0) {
         
-        NSLog(@"GETINDEXPATHMESSAGECALLED");
         
 //         self.editButton.hidden = NO;
 //        [self.editButton setBackgroundImage:self.deleteButton forState:UIControlStateNormal];

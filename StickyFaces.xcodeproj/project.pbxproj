@@ -55,6 +55,8 @@
 		2B4D730B177A02F600B6057F /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D730A177A02F600B6057F /* OverlayView.m */; };
 		2B4D730D177A04B100B6057F /* Portrait@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4D730C177A04B100B6057F /* Portrait@2x.png */; };
 		2B4D7310177A067100B6057F /* CustomFacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D730F177A067100B6057F /* CustomFacesViewController.m */; };
+		2B4DA0D01785F0F900233E11 /* CatalogNavBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4DA0CF1785F0F900233E11 /* CatalogNavBar@2x.png */; };
+		2B4DA0D31786146D00233E11 /* presentFavoritesSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4DA0D21786146D00233E11 /* presentFavoritesSegue.m */; };
 		2B53A42217337A8D0091A74D /* PointsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B53A41F17337A8D0091A74D /* PointsView.m */; };
 		2B59C3D216ABBBF000DB8185 /* image64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B59C3D016ABBBEE00DB8185 /* image64@2x.png */; };
 		2B59C3D316ABBBF000DB8185 /* image64Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B59C3D116ABBBEF00DB8185 /* image64Hi@2x.png */; };
@@ -434,6 +436,9 @@
 		2B4D730C177A04B100B6057F /* Portrait@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Portrait@2x.png"; sourceTree = "<group>"; };
 		2B4D730E177A067100B6057F /* CustomFacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFacesViewController.h; sourceTree = "<group>"; };
 		2B4D730F177A067100B6057F /* CustomFacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFacesViewController.m; sourceTree = "<group>"; };
+		2B4DA0CF1785F0F900233E11 /* CatalogNavBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CatalogNavBar@2x.png"; sourceTree = "<group>"; };
+		2B4DA0D11786146D00233E11 /* presentFavoritesSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = presentFavoritesSegue.h; sourceTree = "<group>"; };
+		2B4DA0D21786146D00233E11 /* presentFavoritesSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = presentFavoritesSegue.m; sourceTree = "<group>"; };
 		2B53A41E17337A8D0091A74D /* PointsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointsView.h; sourceTree = "<group>"; };
 		2B53A41F17337A8D0091A74D /* PointsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointsView.m; sourceTree = "<group>"; };
 		2B59C3D016ABBBEE00DB8185 /* image64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image64@2x.png"; sourceTree = "<group>"; };
@@ -975,8 +980,11 @@
 		2B49D8BF1785032D008AB361 /* ContainerViewController  */ = {
 			isa = PBXGroup;
 			children = (
+				2B4DA0CF1785F0F900233E11 /* CatalogNavBar@2x.png */,
 				2B49D8C01785034B008AB361 /* ContainerViewController.h */,
 				2B49D8C11785034B008AB361 /* ContainerViewController.m */,
+				2B4DA0D11786146D00233E11 /* presentFavoritesSegue.h */,
+				2B4DA0D21786146D00233E11 /* presentFavoritesSegue.m */,
 			);
 			name = "ContainerViewController ";
 			sourceTree = "<group>";
@@ -1694,6 +1702,7 @@
 				2BAC73BA178138CF004D227F /* ClosePreviewButtonPressed@2x.png in Resources */,
 				2B49D8551783A5A8008AB361 /* NavBarSF@2x.png in Resources */,
 				2B49D8861784BCBD008AB361 /* Storyboard.storyboard in Resources */,
+				2B4DA0D01785F0F900233E11 /* CatalogNavBar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1739,6 +1748,7 @@
 				2BAC73BD1781525E004D227F /* goBackToCameraView.m in Sources */,
 				2BAE96FB1781FCDF002FCAB9 /* goBackToCustomFaces.m in Sources */,
 				2B49D8C21785034B008AB361 /* ContainerViewController.m in Sources */,
+				2B4DA0D31786146D00233E11 /* presentFavoritesSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
