@@ -16,4 +16,6 @@
 
 - (IBAction)catalogButtonTapped:(id)sender;
 
+- (IBAction)cameraButtonTapped:(id)sender;
+
 @end

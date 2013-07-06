@@ -37,8 +37,8 @@
 		2B39B8BF16ABE98000243077 /* image11Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B39B8BB16ABE98000243077 /* image11Hi@2x.png */; };
 		2B3C2FF316273DD90006C766 /* FaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C2FF216273DD90006C766 /* FaceCell.m */; };
 		2B3DD401163253190093EEA7 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3DD3FF163253190093EEA7 /* SMPageControl.m */; };
+		2B465FA317877B0D0040209A /* UIViewController+CustomPushTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B465FA217877B0D0040209A /* UIViewController+CustomPushTransition.m */; };
 		2B49D8551783A5A8008AB361 /* NavBarSF@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B49D8541783A5A8008AB361 /* NavBarSF@2x.png */; };
-		2B49D8861784BCBD008AB361 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B49D8851784BCBD008AB361 /* Storyboard.storyboard */; };
 		2B49D8C21785034B008AB361 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B49D8C11785034B008AB361 /* ContainerViewController.m */; };
 		2B4C558F177CE88900078613 /* CameraFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C558E177CE88900078613 /* CameraFrame@2x.png */; };
 		2B4C5593177CEA1D00078613 /* CancelButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C5591177CEA1D00078613 /* CancelButtonPressed@2x.png */; };
@@ -410,8 +410,9 @@
 		2B3C2FF216273DD90006C766 /* FaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceCell.m; sourceTree = "<group>"; };
 		2B3DD3FF163253190093EEA7 /* SMPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMPageControl.m; sourceTree = "<group>"; };
 		2B3DD400163253190093EEA7 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
+		2B465FA117877B0D0040209A /* UIViewController+CustomPushTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CustomPushTransition.h"; sourceTree = "<group>"; };
+		2B465FA217877B0D0040209A /* UIViewController+CustomPushTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CustomPushTransition.m"; sourceTree = "<group>"; };
 		2B49D8541783A5A8008AB361 /* NavBarSF@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBarSF@2x.png"; sourceTree = "<group>"; };
-		2B49D8851784BCBD008AB361 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		2B49D8C01785034B008AB361 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
 		2B49D8C11785034B008AB361 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		2B4C558E177CE88900078613 /* CameraFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraFrame@2x.png"; sourceTree = "<group>"; };
@@ -983,6 +984,8 @@
 				2B4DA0CF1785F0F900233E11 /* CatalogNavBar@2x.png */,
 				2B49D8C01785034B008AB361 /* ContainerViewController.h */,
 				2B49D8C11785034B008AB361 /* ContainerViewController.m */,
+				2B465FA117877B0D0040209A /* UIViewController+CustomPushTransition.h */,
+				2B465FA217877B0D0040209A /* UIViewController+CustomPushTransition.m */,
 				2B4DA0D11786146D00233E11 /* presentFavoritesSegue.h */,
 				2B4DA0D21786146D00233E11 /* presentFavoritesSegue.m */,
 			);
@@ -1071,7 +1074,6 @@
 				2BD3A9CA153689FC00BDEA55 /* copyHUD.xib */,
 				2B80184F16AE0172001271FC /* iPhone5Storyboard.storyboard */,
 				2B8CE0531609732A00EA5996 /* MainStoryboard.storyboard */,
-				2B49D8851784BCBD008AB361 /* Storyboard.storyboard */,
 			);
 			name = "User Interfaces";
 			sourceTree = "<group>";
@@ -1701,7 +1703,6 @@
 				2BAC73B9178138CF004D227F /* ClosePreviewButton@2x.png in Resources */,
 				2BAC73BA178138CF004D227F /* ClosePreviewButtonPressed@2x.png in Resources */,
 				2B49D8551783A5A8008AB361 /* NavBarSF@2x.png in Resources */,
-				2B49D8861784BCBD008AB361 /* Storyboard.storyboard in Resources */,
 				2B4DA0D01785F0F900233E11 /* CatalogNavBar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1749,6 +1750,7 @@
 				2BAE96FB1781FCDF002FCAB9 /* goBackToCustomFaces.m in Sources */,
 				2B49D8C21785034B008AB361 /* ContainerViewController.m in Sources */,
 				2B4DA0D31786146D00233E11 /* presentFavoritesSegue.m in Sources */,
+				2B465FA317877B0D0040209A /* UIViewController+CustomPushTransition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

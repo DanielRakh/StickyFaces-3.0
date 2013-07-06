@@ -106,7 +106,7 @@
     [super viewDidLoad];
     
  
-    
+    self.view.backgroundColor = [UIColor colorWithRed:0.945 green:0.961 blue:0.976 alpha:1.000];
     
     
     NSLog(@"This is called");
