@@ -12,10 +12,13 @@
 @interface ContainerViewController : UIViewController
 
 
-- (IBAction)favoritesButtonTapped:(id)sender;
 
-- (IBAction)catalogButtonTapped:(id)sender;
 
-- (IBAction)cameraButtonTapped:(id)sender;
+-(IBAction)performTransitionToFavorites:(id)sender;
+
+-(IBAction)performTransitionToCatalog:(id)sender;
+
+-(IBAction)performTransitionToCamera:(id)sender;
+
 
 @end

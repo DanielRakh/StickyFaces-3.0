@@ -16,14 +16,17 @@
 
 static CALayer *currentLayer = nil;
 static CALayer *nextLayer = nil;
-static NSTimeInterval const kTransitionDuration = 0.3f;
+static NSTimeInterval const kTransitionDuration = 0.4f;
+
 
 
 @interface ContainerViewController ()
 {
-    BOOL catalogShown;
-    BOOL favoritesShown;
-    BOOL cameraShown;
+    BOOL onCameraScreen;
+    BOOL onFavoritesScreen;
+    
+    CGFloat pullViewToTheLeft;
+    CGFloat pullViewToTheRight; 
 }
 
 @property (nonatomic, strong) FavoritesViewController *favoritesViewController;
@@ -42,6 +45,10 @@ static NSTimeInterval const kTransitionDuration = 0.3f;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    pullViewToTheLeft = -CGRectGetWidth(self.view.bounds);
+    pullViewToTheRight = CGRectGetWidth(self.view.bounds);
+    
     
     //Set the Background Color
     self.view.backgroundColor = [UIColor colorWithRed:0.945 green:0.961 blue:0.976 alpha:1.000];
@@ -75,17 +82,13 @@ static NSTimeInterval const kTransitionDuration = 0.3f;
 
     
     ///Set the initial presentation of views;
-    catalogShown = YES;
-    cameraShown = NO;
-    favoritesShown = NO;
-    
+    onCameraScreen = NO;;
+    onFavoritesScreen = NO;
+
 }
 
 
--(IBAction)cycleViewControllers:(id)sender
-{
-    
-}
+
 
 
 
@@ -101,8 +104,44 @@ static NSTimeInterval const kTransitionDuration = 0.3f;
 }
 
 
+-(IBAction)performTransitionToFavorites:(id)sender {
 
-- (IBAction)favoritesButtonTapped:(id)sender
+    
+    [self transitionWithDirection:pullViewToTheLeft toChildViewController:self.favoritesViewController];
+    onFavoritesScreen = YES;
+    onCameraScreen = NO;
+    
+    
+}
+
+
+-(IBAction)performTransitionToCatalog:(id)sender
+{
+
+    if (onFavoritesScreen) {
+    
+    [self transitionWithDirection:pullViewToTheRight toChildViewController:self.catalogViewController];
+    }
+    else if (onCameraScreen)
+    {
+        [self transitionWithDirection:pullViewToTheLeft toChildViewController:self.catalogViewController];
+    }
+    else{
+        NSLog(@"There was an error presenting the catalog view controller");
+    }
+}
+
+-(IBAction)performTransitionToCamera:(id)sender
+{
+
+    
+    [self transitionWithDirection:pullViewToTheRight toChildViewController:self.cameraViewController];
+    onCameraScreen = YES;
+    onFavoritesScreen = NO;
+}
+
+
+- (void)transitionWithDirection:(CGFloat)direction toChildViewController:(UIViewController *)childViewController
 {
    
     UIViewController *currentVC = [self.childViewControllers objectAtIndex:0];
@@ -110,36 +149,43 @@ static NSTimeInterval const kTransitionDuration = 0.3f;
     
     NSLog(@"The number of childviewcontrollers before:%d",self.childViewControllers.count );
     
-    [self addChildViewController:self.favoritesViewController];
+    [self addChildViewController:childViewController];
+    
+    UIViewController *nextVC = [self.childViewControllers objectAtIndex:1];
     
     NSLog(@"The number of childviewcontrollers after:%d",self.childViewControllers.count );
 
     // 2
     [self transitionFromViewController:currentVC
-                      toViewController:self.favoritesViewController duration:kTransitionDuration
+                      toViewController:nextVC duration:kTransitionDuration
                                options: UIViewAnimationOptionTransitionNone
                             animations:^{
                         
                                 currentLayer = [self _layerSnapshotWithTransform:CATransform3DIdentity fromViewController:currentVC];
-                                nextLayer = [self _layerSnapshotWithTransform:CATransform3DIdentity fromViewController:[self.childViewControllers objectAtIndex:1]];
+                                
+                                nextLayer = [self _layerSnapshotWithTransform:CATransform3DIdentity fromViewController:nextVC];
+                                
                                 NSLog(@"The number of childviewcontrollers in method:%d",self.childViewControllers.count );
 
                                 
-                                nextLayer.frame = CGRectMake(CGRectGetWidth(currentVC.view.bounds), CGRectGetMinY(currentVC.view.bounds), currentVC.view.bounds.size.width, currentVC.view.bounds.size.height);
+                                nextLayer.frame = CGRectMake(-direction, CGRectGetMinY(currentVC.view.bounds), currentVC.view.bounds.size.width, currentVC.view.bounds.size.height);
                                 
                                 [self.view.layer addSublayer:currentLayer];
                                 [self.view.layer addSublayer:nextLayer];
                                 
                                 [CATransaction flush];
                                 
-                                [currentLayer addAnimation:[self _animationWithTranslation:-CGRectGetWidth(self.view.bounds)] forKey:nil];
-                                [nextLayer addAnimation:[self _animationWithTranslation:-CGRectGetWidth(self.view.bounds)] forKey:nil];
-
-                                
+                              
+                                                        
+        
+                                [currentLayer addAnimation:[self _animationWithTranslation:direction] forKey:nil];
+                                    
+                                [nextLayer addAnimation:[self _animationWithTranslation:direction] forKey:nil];
+                            
                                 
                             }
                             completion:^(BOOL finished) { // 4
-                                [self.favoritesViewController didMoveToParentViewController:self];
+                                [nextVC didMoveToParentViewController:self];
                                 NSLog(@"The number of childviewcontrollers after didMoveToParentViewController:%d",self.childViewControllers.count );
 
                           

@@ -485,7 +485,8 @@
              //Present Favorites View
 
                 self.containerViewController = (ContainerViewController *)self.parentViewController;
-                [self.containerViewController favoritesButtonTapped:self];
+                
+                [self.containerViewController performTransitionToFavorites:self];
                 
             }
         }
