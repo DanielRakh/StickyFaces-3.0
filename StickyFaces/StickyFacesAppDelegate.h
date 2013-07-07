@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "WCAlertView.h"
-//#import "MyTabBarController.h"
-#import "ContainerViewController.h"
+//#import "ContainerViewController.h"
 
 
 @class DataModel;
@@ -18,7 +17,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 //@property (strong, nonatomic) MyTabBarController *tabBarController;
-@property (strong, nonatomic) ContainerViewController *containerViewController;
+//@property (strong, nonatomic) ContainerViewController *containerViewController;
 //@property (strong, nonatomic) DataModel *dataModel;
 
 @end

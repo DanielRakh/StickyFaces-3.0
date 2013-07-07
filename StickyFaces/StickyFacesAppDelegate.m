@@ -11,9 +11,15 @@
 #import "StickyFacesViewController.h"
 #import "FavoritesViewController.h"
 #import "DataModel.h"
+#import "NewContainerViewController.h"
 
 
 
+@interface StickyFacesAppDelegate ()
+
+@property (nonatomic, strong) NewContainerViewController *containerViewController;
+
+@end
 
 @implementation StickyFacesAppDelegate
 

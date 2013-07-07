@@ -20,7 +20,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:0.945 green:0.961 blue:0.976 alpha:1.000];
+    self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.596 blue:0.859 alpha:1.000];
+    
+    
+    
+    UIImage *camera = [UIImage imageNamed:@"Camera.png"];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, camera.size.width, camera.size.height)];
+    imageView.image = camera;
+
+    
+    imageView.center = CGPointMake(160, 22);
+    
+    [self.view addSubview:imageView];
+    
 }
 
 - (void)didReceiveMemoryWarning
