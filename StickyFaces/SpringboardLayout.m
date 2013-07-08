@@ -36,18 +36,29 @@
  
     if ([UIDevice deviceType] & iPhone5) {
         
-        self.itemSize = CGSizeMake(95, 106.66);
-       
+//        self.itemSize = CGSizeMake(95, 106.66);
+//       
+//        
+//        if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+//            self.minimumLineSpacing = 12.0;
+//
+//        self.sectionInset = UIEdgeInsetsMake(0, 4, 3, 0);
+//        } else if (self.scrollDirection == UICollectionViewScrollDirectionVertical)
+//        {
+//            self.minimumLineSpacing = 8.0;
+//
+//            self.sectionInset = UIEdgeInsetsMake(0, 4, 0, 4);
+//        }
+        
+        
+        self.itemSize = CGSizeMake(103, 117.33);
+        self.minimumLineSpacing = 4.0;
+        self.minimumInteritemSpacing = 1.0;
         
         if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
-            self.minimumLineSpacing = 12.0;
-
-        self.sectionInset = UIEdgeInsetsMake(0, 4, 3, 0);
         } else if (self.scrollDirection == UICollectionViewScrollDirectionVertical)
         {
-            self.minimumLineSpacing = 8.0;
-
-            self.sectionInset = UIEdgeInsetsMake(0, 4, 0, 4);
+            self.sectionInset = UIEdgeInsetsMake(3, 3, 0, 0);
         }
         
         NSLog(@"iPhone 5 Layout Setup");

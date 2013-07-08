@@ -8,6 +8,7 @@
 
 #import "CustomFacesViewController.h"
 #import "goBackToCustomFaces.h"
+#import "UIColor+StickyFacesColors.h"
 
 @interface CustomFacesViewController ()
 
@@ -20,7 +21,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor colorWithRed:0.204 green:0.596 blue:0.859 alpha:1.000];
+    self.view.backgroundColor = [UIColor cameraViewColor];
     
     
     

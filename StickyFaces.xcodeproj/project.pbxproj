@@ -20,6 +20,8 @@
 		2B1A2D7116AC8C4300AA2965 /* image46@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1A2D6816AC8C1200AA2965 /* image46@2x.png */; };
 		2B1EBA5A1789002300A30B8B /* NewContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1EBA591789002300A30B8B /* NewContainerViewController.m */; };
 		2B1EBA5C1789076900A30B8B /* Camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1EBA5B1789076900A30B8B /* Camera@2x.png */; };
+		2B1EBA5E1789DDA900A30B8B /* Heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1EBA5D1789DDA900A30B8B /* Heart@2x.png */; };
+		2B1EBA641789E4B700A30B8B /* UIColor+StickyFacesColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1EBA631789E4B700A30B8B /* UIColor+StickyFacesColors.m */; };
 		2B2CDEA716C1973C003DE9BB /* LogoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B2CDEA516C1973C003DE9BB /* LogoButton@2x.png */; };
 		2B2CDEA816C1973C003DE9BB /* LogoButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B2CDEA616C1973C003DE9BB /* LogoButtonPressed@2x.png */; };
 		2B2CDEAB16C1B007003DE9BB /* LogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B2CDEAA16C1B007003DE9BB /* LogoViewController.m */; };
@@ -392,6 +394,9 @@
 		2B1EBA581789002300A30B8B /* NewContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewContainerViewController.h; sourceTree = "<group>"; };
 		2B1EBA591789002300A30B8B /* NewContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewContainerViewController.m; sourceTree = "<group>"; };
 		2B1EBA5B1789076900A30B8B /* Camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera@2x.png"; sourceTree = "<group>"; };
+		2B1EBA5D1789DDA900A30B8B /* Heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart@2x.png"; sourceTree = "<group>"; };
+		2B1EBA621789E4B600A30B8B /* UIColor+StickyFacesColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+StickyFacesColors.h"; sourceTree = "<group>"; };
+		2B1EBA631789E4B700A30B8B /* UIColor+StickyFacesColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+StickyFacesColors.m"; sourceTree = "<group>"; };
 		2B2CDEA516C1973C003DE9BB /* LogoButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoButton@2x.png"; sourceTree = "<group>"; };
 		2B2CDEA616C1973C003DE9BB /* LogoButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoButtonPressed@2x.png"; sourceTree = "<group>"; };
 		2B2CDEA916C1B007003DE9BB /* LogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoViewController.h; sourceTree = "<group>"; };
@@ -986,6 +991,7 @@
 		2B49D8BF1785032D008AB361 /* ContainerViewController  */ = {
 			isa = PBXGroup;
 			children = (
+				2B1EBA5D1789DDA900A30B8B /* Heart@2x.png */,
 				2B1EBA5B1789076900A30B8B /* Camera@2x.png */,
 				2B4DA0CF1785F0F900233E11 /* CatalogNavBar@2x.png */,
 				2B49D8C01785034B008AB361 /* ContainerViewController.h */,
@@ -996,6 +1002,8 @@
 				2B4DA0D21786146D00233E11 /* presentFavoritesSegue.m */,
 				2B1EBA581789002300A30B8B /* NewContainerViewController.h */,
 				2B1EBA591789002300A30B8B /* NewContainerViewController.m */,
+				2B1EBA621789E4B600A30B8B /* UIColor+StickyFacesColors.h */,
+				2B1EBA631789E4B700A30B8B /* UIColor+StickyFacesColors.m */,
 			);
 			name = "ContainerViewController ";
 			sourceTree = "<group>";
@@ -1279,6 +1287,8 @@
 				2BA644FD14F3006A00292BFD /* StickyFacesViewController.m */,
 				2B65DBA81658658F0024D2EA /* FavoritesViewController.h */,
 				2B65DBA91658658F0024D2EA /* FavoritesViewController.m */,
+				2B4D730E177A067100B6057F /* CustomFacesViewController.h */,
+				2B4D730F177A067100B6057F /* CustomFacesViewController.m */,
 				2B4D72FA17797DE000B6057F /* CameraOverlay.h */,
 				2B4D72FB17797DE000B6057F /* CameraOverlay.m */,
 				2BD7BCA6177F9D4400A70EC9 /* CameraShutterView.h */,
@@ -1289,8 +1299,6 @@
 				2BD7617816EA688A00706600 /* ConfirmViewController.m */,
 				2B4D72ED177961E900B6057F /* ImagePreviewViewController.h */,
 				2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */,
-				2B4D730E177A067100B6057F /* CustomFacesViewController.h */,
-				2B4D730F177A067100B6057F /* CustomFacesViewController.m */,
 				2B4D7309177A02F500B6057F /* OverlayView.h */,
 				2B4D730A177A02F600B6057F /* OverlayView.m */,
 				2B4D72F71779763B00B6057F /* AVCamCaptureManager.h */,
@@ -1713,6 +1721,7 @@
 				2B49D8551783A5A8008AB361 /* NavBarSF@2x.png in Resources */,
 				2B4DA0D01785F0F900233E11 /* CatalogNavBar@2x.png in Resources */,
 				2B1EBA5C1789076900A30B8B /* Camera@2x.png in Resources */,
+				2B1EBA5E1789DDA900A30B8B /* Heart@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1761,6 +1770,7 @@
 				2B4DA0D31786146D00233E11 /* presentFavoritesSegue.m in Sources */,
 				2B465FA317877B0D0040209A /* UIViewController+CustomPushTransition.m in Sources */,
 				2B1EBA5A1789002300A30B8B /* NewContainerViewController.m in Sources */,
+				2B1EBA641789E4B700A30B8B /* UIColor+StickyFacesColors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
