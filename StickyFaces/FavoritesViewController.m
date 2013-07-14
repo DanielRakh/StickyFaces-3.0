@@ -10,6 +10,7 @@
 #import "UIDevice+Resolutions.h"
 #import "FaceCell.h"
 #import "WCAlertView.h"
+#import "UIColor+StickyFacesColors.h"
 
 @interface FavoritesViewController ()
 {
@@ -74,10 +75,21 @@
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor colorWithRed:0.945 green:0.961 blue:0.976 alpha:1.000];
+    self.view.backgroundColor = [UIColor favoritesViewColor];
+    self.trueView.backgroundColor = [UIColor backgroundViewColor];
     
     [self.trueView registerClass:[FaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
     
+    
+    
+    UIImage *heart = [UIImage imageNamed:@"Heart"];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, heart.size.width, heart.size.height)];
+    imageView.image = heart;
+    
+    
+    imageView.center = CGPointMake(160, 22);
+    
+    [self.view addSubview:imageView];
     
     
     

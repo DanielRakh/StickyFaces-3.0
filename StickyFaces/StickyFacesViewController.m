@@ -17,7 +17,8 @@
 #import "TutorialView.h"
 #import "MyUnwindSegue.h"
 
-#import "ContainerViewController.h"
+
+#import "UIColor+StickyFacesColors.h"
 
 
 @interface StickyFacesViewController  ()
@@ -36,7 +37,6 @@
 @property (nonatomic, weak) IBOutlet UIButton *tutorialButton;
 
 
-@property (nonatomic, strong) ContainerViewController *containerViewController;
 
 @end
 
@@ -95,7 +95,7 @@
     [sender setBackgroundImage:image forState:UIControlStateNormal];
   
     [self performSelector:@selector(flipDown:) withObject:sender afterDelay:0.5];
-        
+    
 }
 
 
@@ -106,7 +106,18 @@
     [super viewDidLoad];
     
  
-    self.view.backgroundColor = [UIColor colorWithRed:0.945 green:0.961 blue:0.976 alpha:1.000];
+    self.view.backgroundColor = [UIColor catalogViewColor];
+    self.trueView.backgroundColor = [UIColor backgroundViewColor];
+    
+    
+    UIImage *smiley = [UIImage imageNamed:@"Grid"];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, smiley.size.width, smiley.size.height)];
+    imageView.image = smiley;
+    
+    
+    imageView.center = CGPointMake(160, 22);
+    
+    [self.view addSubview:imageView];
     
     
     NSLog(@"This is called");
@@ -123,7 +134,7 @@
     
     
     if ([UIDevice deviceType] & iPhone5) {
-        self.pageControl.numberOfPages = 7;
+        self.pageControl.numberOfPages = 9;
     } else {
         self.pageControl.numberOfPages = 9;
     }
@@ -484,9 +495,9 @@
 
              //Present Favorites View
 
-                self.containerViewController = (ContainerViewController *)self.parentViewController;
+//                self.containerViewController = (ContainerViewController *)self.parentViewController;
                 
-                [self.containerViewController performTransitionToFavorites:self];
+              
                 
             }
         }

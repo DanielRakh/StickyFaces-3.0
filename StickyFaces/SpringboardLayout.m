@@ -53,12 +53,16 @@
         
         self.itemSize = CGSizeMake(103, 117.33);
         self.minimumLineSpacing = 4.0;
-        self.minimumInteritemSpacing = 1.0;
+        self.minimumInteritemSpacing = 0;
+        
         
         if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+            self.sectionInset = UIEdgeInsetsMake(5, 3, 40, 0);
+
         } else if (self.scrollDirection == UICollectionViewScrollDirectionVertical)
         {
-            self.sectionInset = UIEdgeInsetsMake(3, 3, 0, 0);
+            self.sectionInset = UIEdgeInsetsMake(5, 3, 5, 0);
+        
         }
         
         NSLog(@"iPhone 5 Layout Setup");
