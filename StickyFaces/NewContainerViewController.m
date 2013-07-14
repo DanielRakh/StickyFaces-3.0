@@ -13,8 +13,6 @@
 #import "FavoritesViewController.h"
 #import "CustomFacesViewController.h"
 #import "UIColor+StickyFacesColors.h"
-#import "UIView+EasingFunctions.h"
-#import "easing.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -146,7 +144,7 @@ static NSTimeInterval const kTransitionDuration = 4.0f;
             self.catalogTabButton.transform = CGAffineTransformMakeScale(16.0, 16.0);
         } completion:^(BOOL finished) {
             
-            [UIView animateWithDuration:0.4f animations:^{
+            [UIView animateWithDuration:0.6f animations:^{
                 self.catalogIcon.center = CGPointMake(CGRectGetMidX(self.view.bounds), 22);
                 tmpView.frame = CGRectMake(0, 44, tmpView.bounds.size.width, tmpView.bounds.size.height);
             } completion:^(BOOL finished) {
@@ -154,30 +152,52 @@ static NSTimeInterval const kTransitionDuration = 4.0f;
 //                [self presentContainedViewController:self.catalogViewController];
                 
                 self.favoritesTabButton.center = CGPointMake(CGRectGetMaxX(self.view.bounds), CGRectGetMaxY(self.view.bounds)-100);
+                self.favoritesIcon.center = self.favoritesTabButton.center;
                 
                 
                 self.cameraTabButton.center = CGPointMake(CGRectGetMinX(self.view.bounds), CGRectGetMaxY(self.view.bounds)-100);
-                [tmpView addSubview:self.favoritesTabButton];
-                [tmpView addSubview:self.cameraTabButton];
+                self.cameraIcon.center = self.cameraTabButton.center;
+        
+                
+                
+                [self.view addSubview:self.favoritesTabButton];
+                [self.view addSubview:self.favoritesIcon];
+                
+                [self.view addSubview:self.cameraTabButton];
+                [self.view addSubview:self.cameraIcon];
                 
                 
                 [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                    self.favoritesTabButton.center = CGPointMake(CGRectGetMidX(self.view.bounds)+30, CGRectGetMaxY(self.view.bounds)- 80);
-                     self.cameraTabButton.center = CGPointMake(CGRectGetMidX(self.view.bounds)-30, CGRectGetMaxY(self.view.bounds)- 80);
+                    self.favoritesTabButton.center = CGPointMake(CGRectGetMidX(self.view.bounds)+30, CGRectGetMaxY(self.view.bounds)- 50);
+                    self.favoritesIcon.center = self.favoritesTabButton.center;
+                    
+                     self.cameraTabButton.center = CGPointMake(CGRectGetMidX(self.view.bounds)-30, CGRectGetMaxY(self.view.bounds)- 50);
+                    self.cameraIcon.center = self.cameraTabButton.center;
                     
                 } completion:^(BOOL finished) {
                     
+                    [tmpView removeFromSuperview];
+                    [self.catalogTabButton removeFromSuperview];
+                    [self.catalogIcon removeFromSuperview];
+                    
+                    [self presentContainedViewController:self.catalogViewController];
+
+                    
                     [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+
+                        self.favoritesTabButton.center = CGPointMake(CGRectGetMidX(self.view.bounds)+50, CGRectGetMaxY(self.view.bounds)- 50);
+                        self.favoritesIcon.center = self.favoritesTabButton.center;
                         
-                        self.favoritesTabButton.center = CGPointMake(CGRectGetMidX(self.view.bounds)+50, CGRectGetMaxY(self.view.bounds)- 80);
-                        self.cameraTabButton.center = CGPointMake(CGRectGetMidX(self.view.bounds)-50, CGRectGetMaxY(self.view.bounds)- 80);
+                        self.cameraTabButton.center = CGPointMake(CGRectGetMidX(self.view.bounds)-50, CGRectGetMaxY(self.view.bounds)- 50);
+                        self.cameraIcon.center = self.cameraTabButton.center;
                         
-                      
+                        [self addSubviewWithBounce:self.favoritesTabButton];
+                        [self addSubviewWithBounce:self.cameraTabButton];
                     
 
                     } completion:^(BOOL finished) {
-                        [self addSubviewWithBounce:self.favoritesTabButton];
-                        [self addSubviewWithBounce:self.cameraTabButton];
+
+                      
                         
 //                        
                     }];
