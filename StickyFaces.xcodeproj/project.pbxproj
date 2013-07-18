@@ -18,6 +18,9 @@
 		2B1A2D6F16AC8C4300AA2965 /* image43@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1A2D6616AC8BC100AA2965 /* image43@2x.png */; };
 		2B1A2D7016AC8C4300AA2965 /* image44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1A2D6716AC8BE800AA2965 /* image44@2x.png */; };
 		2B1A2D7116AC8C4300AA2965 /* image46@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1A2D6816AC8C1200AA2965 /* image46@2x.png */; };
+		2B1C9F1B1796EBE400162F57 /* CPAnimationProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1C9F181796EBE400162F57 /* CPAnimationProgram.m */; };
+		2B1C9F1C1796EBE400162F57 /* CPAnimationSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1C9F191796EBE400162F57 /* CPAnimationSequence.m */; };
+		2B1C9F1D1796EBE400162F57 /* CPAnimationStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1C9F1A1796EBE400162F57 /* CPAnimationStep.m */; };
 		2B1EBA5A1789002300A30B8B /* NewContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B1EBA591789002300A30B8B /* NewContainerViewController.m */; };
 		2B1EBA5C1789076900A30B8B /* Camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1EBA5B1789076900A30B8B /* Camera@2x.png */; };
 		2B1EBA5E1789DDA900A30B8B /* Heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B1EBA5D1789DDA900A30B8B /* Heart@2x.png */; };
@@ -392,6 +395,12 @@
 		2B1A2D6616AC8BC100AA2965 /* image43@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image43@2x.png"; sourceTree = "<group>"; };
 		2B1A2D6716AC8BE800AA2965 /* image44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image44@2x.png"; sourceTree = "<group>"; };
 		2B1A2D6816AC8C1200AA2965 /* image46@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image46@2x.png"; sourceTree = "<group>"; };
+		2B1C9F141796EBE400162F57 /* CPAnimationProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAnimationProgram.h; sourceTree = "<group>"; };
+		2B1C9F151796EBE400162F57 /* CPAnimationSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAnimationSequence.h; sourceTree = "<group>"; };
+		2B1C9F161796EBE400162F57 /* CPAnimationStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPAnimationStep.h; sourceTree = "<group>"; };
+		2B1C9F181796EBE400162F57 /* CPAnimationProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAnimationProgram.m; sourceTree = "<group>"; };
+		2B1C9F191796EBE400162F57 /* CPAnimationSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAnimationSequence.m; sourceTree = "<group>"; };
+		2B1C9F1A1796EBE400162F57 /* CPAnimationStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPAnimationStep.m; sourceTree = "<group>"; };
 		2B1EBA581789002300A30B8B /* NewContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewContainerViewController.h; sourceTree = "<group>"; };
 		2B1EBA591789002300A30B8B /* NewContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewContainerViewController.m; sourceTree = "<group>"; };
 		2B1EBA5B1789076900A30B8B /* Camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera@2x.png"; sourceTree = "<group>"; };
@@ -815,6 +824,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B1C9F131796EBE400162F57 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				2B1C9F141796EBE400162F57 /* CPAnimationProgram.h */,
+				2B1C9F151796EBE400162F57 /* CPAnimationSequence.h */,
+				2B1C9F161796EBE400162F57 /* CPAnimationStep.h */,
+				2B1C9F171796EBE400162F57 /* private */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		2B1C9F171796EBE400162F57 /* private */ = {
+			isa = PBXGroup;
+			children = (
+				2B1C9F181796EBE400162F57 /* CPAnimationProgram.m */,
+				2B1C9F191796EBE400162F57 /* CPAnimationSequence.m */,
+				2B1C9F1A1796EBE400162F57 /* CPAnimationStep.m */,
+			);
+			path = private;
+			sourceTree = "<group>";
+		};
 		2B26FBA015325B64000D888E /* Display Faces (@2x) */ = {
 			isa = PBXGroup;
 			children = (
@@ -993,6 +1023,7 @@
 		2B49D8BF1785032D008AB361 /* ContainerViewController  */ = {
 			isa = PBXGroup;
 			children = (
+				2B1C9F131796EBE400162F57 /* Component */,
 				2B1EBA67178A787300A30B8B /* Grid@2x.png */,
 				2B1EBA5D1789DDA900A30B8B /* Heart@2x.png */,
 				2B1EBA5B1789076900A30B8B /* Camera@2x.png */,
@@ -1775,6 +1806,9 @@
 				2B1EBA5A1789002300A30B8B /* NewContainerViewController.m in Sources */,
 				2B1EBA641789E4B700A30B8B /* UIColor+StickyFacesColors.m in Sources */,
 				2BAB8BC117908B86009B8A67 /* TabButton.m in Sources */,
+				2B1C9F1B1796EBE400162F57 /* CPAnimationProgram.m in Sources */,
+				2B1C9F1C1796EBE400162F57 /* CPAnimationSequence.m in Sources */,
+				2B1C9F1D1796EBE400162F57 /* CPAnimationStep.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
