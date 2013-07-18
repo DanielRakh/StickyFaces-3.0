@@ -166,84 +166,41 @@
 }
 
 
--(void)bounceRightTab:(TabButton *)rightTab withRightIcon:(UIImageView *)rightIcon andLeftTabButton:(TabButton *)leftTab withLeftIcon:(UIImageView *)leftIcon
-{
- 
-    CGPoint bottomLeftPosition = CGPointMake(CGRectGetMinX(self.view.bounds), CGRectGetMaxY(self.view.bounds)-40);
-    
-    CGPoint bottomRightPosition = CGPointMake(CGRectGetMaxX(self.view.bounds), CGRectGetMaxY(self.view.bounds)-40);
+
+
+
+-(void)runSwitchAnimationWithTab:(TabButton *)tabButton andIcon:(UIImageView *)icon forViewController:(UIViewController *)viewController {
     
     
-    rightTab.center = bottomRightPosition;
-    rightIcon.center = rightTab.center;
-    leftTab.center = bottomLeftPosition;
-    leftIcon.center = leftTab.center;
+
     
-    [UIView animateWithDuration:0.25 delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-        rightTab.center = CGPointMake(CGRectGetMidX(self.view.bounds)+30, CGRectGetMaxY(self.view.bounds)- 40);
-        rightIcon.center = rightTab.center;
+    UIView *backgroundSnapshot;
+
+    backgroundSnapshot = [self createSnapshotViewForViewController:viewController isBeingPresented:YES];
+    [self.view addSubview:backgroundSnapshot];
+    
+    
+    [self runPresentingAnimationWithTabButton:tabButton andIcon:icon withPushUpView:backgroundSnapshot withCompletionBlock:^{
         
-        leftTab.center = CGPointMake(CGRectGetMidX(self.view.bounds)-30, CGRectGetMaxY(self.view.bounds)- 40);
-        leftIcon.center = leftTab.center;
-    } completion:^(BOOL finished) {
+        //Make the previous presented Tab Button the Right Button now
         
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            
-            rightTab.center = rightTabButtonCenter;
-            rightIcon.center = rightTab.center;
-            
-            leftTab.center = leftTabButtonCenter;
-            leftIcon.center = leftTab.center;
-            
-            [self animateWithBounce:rightTab];
-            [self animateWithBounce:leftTab];
-            
-            
-            
-        } completion:^(BOOL finished) {
-            
-        }];
+        self.rightTabButton = self.thePresentedTabButton;
+        self.rightTabIcon = self.thePresentedTabIcon;
+        
+        [self presentContainedViewController:viewController];
+        
+        [backgroundSnapshot removeFromSuperview];
+        [self.thePresentedTabButton removeFromSuperview];
+        [self.thePresentedTabIcon removeFromSuperview];
+        
+        [self bounceRightTab:self.rightTabButton withRightIcon:self.rightTabIcon andLeftTabButton:self.leftTabButton withLeftIcon:self.leftTabIcon];
+        
     }];
+
+    
+    
+    
 }
-
-
-
--(void)runPresentingAnimationWithTabButton:(TabButton *)tabButton andIcon:(UIImageView *)tabIcon withPushUpView:(UIView *)backgroundView withCompletionBlock:(void (^)(void))completionBlock {
-    
- 
-    
-    
- [UIView animateWithDuration:0.2f animations:^{
-     tabButton.center = self.view.center;
-     tabIcon.center = tabButton.center;
- } completion:^(BOOL finished) {
-     
-
-     
-    [UIView animateWithDuration:0.5f animations:^{
-        tabButton.transform = CGAffineTransformMakeScale(16.0, 16.0);
-    } completion:^(BOOL finished) {
-        
-//        [self.view insertSubview:backgroundView belowSubview:tabButton];
-        [UIView animateWithDuration:0.6f animations:^{
-            backgroundView.frame = CGRectMake(0, 44, backgroundView.bounds.size.width, backgroundView.bounds.size.height);
-            tabIcon.center = iconCenterInNav;
-
-        } completion:^(BOOL finished) {
-            
-            [backgroundView removeFromSuperview];
-            [tabButton removeFromSuperview];
-            [tabIcon removeFromSuperview];
-            
-            completionBlock();
-        }];
-
-    }];
- }];
-}
-
-
-
 
 
 -(void)animateOpenWithTabButton:(id)sender {
@@ -263,70 +220,32 @@
              
          } completion:^(BOOL finished) {
              
-             
              [UIView animateWithDuration:0.25 delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
                  self.thePresentedTabButton.center = CGPointMake(-50, -50);
                  self.thePresentedTabIcon.center = self.thePresentedTabButton.center;
-//                 
                  self.rightTabButton.center = self.view.center;
                  self.rightTabIcon.center = self.rightTabButton.center;
                  
              } completion:^(BOOL finished) {
               
-                 UIView *backgroundSnapshot;
+//                 UIView *backgroundSnapshot;
 
                  
               if (sender == self.rightTabButton && sender == self.favoritesTabButton) {
                   
                   
-                  backgroundSnapshot = [self createSnapshotViewForViewController:self.favoritesViewController isBeingPresented:YES];
-                  [self.view addSubview:backgroundSnapshot];
+                  [self runSwitchAnimationWithTab:self.rightTabButton andIcon:self.rightTabIcon forViewController:self.favoritesViewController];
                   
-                  
-                [self runPresentingAnimationWithTabButton:self.rightTabButton andIcon:self.rightTabIcon withPushUpView:backgroundSnapshot withCompletionBlock:^{
 
-                     //Make the previous presented Tab Button the Right Button now
-                         
-                     self.rightTabButton = self.thePresentedTabButton;
-                     self.rightTabIcon = self.thePresentedTabIcon;
-                     
-                     [self presentContainedViewController:self.favoritesViewController];
-                    
-                    [backgroundSnapshot removeFromSuperview];
-                    [self.thePresentedTabButton removeFromSuperview];
-                    [self.thePresentedTabIcon removeFromSuperview];
-                    
-                    [self bounceRightTab:self.rightTabButton withRightIcon:self.rightTabIcon andLeftTabButton:self.leftTabButton withLeftIcon:self.leftTabIcon];
-                    
-                }];
               }
             
              else if (sender == self.rightTabButton && sender == self.catalogTabButton) {
                  
-                 backgroundSnapshot = [self createSnapshotViewForViewController:self.catalogViewController isBeingPresented:YES];
-                 [self.view addSubview:backgroundSnapshot];
-                 
-                 [self runPresentingAnimationWithTabButton:self.rightTabButton andIcon:self.rightTabIcon withPushUpView:backgroundSnapshot withCompletionBlock:^ {
-                     
-                         self.rightTabButton = self.thePresentedTabButton;
-                         self.rightTabIcon = self.thePresentedTabIcon;
-                         
-                         [self presentContainedViewController:self.catalogViewController];
-                     
-                     [backgroundSnapshot removeFromSuperview];
-                     [self.thePresentedTabButton removeFromSuperview];
-                     [self.thePresentedTabIcon removeFromSuperview];
-                     
-                     [self bounceRightTab:self.rightTabButton withRightIcon:self.rightTabIcon andLeftTabButton:self.leftTabButton withLeftIcon:self.leftTabIcon];
-                 }];
-                 
+                 [self runSwitchAnimationWithTab:self.rightTabButton andIcon:self.rightTabIcon forViewController:self.catalogViewController];
+
                  
              }
                  
-                 
-                 
-                     
-                
             
             }];
         
@@ -335,97 +254,6 @@
     }];
      
 
-}
-
-
-
--(void)animateCloseOfCurrentChildViewController:(UIViewController *)childViewController withTabButton:(TabButton *)currentTab andTabIcon:(UIImageView *)currentIcon WithCompletionBlock:(void(^)(void))completionBlock {
-    
-    
-    //Take a snapshot of the current ChildView that will be dismissed 
-    UIView *backgroundSnapshot = [self createSnapshotViewForViewController:childViewController isBeingPresented:NO];
-    
-    //Bring back the Tab that was removed from the superview on the way in. At this point the Tab is scaled to fill out the screen. 
-    [self.view addSubview:currentTab];
-
-    [self.view addSubview:currentIcon];
-    //Add the snapshot on top of the tabButton. 
-    [self.view addSubview:backgroundSnapshot];
-
-
-    //Remove the presented ViewController. 
-    [self removeThePresentedViewController];
-    
-
-
-    
-    
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        
-        
-        currentIcon.center = self.view.center;
-        backgroundSnapshot.frame = CGRectMake(CGRectGetMinX(self.view.bounds), CGRectGetMaxY(self.view.bounds), backgroundSnapshot.bounds.size.width, backgroundSnapshot.bounds.size.height);
-        
-    } completion:^(BOOL finished) {
-        [backgroundSnapshot removeFromSuperview];
-
-        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                        
-            currentTab.transform = CGAffineTransformMakeScale(1.0, 1.0);
-        } completion:^(BOOL finished) {
-            
-            
-            completionBlock();
-
-            
-        }];
-    }];
-    
-    
-}
-
-
--(void)animateWithBounce:(UIView*)theView
-{
-//    theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
-    
-    
-    [UIView animateWithDuration:0.3/1.5 animations:^{
-        theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
-    } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.3/2 animations:^{
-            theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.3/2 animations:^{
-                theView.transform = CGAffineTransformIdentity;
-            }];
-        }];
-    }];
-}
-
-
-
-
--(UIView *)createSnapshotViewForViewController:(UIViewController *)viewController isBeingPresented:(BOOL)isBeingPresented {
-    
-    
-    CALayer *nextLayer = [self _layerSnapshotWithTransform:CATransform3DIdentity fromViewControllerSubview:viewController];
-    
-    UIView *tmpView; 
-    
-    if (isBeingPresented) {
-
-    tmpView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMaxY(self.view.frame), self.view.bounds.size.width, self.view.bounds.size.height)];
-    }
-    else {
-        tmpView = [[UIView alloc]initWithFrame:CGRectMake(0, 44, self.view.bounds.size.width, self.view.bounds.size.height)];
-    }
-    
-    tmpView.backgroundColor = [UIColor backgroundViewColor];
-    
-    [tmpView.layer addSublayer:nextLayer];
-
-    return tmpView;
 }
 
 
@@ -473,6 +301,132 @@
 
 
 
+
+#pragma Mark - Helper Animation Methods
+
+-(void)animateCloseOfCurrentChildViewController:(UIViewController *)childViewController withTabButton:(TabButton *)currentTab andTabIcon:(UIImageView *)currentIcon WithCompletionBlock:(void(^)(void))completionBlock {
+    
+    
+    //Take a snapshot of the current ChildView that will be dismissed
+    UIView *backgroundSnapshot = [self createSnapshotViewForViewController:childViewController isBeingPresented:NO];
+    
+    //Bring back the Tab that was removed from the superview on the way in. At this point the Tab is scaled to fill out the screen.
+    [self.view addSubview:currentTab];
+    
+    [self.view addSubview:currentIcon];
+    //Add the snapshot on top of the tabButton.
+    [self.view addSubview:backgroundSnapshot];
+    
+    
+    //Remove the presented ViewController.
+    [self removeThePresentedViewController];
+    
+    
+    
+    
+    
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        
+        
+        currentIcon.center = self.view.center;
+        backgroundSnapshot.frame = CGRectMake(CGRectGetMinX(self.view.bounds), CGRectGetMaxY(self.view.bounds), backgroundSnapshot.bounds.size.width, backgroundSnapshot.bounds.size.height);
+        
+    } completion:^(BOOL finished) {
+        [backgroundSnapshot removeFromSuperview];
+        
+        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            
+            currentTab.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:^(BOOL finished) {
+            
+            
+            completionBlock();
+            
+            
+        }];
+    }];
+    
+    
+}
+
+
+
+-(void)runPresentingAnimationWithTabButton:(TabButton *)tabButton andIcon:(UIImageView *)tabIcon withPushUpView:(UIView *)backgroundView withCompletionBlock:(void (^)(void))completionBlock {
+    
+    
+    
+    
+    [UIView animateWithDuration:0.2f animations:^{
+        tabButton.center = self.view.center;
+        tabIcon.center = tabButton.center;
+    } completion:^(BOOL finished) {
+        
+        
+        
+        [UIView animateWithDuration:0.5f animations:^{
+            tabButton.transform = CGAffineTransformMakeScale(16.0, 16.0);
+        } completion:^(BOOL finished) {
+            
+            //        [self.view insertSubview:backgroundView belowSubview:tabButton];
+            [UIView animateWithDuration:0.6f animations:^{
+                backgroundView.frame = CGRectMake(0, 44, backgroundView.bounds.size.width, backgroundView.bounds.size.height);
+                tabIcon.center = iconCenterInNav;
+                
+            } completion:^(BOOL finished) {
+                
+                [backgroundView removeFromSuperview];
+                [tabButton removeFromSuperview];
+                [tabIcon removeFromSuperview];
+                
+                completionBlock();
+            }];
+            
+        }];
+    }];
+}
+
+
+-(UIView *)createSnapshotViewForViewController:(UIViewController *)viewController isBeingPresented:(BOOL)isBeingPresented {
+    
+    
+    CALayer *nextLayer = [self _layerSnapshotWithTransform:CATransform3DIdentity fromViewControllerSubview:viewController];
+    
+    UIView *tmpView;
+    
+    if (isBeingPresented) {
+        
+        tmpView = [[UIView alloc]initWithFrame:CGRectMake(CGRectGetMinX(self.view.frame), CGRectGetMaxY(self.view.frame), self.view.bounds.size.width, self.view.bounds.size.height)];
+    }
+    else {
+        tmpView = [[UIView alloc]initWithFrame:CGRectMake(0, 44, self.view.bounds.size.width, self.view.bounds.size.height)];
+    }
+    
+    tmpView.backgroundColor = [UIColor backgroundViewColor];
+    
+    [tmpView.layer addSublayer:nextLayer];
+    
+    return tmpView;
+}
+
+
+
+-(void)animateWithBounce:(UIView*)theView
+{
+    //    theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    
+    
+    [UIView animateWithDuration:0.3/1.5 animations:^{
+        theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.3/2 animations:^{
+            theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3/2 animations:^{
+                theView.transform = CGAffineTransformIdentity;
+            }];
+        }];
+    }];
+}
 
 
 
@@ -525,6 +479,46 @@
 
 
 
+
+-(void)bounceRightTab:(TabButton *)rightTab withRightIcon:(UIImageView *)rightIcon andLeftTabButton:(TabButton *)leftTab withLeftIcon:(UIImageView *)leftIcon
+{
+    
+    CGPoint bottomLeftPosition = CGPointMake(CGRectGetMinX(self.view.bounds), CGRectGetMaxY(self.view.bounds)-40);
+    
+    CGPoint bottomRightPosition = CGPointMake(CGRectGetMaxX(self.view.bounds), CGRectGetMaxY(self.view.bounds)-40);
+    
+    
+    rightTab.center = bottomRightPosition;
+    rightIcon.center = rightTab.center;
+    leftTab.center = bottomLeftPosition;
+    leftIcon.center = leftTab.center;
+    
+    [UIView animateWithDuration:0.25 delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+        rightTab.center = CGPointMake(CGRectGetMidX(self.view.bounds)+30, CGRectGetMaxY(self.view.bounds)- 40);
+        rightIcon.center = rightTab.center;
+        
+        leftTab.center = CGPointMake(CGRectGetMidX(self.view.bounds)-30, CGRectGetMaxY(self.view.bounds)- 40);
+        leftIcon.center = leftTab.center;
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            
+            rightTab.center = rightTabButtonCenter;
+            rightIcon.center = rightTab.center;
+            
+            leftTab.center = leftTabButtonCenter;
+            leftIcon.center = leftTab.center;
+            
+            [self animateWithBounce:rightTab];
+            [self animateWithBounce:leftTab];
+            
+            
+            
+        } completion:^(BOOL finished) {
+            
+        }];
+    }];
+}
 
 
 
