@@ -38,9 +38,11 @@
 
 @property (nonatomic, strong) TabButton *leftTabButton; //The left Tab Button
 @property (nonatomic, strong) TabButton *rightTabButton; //The Right Tab Button
+@property (nonatomic, strong) TabButton *centerTabButton;
+
 @property (nonatomic, strong) UIImageView *rightTabIcon;
 @property (nonatomic, strong) UIImageView *leftTabIcon; 
-
+@property (nonatomic, strong) UIImageView *centerTabIcon; 
 
 
 
@@ -84,6 +86,8 @@
 	// Do any additional setup after loading the view.
     
     
+    
+    //Set the positions of UI Elements
     iconCenterInNav = CGPointMake(CGRectGetMidX(self.view.bounds), 22);
     leftTabButtonCenter = CGPointMake(CGRectGetMidX(self.view.bounds)-50, CGRectGetMaxY(self.view.bounds)- 40);
     rightTabButtonCenter = CGPointMake(CGRectGetMidX(self.view.bounds)+50, CGRectGetMaxY(self.view.bounds)- 40);
@@ -108,17 +112,16 @@
     
     //Set up the FavoritesTabButton and flag it as self.rightTabButton
     self.favoritesTabButton = [self createTabButtonWithColor:[UIColor favoritesViewColor] andPosition:CGPointMake(self.view.center.x +40 , self.view.center.y+40)];
-
     [self.favoritesTabButton addTarget:self action:@selector(animateOpenWithTabButton:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.rightTabButton = self.favoritesTabButton;
     
-    
-    //Set up the CameraTabButton and flag it as self.leftTabButton
+    //Setting the
+        //Set up the CameraTabButton and flag it as self.leftTabButton
     self.cameraTabButton = [self createTabButtonWithColor:[UIColor cameraViewColor] andPosition:CGPointMake(self.view.center.x -40, self.view.center.y+40)];
-    self.leftTabButton = self.cameraTabButton;
+    [self.cameraTabButton addTarget:self action:@selector(animateOpenWithTabButton:) forControlEvents:UIControlEventTouchUpInside];
+
     
-    
+
     
     // Add all Buttons to self.view
     [self.view addSubview:self.catalogTabButton];
@@ -131,15 +134,26 @@
     self.favoritesIcon = [self createTabButtonIconForButton:self.favoritesTabButton];
     self.catalogIcon = [self createTabButtonIconForButton:self.catalogTabButton];
     
-    //Flag icons to their positions approrpiately. 
-    self.leftTabIcon = self.cameraIcon;
-    self.rightTabIcon = self.favoritesIcon;
+ 
     
     
     //Add all icons to the self.view
     [self.view addSubview:self.catalogIcon];
     [self.view addSubview:self.cameraIcon];
     [self.view addSubview:self.favoritesIcon];
+    
+    
+    
+    self.rightTabButton = self.favoritesTabButton;
+    self.leftTabButton = self.cameraTabButton;
+    self.centerTabButton = self.catalogTabButton;
+    
+    self.leftTabIcon = self.cameraIcon;
+    self.rightTabIcon = self.favoritesIcon;
+    self.centerTabIcon = self.catalogIcon;
+    
+    
+    
     
     
     
@@ -152,7 +166,7 @@
     
     self.favoritesViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Favorites"];
     self.favoritesViewController.dataModel = self.dataModel;
-    //Might need to add a delegate here
+    self.catalogViewController.delegate = self.favoritesViewController;
     
     
     
@@ -160,8 +174,9 @@
     
     
     
+    
     //Begin initial animation... 
-    [self initialPresentationWithChildViewController:self.catalogViewController andLeftTabView:self.cameraTabButton withLeftIcon:self.cameraIcon andRightTabView:self.rightTabButton withRightIcon:self.rightTabIcon andCenterTabView:self.catalogTabButton withCenterIcon:self.catalogIcon];
+    [self initialPresentationWithChildViewController:self.catalogViewController andLeftTabView:self.leftTabButton withLeftIcon:self.leftTabIcon andRightTabView:self.rightTabButton withRightIcon:self.rightTabIcon andCenterTabView:self.centerTabButton withCenterIcon:self.centerTabIcon];
     
 }
 
@@ -183,9 +198,19 @@
     [self runPresentingAnimationWithTabButton:tabButton andIcon:icon withPushUpView:backgroundSnapshot withCompletionBlock:^{
         
         //Make the previous presented Tab Button the Right Button now
+  
         
-        self.rightTabButton = self.thePresentedTabButton;
-        self.rightTabIcon = self.thePresentedTabIcon;
+        if (tabButton == self.leftTabButton) {
+
+        self.leftTabIcon = self.thePresentedTabIcon;
+        self.leftTabButton = self.thePresentedTabButton;
+            
+        } else if (tabButton == self.rightTabButton) {
+            
+            self.rightTabButton = self.thePresentedTabButton;
+            self.rightTabIcon = self.thePresentedTabIcon;
+        }
+        
         
         [self presentContainedViewController:viewController];
         
@@ -203,57 +228,128 @@
 }
 
 
+-(void)collisionAnimationWithActiveTabButton:(TabButton *)tabButton andIcon:(UIImageView *)activeIcon withOtherTab:(TabButton *)otherTabButton andOtherIcon:(UIImageView *)otherIcon fromRightSide:(BOOL)rightSide andCompletionBlock:(void(^)(void))completionBlock {
+    
+    
+    
+    [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    
+        if (rightSide) {
+        tabButton.center = CGPointMake(self.thePresentedTabButton.center.x + 35, self.thePresentedTabButton.center.y + 50);
+
+        otherTabButton.center = CGPointMake(CGRectGetMinX(self.view.bounds)-30, CGRectGetMaxY(self.view.bounds)-40);
+        }
+        if (!rightSide) {
+            NSLog(@"not right side");
+            tabButton.center = CGPointMake(self.thePresentedTabButton.center.x - 35, self.thePresentedTabButton.center.y + 50);
+            
+            otherTabButton.center = CGPointMake(CGRectGetMaxX(self.view.bounds)+30, CGRectGetMaxY(self.view.bounds)-40);
+        }
+       
+            otherIcon.center = otherTabButton.center;
+            activeIcon.center = tabButton.center;
+
+        
+    } completion:^(BOOL finished) {
+        
+        [UIView animateWithDuration:0.25 delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
+            if (rightSide) {
+            self.thePresentedTabButton.center = CGPointMake(-50, -50);
+                NSLog(@"RightSide is not nil");
+                
+            }
+            else if (!rightSide)
+            {
+                self.thePresentedTabButton.center  =CGPointMake(360, -360);
+                NSLog(@"RightSide is  nil");
+
+            }
+            
+            
+            
+            
+            self.thePresentedTabIcon.center = self.thePresentedTabButton.center;
+            tabButton.center = self.view.center;
+            activeIcon.center = tabButton.center;
+            
+        } completion:^(BOOL finished) {
+            completionBlock();
+        }];
+    }];
+}
+
+
+
+
+
 -(void)animateOpenWithTabButton:(id)sender {
     
 
-        [self animateCloseOfCurrentChildViewController:self.thePresentedViewController withTabButton:self.thePresentedTabButton andTabIcon:self.thePresentedTabIcon WithCompletionBlock:^{
+// Close current childVC
+[self animateCloseOfCurrentChildViewController:self.thePresentedViewController withTabButton:self.thePresentedTabButton andTabIcon:self.thePresentedTabIcon WithCompletionBlock:^{
             
-         
-         [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-             
-             self.rightTabButton.center = CGPointMake(self.thePresentedTabButton.center.x + 35, self.thePresentedTabButton.center.y + 50);
-             self.rightTabIcon.center = self.rightTabButton.center;
-
-             
-             self.leftTabButton.center = CGPointMake(CGRectGetMinX(self.view.bounds)-30, CGRectGetMaxY(self.view.bounds)-40);
-             self.leftTabIcon.center = self.leftTabButton.center;
-             
-         } completion:^(BOOL finished) {
-             
-             [UIView animateWithDuration:0.25 delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-                 self.thePresentedTabButton.center = CGPointMake(-50, -50);
-                 self.thePresentedTabIcon.center = self.thePresentedTabButton.center;
-                 self.rightTabButton.center = self.view.center;
-                 self.rightTabIcon.center = self.rightTabButton.center;
+            
+            
+            
+if (sender == self.rightTabButton) {
+                
+    
+            
+    [self collisionAnimationWithActiveTabButton:self.rightTabButton andIcon:self.rightTabIcon withOtherTab:self.leftTabButton andOtherIcon:self.leftTabIcon fromRightSide:YES andCompletionBlock:^{
                  
-             } completion:^(BOOL finished) {
-              
-//                 UIView *backgroundSnapshot;
-
-                 
-              if (sender == self.rightTabButton && sender == self.favoritesTabButton) {
+              if (sender == self.favoritesTabButton) {
                   
                   
                   [self runSwitchAnimationWithTab:self.rightTabButton andIcon:self.rightTabIcon forViewController:self.favoritesViewController];
-                  
 
               }
             
-             else if (sender == self.rightTabButton && sender == self.catalogTabButton) {
+             else if (sender == self.catalogTabButton) {
                  
                  [self runSwitchAnimationWithTab:self.rightTabButton andIcon:self.rightTabIcon forViewController:self.catalogViewController];
 
                  
-             }
+             } else if (sender == self.cameraTabButton) {
                  
-            
+                 [self runSwitchAnimationWithTab:self.rightTabButton andIcon:self.rightTabIcon forViewController:self.cameraViewController];
+             }
+      
             }];
-        
-         }];
+}
             
+else if (sender == self.leftTabButton ) {
+    
+    
+    [self collisionAnimationWithActiveTabButton:self.leftTabButton andIcon:self.leftTabIcon withOtherTab:self.rightTabButton andOtherIcon:self.rightTabIcon fromRightSide:NO andCompletionBlock:^{
+        
+        if (sender == self.cameraTabButton) {
+            
+            
+            [self runSwitchAnimationWithTab:self.leftTabButton andIcon:self.leftTabIcon forViewController:self.cameraViewController];
+            
+        }
+        
+        else if (sender == self.catalogTabButton) {
+            
+            [self runSwitchAnimationWithTab:self.leftTabButton andIcon:self.leftTabIcon forViewController:self.catalogViewController];
+            
+            
+        }
+        else if (sender == self.favoritesTabButton) {
+            
+            [self runSwitchAnimationWithTab:self.leftTabButton andIcon:self.leftTabIcon forViewController:self.favoritesViewController];
+        }
+        
     }];
-     
-
+    
+    
+    
+}
+            
+            
+            
+        }];
+    
 }
 
 
@@ -262,7 +358,6 @@
 
 -(void)initialPresentationWithChildViewController:(UIViewController *)childViewController andLeftTabView:(TabButton *)leftTab withLeftIcon:(UIImageView *)leftIcon andRightTabView:(TabButton *)rightTab withRightIcon:(UIImageView *)rightIcon andCenterTabView:(TabButton *)centerTab withCenterIcon:(UIImageView *)centerIcon {
     
-    //Snapshot of the top level view of the VC is created and placed with origin at the very bottom of the screen to be animated up later in the method... 
     
     
     
@@ -286,16 +381,13 @@
         
         [self runPresentingAnimationWithTabButton:centerTab andIcon:centerIcon withPushUpView:backgroundSnapshot withCompletionBlock:^{
             
-            [backgroundSnapshot removeFromSuperview];
-            [centerTab removeFromSuperview];
-            [centerIcon removeFromSuperview];
-            
             [self presentContainedViewController:childViewController];
             
             [self bounceRightTab:rightTab withRightIcon:rightIcon andLeftTabButton:leftTab withLeftIcon:leftIcon];
         }];
 
     }];
+
     
 }
 
@@ -330,10 +422,13 @@
         
         currentIcon.center = self.view.center;
         backgroundSnapshot.frame = CGRectMake(CGRectGetMinX(self.view.bounds), CGRectGetMaxY(self.view.bounds), backgroundSnapshot.bounds.size.width, backgroundSnapshot.bounds.size.height);
+
         
     } completion:^(BOOL finished) {
-        [backgroundSnapshot removeFromSuperview];
         
+        [backgroundSnapshot removeFromSuperview];
+
+
         [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
             currentTab.transform = CGAffineTransformMakeScale(1.0, 1.0);
@@ -345,6 +440,11 @@
             
         }];
     }];
+    
+
+    if(!backgroundSnapshot) {
+        NSLog(@"snapshot is gone!");
+    }
     
     
 }
@@ -567,12 +667,14 @@
     if (containedViewController == self.catalogViewController) {
         self.thePresentedTabButton = self.catalogTabButton;
         self.thePresentedTabIcon = self.catalogIcon;
+        
     }
     else if (containedViewController == self.favoritesViewController) {
         self.thePresentedTabButton = self.favoritesTabButton;
         self.thePresentedTabIcon = self.favoritesIcon;
     }
     else if (containedViewController == self.cameraViewController) {
+        
         
         self.thePresentedTabButton = self.cameraTabButton;
         self.thePresentedTabIcon = self.cameraIcon;

@@ -115,6 +115,8 @@
     }
 
     
+    NSLog(@"Favorites View Controller has appeared!");
+
 }
 
 
@@ -160,6 +162,9 @@
 -(void)viewDidDisappear:(BOOL)animated {
     
     [super viewDidDisappear:YES];
+    
+    NSLog(@"Favorites View Controller has disappeared!");
+
     
 }
 
