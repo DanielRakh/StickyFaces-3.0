@@ -10,6 +10,7 @@
 #import "PointsView.h"
 #import "EditViewController.h"
 #import "CameraOverlay.h"
+#import "UIImage+Resize.h"
 
 @interface ImagePreviewViewController ()
 
@@ -18,6 +19,8 @@
 @property (nonatomic, strong) PointsView *pointsView;
 
 @property (weak, nonatomic) IBOutlet UIButton *cropButton;
+
+@property (nonatomic, strong) UIImage *croppedImage;
 
 @end
 
@@ -41,6 +44,53 @@
     
 }
 
+
+//
+//-(UIImage *)returnCroppedImageFromImage:(UIImage *)originalImage withPath:(UIBezierPath *)cropPath withCompletionBlock:(void (^)(void))completionBlock {
+//    
+//
+//    
+//    
+//    UIImage *passedImage = [self maskImage:originalImage toPath:cropPath];
+//    
+//    
+//    CALayer *faceLayer = [CALayer layer];
+//    faceLayer.contents = (id)passedImage.CGImage; //Size of Image is 320 x 427
+//    faceLayer.bounds = CGRectMake(0, 0, self.imageView.bounds.size.width, self.imageView.bounds.size.height);
+//    faceLayer.position = CGPointMake(CGRectGetMidX(self.imageView.bounds), CGRectGetMidY(self.imageView.bounds));
+//    faceLayer.shadowColor = [UIColor blackColor].CGColor;
+//    faceLayer.shadowOpacity = 1.0;
+//    faceLayer.shadowOffset = CGSizeMake(0, 1.0);
+//    
+//    
+//    UIGraphicsBeginImageContextWithOptions(faceLayer.bounds.size, YES, [UIScreen mainScreen].scale);
+//    
+//    [faceLayer renderInContext:UIGraphicsGetCurrentContext()];
+//    UIImage *croppedImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//  
+//    return croppedImage;
+//    
+//    if (croppedImage) {
+//        completionBlock();
+//    }
+//
+//    
+//}
+
+
+-(UIImage *)renderImageFromLayer:(CALayer *)layer {
+    
+    UIGraphicsBeginImageContextWithOptions(layer.bounds.size, NO, [UIScreen mainScreen].scale);
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return renderedImage;
+    
+}
+
+
 -(IBAction)cropFace:(id)sender {
     
     
@@ -48,8 +98,10 @@
     [self.imageView.layer addSublayer:transparentBackground];
     
     
+    
     UIImage *passedImage = [self maskImage:self.imageView.image toPath:self.pointsView.aPath];
     
+
     
     [self.pointsView removeFromSuperview];
 
@@ -63,11 +115,17 @@
     faceLayer.shadowOpacity = 1.0;
     faceLayer.shadowOffset = CGSizeMake(0, 1.0);
     
-    
+
     
     
     
     [self.imageView.layer addSublayer:faceLayer];
+    
+    
+    self.croppedImage = [self renderImageFromLayer:faceLayer];
+
+    
+    [self performSegueWithIdentifier:@"goToEditView" sender:self];
     
     
 }
@@ -78,8 +136,7 @@
 
 - (UIImage *)maskImage:(UIImage *)originalImage toPath:(UIBezierPath *)path {
     UIGraphicsBeginImageContextWithOptions(originalImage.size, NO, 0);
-    
-    
+
     
     [[UIColor redColor]setFill];
     [[UIColor whiteColor]setStroke];
@@ -234,19 +291,19 @@
     
 }
 
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    
-//    
-//    if ([segue.identifier isEqualToString:@"goToEditViewController"]) {
-//        
-//        UIImage *passedImage = [self maskImage:self.imageView.image toPath:self.pointsView.aPath];
-//        
-//        EditViewController *editViewController = (EditViewController *)segue.destinationViewController;
-//        editViewController.faceImage = passedImage;
-//        
-//    }
-//    
-//}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    
+    if ([segue.identifier isEqualToString:@"goToEditView"]) {
+        
+  
+        
+        EditViewController *editViewController = (EditViewController *)segue.destinationViewController;
+        editViewController.faceImage = self.croppedImage;
+        
+    }
+    
+}
 
 
 @end

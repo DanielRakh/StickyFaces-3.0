@@ -126,10 +126,6 @@
     
     
     
-    [navBar setBackgroundImage:[UIImage imageNamed:@"CatalogNavBar"] forBarMetrics:UIBarMetricsDefault];
-    [navBar setShadowImage:[[UIImage alloc]init]];
-
-    
 
     
     if (([self.dataModel favoritesFaceCount] > 0) && (!isDeletionModeActive)) {

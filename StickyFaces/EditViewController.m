@@ -10,6 +10,7 @@
 #import "UIImage+Resize.h"
 #import "CameraOverlay.h"
 #import "UIDevice+Resolutions.h"
+#import "UIColor+StickyFacesColors.h"
 
 
 
@@ -22,52 +23,103 @@
 @end
 
 @implementation EditViewController
+
+
+
 - (IBAction)goBackToCamera:(id)sender {
     
     [self.presentingViewController dismissViewControllerAnimated:NO completion:nil];
 }
 
 
-- (void)viewDidLoad
+
+
+//Dismiss VC and go Back to Custom Faces VC
+-(void)performUnwindSegue
 {
-    [super viewDidLoad];
+    [self performSegueWithIdentifier:@"goBackToCustomFaces" sender:self];
     
-    
-    if ([UIDevice deviceType] & iPhone5) {
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background(5).png"]];
-    }
-    else {
-        
-        self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Background(4).png"]];
-    }
-    
-  
-    CameraOverlay *overlayView = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
-    
-    [self.view addSubview:overlayView];
-    
-    
-
-    
-    
-    
-    CALayer *faceLayer = [CALayer layer];
-    faceLayer.contents = (id)self.faceImage.CGImage; //Size of Image is 320 x 427
-    faceLayer.bounds = CGRectMake(0, 0, self.faceImage.size.width, self.faceImage.size.height);
-    faceLayer.position = CGPointMake(CGRectGetMidX(self.faceView.bounds), CGRectGetMidY(self.faceView.bounds));
-    faceLayer.shadowColor = [UIColor blackColor].CGColor;
-    faceLayer.shadowOpacity = 1.0;
-    faceLayer.shadowOffset = CGSizeMake(0, 1.0);
-    
-    [self.faceView.layer addSublayer:faceLayer];
-    
-    [self.view bringSubviewToFront:self.closeButton];
-    [self.view bringSubviewToFront:self.checkMarkButton];
-
     
 }
 
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.view.backgroundColor = [UIColor backgroundViewColor];
+    
+    self.faceImageView.image = self.faceImage;
+    
+    
+
+    
+}
+
+- (IBAction)scaleImageDown:(id)sender {
+
+   UIImage *resizedImage = [self.faceImage resizedImageToSize:CGSizeMake(121, 140)];
+    
+    [self saveImageInPhone:UIImagePNGRepresentation(resizedImage) withName:@"firstFace@2x"];
+    
+    [self performSelector:@selector(performUnwindSegue) withObject:self];
+    
+    
+}
+
+
+
+
+#pragma mark  - Saving and Retrieving Image Methods
+
+-(UIImage*)retrieveImageFromPhone:(NSString*)fileName
+                    havingVersion:(NSString*)iconVersionString
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    
+    //Get the docs directory
+    NSString *documentsPath = [paths objectAtIndex:0];
+    
+    NSString *folderPath = [documentsPath
+                            stringByAppendingPathComponent:@"CustomFaces"];
+    
+    NSString *filePath = [folderPath stringByAppendingPathComponent:
+                          [fileName stringByAppendingFormat:
+                           @"%@",@".png"]];
+    
+    if([[NSFileManager defaultManager] fileExistsAtPath:filePath])
+        return [[UIImage alloc] initWithContentsOfFile:filePath];
+    else
+        return nil;
+}
+
+
+-(void)saveImageInPhone:(NSData*)imageData withName:(NSString*)iconName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    
+    
+    //Get the docs directory
+    NSString *documentsPath = [paths objectAtIndex:0];
+    NSString *folderPath = [documentsPath
+                            stringByAppendingPathComponent:@"CustomFaces"];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath])
+        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath
+                                  withIntermediateDirectories:NO attributes:nil error:nil];
+    
+    //Add the FileName to FilePath
+    NSString *filePath = [folderPath stringByAppendingPathComponent:[iconName
+                                                                     stringByAppendingFormat:@"%@",@".png"]];
+    
+    //Write the file to documents directory
+    [imageData writeToFile:filePath atomically:YES];
+}
+
+
+/*
 
 -(CAShapeLayer *)createTransparentBackground {
     
@@ -82,7 +134,7 @@
     return fillLayer;
     
 }
-
+*/
 
 - (void)didReceiveMemoryWarning
 {

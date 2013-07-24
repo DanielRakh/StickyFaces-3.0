@@ -15,8 +15,7 @@
 #import "UIColor+StickyFacesColors.h"
 
 #import <QuartzCore/QuartzCore.h>
-#import "CPAnimationProgram.h"
-#import "CPAnimationSequence.h"
+
 
 
 
@@ -171,6 +170,7 @@
     
     
     self.cameraViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Camera"];
+    self.cameraViewController.dataModel = self.dataModel;
     
     
     
@@ -417,7 +417,7 @@ else if (sender == self.leftTabButton ) {
     
     
     
-    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         
         currentIcon.center = self.view.center;
@@ -429,7 +429,7 @@ else if (sender == self.leftTabButton ) {
         [backgroundSnapshot removeFromSuperview];
 
 
-        [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
             currentTab.transform = CGAffineTransformMakeScale(1.0, 1.0);
         } completion:^(BOOL finished) {
@@ -456,14 +456,14 @@ else if (sender == self.leftTabButton ) {
     
     
     
-    [UIView animateWithDuration:0.2f animations:^{
+    [UIView animateWithDuration:0.25f animations:^{
         tabButton.center = self.view.center;
         tabIcon.center = tabButton.center;
     } completion:^(BOOL finished) {
         
         
         
-        [UIView animateWithDuration:0.5f animations:^{
+        [UIView animateWithDuration:0.25f animations:^{
             tabButton.transform = CGAffineTransformMakeScale(16.0, 16.0);
         } completion:^(BOOL finished) {
             

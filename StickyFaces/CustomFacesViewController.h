@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataModel.h"
+#import "SpringboardLayout.h"
+@interface CustomFacesViewController : UIViewController <UIGestureRecognizerDelegate>
 
-@interface CustomFacesViewController : UIViewController
+@property (weak, nonatomic) DataModel *dataModel;
 
 
 //Unwind Segue used by ConfirmViewController

@@ -184,16 +184,6 @@
 {
     [super viewDidAppear:animated];
     
-    
-     if(![self getAboutScreen]){
-         appOpenedForTheFirstTime = YES;
-        [self performSegueWithIdentifier:@"AboutScreen" sender:self];
-         
-
-        }
-    [self setAboutScreen:YES];
-
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -292,7 +282,7 @@
     
     
     if ([UIDevice deviceType] & iPhone5) {
-    return [self.dataModel faceCount];
+    return [self.dataModel faceCount] - 3;
     }
     else {
         return [self.dataModel faceCount] - 3;

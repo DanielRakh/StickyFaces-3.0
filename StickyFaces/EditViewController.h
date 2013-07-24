@@ -11,7 +11,7 @@
 
 @interface EditViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet UIView *faceView;
+@property (nonatomic, weak) IBOutlet UIImageView *faceImageView;
 @property (nonatomic, strong) UIImage *faceImage;
 
 @end

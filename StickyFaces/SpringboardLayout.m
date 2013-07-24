@@ -87,7 +87,7 @@
 - (BOOL)isDeletionModeOn
 {
     if ([[self.collectionView.delegate class] conformsToProtocol:@protocol(SpringBoardLayoutDelegate)]) {
-
+        
         return [(id)self.collectionView.delegate isDeletionModeActiveForCollectionView:(UICollectionView *)self.collectionView layout:(UICollectionViewFlowLayout *)self];
         
     }
