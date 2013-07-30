@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DataModel.h"
 #import "SpringboardLayout.h"
-@interface CustomFacesViewController : UIViewController <UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic) DataModel *dataModel;
+@class CustomDataModel;
+
+@interface CustomFacesViewController : UIViewController <UIGestureRecognizerDelegate, SpringBoardLayoutDelegate>
+
+@property (weak, nonatomic) IBOutlet UICollectionView *facesCollectionView;
+@property (weak, nonatomic) CustomDataModel *dataModel;
+
 
 
 //Unwind Segue used by ConfirmViewController

@@ -30,6 +30,10 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
+        _textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+        [self.contentView addSubview:_textLabel];
+        
     
         self.faceButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.faceButton.frame =  CGRectMake(0, 0, 95, 110);

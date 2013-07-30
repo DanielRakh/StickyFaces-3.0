@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+
+
+
+
 @interface EditViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UIImageView *faceImageView;

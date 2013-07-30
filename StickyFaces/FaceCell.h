@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) UIButton *faceButton;
 @property (nonatomic, strong) UIButton *deleteButton;
+@property (nonatomic, strong) UILabel *textLabel; 
 
 
 @end

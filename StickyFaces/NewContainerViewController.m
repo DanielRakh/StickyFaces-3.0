@@ -13,6 +13,7 @@
 #import "FavoritesViewController.h"
 #import "CustomFacesViewController.h"
 #import "UIColor+StickyFacesColors.h"
+#import "CustomDataModel.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -55,6 +56,7 @@
 
 //The Data Model to populate the CollectionViews of the three VC's. 
 @property (nonatomic, strong) DataModel *dataModel;
+@property (nonatomic, strong) CustomDataModel *customDataModel;
 
 
 //The Icons for the TabButtons
@@ -99,6 +101,7 @@
     
     //Set up the Data Model for the ChildViewControllers
     self.dataModel = [[DataModel alloc]init];
+    self.customDataModel = [[CustomDataModel alloc]init];
     
     
     //Set up the Tab Buttons//
@@ -170,7 +173,7 @@
     
     
     self.cameraViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Camera"];
-    self.cameraViewController.dataModel = self.dataModel;
+    self.cameraViewController.dataModel = self.customDataModel;
     
     
     
@@ -417,7 +420,7 @@ else if (sender == self.leftTabButton ) {
     
     
     
-    [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+    [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
         
         
         currentIcon.center = self.view.center;
@@ -429,7 +432,7 @@ else if (sender == self.leftTabButton ) {
         [backgroundSnapshot removeFromSuperview];
 
 
-        [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             
             currentTab.transform = CGAffineTransformMakeScale(1.0, 1.0);
         } completion:^(BOOL finished) {
@@ -456,14 +459,14 @@ else if (sender == self.leftTabButton ) {
     
     
     
-    [UIView animateWithDuration:0.25f animations:^{
+    [UIView animateWithDuration:0.35f animations:^{
         tabButton.center = self.view.center;
         tabIcon.center = tabButton.center;
     } completion:^(BOOL finished) {
         
         
         
-        [UIView animateWithDuration:0.25f animations:^{
+        [UIView animateWithDuration:0.35f animations:^{
             tabButton.transform = CGAffineTransformMakeScale(16.0, 16.0);
         } completion:^(BOOL finished) {
             
@@ -601,7 +604,7 @@ else if (sender == self.leftTabButton ) {
         leftIcon.center = leftTab.center;
     } completion:^(BOOL finished) {
         
-        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             
             rightTab.center = rightTabButtonCenter;
             rightIcon.center = rightTab.center;
@@ -638,9 +641,14 @@ else if (sender == self.leftTabButton ) {
     
     CGRect containedRect = self.containerView.bounds;
     return containedRect;
+
+    
 }
 
 - (void)presentContainedViewController:(UIViewController*)containedViewController{
+    
+    NSLog(@"presentContainedViewController method is called");
+    
     
     //0. Remove the current Detail View Controller showed
     if(self.thePresentedViewController){
@@ -654,6 +662,8 @@ else if (sender == self.leftTabButton ) {
     
     //iPhone 5
     containedViewController.view.frame = [self returnContainedViewFrameSize];
+    
+    NSLog(@"ContainedViewController.view.frame:%@", NSStringFromCGRect(containedViewController.view.frame));
     
     //3. Add the contained controller's view to the self's subview containerView and save a reference to the Contained View Controller
     [self.containerView addSubview:containedViewController.view];

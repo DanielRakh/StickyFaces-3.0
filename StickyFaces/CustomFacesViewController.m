@@ -11,10 +11,14 @@
 #import "UIColor+StickyFacesColors.h"
 #import "UIDevice+Resolutions.h"
 #import "FaceCell.h"
+#import "CustomDataModel.h"
 
-@interface CustomFacesViewController () 
 
-@property (weak, nonatomic) IBOutlet UICollectionView *facesCollectionView;
+@interface CustomFacesViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+
+
+
+
 
 -(void)activateDeletionMode:(id)sender;
 
@@ -23,13 +27,19 @@
 @end
 
 @implementation CustomFacesViewController
+{
+    BOOL isDeletionModeActive;
+
+}
+
 
 - (IBAction)retrieveImage:(id)sender {
     
-    UIImage *tmpImage = [self retrieveImageFromPhone:@"firstFace@2x" havingVersion:@"firstVersion"];
+//    UIImage *tmpImage = [self retrieveImageFromPhone:@"firstFace@2x" havingVersion:@"firstVersion"];
  
     
 }
+
 
 - (void)viewDidLoad
 {
@@ -38,7 +48,9 @@
     self.view.backgroundColor = [UIColor cameraViewColor];
     self.facesCollectionView.backgroundColor = [UIColor backgroundViewColor];
     
-    [self.facesCollectionView registerClass:[FaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
+    
+
+    
 
     
     
@@ -50,6 +62,14 @@
     imageView.center = CGPointMake(160, 22);
     
     [self.view addSubview:imageView];
+    
+    
+    
+    [self.facesCollectionView registerClass:[FaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
+    
+    
+    NSLog(@"self.facesCollectionView.frame:%@",NSStringFromCGRect(self.facesCollectionView.frame));
+
     
     
     
@@ -91,46 +111,48 @@
 #pragma mark -
 #pragma mark - UICollectionView Datasource Methods
 
-//-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-//    
-//    return 1;
-//    
-//}
-//
-//
-//-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    
-//    
-//    if ([UIDevice deviceType] & iPhone5) {
-//        return [self.dataModel faceCount] - 3;
-//    }
-//    else {
-//        return [self.dataModel faceCount] - 3;
-//    }
-//    
-//    
-//}
-//
-//
-//-(UICollectionViewCell *)collectionView:(UICollectionView *)theCollectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    
-//    
-//    static NSString *CellIdentifier = @"Face";
-//    
-//    FaceCell *cell =[theCollectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-//    cell.faceButton.tag = indexPath.item;
-//    [cell.faceButton setBackgroundImage:[self.dataModel faceAtIndex:indexPath.item
-//                                         ] forState:UIControlStateNormal];
-//    
-//    [cell.faceButton addTarget:self action:@selector(delay:) forControlEvents:UIControlEventTouchUpInside];
-//    [cell.faceButton addTarget:self action:@selector(displayHUB) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    
-//    return cell;
-//    
-//    
-//}
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    
+    return 1;
+    
+}
+
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    
+    return self.dataModel.transferArray.count;
+    
+    
+}
+
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)theCollectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    
+    
+    static NSString *CellIdentifier = @"FaceCell";
+    
+    FaceCell *cell =[theCollectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+//    cell.textLabel.text = [NSString stringWithFormat:@"%d,%d",indexPath.section,indexPath.item];
+    
+  
+    
+    
+    UIImage *faceImage = [self.dataModel retrieveFaceAtIndexPosition:indexPath.item];
+    
+//    NSLog(@"The image size:%@",NSStringFromCGSize(faceImage.size));
+    
+
+    [cell.faceButton setBackgroundImage:faceImage forState:UIControlStateNormal];
+    
+    
+    return cell;
+    
+    
+}
 
 
 
@@ -156,6 +178,19 @@
  
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
     
+    [self.facesCollectionView reloadData];
+    
+    
+    
+}
+
+
+
+#pragma mark - Spring Board Layout Delegate
+
+- (BOOL)isDeletionModeActiveForCollectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout {
+    
+    return isDeletionModeActive;
 }
 
 @end

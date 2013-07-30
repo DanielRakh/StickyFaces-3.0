@@ -24,6 +24,8 @@ static NSString *const COPY_FACES = @"CopyFaces";
 
 @property (nonatomic, strong) NSMutableArray *copiedFaces;
 
+@property (nonatomic, strong) NSMutableArray *customFaces; 
+
 @end
 
 

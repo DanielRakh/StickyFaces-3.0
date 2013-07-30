@@ -11,6 +11,7 @@
 #import "CameraOverlay.h"
 #import "UIDevice+Resolutions.h"
 #import "UIColor+StickyFacesColors.h"
+#import "CustomFacesViewController.h"
 
 
 
@@ -60,10 +61,14 @@
 
    UIImage *resizedImage = [self.faceImage resizedImageToSize:CGSizeMake(121, 140)];
     
-    [self saveImageInPhone:UIImagePNGRepresentation(resizedImage) withName:@"firstFace@2x"];
+    NSLog(@"Resized Image Size:%@",NSStringFromCGSize(resizedImage.size));
+    
+    [self saveImageInPhone:UIImagePNGRepresentation(resizedImage)];
     
     [self performSelector:@selector(performUnwindSegue) withObject:self];
     
+    //Is there a way to obtain the indexPath of an empty cell?
+    //What if I name the string based on enumerating the filepath...grabbing the string of the last file name and changing a nu
     
 }
 
@@ -95,27 +100,14 @@
 }
 
 
--(void)saveImageInPhone:(NSData*)imageData withName:(NSString*)iconName
+-(void)saveImageInPhone:(NSData*)imageData
 {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
-                                                         NSUserDomainMask, YES);
+    
+    NSMutableDictionary *faceDict = [NSDictionary dictionaryWithObject:imageData forKey:@"faceKey"];
+     
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"imageSaved" object:nil userInfo:faceDict];
     
     
-    //Get the docs directory
-    NSString *documentsPath = [paths objectAtIndex:0];
-    NSString *folderPath = [documentsPath
-                            stringByAppendingPathComponent:@"CustomFaces"];
-    
-    if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath])
-        [[NSFileManager defaultManager] createDirectoryAtPath:folderPath
-                                  withIntermediateDirectories:NO attributes:nil error:nil];
-    
-    //Add the FileName to FilePath
-    NSString *filePath = [folderPath stringByAppendingPathComponent:[iconName
-                                                                     stringByAppendingFormat:@"%@",@".png"]];
-    
-    //Write the file to documents directory
-    [imageData writeToFile:filePath atomically:YES];
 }
 
 
@@ -146,9 +138,7 @@
     
     [super viewWillAppear:YES];
     
-    
-    
-    
+
     
 }
 

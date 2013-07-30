@@ -158,6 +158,8 @@
 		2BAC73BA178138CF004D227F /* ClosePreviewButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */; };
 		2BAC73BD1781525E004D227F /* goBackToCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC73BC1781525E004D227F /* goBackToCameraView.m */; };
 		2BAE96FB1781FCDF002FCAB9 /* goBackToCustomFaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE96FA1781FCDF002FCAB9 /* goBackToCustomFaces.m */; };
+		2BB0B98D17A4DE04006D04B1 /* CustomDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0B98C17A4DE03006D04B1 /* CustomDataModel.m */; };
+		2BB0B99017A5B741006D04B1 /* TestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0B98F17A5B741006D04B1 /* TestCell.m */; };
 		2BB2A4071672BAA1007AA1A7 /* SpringboardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2A4061672BAA1007AA1A7 /* SpringboardLayout.m */; };
 		2BB2A4121672D782007AA1A7 /* SpringBoardLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2A4111672D781007AA1A7 /* SpringBoardLayoutAttributes.m */; };
 		2BBDFBBD16460BAA00642533 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFBBC16460BAA00642533 /* QuartzCore.framework */; };
@@ -566,6 +568,10 @@
 		2BAC73BC1781525E004D227F /* goBackToCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goBackToCameraView.m; sourceTree = "<group>"; };
 		2BAE96F91781FCDF002FCAB9 /* goBackToCustomFaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goBackToCustomFaces.h; sourceTree = "<group>"; };
 		2BAE96FA1781FCDF002FCAB9 /* goBackToCustomFaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goBackToCustomFaces.m; sourceTree = "<group>"; };
+		2BB0B98B17A4DE03006D04B1 /* CustomDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDataModel.h; sourceTree = "<group>"; };
+		2BB0B98C17A4DE03006D04B1 /* CustomDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDataModel.m; sourceTree = "<group>"; };
+		2BB0B98E17A5B741006D04B1 /* TestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCell.h; sourceTree = "<group>"; };
+		2BB0B98F17A5B741006D04B1 /* TestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCell.m; sourceTree = "<group>"; };
 		2BB2A4051672BAA1007AA1A7 /* SpringboardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringboardLayout.h; sourceTree = "<group>"; };
 		2BB2A4061672BAA1007AA1A7 /* SpringboardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringboardLayout.m; sourceTree = "<group>"; };
 		2BB2A4101672D781007AA1A7 /* SpringBoardLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBoardLayoutAttributes.h; sourceTree = "<group>"; };
@@ -1005,6 +1011,8 @@
 				2B1EBA631789E4B700A30B8B /* UIColor+StickyFacesColors.m */,
 				2BAB8BBF17908B86009B8A67 /* TabButton.h */,
 				2BAB8BC017908B86009B8A67 /* TabButton.m */,
+				2BB0B98E17A5B741006D04B1 /* TestCell.h */,
+				2BB0B98F17A5B741006D04B1 /* TestCell.m */,
 			);
 			name = "ContainerViewController ";
 			sourceTree = "<group>";
@@ -1285,6 +1293,8 @@
 			children = (
 				2B90B8B0167A6BC600AF0E1C /* DataModel.h */,
 				2B90B8B1167A6BC600AF0E1C /* DataModel.m */,
+				2BB0B98B17A4DE03006D04B1 /* CustomDataModel.h */,
+				2BB0B98C17A4DE03006D04B1 /* CustomDataModel.m */,
 				2BA644FC14F3006A00292BFD /* StickyFacesViewController.h */,
 				2BA644FD14F3006A00292BFD /* StickyFacesViewController.m */,
 				2B65DBA81658658F0024D2EA /* FavoritesViewController.h */,
@@ -1773,6 +1783,8 @@
 				2B1EBA641789E4B700A30B8B /* UIColor+StickyFacesColors.m in Sources */,
 				2BAB8BC117908B86009B8A67 /* TabButton.m in Sources */,
 				2BDBEB52179EFF0700A756B5 /* goToEditViewSegue.m in Sources */,
+				2BB0B98D17A4DE04006D04B1 /* CustomDataModel.m in Sources */,
+				2BB0B99017A5B741006D04B1 /* TestCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -145,6 +145,9 @@
     
     [self.tutorialButton setBackgroundImage:[UIImage imageNamed:@"NavQuestionMark.png"] forState:UIControlStateNormal];
 
+    
+    NSLog(@"self.trueView.frame:%@",NSStringFromCGRect(self.trueView.frame));
+
 
     
 }
