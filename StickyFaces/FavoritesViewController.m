@@ -11,13 +11,13 @@
 #import "FaceCell.h"
 #import "WCAlertView.h"
 #import "UIColor+StickyFacesColors.h"
+#import "DataModel.h"
+
 
 @interface FavoritesViewController ()
-{
-    IBOutlet UINavigationBar *navBar;
-}
 
-@property (nonatomic, assign) int itemNumber;
+
+@property (nonatomic) int itemNumber;
 
 @property (strong, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) UIImage *deleteButton;
@@ -285,7 +285,7 @@
 //        [self.editButton setBackgroundImage:self.deleteButton forState:UIControlStateNormal];
         }
         
-        [self displayFavoritesHUB];
+//        [self displayFavoritesHUB];
         
     }
     

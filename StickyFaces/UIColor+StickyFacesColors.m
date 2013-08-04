@@ -36,4 +36,11 @@
 
 }
 
++ (UIColor *)flashCheckViewColor {
+    
+    return [UIColor colorWithRed:0.180 green:0.800 blue:0.443 alpha:1.000];
+    
+}
+
+
 @end

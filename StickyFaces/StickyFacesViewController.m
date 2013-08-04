@@ -18,6 +18,8 @@
 #import "MyUnwindSegue.h"
 
 
+#import "FlashCheckView.h"
+
 #import "UIColor+StickyFacesColors.h"
 
 
@@ -35,6 +37,10 @@
 
 @property (nonatomic, readwrite) IBOutlet SMPageControl *pageControl;
 @property (nonatomic, weak) IBOutlet UIButton *tutorialButton;
+
+
+@property (nonatomic, strong) FlashCheckView *pasteFlashView;
+@property (nonatomic, strong) FlashCheckView *favoritesFlashView;
 
 
 
@@ -109,7 +115,6 @@
     self.view.backgroundColor = [UIColor catalogViewColor];
     self.trueView.backgroundColor = [UIColor backgroundViewColor];
     
-    
     UIImage *smiley = [UIImage imageNamed:@"Grid"];
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, smiley.size.width, smiley.size.height)];
     imageView.image = smiley;
@@ -147,6 +152,20 @@
 
     
     NSLog(@"self.trueView.frame:%@",NSStringFromCGRect(self.trueView.frame));
+
+    
+    
+    self.pasteFlashView = [[FlashCheckView alloc]initWithFrame:CGRectMake(0, 0, 320, 568) andStyle:kConfirmedToPaste];
+    self.pasteFlashView.alpha = 0.0f;
+    
+     [[[[UIApplication sharedApplication] delegate] window] addSubview:self.pasteFlashView];
+ 
+    
+    self.favoritesFlashView = [[FlashCheckView alloc]initWithFrame:CGRectMake(0,0, 320, 568) andStyle:kFavorites];
+    self.favoritesFlashView.alpha = 0.0f;
+ 
+    
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.favoritesFlashView];
 
 
     
@@ -307,8 +326,9 @@
                                          ] forState:UIControlStateNormal];
 
     [cell.faceButton addTarget:self action:@selector(delay:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.faceButton addTarget:self action:@selector(displayHUB) forControlEvents:UIControlEventTouchUpInside];
+    [cell.faceButton addTarget:self action:@selector(displayHUB:) forControlEvents:UIControlEventTouchUpInside];
     
+
 
     return cell;
     
@@ -375,9 +395,11 @@
 
 
 
-- (void)displayHUB
+- (void)displayHUB:(id)sender
 
 {
+    
+    NSLog(@"Class of Sender:%@",[sender class]);
     
     
     if(![self getAlertView]){
@@ -391,28 +413,34 @@
     else {
         
         
-        CopyHUD *newHud = [CopyHUD newHUD];
-        newHud.alpha = 0.0;	// make the view transparent
-      
-        
-        if ([UIDevice deviceType] &iPhone5) {
-            newHud.frame = CGRectMake(0, 42, 320, 460);
+        if ([sender isKindOfClass:[UIButton class]]) {
+            
+            [UIView animateWithDuration:0.8 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.pasteFlashView.alpha = 1.0f;
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.8f animations:^{
+                    self.pasteFlashView.alpha = 0.0f;
+                }];
+            }];
+            
+            
+        }
+        else if ([sender isKindOfClass:[UILongPressGestureRecognizer class]])
+        {
+            [UIView animateWithDuration:0.8 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.favoritesFlashView.alpha = 1.0f;
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.8f animations:^{
+                    self.favoritesFlashView.alpha = 0.0f;
+                }];
+            }];
+            
+            
         }
         
-        [self.view addSubview:newHud];
-        [UIView animateWithDuration:0.5 delay:0.4 options:0
-                         animations:^{newHud.alpha = 1.0;}
-                         completion:^ (BOOL finished) {
-                             [UIView animateWithDuration:0.5 delay:0.2 options:0 animations:^{
-                                 newHud.alpha = 0.0;
-                             } completion:^(BOOL finished) {
-                                 [newHud removeFromSuperview];
-                             }];
-                         }];	// animate the return to visible
+        
     }
 }
-
-
 
 
 
@@ -454,11 +482,8 @@
         NSIndexPath *indexPath = [self.trueView indexPathForItemAtPoint:[gr locationInView:self.trueView]];
         if (indexPath)
         {
-            if (([UIDevice deviceType] & iPhone5)) {
-                numberOfFaces =  12;
-            } else {
-                numberOfFaces = 9;
-            }
+       
+            numberOfFaces = 9;
             
             if ([self.dataModel favoritesFaceCount] == numberOfFaces ) {
             
@@ -486,7 +511,7 @@
             [layout invalidateLayout];
                 
                 
-                
+                [self displayHUB:gr];
 
              //Present Favorites View
 
@@ -498,6 +523,9 @@
         }
     }
 }
+
+
+
 
 
 

@@ -11,9 +11,6 @@
 
 @interface NewContainerViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 
-- (IBAction)addContainedController:(id)sender;
--(IBAction)animateTest:(id)sender;
 @end

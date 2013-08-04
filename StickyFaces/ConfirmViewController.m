@@ -22,6 +22,7 @@
 #import "CameraShutterView.h"
 
 #import "goBackToCameraView.h"
+#import "UIColor+StickyFacesColors.h"
 
 
 @interface ConfirmViewController () 
@@ -41,8 +42,9 @@ BOOL frontCameraIsOn;
 
 @property (weak, nonatomic) IBOutlet UIButton *captureButton;
 @property (weak, nonatomic) IBOutlet UIButton *toggleButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
-@property (nonatomic, strong) CameraShutterView *shutterView;
+//@property (nonatomic, strong) CameraShutterView *shutterView;
 
 
 -(IBAction)cameraButtonPressed:(id)sender;
@@ -73,8 +75,8 @@ BOOL frontCameraIsOn;
     
     [[UIApplication sharedApplication]setStatusBarHidden:YES];
     
-    self.shutterView.hidden = NO;
-    [self.shutterView performFirstSplitAnimation];
+//    self.shutterView.hidden = NO;
+//    [self.shutterView performFirstSplitAnimation];
     
 
 }
@@ -101,11 +103,11 @@ BOOL frontCameraIsOn;
 
 -(void)viewWillDisappear:(BOOL)animated {
     
-    self.shutterView.hidden = YES;
+//    self.shutterView.hidden = YES;
 }
 
 
--(void)performUnwindSegue
+-(IBAction)performUnwindSegue
 {
     [self performSegueWithIdentifier:@"goBackToCustomFaces" sender:self];
     
@@ -120,35 +122,22 @@ BOOL frontCameraIsOn;
     [self.cameraView addSubview:overlayView];
     
     
-    self.shutterView = [[CameraShutterView alloc]initWithFrame:self.view.bounds];
-    self.shutterView.tag = 100;
+//    self.shutterView = [[CameraShutterView alloc]initWithFrame:self.view.bounds];
+//    self.shutterView.tag = 100;
     
-    [self.view addSubview:self.shutterView];
+//    [self.view addSubview:self.shutterView];
     
-    CameraOverlay *cameraOverlayView = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
     
-    [self.view addSubview:cameraOverlayView];
+    UIView *bottomBarView = [[UIView alloc]initWithFrame:CGRectMake(0, 427, 320, CGRectGetMaxY(self.view.bounds)- 427)];
+    bottomBarView.backgroundColor = [UIColor cameraViewColor];
+    [self.view addSubview:bottomBarView];
 
     
     [self.view bringSubviewToFront:self.captureButton];
     [self.view bringSubviewToFront:self.toggleButton];
+    [self.view bringSubviewToFront:self.cancelButton];
     
-    
-    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    UIImage *cancelButtonImage = [UIImage imageNamed:@"CancelButton"];
-    UIImage *cancelButtonPressedImage = [UIImage imageNamed:@"CancelButtonPressed"];
-    
-    
-    
-    cancelButton.frame = CGRectMake(18, 484, cancelButtonImage.size.width, cancelButtonImage.size.height);
-    
-    [cancelButton setImage:cancelButtonImage forState:UIControlStateNormal];
-    [cancelButton setImage:cancelButtonPressedImage forState:UIControlStateHighlighted];
-    
-    [cancelButton addTarget:self action:@selector(performUnwindSegue) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:cancelButton];
+   
     
     
     
@@ -233,7 +222,7 @@ BOOL frontCameraIsOn;
 
 
 -(IBAction)cameraButtonPressed:(id)sender {
-    [self.shutterView performCustomSplitAnimation];
+//    [self.shutterView performCustomSplitAnimation];
 
     
     AVCaptureConnection *videoConnection = nil;

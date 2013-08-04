@@ -44,13 +44,38 @@
 }
 
 
+
+
+-(void)positionImage:(UIImage *)image inCenterOfButton:(UIButton *)button withColor:(UIColor *)color {
+    
+    button.backgroundColor = color;
+    button.imageView.image = image;
+    
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    
 
     self.view.backgroundColor = [UIColor backgroundViewColor];
     
+    self.closeButton.backgroundColor = [UIColor favoritesViewColor];
+    self.closeButton.tintColor = [UIColor blueColor];
+
+    
+    
+    
+    UIView *bottomBarView = [[UIView alloc]initWithFrame:CGRectMake(0, 427, 320, CGRectGetMaxY(self.view.bounds)- 427)];
+    bottomBarView.backgroundColor = [UIColor cameraViewColor];
+//    [self.view addSubview:bottomBarView];
+    
+    
+    
     self.faceImageView.image = self.faceImage;
+    
     
     
 
@@ -59,7 +84,11 @@
 
 - (IBAction)scaleImageDown:(id)sender {
 
-   UIImage *resizedImage = [self.faceImage resizedImageToSize:CGSizeMake(121, 140)];
+//    CGSize imageSize = CGSizeMake(121,140);
+    
+    
+    
+   UIImage *resizedImage = [self.faceImage resizedImageToSize:CGSizeMake(95, 110)];
     
     NSLog(@"Resized Image Size:%@",NSStringFromCGSize(resizedImage.size));
     

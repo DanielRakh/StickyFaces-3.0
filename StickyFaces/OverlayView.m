@@ -70,17 +70,17 @@ static const NSInteger CAMERAFRAME_WIDTH = 5;
     CGPoint topPoint = CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMinY(boundingBoxPath)-self.faceLayer.lineWidth);
 
     UIBezierPath *line = [UIBezierPath bezierPath];
-    [line moveToPoint:CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMinY(self.bounds)+CAMERAFRAME_WIDTH)];
+    [line moveToPoint:CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMinY(self.bounds))];
     [line addLineToPoint:topPoint];
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = line.CGPath;
     shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
-    shapeLayer.shadowOpacity = 1.0;
-    shapeLayer.shadowOffset = CGSizeMake(0, 0);
-    shapeLayer.shadowRadius = 3.0;
+//    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+//    shapeLayer.shadowOpacity = 1.0;
+//    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+//    shapeLayer.shadowRadius = 3.0;
     shapeLayer.lineWidth = 4.0;
     
     return shapeLayer;
@@ -97,16 +97,16 @@ static const NSInteger CAMERAFRAME_WIDTH = 5;
     
     UIBezierPath *line = [UIBezierPath bezierPath];
     [line moveToPoint:bottomPoint];
-    [line addLineToPoint:CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMaxY(self.bounds)-CAMERAFRAME_WIDTH-1)];
+    [line addLineToPoint:CGPointMake(CGRectGetMidX(boundingBoxPath), CGRectGetMaxY(self.bounds))];
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = line.CGPath;
     shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
-    shapeLayer.shadowOpacity = 1.0;
-    shapeLayer.shadowOffset = CGSizeMake(0, 0);
-    shapeLayer.shadowRadius = 3.0;
+//    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+//    shapeLayer.shadowOpacity = 1.0;
+//    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+//    shapeLayer.shadowRadius = 3.0;
     shapeLayer.lineWidth = 4.0;
     
     return shapeLayer;
@@ -126,16 +126,16 @@ static const NSInteger CAMERAFRAME_WIDTH = 5;
     [line moveToPoint:leftPoint];
     
     
-    [line addLineToPoint:CGPointMake(CGRectGetMinX(self.bounds)+CAMERAFRAME_WIDTH, CGRectGetMidY(boundingBoxPath))];
+    [line addLineToPoint:CGPointMake(CGRectGetMinX(self.bounds), CGRectGetMidY(boundingBoxPath))];
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = line.CGPath;
     shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
-    shapeLayer.shadowOpacity = 1.0;
-    shapeLayer.shadowOffset = CGSizeMake(0, 0);
-    shapeLayer.shadowRadius = 3.0;
+//    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+//    shapeLayer.shadowOpacity = 1.0;
+//    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+//    shapeLayer.shadowRadius = 3.0;
     shapeLayer.lineWidth = 4.0;
     
     return shapeLayer;
@@ -154,16 +154,16 @@ static const NSInteger CAMERAFRAME_WIDTH = 5;
     [line moveToPoint:rightPoint];
     
     
-    [line addLineToPoint:CGPointMake(CGRectGetMaxX(self.bounds)-CAMERAFRAME_WIDTH, CGRectGetMidY(boundingBoxPath))];
+    [line addLineToPoint:CGPointMake(CGRectGetMaxX(self.bounds), CGRectGetMidY(boundingBoxPath))];
     
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     shapeLayer.path = line.CGPath;
     shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
-    shapeLayer.shadowOpacity = 1.0;
-    shapeLayer.shadowOffset = CGSizeMake(0, 0);
-    shapeLayer.shadowRadius = 3.0;
+//    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+//    shapeLayer.shadowOpacity = 1.0;
+//    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+//    shapeLayer.shadowRadius = 3.0;
     shapeLayer.lineWidth = 4.0;
     
     return shapeLayer;
@@ -183,8 +183,7 @@ static const NSInteger CAMERAFRAME_WIDTH = 5;
     CAShapeLayer *fillLayer = [CAShapeLayer layer];
     fillLayer.path = path.CGPath;
     fillLayer.fillRule = kCAFillRuleEvenOdd;
-    fillLayer.fillColor = [UIColor colorWithWhite:0.000 alpha:0.750].CGColor;
-    fillLayer.opacity = 0.5;
+    fillLayer.fillColor = [UIColor colorWithWhite:0.200 alpha:0.800].CGColor;
     
     return fillLayer;
     
@@ -201,10 +200,10 @@ static const NSInteger CAMERAFRAME_WIDTH = 5;
     shapeLayer.path = facePath.CGPath;
     shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
-    shapeLayer.shadowOpacity = 1.0;
-    shapeLayer.shadowOffset = CGSizeMake(0, 0);
-    shapeLayer.shadowRadius = 3.0;
+//    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
+//    shapeLayer.shadowOpacity = 1.0;
+//    shapeLayer.shadowOffset = CGSizeMake(0, 0);
+//    shapeLayer.shadowRadius = 3.0;
     shapeLayer.lineWidth = 4.0;
     
     return shapeLayer;

@@ -34,10 +34,7 @@
 
 
 @property (nonatomic, strong) NSMutableArray *lineArray;
-
 @property (nonatomic, strong) NSMutableArray *facePointArray;
-
-
 @property (nonatomic, strong) CAShapeLayer *faceLayer;
 
 
@@ -69,10 +66,7 @@
         [self setUp];
         [self pointForObjectAtIndex];
         [self createPointView];
-        
-     
-
-        
+    
         
         
     }
@@ -244,7 +238,7 @@
     
     for (NSValue *value in sortArray) {
         
-        self.facePoint = [[FacePoint alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+        self.facePoint = [[FacePoint alloc]initWithFrame:CGRectMake(0, 0, 44, 22)];
         self.facePoint.center = value.CGPointValue;
         self.facePoint.delegate = self;
         
@@ -260,7 +254,7 @@
         
         
         
-        self.touchPoint = [[FacePoint alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+        self.touchPoint = [[FacePoint alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
         self.touchPoint.center = self.facePoint.center;
         self.touchPoint.delegate =self;
         self.touchPoint.controlPointView = self.facePoint;
@@ -280,6 +274,8 @@
     
 }
 
+
+
 -(void)translateTouchPoint {
     
     
@@ -298,11 +294,10 @@
         
         switch (i) {
             case 1:
-                tPoint.layer.contents = (__bridge id)([UIImage imageNamed:@"Point"].CGImage);
+                
                 tPoint.center = CGPointMake(fPoint.center.x - 30, fPoint.center.y - 30);
                 tPoint.secondControlPointView = upperLeftSecondControlPoint;
                 [self addSubview:tPoint];
-                
                 
                 break;
                 
@@ -311,12 +306,14 @@
             case 3:
                 tPoint.center = CGPointMake(fPoint.center.x - 12, fPoint.center.y);
                 [self addSubview:tPoint];
+
                 
                 break;
                 
             case 4:
                 tPoint.center = CGPointMake(fPoint.center.x + 12, fPoint.center.y);
                 [self addSubview:tPoint];
+
                 
                 break;
                 
@@ -325,11 +322,13 @@
                 tPoint.center = CGPointMake(fPoint.center.x +  30, fPoint.center.y - 30);
                 tPoint.secondControlPointView = upperRightSecondControlPoint;
                 [self addSubview:tPoint];
+
                 break;
                 
             case 8:
                 tPoint.center = CGPointMake(fPoint.center.x +  20.0, fPoint.center.y);
                 [self addSubview:tPoint];
+
                 break;
                 
                 
@@ -444,22 +443,22 @@
 }
 
 
--(CAShapeLayer *)createTransparentBackgroundWithPath:(UIBezierPath *)bezPath {
-    
-    
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height) cornerRadius:0];
-    
-    [path appendPath:bezPath];
-    [path setUsesEvenOddFillRule:YES];
-    
-    CAShapeLayer *fillLayer = [CAShapeLayer layer];
-    fillLayer.path = path.CGPath;
-    fillLayer.fillRule = kCAFillRuleEvenOdd;
-    fillLayer.fillColor = [UIColor colorWithWhite:0.000 alpha:0.750].CGColor;
-    fillLayer.opacity = 0.5;
-    
-    return fillLayer;
-}
+//-(CAShapeLayer *)createTransparentBackgroundWithPath:(UIBezierPath *)bezPath {
+//    
+//    
+//    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height) cornerRadius:0];
+//    
+//    [path appendPath:bezPath];
+//    [path setUsesEvenOddFillRule:YES];
+//    
+//    CAShapeLayer *fillLayer = [CAShapeLayer layer];
+//    fillLayer.path = path.CGPath;
+//    fillLayer.fillRule = kCAFillRuleEvenOdd;
+//    fillLayer.fillColor = [UIColor whiteColor].CGColor;
+//    fillLayer.opacity = 0.25;
+//    
+//    return fillLayer;
+//}
 
 
 -(CAShapeLayer *)createFaceOutlineWithPath:(UIBezierPath *)bezPath {
@@ -471,10 +470,7 @@
     shapeLayer.path = bezPath.CGPath;
     shapeLayer.strokeColor = [UIColor colorWithWhite:1.000 alpha:0.800].CGColor;
     shapeLayer.fillColor = [UIColor clearColor].CGColor;
-    shapeLayer.shadowColor = [UIColor blackColor].CGColor;
-    shapeLayer.shadowOpacity = 1.0;
-    shapeLayer.shadowOffset = CGSizeMake(0, 0);
-    shapeLayer.shadowRadius = 3.0;
+
     shapeLayer.lineWidth = 4.0;
     
     return shapeLayer;
@@ -566,74 +562,41 @@
     
     
     
-//    [self.aPath stroke];
-    
-
-
     
     
     
 
-//    
-//    CAShapeLayer *background = [self createTransparentBackgroundWithPath:self.aPath];
-//    [self.layer addSublayer:background];
-//    
-//    self.faceLayer = [self createFaceOutlineWithPath:self.aPath];
-    
-//    CGRect boundingBox = CGPathGetBoundingBox(self.aPath.CGPath);
-//    
-//    UIBezierPath *boundBox = [UIBezierPath bezierPathWithRect:boundingBox];
-//    boundBox.lineWidth = 3.0f;
-//    [boundBox stroke];
-//    
-//    
-//    UIBezierPath *bounceBox = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, 320, 371)];
-//    [bounceBox applyTransform:CGAffineTransformMakeTranslation(0, 44)];
-//    
-//    [[UIColor orangeColor]setStroke];
-//    [bounceBox stroke];
-//    
-    
     UIBezierPath *topLeftCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:startingPoint.center atControlPoint:topLeftCurveControlPoint.center atEndingPoint:topLeftCurvePoint.center withTouchPointAtIndex:1 withPercentage:0.9];
-//    [topLeftCurvePathLine stroke];
     
     
     
     UIBezierPath *topCurveFirstControlPathLine = [self findPointOfAttachementWithCubicPath:self.aPath  withStartingPoint:topLeftCurvePoint.center atFirstControlPoint:topCurveFirstControlPoint.center andSecondControlPoint:topCurveSecondControlPoint.center atEndingPoint:topCurvePoint.center withTouchPointAtIndex:3 withPercentage:0.3];
-//    [topCurveFirstControlPathLine stroke];
     
     UIBezierPath *topCurveSecondControlPathLine = [self findPointOfAttachementWithCubicPath:self.aPath  withStartingPoint:topLeftCurvePoint.center atFirstControlPoint:topCurveFirstControlPoint.center andSecondControlPoint:topCurveSecondControlPoint.center atEndingPoint:topCurvePoint.center withTouchPointAtIndex:4 withPercentage:0.7];
-//    [topCurveSecondControlPathLine stroke];
     
     
     UIBezierPath *topRightCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:topCurvePoint.center atControlPoint:topRightCurveFirstControlPoint.center atEndingPoint:topRightCurvePoint.center withTouchPointAtIndex:6 withPercentage:0.1];
-//    [topRightCurvePathLine stroke];
     
     
     
     
     UIBezierPath *midRightCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:topRightCurvePoint.center atControlPoint:midRightCurveFirstControlPoint.center atEndingPoint:midRightCurvePoint.center withTouchPointAtIndex:8 withPercentage:0.5];
-//    [midRightCurvePathLine stroke];
     
     
     
     
     UIBezierPath *lowerRightCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:midRightCurvePoint.center atControlPoint:lowerRightCurveFirstControlPoint.center atEndingPoint:lowerRightCurvePoint.center withTouchPointAtIndex:10 withPercentage:0.5];
-//    [lowerRightCurvePathLine stroke];
     
     
     UIBezierPath *bottomQuadCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:lowerRightCurvePoint.center atControlPoint:bottomQuadCurveFirstControlPoint.center atEndingPoint:bottomQuadCurvePoint.center withTouchPointAtIndex:12 withPercentage:0.5];
-//    [bottomQuadCurvePathLine stroke];
     
     
     
     UIBezierPath *lowerLeftCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:bottomQuadCurvePoint.center atControlPoint:lowerLeftCurveFirstControlPoint.center atEndingPoint:lowerLeftCurvePoint.center withTouchPointAtIndex:14 withPercentage:0.5];
-//    [lowerLeftCurvePathLine stroke];
     
     
     UIBezierPath *midLeftCurvePathLine = [self findPointOfAttachementWithQuadCurve:self.aPath withStartingPoint:lowerLeftCurvePoint.center atControlPoint:midLeftCurveFirstControlPoint.center atEndingPoint:midLeftCurvePoint.center withTouchPointAtIndex:16 withPercentage:0.5];
     
-//    [midLeftCurvePathLine stroke];
     
     
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -649,7 +612,8 @@
     [path appendPath:self.aPath];
     [path setUsesEvenOddFillRule:YES];
     
-    [[UIColor colorWithWhite:0.000 alpha:0.500] setFill];
+    [[UIColor colorWithWhite:0.200 alpha:0.800] setFill];
+    
     [path fill];
     
     
@@ -657,6 +621,7 @@
     CGContextRestoreGState(context);
     
     CGContextAddPath(context, self.aPath.CGPath);
+
 
     
     CGContextAddPath(context, topLeftCurvePathLine.CGPath);
@@ -674,20 +639,12 @@
 
     
     CGContextSetLineWidth(context, 3.0);
-    CGContextSetShadowWithColor(context, CGSizeMake(0, 0), 3.0, [UIColor blackColor].CGColor);
+
     
     CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:1.000 alpha:0.800].CGColor);
     
     CGContextStrokePath(context);
     
-    
-    
-
-
-
-
-
-
     
     
 }

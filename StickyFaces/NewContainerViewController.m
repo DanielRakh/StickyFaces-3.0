@@ -6,15 +6,13 @@
 //
 //
 
-#import "StickyFacesAppDelegate.h"
 #import "NewContainerViewController.h"
 #import "DataModel.h"
+#import "CustomDataModel.h"
 #import "StickyFacesViewController.h"
 #import "FavoritesViewController.h"
 #import "CustomFacesViewController.h"
 #import "UIColor+StickyFacesColors.h"
-#import "CustomDataModel.h"
-
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -26,6 +24,8 @@
     CGPoint rightTabButtonCenter;
     CGPoint iconCenterInNav; 
 }
+
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 
 
@@ -79,6 +79,10 @@
 
 @implementation NewContainerViewController
 
+
+
+
+
 - (void)viewDidLoad
 {
     
@@ -109,18 +113,18 @@
     
     //Set up the CatalogTabButton and position it to be a little above the center. 
     self.catalogTabButton = [self createTabButtonWithColor:[UIColor catalogViewColor] andPosition:CGPointMake(self.view.center.x, self.view.center.y - 40)];
-    [self.catalogTabButton addTarget:self action:@selector(animateOpenWithTabButton:) forControlEvents:UIControlEventTouchUpInside];
+  
     
     
     //Set up the FavoritesTabButton and flag it as self.rightTabButton
     self.favoritesTabButton = [self createTabButtonWithColor:[UIColor favoritesViewColor] andPosition:CGPointMake(self.view.center.x +40 , self.view.center.y+40)];
-    [self.favoritesTabButton addTarget:self action:@selector(animateOpenWithTabButton:) forControlEvents:UIControlEventTouchUpInside];
+
     
     
     //Setting the
         //Set up the CameraTabButton and flag it as self.leftTabButton
     self.cameraTabButton = [self createTabButtonWithColor:[UIColor cameraViewColor] andPosition:CGPointMake(self.view.center.x -40, self.view.center.y+40)];
-    [self.cameraTabButton addTarget:self action:@selector(animateOpenWithTabButton:) forControlEvents:UIControlEventTouchUpInside];
+   
 
     
 
@@ -290,7 +294,8 @@
 
 // Close current childVC
 [self animateCloseOfCurrentChildViewController:self.thePresentedViewController withTabButton:self.thePresentedTabButton andTabIcon:self.thePresentedTabIcon WithCompletionBlock:^{
-            
+    
+
             
             
             
@@ -539,12 +544,40 @@ else if (sender == self.leftTabButton ) {
 
 #pragma mark -  TabButton Methods
 
+// Scale up on button press
+- (void) buttonPress:(UIButton*)button {
+    button.transform = CGAffineTransformMakeScale(1.2, 1.2);
+    // Do something else
+    
+}
+
+// Scale down on button release
+- (void) buttonRelease:(UIButton*)button {
+    button.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    // Do something else
+    
+    
+}
+
+//Scale down and transition on button release
+-(void)buttonTransition:(UIButton *)button {
+    
+    button.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    [self animateOpenWithTabButton:button];
+    
+    
+}
+
 
 -(TabButton *)createTabButtonWithColor:(UIColor *)color andPosition:(CGPoint)center {
     
     TabButton *tabbutton = [[TabButton alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
     tabbutton.center = center;
     tabbutton.innerCircle.backgroundColor = color;
+    
+    [tabbutton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragEnter];
+    [tabbutton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchDragExit | UIControlEventTouchUpOutside];
+    [tabbutton addTarget:self action:@selector(buttonTransition:) forControlEvents:UIControlEventTouchUpInside];
     
     return tabbutton;
 }
@@ -560,7 +593,7 @@ else if (sender == self.leftTabButton ) {
     }
     
     else if (tabButton == self.cameraTabButton) {
-        icon = [UIImage imageNamed:@"Camera"];
+        icon = [UIImage imageNamed:@"CustomFaceIcon"];
         
     }
     

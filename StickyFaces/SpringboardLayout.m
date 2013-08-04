@@ -35,51 +35,41 @@
 -(void)setup {
  
     if ([UIDevice deviceType] & iPhone5) {
+                
         
-//        self.itemSize = CGSizeMake(95, 106.66);
-//       
-//        
-//        if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
-//            self.minimumLineSpacing = 12.0;
-//
-//        self.sectionInset = UIEdgeInsetsMake(0, 4, 3, 0);
-//        } else if (self.scrollDirection == UICollectionViewScrollDirectionVertical)
-//        {
-//            self.minimumLineSpacing = 8.0;
-//
-//            self.sectionInset = UIEdgeInsetsMake(0, 4, 0, 4);
-//        }
-        
-        
-        self.itemSize = CGSizeMake(103, 117.33);
-        self.minimumLineSpacing = 4.0;
+        self.itemSize = CGSizeMake(95, 118);
+        self.minimumLineSpacing = 12;
         self.minimumInteritemSpacing = 0;
+        self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
         
         if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
-            self.sectionInset = UIEdgeInsetsMake(5, 3, 40, 0);
+            self.sectionInset = UIEdgeInsetsMake(0, 4, 44, 6);
+
 
         } else if (self.scrollDirection == UICollectionViewScrollDirectionVertical)
         {
-            self.sectionInset = UIEdgeInsetsMake(5, 3, 5, 0);
-        
+            self.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
+
         }
+        
         
         NSLog(@"iPhone 5 Layout Setup");
-    } else {
-        
-        self.itemSize = CGSizeMake(103, 117.33);
-        self.minimumLineSpacing = 4.0;
-        
-        if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
-        } else if (self.scrollDirection == UICollectionViewScrollDirectionVertical)
-        {
-            self.sectionInset = UIEdgeInsetsMake(3, 3, 0, 0);
-        }
-
-
-      NSLog(@"iPhone 4 layout is setup");
     }
+//    } else {
+//        
+//        self.itemSize = CGSizeMake(103, 117.33);
+//        self.minimumLineSpacing = 4.0;
+//        
+//        if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
+//        } else if (self.scrollDirection == UICollectionViewScrollDirectionVertical)
+//        {
+//            self.sectionInset = UIEdgeInsetsMake(3, 3, 0, 0);
+//        }
+//
+//
+//      NSLog(@"iPhone 4 layout is setup");
+//    }
 }
 
 
@@ -93,6 +83,11 @@
     }
     return NO;
     
+}
+
+-(BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
+    
+    return YES;
 }
 
 

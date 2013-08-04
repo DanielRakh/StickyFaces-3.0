@@ -41,14 +41,6 @@
 		2B3C2FF316273DD90006C766 /* FaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C2FF216273DD90006C766 /* FaceCell.m */; };
 		2B3DD401163253190093EEA7 /* SMPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B3DD3FF163253190093EEA7 /* SMPageControl.m */; };
 		2B465FA317877B0D0040209A /* UIViewController+CustomPushTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B465FA217877B0D0040209A /* UIViewController+CustomPushTransition.m */; };
-		2B49D8551783A5A8008AB361 /* NavBarSF@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B49D8541783A5A8008AB361 /* NavBarSF@2x.png */; };
-		2B4C558F177CE88900078613 /* CameraFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C558E177CE88900078613 /* CameraFrame@2x.png */; };
-		2B4C5593177CEA1D00078613 /* CancelButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C5591177CEA1D00078613 /* CancelButtonPressed@2x.png */; };
-		2B4C5598177D015B00078613 /* BlackCameraButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C5596177D015B00078613 /* BlackCameraButton@2x.png */; };
-		2B4C5599177D015B00078613 /* BlackCameraButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C5597177D015B00078613 /* BlackCameraButtonPressed@2x.png */; };
-		2B4C559D177D6E7E00078613 /* CancelButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C559A177D6E7E00078613 /* CancelButton@2x.png */; };
-		2B4C559E177D6E7E00078613 /* FlipCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C559B177D6E7E00078613 /* FlipCamera@2x.png */; };
-		2B4C559F177D6E7E00078613 /* FlipCameraPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B4C559C177D6E7E00078613 /* FlipCameraPressed@2x.png */; };
 		2B4D72EF177961E900B6057F /* ImagePreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */; };
 		2B4D72F31779650500B6057F /* goToImageViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72F21779650500B6057F /* goToImageViewSegue.m */; };
 		2B4D72F6177975F900B6057F /* FacePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4D72F5177975F900B6057F /* FacePoint.m */; };
@@ -73,6 +65,13 @@
 		2B6AFA9D16A60550007B0A5A /* image61Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B6AFA8B16A60550007B0A5A /* image61Hi@2x.png */; };
 		2B6AFA9F16A60550007B0A5A /* image62Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B6AFA8D16A60550007B0A5A /* image62Hi@2x.png */; };
 		2B6AFAA116A60550007B0A5A /* image63Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B6AFA8F16A60550007B0A5A /* image63Hi@2x.png */; };
+		2B74B8EE17ADE53100A66EA9 /* CameraButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B74B8EB17ADE53000A66EA9 /* CameraButton@2x.png */; };
+		2B74B8EF17ADE53100A66EA9 /* CancelButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B74B8EC17ADE53000A66EA9 /* CancelButton@2x.png */; };
+		2B74B8F017ADE53100A66EA9 /* FlipCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B74B8ED17ADE53100A66EA9 /* FlipCamera@2x.png */; };
+		2B74B8F417ADEAC300A66EA9 /* BackToCamButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B74B8F117ADEAC300A66EA9 /* BackToCamButton@2x.png */; };
+		2B74B8F517ADEAC300A66EA9 /* CropButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B74B8F217ADEAC300A66EA9 /* CropButton@2x.png */; };
+		2B74B8F617ADEAC300A66EA9 /* RefreshButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B74B8F317ADEAC300A66EA9 /* RefreshButton@2x.png */; };
+		2B74B8FA17ADEF2000A66EA9 /* GoBackToEditViewButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B74B8F817ADEF2000A66EA9 /* GoBackToEditViewButton@2x.png */; };
 		2B75AE8116B8AEB7002E5658 /* TutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B75AE8016B8AEB7002E5658 /* TutorialView.m */; };
 		2B8017B016AC93ED001271FC /* image48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B80179E16AC93EC001271FC /* image48@2x.png */; };
 		2B8017B116AC93ED001271FC /* image49@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B80179F16AC93EC001271FC /* image49@2x.png */; };
@@ -123,7 +122,10 @@
 		2B95973216B5F388009D1C91 /* FaceSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B95973116B5F388009D1C91 /* FaceSel@2x.png */; };
 		2B95973416B5F57B009D1C91 /* FavUnSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B95973316B5F57B009D1C91 /* FavUnSel@2x.png */; };
 		2B95973616B5F622009D1C91 /* FavSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B95973516B5F622009D1C91 /* FavSel@2x.png */; };
+		2B9C68B617AEF00F0057D90B /* FavoriteFlash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B9C68B417AEF00F0057D90B /* FavoriteFlash@2x.png */; };
+		2B9C68B717AEF00F0057D90B /* PasteFlash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B9C68B517AEF00F0057D90B /* PasteFlash@2x.png */; };
 		2B9EB10516D9DF040059EB04 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9EB10416D9DF040059EB04 /* MobileCoreServices.framework */; };
+		2BA22FD417AEC664005AD875 /* FlashCheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA22FD317AEC664005AD875 /* FlashCheckView.m */; };
 		2BA644EB14F3006A00292BFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA644EA14F3006A00292BFD /* UIKit.framework */; };
 		2BA644ED14F3006A00292BFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA644EC14F3006A00292BFD /* Foundation.framework */; };
 		2BA644EF14F3006A00292BFD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA644EE14F3006A00292BFD /* CoreGraphics.framework */; };
@@ -149,17 +151,16 @@
 		2BAB52D616A4D1720095549F /* image50Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB52A416A4D1710095549F /* image50Hi@2x.png */; };
 		2BAB52DC16A4D1720095549F /* image53Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB52AA16A4D1710095549F /* image53Hi@2x.png */; };
 		2BAB52DE16A4D1720095549F /* image54Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB52AC16A4D1710095549F /* image54Hi@2x.png */; };
+		2BAB61BF17AA36870011527B /* User@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB61BE17AA36870011527B /* User@2x.png */; };
+		2BAB61C117AA3A7F0011527B /* AddFace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB61C017AA3A7F0011527B /* AddFace@2x.png */; };
+		2BAB61C317AACE1A0011527B /* PlusFace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB61C217AACE1A0011527B /* PlusFace@2x.png */; };
+		2BAB61C517AAD5370011527B /* SquareFace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB61C417AAD5360011527B /* SquareFace@2x.png */; };
+		2BAB61C917AAE8EA0011527B /* SmileyAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB61C817AAE8EA0011527B /* SmileyAdd@2x.png */; };
+		2BAB61D517AB5B500011527B /* CustomFaceIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB61D417AB5B500011527B /* CustomFaceIcon@2x.png */; };
 		2BAB8BC117908B86009B8A67 /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB8BC017908B86009B8A67 /* TabButton.m */; };
-		2BAC73B11780F250004D227F /* BottomShutter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73AF1780F250004D227F /* BottomShutter@2x.png */; };
-		2BAC73B21780F250004D227F /* UpperShutter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B01780F250004D227F /* UpperShutter@2x.png */; };
-		2BAC73B7178138CF004D227F /* CheckmarkButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B3178138CF004D227F /* CheckmarkButton@2x.png */; };
-		2BAC73B8178138CF004D227F /* CheckmarkButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B4178138CF004D227F /* CheckmarkButtonPressed@2x.png */; };
-		2BAC73B9178138CF004D227F /* ClosePreviewButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B5178138CF004D227F /* ClosePreviewButton@2x.png */; };
-		2BAC73BA178138CF004D227F /* ClosePreviewButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */; };
 		2BAC73BD1781525E004D227F /* goBackToCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC73BC1781525E004D227F /* goBackToCameraView.m */; };
 		2BAE96FB1781FCDF002FCAB9 /* goBackToCustomFaces.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE96FA1781FCDF002FCAB9 /* goBackToCustomFaces.m */; };
 		2BB0B98D17A4DE04006D04B1 /* CustomDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0B98C17A4DE03006D04B1 /* CustomDataModel.m */; };
-		2BB0B99017A5B741006D04B1 /* TestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB0B98F17A5B741006D04B1 /* TestCell.m */; };
 		2BB2A4071672BAA1007AA1A7 /* SpringboardLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2A4061672BAA1007AA1A7 /* SpringboardLayout.m */; };
 		2BB2A4121672D782007AA1A7 /* SpringBoardLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BB2A4111672D781007AA1A7 /* SpringBoardLayoutAttributes.m */; };
 		2BBDFBBD16460BAA00642533 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BBDFBBC16460BAA00642533 /* QuartzCore.framework */; };
@@ -255,7 +256,6 @@
 		2BC2BFB816CF70C700EEC319 /* image82Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BFB616CF70C100EEC319 /* image82Hi@2x.png */; };
 		2BC2BFC516CF76C000EEC319 /* image57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BFC316CF76B400EEC319 /* image57@2x.png */; };
 		2BC2BFC616CF76C000EEC319 /* image57Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BFC416CF76BA00EEC319 /* image57Hi@2x.png */; };
-		2BD3A9CB153689FC00BDEA55 /* copyHUD.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BD3A9CA153689FC00BDEA55 /* copyHUD.xib */; };
 		2BD3A9D41536918B00BDEA55 /* copyHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD3A9D31536918A00BDEA55 /* copyHUD.m */; };
 		2BD7617016E97FA900706600 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7616F16E97FA900706600 /* ImageIO.framework */; };
 		2BD7617216E97FB400706600 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7617116E97FB400706600 /* AVFoundation.framework */; };
@@ -263,13 +263,6 @@
 		2BD7617616E97FC300706600 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7617516E97FC300706600 /* CoreVideo.framework */; };
 		2BD7617916EA688A00706600 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7617816EA688A00706600 /* ConfirmViewController.m */; };
 		2BD7BCA8177F9D4400A70EC9 /* CameraShutterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7BCA7177F9D4400A70EC9 /* CameraShutterView.m */; };
-		2BD7BCAB177FE55700A70EC9 /* BackToCameraButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCA9177FE55700A70EC9 /* BackToCameraButton@2x.png */; };
-		2BD7BCAC177FE55700A70EC9 /* BackToCameraButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCAA177FE55700A70EC9 /* BackToCameraButtonPressed@2x.png */; };
-		2BD7BCAF177FEB0C00A70EC9 /* StickyFaceCropButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCAD177FEB0C00A70EC9 /* StickyFaceCropButton@2x.png */; };
-		2BD7BCB0177FEB0C00A70EC9 /* StickyFaceCropButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCAE177FEB0C00A70EC9 /* StickyFaceCropButtonPressed@2x.png */; };
-		2BD7BCB3177FF6C900A70EC9 /* RefreshButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCB1177FF6C900A70EC9 /* RefreshButton@2x.png */; };
-		2BD7BCB4177FF6C900A70EC9 /* RefreshButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCB2177FF6C900A70EC9 /* RefreshButtonPressed@2x.png */; };
-		2BD7BCBA1780063D00A70EC9 /* Point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BD7BCB91780063C00A70EC9 /* Point@2x.png */; };
 		2BDBEA82179B946400A756B5 /* Heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BDBEA80179B946400A756B5 /* Heart@2x.png */; };
 		2BDBEA86179B968400A756B5 /* Grid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BDBEA85179B968400A756B5 /* Grid@2x.png */; };
 		2BDBEB52179EFF0700A756B5 /* goToEditViewSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDBEB51179EFF0600A756B5 /* goToEditViewSegue.m */; };
@@ -423,14 +416,6 @@
 		2B3DD400163253190093EEA7 /* SMPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMPageControl.h; sourceTree = "<group>"; };
 		2B465FA117877B0D0040209A /* UIViewController+CustomPushTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+CustomPushTransition.h"; sourceTree = "<group>"; };
 		2B465FA217877B0D0040209A /* UIViewController+CustomPushTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+CustomPushTransition.m"; sourceTree = "<group>"; };
-		2B49D8541783A5A8008AB361 /* NavBarSF@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBarSF@2x.png"; sourceTree = "<group>"; };
-		2B4C558E177CE88900078613 /* CameraFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraFrame@2x.png"; sourceTree = "<group>"; };
-		2B4C5591177CEA1D00078613 /* CancelButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButtonPressed@2x.png"; sourceTree = "<group>"; };
-		2B4C5596177D015B00078613 /* BlackCameraButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlackCameraButton@2x.png"; sourceTree = "<group>"; };
-		2B4C5597177D015B00078613 /* BlackCameraButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlackCameraButtonPressed@2x.png"; sourceTree = "<group>"; };
-		2B4C559A177D6E7E00078613 /* CancelButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButton@2x.png"; sourceTree = "<group>"; };
-		2B4C559B177D6E7E00078613 /* FlipCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlipCamera@2x.png"; sourceTree = "<group>"; };
-		2B4C559C177D6E7E00078613 /* FlipCameraPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlipCameraPressed@2x.png"; sourceTree = "<group>"; };
 		2B4D72ED177961E900B6057F /* ImagePreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePreviewViewController.h; sourceTree = "<group>"; };
 		2B4D72EE177961E900B6057F /* ImagePreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePreviewViewController.m; sourceTree = "<group>"; };
 		2B4D72F11779650500B6057F /* goToImageViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goToImageViewSegue.h; sourceTree = "<group>"; };
@@ -468,6 +453,13 @@
 		2B6AFA8B16A60550007B0A5A /* image61Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image61Hi@2x.png"; sourceTree = "<group>"; };
 		2B6AFA8D16A60550007B0A5A /* image62Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image62Hi@2x.png"; sourceTree = "<group>"; };
 		2B6AFA8F16A60550007B0A5A /* image63Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image63Hi@2x.png"; sourceTree = "<group>"; };
+		2B74B8EB17ADE53000A66EA9 /* CameraButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraButton@2x.png"; sourceTree = "<group>"; };
+		2B74B8EC17ADE53000A66EA9 /* CancelButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelButton@2x.png"; sourceTree = "<group>"; };
+		2B74B8ED17ADE53100A66EA9 /* FlipCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlipCamera@2x.png"; sourceTree = "<group>"; };
+		2B74B8F117ADEAC300A66EA9 /* BackToCamButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackToCamButton@2x.png"; sourceTree = "<group>"; };
+		2B74B8F217ADEAC300A66EA9 /* CropButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CropButton@2x.png"; sourceTree = "<group>"; };
+		2B74B8F317ADEAC300A66EA9 /* RefreshButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RefreshButton@2x.png"; sourceTree = "<group>"; };
+		2B74B8F817ADEF2000A66EA9 /* GoBackToEditViewButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GoBackToEditViewButton@2x.png"; sourceTree = "<group>"; };
 		2B75AE7F16B8AEB7002E5658 /* TutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialView.h; sourceTree = "<group>"; };
 		2B75AE8016B8AEB7002E5658 /* TutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialView.m; sourceTree = "<group>"; };
 		2B80179E16AC93EC001271FC /* image48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image48@2x.png"; sourceTree = "<group>"; };
@@ -525,7 +517,11 @@
 		2B95973116B5F388009D1C91 /* FaceSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FaceSel@2x.png"; sourceTree = "<group>"; };
 		2B95973316B5F57B009D1C91 /* FavUnSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FavUnSel@2x.png"; sourceTree = "<group>"; };
 		2B95973516B5F622009D1C91 /* FavSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FavSel@2x.png"; sourceTree = "<group>"; };
+		2B9C68B417AEF00F0057D90B /* FavoriteFlash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FavoriteFlash@2x.png"; sourceTree = "<group>"; };
+		2B9C68B517AEF00F0057D90B /* PasteFlash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PasteFlash@2x.png"; sourceTree = "<group>"; };
 		2B9EB10416D9DF040059EB04 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		2BA22FD217AEC664005AD875 /* FlashCheckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashCheckView.h; sourceTree = "<group>"; };
+		2BA22FD317AEC664005AD875 /* FlashCheckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashCheckView.m; sourceTree = "<group>"; };
 		2BA644E614F3006A00292BFD /* StickyFaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StickyFaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BA644EA14F3006A00292BFD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2BA644EC14F3006A00292BFD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -556,22 +552,20 @@
 		2BAB52A416A4D1710095549F /* image50Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image50Hi@2x.png"; sourceTree = "<group>"; };
 		2BAB52AA16A4D1710095549F /* image53Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image53Hi@2x.png"; sourceTree = "<group>"; };
 		2BAB52AC16A4D1710095549F /* image54Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image54Hi@2x.png"; sourceTree = "<group>"; };
+		2BAB61BE17AA36870011527B /* User@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "User@2x.png"; sourceTree = "<group>"; };
+		2BAB61C017AA3A7F0011527B /* AddFace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddFace@2x.png"; sourceTree = "<group>"; };
+		2BAB61C217AACE1A0011527B /* PlusFace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PlusFace@2x.png"; sourceTree = "<group>"; };
+		2BAB61C417AAD5360011527B /* SquareFace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SquareFace@2x.png"; sourceTree = "<group>"; };
+		2BAB61C817AAE8EA0011527B /* SmileyAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SmileyAdd@2x.png"; sourceTree = "<group>"; };
+		2BAB61D417AB5B500011527B /* CustomFaceIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CustomFaceIcon@2x.png"; sourceTree = "<group>"; };
 		2BAB8BBF17908B86009B8A67 /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
 		2BAB8BC017908B86009B8A67 /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
-		2BAC73AF1780F250004D227F /* BottomShutter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BottomShutter@2x.png"; sourceTree = "<group>"; };
-		2BAC73B01780F250004D227F /* UpperShutter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpperShutter@2x.png"; sourceTree = "<group>"; };
-		2BAC73B3178138CF004D227F /* CheckmarkButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckmarkButton@2x.png"; sourceTree = "<group>"; };
-		2BAC73B4178138CF004D227F /* CheckmarkButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckmarkButtonPressed@2x.png"; sourceTree = "<group>"; };
-		2BAC73B5178138CF004D227F /* ClosePreviewButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClosePreviewButton@2x.png"; sourceTree = "<group>"; };
-		2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ClosePreviewButtonPressed@2x.png"; sourceTree = "<group>"; };
 		2BAC73BB1781525E004D227F /* goBackToCameraView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goBackToCameraView.h; sourceTree = "<group>"; };
 		2BAC73BC1781525E004D227F /* goBackToCameraView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goBackToCameraView.m; sourceTree = "<group>"; };
 		2BAE96F91781FCDF002FCAB9 /* goBackToCustomFaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goBackToCustomFaces.h; sourceTree = "<group>"; };
 		2BAE96FA1781FCDF002FCAB9 /* goBackToCustomFaces.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = goBackToCustomFaces.m; sourceTree = "<group>"; };
 		2BB0B98B17A4DE03006D04B1 /* CustomDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomDataModel.h; sourceTree = "<group>"; };
 		2BB0B98C17A4DE03006D04B1 /* CustomDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomDataModel.m; sourceTree = "<group>"; };
-		2BB0B98E17A5B741006D04B1 /* TestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestCell.h; sourceTree = "<group>"; };
-		2BB0B98F17A5B741006D04B1 /* TestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCell.m; sourceTree = "<group>"; };
 		2BB2A4051672BAA1007AA1A7 /* SpringboardLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringboardLayout.h; sourceTree = "<group>"; };
 		2BB2A4061672BAA1007AA1A7 /* SpringboardLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpringboardLayout.m; sourceTree = "<group>"; };
 		2BB2A4101672D781007AA1A7 /* SpringBoardLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpringBoardLayoutAttributes.h; sourceTree = "<group>"; };
@@ -669,7 +663,6 @@
 		2BC2BFB616CF70C100EEC319 /* image82Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image82Hi@2x.png"; sourceTree = "<group>"; };
 		2BC2BFC316CF76B400EEC319 /* image57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image57@2x.png"; sourceTree = "<group>"; };
 		2BC2BFC416CF76BA00EEC319 /* image57Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image57Hi@2x.png"; sourceTree = "<group>"; };
-		2BD3A9CA153689FC00BDEA55 /* copyHUD.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = copyHUD.xib; sourceTree = "<group>"; };
 		2BD3A9D21536918A00BDEA55 /* copyHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = copyHUD.h; sourceTree = "<group>"; };
 		2BD3A9D31536918A00BDEA55 /* copyHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = copyHUD.m; sourceTree = "<group>"; };
 		2BD7616F16E97FA900706600 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -680,13 +673,6 @@
 		2BD7617816EA688A00706600 /* ConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmViewController.m; sourceTree = "<group>"; };
 		2BD7BCA6177F9D4400A70EC9 /* CameraShutterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraShutterView.h; sourceTree = "<group>"; };
 		2BD7BCA7177F9D4400A70EC9 /* CameraShutterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraShutterView.m; sourceTree = "<group>"; };
-		2BD7BCA9177FE55700A70EC9 /* BackToCameraButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackToCameraButton@2x.png"; sourceTree = "<group>"; };
-		2BD7BCAA177FE55700A70EC9 /* BackToCameraButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackToCameraButtonPressed@2x.png"; sourceTree = "<group>"; };
-		2BD7BCAD177FEB0C00A70EC9 /* StickyFaceCropButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StickyFaceCropButton@2x.png"; sourceTree = "<group>"; };
-		2BD7BCAE177FEB0C00A70EC9 /* StickyFaceCropButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StickyFaceCropButtonPressed@2x.png"; sourceTree = "<group>"; };
-		2BD7BCB1177FF6C900A70EC9 /* RefreshButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RefreshButton@2x.png"; sourceTree = "<group>"; };
-		2BD7BCB2177FF6C900A70EC9 /* RefreshButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RefreshButtonPressed@2x.png"; sourceTree = "<group>"; };
-		2BD7BCB91780063C00A70EC9 /* Point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Point@2x.png"; sourceTree = "<group>"; };
 		2BDBEA80179B946400A756B5 /* Heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heart@2x.png"; sourceTree = "<group>"; };
 		2BDBEA85179B968400A756B5 /* Grid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grid@2x.png"; sourceTree = "<group>"; };
 		2BDBEB50179EFF0500A756B5 /* goToEditViewSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = goToEditViewSegue.h; sourceTree = "<group>"; };
@@ -998,6 +984,14 @@
 		2B49D8BF1785032D008AB361 /* ContainerViewController  */ = {
 			isa = PBXGroup;
 			children = (
+				2B9C68B417AEF00F0057D90B /* FavoriteFlash@2x.png */,
+				2B9C68B517AEF00F0057D90B /* PasteFlash@2x.png */,
+				2BAB61D417AB5B500011527B /* CustomFaceIcon@2x.png */,
+				2BAB61C817AAE8EA0011527B /* SmileyAdd@2x.png */,
+				2BAB61C417AAD5360011527B /* SquareFace@2x.png */,
+				2BAB61C217AACE1A0011527B /* PlusFace@2x.png */,
+				2BAB61C017AA3A7F0011527B /* AddFace@2x.png */,
+				2BAB61BE17AA36870011527B /* User@2x.png */,
 				2BDBEA85179B968400A756B5 /* Grid@2x.png */,
 				2BDBEA80179B946400A756B5 /* Heart@2x.png */,
 				2B1EBA5B1789076900A30B8B /* Camera@2x.png */,
@@ -1011,8 +1005,6 @@
 				2B1EBA631789E4B700A30B8B /* UIColor+StickyFacesColors.m */,
 				2BAB8BBF17908B86009B8A67 /* TabButton.h */,
 				2BAB8BC017908B86009B8A67 /* TabButton.m */,
-				2BB0B98E17A5B741006D04B1 /* TestCell.h */,
-				2BB0B98F17A5B741006D04B1 /* TestCell.m */,
 			);
 			name = "ContainerViewController ";
 			sourceTree = "<group>";
@@ -1020,27 +1012,13 @@
 		2B4D72F0177964E900B6057F /* Segue Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2B49D8541783A5A8008AB361 /* NavBarSF@2x.png */,
-				2BAC73B3178138CF004D227F /* CheckmarkButton@2x.png */,
-				2BAC73B4178138CF004D227F /* CheckmarkButtonPressed@2x.png */,
-				2BAC73B5178138CF004D227F /* ClosePreviewButton@2x.png */,
-				2BAC73B6178138CF004D227F /* ClosePreviewButtonPressed@2x.png */,
-				2BAC73AF1780F250004D227F /* BottomShutter@2x.png */,
-				2BAC73B01780F250004D227F /* UpperShutter@2x.png */,
-				2BD7BCB91780063C00A70EC9 /* Point@2x.png */,
-				2BD7BCB1177FF6C900A70EC9 /* RefreshButton@2x.png */,
-				2BD7BCB2177FF6C900A70EC9 /* RefreshButtonPressed@2x.png */,
-				2B4C559B177D6E7E00078613 /* FlipCamera@2x.png */,
-				2B4C559C177D6E7E00078613 /* FlipCameraPressed@2x.png */,
-				2B4C5596177D015B00078613 /* BlackCameraButton@2x.png */,
-				2B4C5597177D015B00078613 /* BlackCameraButtonPressed@2x.png */,
-				2BD7BCAD177FEB0C00A70EC9 /* StickyFaceCropButton@2x.png */,
-				2BD7BCAE177FEB0C00A70EC9 /* StickyFaceCropButtonPressed@2x.png */,
-				2B4C558E177CE88900078613 /* CameraFrame@2x.png */,
-				2BD7BCA9177FE55700A70EC9 /* BackToCameraButton@2x.png */,
-				2BD7BCAA177FE55700A70EC9 /* BackToCameraButtonPressed@2x.png */,
-				2B4C559A177D6E7E00078613 /* CancelButton@2x.png */,
-				2B4C5591177CEA1D00078613 /* CancelButtonPressed@2x.png */,
+				2B74B8EB17ADE53000A66EA9 /* CameraButton@2x.png */,
+				2B74B8EC17ADE53000A66EA9 /* CancelButton@2x.png */,
+				2B74B8ED17ADE53100A66EA9 /* FlipCamera@2x.png */,
+				2B74B8F117ADEAC300A66EA9 /* BackToCamButton@2x.png */,
+				2B74B8F217ADEAC300A66EA9 /* CropButton@2x.png */,
+				2B74B8F317ADEAC300A66EA9 /* RefreshButton@2x.png */,
+				2B74B8F817ADEF2000A66EA9 /* GoBackToEditViewButton@2x.png */,
 				2B4D72F11779650500B6057F /* goToImageViewSegue.h */,
 				2B4D72F21779650500B6057F /* goToImageViewSegue.m */,
 				2BDBEB50179EFF0500A756B5 /* goToEditViewSegue.h */,
@@ -1097,7 +1075,6 @@
 		2B8C3ED51691423500D6B90A /* User Interfaces */ = {
 			isa = PBXGroup;
 			children = (
-				2BD3A9CA153689FC00BDEA55 /* copyHUD.xib */,
 				2B80184F16AE0172001271FC /* iPhone5Storyboard.storyboard */,
 				2B8CE0531609732A00EA5996 /* MainStoryboard.storyboard */,
 			);
@@ -1319,6 +1296,8 @@
 				2B53A41F17337A8D0091A74D /* PointsView.m */,
 				2B4D72F4177975F900B6057F /* FacePoint.h */,
 				2B4D72F5177975F900B6057F /* FacePoint.m */,
+				2BA22FD217AEC664005AD875 /* FlashCheckView.h */,
+				2BA22FD317AEC664005AD875 /* FlashCheckView.m */,
 			);
 			name = "Main Classes";
 			sourceTree = "<group>";
@@ -1413,7 +1392,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BA644F514F3006A00292BFD /* InfoPlist.strings in Resources */,
-				2BD3A9CB153689FC00BDEA55 /* copyHUD.xib in Resources */,
 				2B8CE0541609732A00EA5996 /* MainStoryboard.storyboard in Resources */,
 				2BA66B7616A10818001890E9 /* TB3@2x.png in Resources */,
 				2BA66B7816A10955001890E9 /* TabSel@2x.png in Resources */,
@@ -1709,30 +1687,24 @@
 				2BF1CDA416D6AEFA0064363B /* Icon-Small@2x.png in Resources */,
 				2BF1CDA616D6B0C70064363B /* LogoBackground(4)@2x.png in Resources */,
 				2BF1CDA816D6D8F20064363B /* Default.png in Resources */,
-				2B4C558F177CE88900078613 /* CameraFrame@2x.png in Resources */,
-				2B4C5593177CEA1D00078613 /* CancelButtonPressed@2x.png in Resources */,
-				2B4C5598177D015B00078613 /* BlackCameraButton@2x.png in Resources */,
-				2B4C5599177D015B00078613 /* BlackCameraButtonPressed@2x.png in Resources */,
-				2B4C559D177D6E7E00078613 /* CancelButton@2x.png in Resources */,
-				2B4C559E177D6E7E00078613 /* FlipCamera@2x.png in Resources */,
-				2B4C559F177D6E7E00078613 /* FlipCameraPressed@2x.png in Resources */,
-				2BD7BCAB177FE55700A70EC9 /* BackToCameraButton@2x.png in Resources */,
-				2BD7BCAC177FE55700A70EC9 /* BackToCameraButtonPressed@2x.png in Resources */,
-				2BD7BCAF177FEB0C00A70EC9 /* StickyFaceCropButton@2x.png in Resources */,
-				2BD7BCB0177FEB0C00A70EC9 /* StickyFaceCropButtonPressed@2x.png in Resources */,
-				2BD7BCB3177FF6C900A70EC9 /* RefreshButton@2x.png in Resources */,
-				2BD7BCB4177FF6C900A70EC9 /* RefreshButtonPressed@2x.png in Resources */,
-				2BD7BCBA1780063D00A70EC9 /* Point@2x.png in Resources */,
-				2BAC73B11780F250004D227F /* BottomShutter@2x.png in Resources */,
-				2BAC73B21780F250004D227F /* UpperShutter@2x.png in Resources */,
-				2BAC73B7178138CF004D227F /* CheckmarkButton@2x.png in Resources */,
-				2BAC73B8178138CF004D227F /* CheckmarkButtonPressed@2x.png in Resources */,
-				2BAC73B9178138CF004D227F /* ClosePreviewButton@2x.png in Resources */,
-				2BAC73BA178138CF004D227F /* ClosePreviewButtonPressed@2x.png in Resources */,
-				2B49D8551783A5A8008AB361 /* NavBarSF@2x.png in Resources */,
 				2B1EBA5C1789076900A30B8B /* Camera@2x.png in Resources */,
 				2BDBEA82179B946400A756B5 /* Heart@2x.png in Resources */,
 				2BDBEA86179B968400A756B5 /* Grid@2x.png in Resources */,
+				2BAB61BF17AA36870011527B /* User@2x.png in Resources */,
+				2BAB61C117AA3A7F0011527B /* AddFace@2x.png in Resources */,
+				2BAB61C317AACE1A0011527B /* PlusFace@2x.png in Resources */,
+				2BAB61C517AAD5370011527B /* SquareFace@2x.png in Resources */,
+				2BAB61C917AAE8EA0011527B /* SmileyAdd@2x.png in Resources */,
+				2BAB61D517AB5B500011527B /* CustomFaceIcon@2x.png in Resources */,
+				2B74B8EE17ADE53100A66EA9 /* CameraButton@2x.png in Resources */,
+				2B74B8EF17ADE53100A66EA9 /* CancelButton@2x.png in Resources */,
+				2B74B8F017ADE53100A66EA9 /* FlipCamera@2x.png in Resources */,
+				2B74B8F417ADEAC300A66EA9 /* BackToCamButton@2x.png in Resources */,
+				2B74B8F517ADEAC300A66EA9 /* CropButton@2x.png in Resources */,
+				2B74B8F617ADEAC300A66EA9 /* RefreshButton@2x.png in Resources */,
+				2B74B8FA17ADEF2000A66EA9 /* GoBackToEditViewButton@2x.png in Resources */,
+				2B9C68B617AEF00F0057D90B /* FavoriteFlash@2x.png in Resources */,
+				2B9C68B717AEF00F0057D90B /* PasteFlash@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1784,7 +1756,7 @@
 				2BAB8BC117908B86009B8A67 /* TabButton.m in Sources */,
 				2BDBEB52179EFF0700A756B5 /* goToEditViewSegue.m in Sources */,
 				2BB0B98D17A4DE04006D04B1 /* CustomDataModel.m in Sources */,
-				2BB0B99017A5B741006D04B1 /* TestCell.m in Sources */,
+				2BA22FD417AEC664005AD875 /* FlashCheckView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

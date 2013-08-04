@@ -13,7 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-@interface FacePoint ()
+@interface FacePoint () 
 
 
 @property (nonatomic) CGPoint origC;
@@ -22,10 +22,47 @@
 @property (nonatomic) CGPoint origE;
 @property (nonatomic) CGPoint origF;
 
+@property (nonatomic, strong) UIView *outerRing;
+
 
 @end
 
 @implementation FacePoint
+
+
+-(void)animateWithBounce:(UIView*)theView
+{
+      theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
+    
+
+   
+    
+        
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                        
+            theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.2, 1.2);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+            } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.2 animations:^{
+                           theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.2, 1.2);
+                    } completion:^(BOOL finished) {
+                        [UIView animateWithDuration:0.2 animations:^{
+                               theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+                        } completion:^(BOOL finished) {
+                            [UIView animateWithDuration:0.2 animations:^{
+
+                                theView.transform = CGAffineTransformIdentity;
+
+                            }];
+                        }];
+                    }];
+                }];
+            }];
+
+
+}
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -34,22 +71,43 @@
     if (self) {
 
         
-        UIImage *point = [UIImage imageNamed:@"Point"];
+        self.backgroundColor = [UIColor clearColor];
         
-        CGFloat cornerRadius = frame.size.width/2.0f;
+        
+        
+        
+        UIView *innerCircle = [[UIView alloc]initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, frame.size.width * 0.5, frame.size.height * 0.5)];
+        innerCircle.layer.cornerRadius = innerCircle.bounds.size.width/2.0f;
+        innerCircle.backgroundColor = [UIColor whiteColor];
+        innerCircle.center = self.center;
+        
+        
+        [self addSubview:innerCircle];
+        
+        
+        
+        self.outerRing = [[UIView alloc]initWithFrame:CGRectMake(frame.origin.x, frame.origin.y, self.bounds.size.width * 0.8, self.bounds.size.height * 0.8)];
+        
+        self.outerRing.backgroundColor = [UIColor clearColor];
+        self.outerRing.layer.cornerRadius = self.outerRing.bounds.size.width/2.0f;
+        self.outerRing.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.outerRing.layer.borderWidth = 3.0f;
+        self.outerRing.center = self.center;
+        [self addSubview:self.outerRing];
         
 
-        self.backgroundColor = [UIColor clearColor];
-        self.layer.cornerRadius = cornerRadius;
-        self.layer.contents = (__bridge id)(point.CGImage);
-        
         
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(dragging:)];
         
         
         
         
+        
         [self addGestureRecognizer:pan];
+        
+        
+        [self animateWithBounce:self.outerRing];
+        
         
         
     }
@@ -62,6 +120,21 @@
 -(void)dragging:(UIPanGestureRecognizer *)p
 
 {
+   
+    
+    
+    if (p.state == UIGestureRecognizerStateEnded) {
+        
+        
+        [self animateWithBounce:self.outerRing];
+    }
+    
+    
+    else if ((p.state == UIGestureRecognizerStateBegan) |UIGestureRecognizerStateChanged) {
+        
+
+        self.outerRing.transform = CGAffineTransformMakeScale(0.001, 0.001);
+        
     
     
     UIView *newView = p.view;
@@ -137,11 +210,21 @@
     
     self.thirdControlPointView.center = f;
     
+    
+    
     [self.delegate refreshView];
-    
-    
+        
+
+        
+    }
+
+
+
     
 }
+
+
+
 
 
 

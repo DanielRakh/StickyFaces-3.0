@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "StickyFacesViewController.h"
-#import "DataModel.h"
 #import "SpringboardLayout.h"
+
+
+
+@class DataModel;
 
 
 @interface FavoritesViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate , SpringBoardLayoutDelegate, StickyFacesViewControllerDelegate, UIGestureRecognizerDelegate>

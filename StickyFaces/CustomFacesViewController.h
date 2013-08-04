@@ -21,4 +21,8 @@
 //Unwind Segue used by ConfirmViewController
 -(IBAction)goBackToCustomFacesViewController:(UIStoryboardSegue *)segue;
 
+
+- (void)activateDeletionMode:(id)sender;
+
+
 @end

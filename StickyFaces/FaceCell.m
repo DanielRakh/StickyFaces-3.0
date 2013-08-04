@@ -26,22 +26,24 @@
 @synthesize faceButton;
 
 
+
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        _textLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
-        [self.contentView addSubview:_textLabel];
+    
         
     
         self.faceButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.faceButton.frame =  CGRectMake(0, 0, 95, 110);
+        self.faceButton.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
         self.faceButton.adjustsImageWhenHighlighted = YES;
         self.faceButton.adjustsImageWhenDisabled = YES;
         self.faceButton.userInteractionEnabled = YES;
         self.faceButton.highlighted = NO;
-        self.faceButton.showsTouchWhenHighlighted = YES;
+        self.faceButton.showsTouchWhenHighlighted = NO;
 
         
         [self.contentView addSubview:self.faceButton];

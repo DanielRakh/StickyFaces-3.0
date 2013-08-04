@@ -13,4 +13,5 @@
 + (UIColor *)cameraViewColor;
 + (UIColor *)catalogViewColor;
 + (UIColor *)backgroundViewColor;
++ (UIColor *)flashCheckViewColor;
 @end

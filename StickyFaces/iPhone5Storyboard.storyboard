@@ -16,8 +16,8 @@
                                 <rect key="frame" x="0.0" y="44" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="12" minimumInteritemSpacing="0.0" id="aN1-EZ-xas" customClass="SpringboardLayout">
-                                    <size key="itemSize" width="95" height="113.75"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aN1-EZ-xas" customClass="SpringboardLayout">
+                                    <size key="itemSize" width="0.0" height="0.0"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -28,11 +28,11 @@
                                     <outlet property="delegate" destination="UCP-7c-e8r" id="UAQ-24-M4n"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="otd-xs-CjB">
-                                <rect key="frame" x="204" y="5" width="73" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="otd-xs-CjB">
+                                <rect key="frame" x="261" y="5" width="25" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" image="AddFace@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -43,25 +43,11 @@
                                     <segue destination="3iR-xe-aT6" kind="modal" id="5Kt-1k-sKj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="F9w-54-GNF">
-                                <rect key="frame" x="26" y="0.0" width="73" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="retrieveImage:" destination="UCP-7c-e8r" eventType="touchUpInside" id="waT-MT-dEI"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="addFace" destination="otd-xs-CjB" id="L29-Ca-nOg"/>
                         <outlet property="facesCollectionView" destination="hgl-Xs-SEw" id="e85-gs-Sz4"/>
                     </connections>
                 </viewController>
@@ -81,15 +67,31 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="427"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </view>
-                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MfW-VH-GQj">
-                                <rect key="frame" x="112" y="449" width="97" height="97"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="SqT-uK-6S4">
+                                <rect key="frame" x="160" y="427" width="161" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="BlackCameraButton@2x.png">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button" image="CancelButton@2x.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="performUnwindSegue" destination="3iR-xe-aT6" eventType="touchUpInside" id="jFr-vC-NvK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="MfW-VH-GQj">
+                                <rect key="frame" x="0.0" y="427" width="160" height="141"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="CameraButton@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" image="BlackCameraButtonPressed@2x.png">
+                                <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -97,14 +99,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="33p-tG-Fqa">
-                                <rect key="frame" x="231" y="444" width="61" height="61"/>
+                                <rect key="frame" x="160" y="497" width="161" height="71"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Button" image="FlipCamera@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" image="FlipCameraPressed@2x.png">
+                                <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -116,6 +118,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="cameraView" destination="b8y-Zh-WcD" id="2h5-m3-dyb"/>
+                        <outlet property="cancelButton" destination="SqT-uK-6S4" id="6XO-fv-ybh"/>
                         <outlet property="captureButton" destination="MfW-VH-GQj" id="fRX-uX-PYR"/>
                         <outlet property="toggleButton" destination="33p-tG-Fqa" id="EVK-lj-E8s"/>
                         <segue destination="o6d-D4-45v" kind="custom" identifier="goToImageView" customClass="goToImageViewSegue" id="wds-U4-heU"/>
@@ -141,26 +144,58 @@
                                 <color key="backgroundColor" red="1" green="0.61222518469999998" blue="0.41659053489999998" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rb6-rj-C3w">
-                                <rect key="frame" x="112" y="449" width="97" height="97"/>
+                                <rect key="frame" x="0.0" y="427" width="160" height="141"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" image="StickyFaceCropButton@2x.png">
+                                <state key="normal" image="CropButton@2x.png">
                                     <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" image="StickyFaceCropButtonPressed@2x.png">
+                                <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="cropFace:" destination="o6d-D4-45v" eventType="touchUpInside" id="Qmz-M0-qjy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uha-eL-v1A">
+                                <rect key="frame" x="160" y="427" width="161" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="BackToCamButton@2x.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="performUnwindSegue:" destination="o6d-D4-45v" eventType="touchUpInside" id="Sea-IO-PZA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VVv-3M-xM4">
+                                <rect key="frame" x="160" y="497" width="161" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="RefreshButton@2x.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetPoints:" destination="o6d-D4-45v" eventType="touchUpInside" id="pDh-lv-2DP"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="backToCamButton" destination="Uha-eL-v1A" id="0Ld-I3-R8C"/>
                         <outlet property="cropButton" destination="Rb6-rj-C3w" id="6SC-kD-uTX"/>
                         <outlet property="imageView" destination="PpH-TW-YSJ" id="yfk-MN-y3m"/>
+                        <outlet property="resetPointsButton" destination="VVv-3M-xM4" id="xcR-Ka-Ykq"/>
                         <segue destination="vEI-eY-98h" kind="unwind" identifier="goBackToCameraView" unwindAction="goBackToCameraView:" id="2WX-cd-k1i"/>
                         <segue destination="y4e-De-jJg" kind="custom" identifier="goToEditView" customClass="goToEditViewSegue" id="FI6-jd-gLj"/>
                     </connections>
@@ -183,42 +218,43 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="011-ja-adb">
-                                <rect key="frame" x="43" y="461" width="87" height="87"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mJl-W1-6No">
+                                <rect key="frame" x="160" y="427" width="160" height="141"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="ClosePreviewButton@2x.png">
+                                <state key="normal" image="CheckMarkButton@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" image="ClosePreviewButtonPressed@2x.png">
+                                <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="goBackToCamera:" destination="y4e-De-jJg" eventType="touchUpInside" id="raR-kx-fsF"/>
+                                    <action selector="scaleImageDown:" destination="y4e-De-jJg" eventType="touchUpInside" id="2yn-or-vRY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AUJ-VW-fbF">
-                                <rect key="frame" x="195" y="461" width="87" height="87"/>
+                            <button autoresizesSubviews="NO" clearsContextBeforeDrawing="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LEw-m7-BoO">
+                                <rect key="frame" x="0.0" y="427" width="160" height="141"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="CheckmarkButton@2x.png">
+                                <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="GoBackToEditViewButton@2x.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <state key="highlighted" image="CheckmarkButtonPressed@2x.png">
+                                <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="scaleImageDown:" destination="y4e-De-jJg" eventType="touchUpInside" id="cLN-E3-314"/>
+                                    <action selector="goBackToCamera:" destination="y4e-De-jJg" eventType="touchUpInside" id="Bmr-aZ-mjh"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="checkMarkButton" destination="AUJ-VW-fbF" id="6kv-an-PiG"/>
-                        <outlet property="closeButton" destination="011-ja-adb" id="71E-i3-nOF"/>
+                        <outlet property="checkMarkButton" destination="mJl-W1-6No" id="lbT-WQ-UoJ"/>
+                        <outlet property="closeButton" destination="LEw-m7-BoO" id="A8A-13-XGK"/>
                         <outlet property="faceImageView" destination="uI7-an-zFB" id="0cN-Ex-rMR"/>
                         <segue destination="Yyg-o1-ZQ7" kind="unwind" identifier="goBackToCustomFaces" unwindAction="goBackToCustomFacesViewController:" id="cE5-Zf-OGf"/>
                     </connections>
@@ -240,8 +276,8 @@
                                 <rect key="frame" x="0.0" y="44" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="12" minimumInteritemSpacing="0.0" id="896-Sz-gOm" customClass="SpringboardLayout">
-                                    <size key="itemSize" width="95" height="113.75"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="896-Sz-gOm" customClass="SpringboardLayout">
+                                    <size key="itemSize" width="0.0" height="0.0"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -316,8 +352,8 @@
                                 <rect key="frame" x="0.0" y="44" width="320" height="455"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="4" minimumInteritemSpacing="0.0" id="kSm-K9-Zjg" customClass="SpringboardLayout">
-                                    <size key="itemSize" width="95" height="110"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kSm-K9-Zjg" customClass="SpringboardLayout">
+                                    <size key="itemSize" width="0.0" height="0.0"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -329,7 +365,7 @@
                                 </connections>
                             </collectionView>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" id="eEO-WF-wYO" customClass="SMPageControl">
-                                <rect key="frame" x="0.0" y="435" width="320" height="36"/>
+                                <rect key="frame" x="0.0" y="445" width="320" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -396,17 +432,102 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BlackCameraButton@2x.png" width="194" height="194"/>
-        <image name="BlackCameraButtonPressed@2x.png" width="194" height="194"/>
-        <image name="CheckmarkButton@2x.png" width="173" height="173"/>
-        <image name="CheckmarkButtonPressed@2x.png" width="173" height="173"/>
-        <image name="ClosePreviewButton@2x.png" width="173" height="173"/>
-        <image name="ClosePreviewButtonPressed@2x.png" width="173" height="173"/>
-        <image name="FlipCamera@2x.png" width="122" height="122"/>
-        <image name="FlipCameraPressed@2x.png" width="122" height="122"/>
-        <image name="StickyFaceCropButton@2x.png" width="194" height="194"/>
-        <image name="StickyFaceCropButtonPressed@2x.png" width="194" height="194"/>
+        <image name="AddFace@2x.png" width="52" height="52"/>
+        <image name="BackToCamButton@2x.png" width="322" height="142"/>
+        <image name="CameraButton@2x.png" width="320" height="282"/>
+        <image name="CancelButton@2x.png" width="322" height="142"/>
+        <image name="CheckMarkButton@2x.png" width="320" height="282"/>
+        <image name="CropButton@2x.png" width="320" height="282"/>
+        <image name="FlipCamera@2x.png" width="322" height="142"/>
+        <image name="GoBackToEditViewButton@2x.png" width="320" height="282"/>
+        <image name="RefreshButton@2x.png" width="322" height="142"/>
     </resources>
+    <classes>
+        <class className="ConfirmViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cameraButtonPressed:"/>
+                <relationship kind="action" name="goBackToCameraView:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="performUnwindSegue"/>
+                <relationship kind="outlet" name="cameraView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="cancelButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="captureButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="toggleButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="CustomFacesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomFacesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="goBackToCustomFacesViewController:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="toggleDeleteMode:"/>
+                <relationship kind="outlet" name="addFace" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="editButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="facesCollectionView" candidateClass="UICollectionView"/>
+            </relationships>
+        </class>
+        <class className="EditViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="checkMarkButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="faceImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="FavoritesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoritesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleDeleteMode:"/>
+                <relationship kind="outlet" name="editButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="trueView" candidateClass="UICollectionView"/>
+            </relationships>
+        </class>
+        <class className="ImagePreviewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImagePreviewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resetPoints:"/>
+                <relationship kind="outlet" name="backToCamButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cropButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="resetPointsButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="LogoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LogoViewController.h"/>
+        </class>
+        <class className="NewContainerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewContainerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="containerView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="SMPageControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SMPageControl.h"/>
+        </class>
+        <class className="SpringboardLayout" superclassName="UICollectionViewFlowLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpringboardLayout.h"/>
+        </class>
+        <class className="StickyFacesViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StickyFacesViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="SMPageControl"/>
+                <relationship kind="outlet" name="trueView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="tutorialButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="TutorialView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TutorialView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

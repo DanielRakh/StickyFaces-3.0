@@ -9,8 +9,8 @@
 #import "ImagePreviewViewController.h"
 #import "PointsView.h"
 #import "EditViewController.h"
-#import "CameraOverlay.h"
 #import "UIImage+Resize.h"
+#import "UIColor+StickyFacesColors.h"
 
 @interface ImagePreviewViewController ()
 
@@ -19,6 +19,9 @@
 @property (nonatomic, strong) PointsView *pointsView;
 
 @property (weak, nonatomic) IBOutlet UIButton *cropButton;
+@property (weak, nonatomic) IBOutlet UIButton *backToCamButton;
+@property (weak, nonatomic) IBOutlet UIButton *resetPointsButton;
+
 
 @property (nonatomic, strong) UIImage *croppedImage;
 
@@ -37,46 +40,12 @@
     CAShapeLayer *fillLayer = [CAShapeLayer layer];
     fillLayer.path = path.CGPath;
     fillLayer.fillRule = kCAFillRuleEvenOdd;
-    fillLayer.fillColor = [UIColor colorWithWhite:0.902 alpha:0.800].CGColor;
-    fillLayer.opacity = 1.0;
+    fillLayer.fillColor = [UIColor whiteColor].CGColor;
+    fillLayer.opacity = 0.30;
     
     return fillLayer;
     
 }
-
-
-//
-//-(UIImage *)returnCroppedImageFromImage:(UIImage *)originalImage withPath:(UIBezierPath *)cropPath withCompletionBlock:(void (^)(void))completionBlock {
-//    
-//
-//    
-//    
-//    UIImage *passedImage = [self maskImage:originalImage toPath:cropPath];
-//    
-//    
-//    CALayer *faceLayer = [CALayer layer];
-//    faceLayer.contents = (id)passedImage.CGImage; //Size of Image is 320 x 427
-//    faceLayer.bounds = CGRectMake(0, 0, self.imageView.bounds.size.width, self.imageView.bounds.size.height);
-//    faceLayer.position = CGPointMake(CGRectGetMidX(self.imageView.bounds), CGRectGetMidY(self.imageView.bounds));
-//    faceLayer.shadowColor = [UIColor blackColor].CGColor;
-//    faceLayer.shadowOpacity = 1.0;
-//    faceLayer.shadowOffset = CGSizeMake(0, 1.0);
-//    
-//    
-//    UIGraphicsBeginImageContextWithOptions(faceLayer.bounds.size, YES, [UIScreen mainScreen].scale);
-//    
-//    [faceLayer renderInContext:UIGraphicsGetCurrentContext()];
-//    UIImage *croppedImage = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//  
-//    return croppedImage;
-//    
-//    if (croppedImage) {
-//        completionBlock();
-//    }
-//
-//    
-//}
 
 
 -(UIImage *)renderImageFromLayer:(CALayer *)layer {
@@ -94,8 +63,8 @@
 -(IBAction)cropFace:(id)sender {
     
     
-    CAShapeLayer *transparentBackground = [self createTransparentBackground];
-    [self.imageView.layer addSublayer:transparentBackground];
+//    CAShapeLayer *transparentBackground = [self createTransparentBackground];
+//    [self.imageView.layer addSublayer:transparentBackground];
     
     
     
@@ -154,33 +123,7 @@
     
     NSLog(@"Masked Image Size:(%f,%f)",maskedImage.size.width,maskedImage.size.height);
     
-    //    CAShapeLayer *containerLayer = [CAShapeLayer layer];
-    //
-    //    UIBezierPath *bPath = [UIBezierPath bezierPathWithCGPath:path.CGPath];
-    //    [bPath applyTransform:CGAffineTransformMakeScale(1.1, 1.1)];
-    //    containerLayer.path = bPath.CGPath;
-    //    containerLayer.fillColor = [UIColor whiteColor].CGColor;
-    //    containerLayer.strokeColor = [UIColor blackColor].CGColor;
-    
-    //    CALayer *imageLayer = [CALayer layer];
-    //    imageLayer.frame = CGRectMake(0, 0, maskedImage.size.width, maskedImage.size.height);
-    //    imageLayer.contents = (id)maskedImage.CGImage;
-    
-    //    imageLayer.position = CGPointMake(containerLayer.bounds.size.width/2.0f + 80, containerLayer.bounds.size.height/2.0f + 90);
-    
-    //    imageLayer.zPosition = 1.0f;
-    
-    
-    //    [containerLayer addSublayer:imageLayer];
-    
-    //
-    //    NSLog(@"self.containerLaeyer.position: %@",NSStringFromCGPoint(containerLayer.position));
-    
-    
-    //    NSLog(@"self.imageLayer.position: %@",NSStringFromCGPoint(imageLayer.position));
-    //
-    //    NSLog(@"Containerlayerbounds:%@",NSStringFromCGRect(containerLayer.bounds));
-    
+
     
     
     return maskedImage;
@@ -195,63 +138,27 @@
 
     
 }
-
--(void)performUnwindSegue {
-        
+- (IBAction)performUnwindSegue:(id)sender {
+    
     [self performSegueWithIdentifier:@"goBackToCameraView" sender:self];
+
 }
 
 
 -(void)setupElements {
   
-    
-    CameraOverlay *cameraOverlay = [[CameraOverlay alloc]initWithFrame:self.view.bounds];
-    cameraOverlay.userInteractionEnabled = NO;
-//    cameraOverlay.opaque = NO;
-    
+
     
     self.pointsView = [[PointsView alloc]initWithImageView:self.imageView];
     self.pointsView.userInteractionEnabled = YES;
     
     
      [self.view addSubview:self.pointsView];
-
-    [self.view addSubview:cameraOverlay];
-
-    
- 
-    
-    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    UIImage *backButtonImage = [UIImage imageNamed:@"BackToCameraButton"];
-    UIImage *backButtonPressedImage = [UIImage imageNamed:@"BackToCameraButtonPressed"];
-
-    
-    backButton.frame = CGRectMake(10, 484, backButtonImage.size.width, backButtonImage.size.height);
-    
-    [backButton setImage:backButtonImage forState:UIControlStateNormal];
-    [backButton setImage:backButtonPressedImage forState:UIControlStateHighlighted];
-
-    
-    [backButton addTarget:self action:@selector(performUnwindSegue) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:backButton];
-    
-    
-    UIButton *repositionPoints = [UIButton buttonWithType:UIButtonTypeCustom];
-   
-    UIImage *refreshButton = [UIImage imageNamed:@"RefreshButton"];
-    repositionPoints.frame = CGRectMake(231, 444, refreshButton.size.width, refreshButton.size.height);
-    [repositionPoints setImage:refreshButton forState:UIControlStateNormal];
-    [repositionPoints setImage:[UIImage imageNamed:@"RefreshButtonPressed"] forState:UIControlStateHighlighted];
-    [repositionPoints addTarget:self
-                         action:@selector(resetPoints:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:repositionPoints];
     
     
     [self.view bringSubviewToFront:self.cropButton];
-    [self.view bringSubviewToFront:repositionPoints];
+    [self.view bringSubviewToFront:self.resetPointsButton];
+    [self.view bringSubviewToFront:self.backToCamButton];
     
 
     
@@ -266,6 +173,10 @@
 
     self.imageView.image = self.faceImage;
 
+    
+    UIView *bottomBarView = [[UIView alloc]initWithFrame:CGRectMake(0, 427, 320, CGRectGetMaxY(self.view.bounds)- 427)];
+    bottomBarView.backgroundColor = [UIColor cameraViewColor];
+    [self.view addSubview:bottomBarView];
     
     
     [self setupElements];
@@ -285,7 +196,7 @@
 
 
 
--(void)resetPoints:(id)sender {
+-(IBAction)resetPoints:(id)sender {
     
     [self.pointsView repositionPoints];
     
