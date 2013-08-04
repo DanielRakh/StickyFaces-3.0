@@ -124,6 +124,7 @@
 		2B95973616B5F622009D1C91 /* FavSel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B95973516B5F622009D1C91 /* FavSel@2x.png */; };
 		2B9C68B617AEF00F0057D90B /* FavoriteFlash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B9C68B417AEF00F0057D90B /* FavoriteFlash@2x.png */; };
 		2B9C68B717AEF00F0057D90B /* PasteFlash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B9C68B517AEF00F0057D90B /* PasteFlash@2x.png */; };
+		2B9D172117AEFA77003B7B7E /* CheckMarkButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B9D172017AEFA77003B7B7E /* CheckMarkButton@2x.png */; };
 		2B9EB10516D9DF040059EB04 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B9EB10416D9DF040059EB04 /* MobileCoreServices.framework */; };
 		2BA22FD417AEC664005AD875 /* FlashCheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA22FD317AEC664005AD875 /* FlashCheckView.m */; };
 		2BA644EB14F3006A00292BFD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA644EA14F3006A00292BFD /* UIKit.framework */; };
@@ -519,6 +520,7 @@
 		2B95973516B5F622009D1C91 /* FavSel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FavSel@2x.png"; sourceTree = "<group>"; };
 		2B9C68B417AEF00F0057D90B /* FavoriteFlash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FavoriteFlash@2x.png"; sourceTree = "<group>"; };
 		2B9C68B517AEF00F0057D90B /* PasteFlash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PasteFlash@2x.png"; sourceTree = "<group>"; };
+		2B9D172017AEFA77003B7B7E /* CheckMarkButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CheckMarkButton@2x.png"; sourceTree = "<group>"; };
 		2B9EB10416D9DF040059EB04 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		2BA22FD217AEC664005AD875 /* FlashCheckView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlashCheckView.h; sourceTree = "<group>"; };
 		2BA22FD317AEC664005AD875 /* FlashCheckView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlashCheckView.m; sourceTree = "<group>"; };
@@ -1012,6 +1014,7 @@
 		2B4D72F0177964E900B6057F /* Segue Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2B9D172017AEFA77003B7B7E /* CheckMarkButton@2x.png */,
 				2B74B8EB17ADE53000A66EA9 /* CameraButton@2x.png */,
 				2B74B8EC17ADE53000A66EA9 /* CancelButton@2x.png */,
 				2B74B8ED17ADE53100A66EA9 /* FlipCamera@2x.png */,
@@ -1705,6 +1708,7 @@
 				2B74B8FA17ADEF2000A66EA9 /* GoBackToEditViewButton@2x.png in Resources */,
 				2B9C68B617AEF00F0057D90B /* FavoriteFlash@2x.png in Resources */,
 				2B9C68B717AEF00F0057D90B /* PasteFlash@2x.png in Resources */,
+				2B9D172117AEFA77003B7B7E /* CheckMarkButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
