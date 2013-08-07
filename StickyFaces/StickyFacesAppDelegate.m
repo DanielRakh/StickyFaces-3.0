@@ -84,12 +84,7 @@
     
 //        svc.delegate = fvc;
 
-    
-    [WCAlertView setDefaultStyle:WCAlertViewStyleWhite];
-    [WCAlertView setDefaultCustomiaztonBlock:^(WCAlertView *alertView) {
-        alertView.labelTextColor = [UIColor blackColor];
-        alertView.buttonTextColor = [UIColor blackColor];
-    }];
+
 
     [self.window makeKeyAndVisible];
 

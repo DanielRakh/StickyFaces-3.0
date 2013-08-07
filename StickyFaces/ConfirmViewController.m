@@ -10,16 +10,11 @@
 
 
 #import "ConfirmViewController.h"
-#import <AVFoundation/AVFoundation.h>
-#import <CoreVideo/CoreVideo.h>
-#import <CoreMedia/CoreMedia.h>
 #import <ImageIO/ImageIO.h>
 #import "OverlayView.h"
 #import "AVCamCaptureManager.h"
 #import "UIImage+Resize.h"
 #import "ImagePreviewViewController.h"
-#import "CameraOverlay.h"
-#import "CameraShutterView.h"
 
 #import "goBackToCameraView.h"
 #import "UIColor+StickyFacesColors.h"
@@ -74,10 +69,6 @@ BOOL frontCameraIsOn;
     [super viewWillAppear:YES];
     
     [[UIApplication sharedApplication]setStatusBarHidden:YES];
-    
-//    self.shutterView.hidden = NO;
-//    [self.shutterView performFirstSplitAnimation];
-    
 
 }
 
@@ -101,12 +92,6 @@ BOOL frontCameraIsOn;
 
 
 
--(void)viewWillDisappear:(BOOL)animated {
-    
-//    self.shutterView.hidden = YES;
-}
-
-
 -(IBAction)performUnwindSegue
 {
     [self performSegueWithIdentifier:@"goBackToCustomFaces" sender:self];
@@ -116,17 +101,12 @@ BOOL frontCameraIsOn;
 
 
 -(void)setupElements {
-    
+
+    ///This is cut-out for the face.
     OverlayView *overlayView = [[OverlayView alloc]initWithFrame:self.cameraView.bounds];
     
     [self.cameraView addSubview:overlayView];
-    
-    
-//    self.shutterView = [[CameraShutterView alloc]initWithFrame:self.view.bounds];
-//    self.shutterView.tag = 100;
-    
-//    [self.view addSubview:self.shutterView];
-    
+
     
     UIView *bottomBarView = [[UIView alloc]initWithFrame:CGRectMake(0, 427, 320, CGRectGetMaxY(self.view.bounds)- 427)];
     bottomBarView.backgroundColor = [UIColor cameraViewColor];
@@ -222,8 +202,8 @@ BOOL frontCameraIsOn;
 
 
 -(IBAction)cameraButtonPressed:(id)sender {
-//    [self.shutterView performCustomSplitAnimation];
 
+    
     
     AVCaptureConnection *videoConnection = nil;
     for (AVCaptureConnection *connection in self.captureManager.stillImageOutput.connections) {

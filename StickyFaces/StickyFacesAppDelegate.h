@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WCAlertView.h"
 //#import "ContainerViewController.h"
 
 

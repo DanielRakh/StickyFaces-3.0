@@ -11,7 +11,7 @@
 #import "FaceCell.h"
 #import "SMPageControl.h"
 #import "SpringBoardLayoutAttributes.h"
-#import "WCAlertView.h"
+//#import "WCAlertView.h"
 #import "FavoritesViewController.h"
 #import "UIViewController+RECurtainViewController.h"
 #import "TutorialView.h"
@@ -19,6 +19,7 @@
 
 
 #import "FlashCheckView.h"
+#import "SIAlertView.h"
 
 #import "UIColor+StickyFacesColors.h"
 
@@ -325,7 +326,7 @@
     [cell.faceButton setBackgroundImage:[self.dataModel faceAtIndex:indexPath.item
                                          ] forState:UIControlStateNormal];
 
-    [cell.faceButton addTarget:self action:@selector(delay:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.faceButton addTarget:self action:@selector(animateWithBounce:) forControlEvents:UIControlEventTouchUpInside];
     [cell.faceButton addTarget:self action:@selector(displayHUB:) forControlEvents:UIControlEventTouchUpInside];
     
 
@@ -336,6 +337,28 @@
 }
 
 
+
+
+-(void)animateWithBounce:(UIView*)theView
+{
+    
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
+        theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.2, 1.2);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                theView.transform = CGAffineTransformIdentity;
+            } completion:^(BOOL finished) {
+                
+            }];
+        }];
+    }];
+    
+    
+}
 
 #pragma mark 
 #pragma mark -  Welcome Screen & First Alert View
@@ -387,8 +410,34 @@
 
 -(void)displayAlertView {
 
-    WCAlertView *alert = [[WCAlertView alloc]initWithTitle:@"Good job!" message:@"Now open up your Messages App and paste." delegate:self cancelButtonTitle:@"Got it!" otherButtonTitles:nil, nil];
-    [alert show];
+    SIAlertView *alertView =[[SIAlertView alloc]initWithTitle:@"Good Job!" andMessage:@"Now Open Up Your Messages App and Paste!"];
+
+    
+    
+[alertView addButtonWithTitle:@"Got it!" type:SIAlertViewButtonTypeDestructive handler:^(SIAlertView *alertView) {
+    NSLog(@"Button Tapped");
+}];
+
+
+    alertView.willShowHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, willShowHandler3", alertView);
+    };
+    alertView.didShowHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, didShowHandler3", alertView);
+    };
+    alertView.willDismissHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, willDismissHandler3", alertView);
+    };
+    alertView.didDismissHandler = ^(SIAlertView *alertView) {
+        NSLog(@"%@, didDismissHandler3", alertView);
+    };
+    alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+    alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
+    alertView.viewBackgroundColor = [UIColor backgroundViewColor];
+    
+    [alertView show];
+    
+    
     appOpenedForTheFirstTime = NO;
     
 }
@@ -472,6 +521,11 @@
 }
 
 
+
+
+
+
+
 - (void)activateLongPressRecognizer:(UILongPressGestureRecognizer *)gr
 {
     if (gr.state == UIGestureRecognizerStateBegan)
@@ -486,17 +540,32 @@
             numberOfFaces = 9;
             
             if ([self.dataModel favoritesFaceCount] == numberOfFaces ) {
-            
-                [WCAlertView showAlertWithTitle:@"Oops!" message:@"You have too many favorite faces. Please delete some to add more." customizationBlock:nil completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
-                    if (buttonIndex == 0) {
-                        FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
-                        [fvc activateDeletionMode:self];
-                        [self.tabBarController setSelectedIndex:1];
-                    
-                        
-                    
-                    }
-                } cancelButtonTitle:@"Got it!" otherButtonTitles:nil];
+                
+                SIAlertView *alertView =[[SIAlertView alloc]initWithTitle:@"Whoops!" andMessage:@"You have too many favorite faces. Please delete some to add more."];
+                
+                [alertView addButtonWithTitle:@"Got it!" type:SIAlertViewButtonTypeDestructive handler:^(SIAlertView *alertView) {
+                    NSLog(@"Button Tapped");
+                }];
+                alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+                alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
+                alertView.viewBackgroundColor = [UIColor backgroundViewColor];
+                
+                [alertView show];
+                alertView.willDismissHandler = ^(SIAlertView *alertView) {
+                    NSLog(@"%@, willDismissHandler3", alertView);
+                };
+                
+//            
+//                [WCAlertView showAlertWithTitle:@"Oops!" message:@"You have too many favorite faces. Please delete some to add more." customizationBlock:nil completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
+//                    if (buttonIndex == 0) {
+//                        FavoritesViewController *fvc = (FavoritesViewController *)[self.tabBarController.viewControllers objectAtIndex:1];
+//                        [fvc activateDeletionMode:self];
+//                        [self.tabBarController setSelectedIndex:1];
+//                    
+//                        
+//                    
+//                    }
+//                } cancelButtonTitle:@"Got it!" otherButtonTitles:nil];
                 
             } else {
                 

@@ -19,7 +19,7 @@
 
 @property (nonatomic) IBOutlet UIButton *addFace;
 
-@property (nonatomic, strong) IBOutlet UIButton *editButton;
+@property (nonatomic, strong) UIButton *editButton;
 @property (nonatomic, strong) UIImage *deleteButton;
 @property (nonatomic, strong) UIImage *checkmarkButton;
 @property (nonatomic, strong) FlashCheckView *confirmedView;
@@ -68,21 +68,27 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor cameraViewColor];
-    self.facesCollectionView.backgroundColor = [UIColor backgroundViewColor];
     
+    self.view.backgroundColor = [UIColor cameraViewColor];
+    
+    
+    
+    //Setting up CollectionView
+    self.facesCollectionView.backgroundColor = [UIColor backgroundViewColor];
     [self.facesCollectionView registerClass:[FaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
+    
+    
+    //Setting up CollectionView Layout To Scroll Vertical (have items being inserted horiztonally). 
+    SpringboardLayout *layout = (SpringboardLayout *)self.facesCollectionView.collectionViewLayout;
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
 
     
-    
+    //Setting up Nav Bar Icon
     UIImage *camera = [UIImage imageNamed:@"CustomFaceIcon.png"];
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, camera.size.width, camera.size.height)];
     imageView.image = camera;
-
-    
     imageView.center = CGPointMake(160, 22);
-    
     [self.view addSubview:imageView];
     
     
@@ -95,21 +101,17 @@
     [self.facesCollectionView addGestureRecognizer:longPress];
     
     
+    
+    //Setting up the Add Face Button in Nav Bar
     UIImage *addFaceImage = [UIImage imageNamed:@"SmileyAdd.png"];
-    
-
     self.addFace.frame = CGRectMake(0, 0, addFaceImage.size.width, addFaceImage.size.height);
-    
     self.addFace.center = CGPointMake(280, 22);
-    
     [self.addFace setImage:addFaceImage forState:UIControlStateNormal];
     
     
-    
+    //Adding the "Ready To Paste" View onto the hiearchy and making it transparent
     self.confirmedView = [[FlashCheckView alloc]initWithFrame:CGRectMake(0, 20, 320, 548)];
-    
     self.confirmedView.alpha = 0.0f;
-    
     [[[[UIApplication sharedApplication] delegate] window] addSubview:self.confirmedView];
     
     
@@ -219,8 +221,8 @@
     
     FaceCell *cell =[theCollectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
 
-    cell.faceButton.frame = CGRectMake(0, 0, 121, 140);
-    cell.faceButton.center = CGPointMake(cell.bounds.size.width/2.0f, cell.bounds.size.height/2.0f);
+//    cell.faceButton.frame = CGRectMake(0, 0, 121, 140);
+//    cell.faceButton.center = CGPointMake(cell.bounds.size.width/2.0f, cell.bounds.size.height/2.0f);
 
     
     UIImage *faceImage = [self.dataModel retrieveFaceAtIndexPosition:indexPath.item];
@@ -275,12 +277,7 @@
 
 -(void)animateWithBounce:(UIView*)theView
 {
-//    theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.001, 0.001);
-    
-    
-    
-    
-    
+
     [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         
         theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.2, 1.2);

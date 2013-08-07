@@ -11,7 +11,6 @@
 @protocol FacePointDragged <NSObject>
 
 -(void)refreshView;
--(void)animateView;
 
 @end
 

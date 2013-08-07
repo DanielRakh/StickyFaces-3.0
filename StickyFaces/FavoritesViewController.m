@@ -9,7 +9,6 @@
 #import "FavoritesViewController.h"
 #import "UIDevice+Resolutions.h"
 #import "FaceCell.h"
-#import "WCAlertView.h"
 #import "UIColor+StickyFacesColors.h"
 #import "DataModel.h"
 
@@ -37,22 +36,9 @@
 
 
 
--(id)initWithCoder:(NSCoder *)aDecoder {
-    
-    self = [super initWithCoder:aDecoder];
-    
-    if (self) {
-        
-        
-        _deleteButton = [UIImage imageNamed:@"NavCloseButton"];
-        _checkmarkButton = [UIImage imageNamed:@"NavCheckmarkButton"];        
-    
-    }
-
-    return self;
-}
 
 
+//Method called by Nav Bar Item to toggle cells into delete mode. 
 -(IBAction)toggleDeleteMode:(id)sender
 {
     
@@ -65,8 +51,6 @@
         [self activateDeletionMode:sender];
     }
     
-    
-    
 }
 
 
@@ -74,21 +58,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 
     self.view.backgroundColor = [UIColor favoritesViewColor];
-    self.trueView.backgroundColor = [UIColor backgroundViewColor];
     
+    
+    // Setting up the Collection View
+    self.trueView.backgroundColor = [UIColor backgroundViewColor];
     [self.trueView registerClass:[FaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
     
+    //Setting up the Collection View Layout
+    SpringboardLayout *layout =(SpringboardLayout *)self.trueView.collectionViewLayout;
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
     
+    
+    //Icon for Nav Bar.
     UIImage *heart = [UIImage imageNamed:@"Heart"];
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, heart.size.width, heart.size.height)];
     imageView.image = heart;
-    
-    
     imageView.center = CGPointMake(160, 22);
-    
     [self.view addSubview:imageView];
     
     
@@ -292,8 +281,8 @@
     
     else {
         
-        WCAlertView *alert = [[WCAlertView alloc]initWithTitle:@"Oops!" message:@"This face is already a favorite." delegate:nil cancelButtonTitle:@"Got it!" otherButtonTitles:nil];
-        [alert show];
+//        WCAlertView *alert = [[WCAlertView alloc]initWithTitle:@"Oops!" message:@"This face is already a favorite." delegate:nil cancelButtonTitle:@"Got it!" otherButtonTitles:nil];
+//        [alert show];
     }
     
 }
@@ -455,11 +444,11 @@ NSIndexPath *indexPath = [self.trueView indexPathForCell:(FaceCell *)sender.supe
 
 -(void)displayAlertView {
     
-    [WCAlertView showAlertWithTitle:@"Welcome To Your Favorites Catalog!" message:@"Hold down a face from the main catalog to save it here for easy access."customizationBlock:nil completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
-        if (buttonIndex == 0) {
-            [self.tabBarController setSelectedIndex:0];
-        }
-    } cancelButtonTitle:@"Got it!" otherButtonTitles:nil];
+//    [WCAlertView showAlertWithTitle:@"Welcome To Your Favorites Catalog!" message:@"Hold down a face from the main catalog to save it here for easy access."customizationBlock:nil completionBlock:^(NSUInteger buttonIndex, WCAlertView *alertView) {
+//        if (buttonIndex == 0) {
+//            [self.tabBarController setSelectedIndex:0];
+//        }
+//    } cancelButtonTitle:@"Got it!" otherButtonTitles:nil];
 
 
 }

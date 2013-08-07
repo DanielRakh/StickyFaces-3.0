@@ -50,10 +50,10 @@
         
    
             
-        UIImage *deleteButtonImage = [UIImage imageNamed:@"SmallBlackX"];
+        UIImage *deleteButtonImage = [UIImage imageNamed:@"DeleteButton"];
         
 
-        self.deleteButton = [[UIButton alloc]initWithFrame:CGRectMake(frame.size.width/16, frame.size.width/16, deleteButtonImage.size.width, deleteButtonImage.size.height)];
+        self.deleteButton = [[UIButton alloc]initWithFrame:CGRectMake(frame.size.width/9, frame.size.width/9, deleteButtonImage.size.width, deleteButtonImage.size.height)];
         [self.deleteButton setImage:deleteButtonImage forState:UIControlStateNormal];
         
         
@@ -94,7 +94,7 @@
     self.faceButton.userInteractionEnabled = NO;
 
     CABasicAnimation *quiverAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
-    float startAngle = (-2) * M_PI/180.0;
+    float startAngle = (-3) * M_PI/180.0;
     float stopAngle = -startAngle;
     quiverAnim.fromValue = [NSNumber numberWithFloat:startAngle];
     quiverAnim.toValue = [NSNumber numberWithFloat:3 * stopAngle];
