@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SpringboardLayout.h"
+//#import "SpringboardLayout.h"
 
 @class CustomDataModel;
 
-@interface CustomFacesViewController : UIViewController <UIGestureRecognizerDelegate, SpringBoardLayoutDelegate>
+@interface CustomFacesViewController : UIViewController <UIGestureRecognizerDelegate>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *facesCollectionView;
+@property (strong, nonatomic)  UICollectionView *facesCollectionView;
 @property (weak, nonatomic) CustomDataModel *dataModel;
 
 

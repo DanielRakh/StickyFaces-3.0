@@ -10,19 +10,24 @@
 #import "goBackToCustomFaces.h"
 #import "UIColor+StickyFacesColors.h"
 #import "UIDevice+Resolutions.h"
-#import "FaceCell.h"
+#import "CustomFaceCell.h"
 #import "CustomDataModel.h"
 #import "FlashCheckView.h"
+#import "V9Layout.h"
 
 
-@interface CustomFacesViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CustomFacesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, V9LayoutDelegate>
+{
+}
 
 @property (nonatomic) IBOutlet UIButton *addFace;
 
-@property (nonatomic, strong) UIButton *editButton;
+@property (nonatomic, strong) IBOutlet UIButton *editButton;
 @property (nonatomic, strong) UIImage *deleteButton;
 @property (nonatomic, strong) UIImage *checkmarkButton;
 @property (nonatomic, strong) FlashCheckView *confirmedView;
+
+
 
 
 -(IBAction)toggleDeleteMode:(id)sender;
@@ -33,19 +38,6 @@
 {
     BOOL isDeletionModeActive;
 
-}
-
-
-
--(id)initWithCoder:(NSCoder *)aDecoder {
-    
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        _deleteButton = [UIImage imageNamed:@"NavCloseButton"];
-        _checkmarkButton = [UIImage imageNamed:@"NavCheckmarkButton"];
-    }
-    
-    return self;
 }
 
 
@@ -69,18 +61,36 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(insertNewFaces:) name:@"imageSaved" object:nil];
+    
+
+    
     self.view.backgroundColor = [UIColor cameraViewColor];
+    
+    V9Layout *collectionViewLayout = [[V9Layout alloc]initWithItemsInOneRow:3];
     
     
     
     //Setting up CollectionView
-    self.facesCollectionView.backgroundColor = [UIColor backgroundViewColor];
-    [self.facesCollectionView registerClass:[FaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
+    self.facesCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 44, 320, 419) collectionViewLayout:collectionViewLayout];
+    [self.facesCollectionView registerClass:[CustomFaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
+    
+    [self.facesCollectionView setIndicatorStyle:UIScrollViewIndicatorStyleWhite];
+    [self.facesCollectionView setPagingEnabled:YES];
+    [self.facesCollectionView setBackgroundColor:[UIColor backgroundViewColor]];
+    
+    self.facesCollectionView.dataSource = self;
+    self.facesCollectionView.delegate = self;
+    
+    [self.view addSubview:self.facesCollectionView];
+    
     
     
     //Setting up CollectionView Layout To Scroll Vertical (have items being inserted horiztonally). 
-    SpringboardLayout *layout = (SpringboardLayout *)self.facesCollectionView.collectionViewLayout;
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+//    SpringboardLayout *layout = (SpringboardLayout *)self.facesCollectionView.collectionViewLayout;
+//    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
 
     
@@ -117,6 +127,8 @@
     
     
     
+    [self.view bringSubviewToFront:self.facesCollectionView];
+    
     
 }
 
@@ -135,12 +147,12 @@
     
     
     
-    if ((self.dataModel.transferArray.count > 0) && (!isDeletionModeActive)) {
+    if ((self.dataModel.arrayOfFaces.count > 0) && (!isDeletionModeActive)) {
         
         self.editButton.hidden = NO;
         [self.editButton setBackgroundImage:self.deleteButton forState:UIControlStateNormal];
         
-    } else if ((self.dataModel.transferArray.count > 0) && (isDeletionModeActive)) {
+    } else if ((self.dataModel.arrayOfFaces.count > 0) && (isDeletionModeActive)) {
         
         self.editButton.hidden = NO;
         [self.editButton setBackgroundImage:self.checkmarkButton forState:UIControlStateNormal];
@@ -163,7 +175,7 @@
 
 - (void)activateDeletionMode:(id)sender {
     
-    if (self.dataModel.transferArray.count > 0) {
+    if (self.dataModel.arrayOfFaces.count > 0) {
         
         
         isDeletionModeActive = YES;
@@ -172,7 +184,7 @@
         [self.editButton setBackgroundImage:self.checkmarkButton forState:UIControlStateNormal];
         
         
-        SpringboardLayout *layout = (SpringboardLayout *)self.facesCollectionView.collectionViewLayout;
+        V9Layout *layout = (V9Layout *)self.facesCollectionView.collectionViewLayout;
         [layout invalidateLayout];
         
     }
@@ -187,7 +199,7 @@
     
     //    [self.trueView reloadData];
     
-    SpringboardLayout *layout = (SpringboardLayout *)self.facesCollectionView.collectionViewLayout;
+    V9Layout *layout = (V9Layout *)self.facesCollectionView.collectionViewLayout;
     [layout invalidateLayout];
     
     
@@ -206,7 +218,8 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     
-    return self.dataModel.transferArray.count;
+
+    return self.dataModel.arrayOfFaces.count;
     
     
 }
@@ -219,20 +232,20 @@
     
     static NSString *CellIdentifier = @"FaceCell";
     
-    FaceCell *cell =[theCollectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-
-//    cell.faceButton.frame = CGRectMake(0, 0, 121, 140);
-//    cell.faceButton.center = CGPointMake(cell.bounds.size.width/2.0f, cell.bounds.size.height/2.0f);
-
-    
-    UIImage *faceImage = [self.dataModel retrieveFaceAtIndexPosition:indexPath.item];
+    CustomFaceCell *cell =[theCollectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     
 
-    [cell.faceButton setBackgroundImage:faceImage forState:UIControlStateNormal];
     
-//    
-//    [cell.deleteButton addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
+    UIImage *faceImage = [self.dataModel.arrayOfFaces objectAtIndex:indexPath.item];
+    
+
+    [cell.faceButton setImage:faceImage forState:UIControlStateNormal];
+    
+  
+    [cell.deleteButton addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
 //    [cell.faceButton addTarget:self action:@selector(displayCopyHUB) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     
     
     [cell.faceButton addTarget:self
@@ -249,15 +262,6 @@
     
 }
 
-
-
-
-
--(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    CGSize cellSize = CGSizeMake(121, 140);
-    return cellSize;
-}
 
 
 -(void)flashConfirmedView:(id)sender  {
@@ -298,7 +302,7 @@
 
 
 
-#pragma mark - Spring Board Layout Delegate
+#pragma mark -V9 Layout Delegate
 
 - (BOOL)isDeletionModeActiveForCollectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout {
     
@@ -327,36 +331,71 @@
 
 -(IBAction)goBackToCustomFacesViewController:(UIStoryboardSegue *)segue {
     
- 
     [[UIApplication sharedApplication]setStatusBarHidden:NO];
-    
-    [self.facesCollectionView reloadData];
-    
-    
-    
+
 }
 
 
 #pragma mark -
 #pragma mark - Face Button Methods
 
+
+
+-(void)insertNewFaces:(NSNotification *)notification {
+    
+    int lastItem = [self.facesCollectionView numberOfItemsInSection:0];
+    
+    NSIndexPath *FVCindexPath = [NSIndexPath indexPathForItem:lastItem inSection:0];
+    
+    NSDictionary *dictToPass = [notification userInfo];
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"faceWasInserted" object:nil userInfo:dictToPass];
+    
+    [self.facesCollectionView performBatchUpdates:^{
+        
+        [self.facesCollectionView insertItemsAtIndexPaths:@[FVCindexPath]];
+        
+    } completion:^(BOOL finished) {
+        
+        NSLog(@"performBatch updates was called for insertion!");
+    }];
+    
+    
+    
+    
+}
+
+
 -(void)delete:(UIButton *)sender {
     
+    NSIndexPath *indexPath = [self.facesCollectionView indexPathForCell:(CustomFaceCell *)sender.superview.superview];
+    
+    NSLog(@"IndexPath of cell that is about to be deleted:%@",indexPath);
     
     
+    [self.dataModel removeFaceAtIndexPosition:indexPath.item];
     
-    NSIndexPath *indexPath = [self.facesCollectionView indexPathForCell:(FaceCell *)sender.superview.superview];
-    
-//    [self.dataModel removeFromFavorites:indexPath.item];
     NSLog(@"Deleted Item number %d",indexPath.item);
     
+    [self.facesCollectionView performBatchUpdates:^{
+        
+        [self.facesCollectionView deleteItemsAtIndexPaths:@[indexPath]];
+
+    } completion:^(BOOL finished) {
+        
+        NSLog(@"performBatch updates was called for deletion!");
+        
+        
+        if (self.dataModel.arrayOfFaces.count == 0) {
+            isDeletionModeActive = NO;
+            self.editButton.hidden = YES;
+        }
+        
+        
+    }];
     
-    [self.facesCollectionView deleteItemsAtIndexPaths:[NSArray arrayWithObject:indexPath]];
-    
-    if (self.dataModel.transferArray.count == 0) {
-        isDeletionModeActive = NO;
-        self.editButton.hidden = YES;
-    }
+
+  
     
     
     
@@ -370,7 +409,7 @@
 
 - (void)copy:(UIButton *)sender {
     
-    NSIndexPath *indexPath = [self.facesCollectionView indexPathForCell:(FaceCell *)sender.superview.superview];
+    NSIndexPath *indexPath = [self.facesCollectionView indexPathForCell:(CustomFaceCell *)sender.superview.superview];
     
 //    UIImage *faceImage = [self.dataModel getCopyFaceAtIndex:indexPath.item];
     
@@ -414,9 +453,10 @@
         NSIndexPath *indexPath = [self.facesCollectionView indexPathForItemAtPoint:[gr locationInView:self.facesCollectionView]];
         if (indexPath) {
             
-            if ((!isDeletionModeActive && self.dataModel.transferArray.count > 0))
+            if ((!isDeletionModeActive))
                 
             {
+                NSLog(@"Delete Mode called");
                 
                 [self activateDeletionMode:gr];
                 

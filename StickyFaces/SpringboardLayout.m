@@ -37,15 +37,14 @@
     if ([UIDevice deviceType] & iPhone5) {
                 
         
-        self.itemSize = CGSizeMake(95, 118);
+        self.itemSize = CGSizeMake(95, 110);
         self.minimumLineSpacing = 12;
         self.minimumInteritemSpacing = 0;
         self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
         
         if (self.scrollDirection == UICollectionViewScrollDirectionHorizontal) {
-            self.sectionInset = UIEdgeInsetsMake(0, 4, 44, 6);
-
+            self.sectionInset = UIEdgeInsetsMake(6, 4, 10, 6);
 
         } else if (self.scrollDirection == UICollectionViewScrollDirectionVertical)
         {

@@ -469,24 +469,7 @@ NSIndexPath *indexPath = [self.trueView indexPathForCell:(FaceCell *)sender.supe
     else {
         
         
-        CopyHUD *newHud = [CopyHUD newHUD];
-        newHud.alpha = 0.0;	// make the view transparent
-     
-        
-        if ([UIDevice deviceType] &iPhone5) {
-            newHud.frame = CGRectMake(0, 42, 320, 460);
-        }
-        
-        [self.view addSubview:newHud];
-        [UIView animateWithDuration:0.5 delay:0.4 options:0
-                         animations:^{newHud.alpha = 1.0;}
-                         completion:^ (BOOL finished) {
-                             [UIView animateWithDuration:0.5 delay:0.2 options:0 animations:^{
-                                 newHud.alpha = 0.0;
-                             } completion:^(BOOL finished) {
-                                 [newHud removeFromSuperview];
-                             }];
-                         }];	// animate the return to visible
+// animate the return to visible
     }
 }
 
@@ -507,25 +490,7 @@ NSIndexPath *indexPath = [self.trueView indexPathForCell:(FaceCell *)sender.supe
     
     else {
         
-        
-        CopyHUD *newHud = [CopyHUD newHUD];
-        newHud.alpha = 0.0;	// make the view transparent
-        newHud.imageView.image = [UIImage imageNamed:@"FavoriteHud.png"];
-        
-        if ([UIDevice deviceType] &iPhone5) {
-            newHud.frame = CGRectMake(0, 42, 320, 460);
-        }
-        
-        [self.view addSubview:newHud];
-        [UIView animateWithDuration:0.8 delay:0.4 options:0
-                         animations:^{newHud.alpha = 1.0;}
-                         completion:^ (BOOL finished) {
-                             [UIView animateWithDuration:0.5 delay:0.2 options:0 animations:^{
-                                 newHud.alpha = 0.0;
-                             } completion:^(BOOL finished) {
-                                 [newHud removeFromSuperview];
-                             }];
-                         }];	// animate the return to visible
+	// animate the return to visible
     }
 }
 

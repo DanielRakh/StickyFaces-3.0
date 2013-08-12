@@ -14,6 +14,7 @@
 #import "CustomFacesViewController.h"
 #import "UIColor+StickyFacesColors.h"
 #import <QuartzCore/QuartzCore.h>
+#import "EditViewController.h"
 
 
 
@@ -46,10 +47,6 @@
 
 
 
-//The Actual TabButtons in the Container VC that have actions. 
-@property (nonatomic, strong) TabButton *favoritesTabButton;
-@property (nonatomic, strong) TabButton *catalogTabButton;
-@property (nonatomic, strong) TabButton *cameraTabButton;
 
 
 
@@ -821,4 +818,8 @@ else if (sender == self.leftTabButton ) {
     
     return snapshotImageView;
 }
+
+
+
+
 @end

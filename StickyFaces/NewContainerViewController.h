@@ -12,5 +12,10 @@
 @interface NewContainerViewController : UIViewController
 
 
+//The Actual TabButtons in the Container VC that have actions.
+@property (nonatomic, strong) TabButton *favoritesTabButton;
+@property (nonatomic, strong) TabButton *catalogTabButton;
+@property (nonatomic, strong) TabButton *cameraTabButton;
+
 
 @end

@@ -8,7 +8,6 @@
 
 #import "EditViewController.h"
 #import "UIImage+Resize.h"
-#import "CameraOverlay.h"
 #import "UIDevice+Resolutions.h"
 #import "UIColor+StickyFacesColors.h"
 #import "CustomFacesViewController.h"
@@ -39,6 +38,8 @@
 -(void)performUnwindSegue
 {
     [self performSegueWithIdentifier:@"goBackToCustomFaces" sender:self];
+    
+    
     
     
 }
@@ -88,13 +89,12 @@
     
     
     
-   UIImage *resizedImage = [self.faceImage resizedImageToSize:CGSizeMake(95, 110)];
+   UIImage *resizedImage = [self.faceImage resizedImageToSize:CGSizeMake(121, 140)];
     
     NSLog(@"Resized Image Size:%@",NSStringFromCGSize(resizedImage.size));
     
     [self saveImageInPhone:UIImagePNGRepresentation(resizedImage)];
     
-    [self performSelector:@selector(performUnwindSegue) withObject:self];
     
     //Is there a way to obtain the indexPath of an empty cell?
     //What if I name the string based on enumerating the filepath...grabbing the string of the last file name and changing a nu
@@ -133,9 +133,15 @@
 {
     
     NSMutableDictionary *faceDict = [NSDictionary dictionaryWithObject:imageData forKey:@"faceKey"];
-     
+//
     [[NSNotificationCenter defaultCenter]postNotificationName:@"imageSaved" object:nil userInfo:faceDict];
     
+
+//    
+    [self performSelector:@selector(performUnwindSegue) withObject:self];
+    
+//    [self.presentingViewController.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+
     
 }
 

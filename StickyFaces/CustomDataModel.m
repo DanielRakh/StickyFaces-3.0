@@ -13,6 +13,9 @@
 
 @property (nonatomic, strong) NSString *customFacesPath;
 
+@property (nonatomic, strong) NSMutableArray *filePathArray; 
+
+
 
 @end
 
@@ -20,15 +23,58 @@
 
 
 
-// The concept is to have an array that is filled with all of the images in a directory. The array constantly gets updated when a picture is confirmed or deleted.
+-  (NSString *)getUniqueFilenameInFolder:(NSString *)folder forFileExtension:(NSString *)fileExtension {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *existingFiles = [fileManager contentsOfDirectoryAtPath:folder error:nil];
+    NSString *uniqueFilename;
+    
+    do {
+        CFUUIDRef newUniqueId = CFUUIDCreate(kCFAllocatorDefault);
+        CFStringRef newUniqueIdString = CFUUIDCreateString(kCFAllocatorDefault, newUniqueId);
+        
+        uniqueFilename = [[folder stringByAppendingPathComponent:(__bridge NSString *)newUniqueIdString] stringByAppendingPathExtension:fileExtension];
+        
+        CFRelease(newUniqueId);
+        CFRelease(newUniqueIdString);
+    } while ([existingFiles containsObject:uniqueFilename]);
+    
+    return uniqueFilename;
+}
 
 
+-(void)createPlist {
+    
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"CustomFacePaths.plist"];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:path]) {
+        NSString *bundle = [[NSBundle mainBundle]pathForResource:@"CustomFacePaths" ofType:@"plist"];
+        [fileManager copyItemAtPath:bundle toPath:path error:&error];
+        if (error) {
+            NSLog(@"There was an error copying the plist from the bundle to the directory:%@",error);
+        }
+    }
+}
 
-//The collectionview then calls on the Array to display the image.
-
-
-
-
+-(NSString *)returnPathForPlist {
+    
+    NSString *destPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    destPath = [destPath stringByAppendingPathComponent:@"CustomFacePaths.plist"];
+    
+    // If the file doesn't exist in the Documents Folder, copy it.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:destPath]) {
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"CustomFacePaths" ofType:@"plist"];
+        [fileManager copyItemAtPath:sourcePath toPath:destPath error:nil];
+    }
+ 
+    return destPath;
+}
 
 
 -(id)init {
@@ -36,25 +82,59 @@
     self = [super init];
     
     if (self) {
+        
        
+        [self createPlist];
+
+        //This returns a path to the directory where all images will be stored.
         _customFacesPath = [self createAndReturnDirectoryPathWithName];
         
-        _transferArray = [[NSMutableArray alloc]initWithCapacity:9];
         
+        _arrayOfFaces = [[NSMutableArray alloc]initWithCapacity:9];
+  
         [self registerForNotifications];
         
-        
-        
+        [self createImagesFromPaths];
+
     }
     return self;
     
 }
 
 
+
+-(void)createImagesFromPaths {
+    
+    
+    
+    
+    NSString *plistPath = [self returnPathForPlist];
+    self.filePathArray = [NSMutableArray arrayWithContentsOfFile:plistPath];
+
+    
+    if (self.filePathArray.count >= 1) {
+    
+    
+    [self.filePathArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *filePath = obj;
+        
+        UIImage *faceImage = [UIImage imageWithContentsOfFile:filePath];
+        [self.arrayOfFaces addObject:faceImage];
+        
+    }];
+        
+    }
+    
+    NSLog(@"Contents of self.arrayOffaces:%@",[self.arrayOfFaces description]);
+
+}
+
+
+
 -(void)registerForNotifications {
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveImageWithData:) name:@"imageSaved" object:nil];
-    
+    //Fires off a selector upon notification "faceWasInserted". 
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(saveImageWithData:) name:@"faceWasInserted" object:nil];
     
 }
 
@@ -66,8 +146,7 @@
     
     //Get the docs directory
     NSString *documentsPath = [paths objectAtIndex:0];
-    NSString *folderPath = [documentsPath
-                            stringByAppendingPathComponent:@"CustomFaces"];
+    NSString *folderPath = [documentsPath stringByAppendingPathComponent:@"CustomFaces"];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:folderPath]) {
         
@@ -84,25 +163,6 @@
 
 
 
-
-
-
--(UIImage *)retrieveFaceAtIndexPosition:(int)position {
-
-    
-    NSString *folderPath = self.customFacesPath;
-    NSString *fileName = [self.transferArray objectAtIndex:position];
-    
-    NSString *filePath = [folderPath stringByAppendingPathComponent:fileName];
-        
-    UIImage *faceImage = [UIImage imageWithContentsOfFile:filePath];
-   
-    return faceImage;
-    
-}
-
-
-
 #pragma mark - Edit View Controller Delegate Method
 
 -(void)saveImageWithData:(NSNotification *)notifcation {
@@ -110,77 +170,59 @@
     //Get the path in the documents directory
     NSString *folderPath = self.customFacesPath;
     
-    
-    
-    //Check if there are any files within the actual path
-    NSArray *contentsOfDirectory = [[NSFileManager defaultManager]contentsOfDirectoryAtPath:folderPath error:nil];
-    
+    //Get the data (image) that was passed with the notification posted in "EditViewController".
     NSData *imageData = [notifcation.userInfo valueForKey:@"faceKey"];
+
+        NSString *filePath = [self getUniqueFilenameInFolder:folderPath forFileExtension:@"png"];
+    
+        [self.filePathArray addObject:filePath];
+   
     
     
-    if (contentsOfDirectory.count < 1) {
-        NSLog(@"Array is empty. ");
-        
-        
-        NSString *filePath = [folderPath stringByAppendingPathComponent:[@"faceImage0" stringByAppendingFormat:@"%@",@"@2x.png"]];
-        
-        [imageData writeToFile:filePath atomically:YES];
-            
-        contentsOfDirectory =  [[NSFileManager defaultManager]contentsOfDirectoryAtPath:folderPath error:nil];
-        
-        NSLog(@"The contents directory initially:%@", contentsOfDirectory);
+        NSLog(@"The filePath is: %@", filePath);
+    
+    
 
-        
-        //Initialize the local array of faces
-        
-        
-        [self.transferArray insertObject:[contentsOfDirectory objectAtIndex:0] atIndex:0];
-        
-        
-    }
-    else if (contentsOfDirectory.count  >= 1) {
-        
-        int newFileInteger = contentsOfDirectory.count;
-        
-        
-        NSString *newPathName = [NSString stringWithFormat:@"faceImage%d",newFileInteger];
-        
-        
-        NSString *filePath = [folderPath stringByAppendingPathComponent:[newPathName stringByAppendingFormat:@"%@",@"@2x.png"]];
-        
-        
+    
+    
+        //Save image to file.
         [imageData writeToFile:filePath atomically:YES];
         
-        
-        contentsOfDirectory = [[NSFileManager defaultManager]contentsOfDirectoryAtPath:folderPath error:nil];
-        
-        contentsOfDirectory = [contentsOfDirectory sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-            return [obj1 compare:[obj2 description] options:NSNumericSearch];
-        }];
-        
-        
-        [self.transferArray addObject:[contentsOfDirectory objectAtIndex:contentsOfDirectory.count-1]];
-        
-        NSLog(@"The contents Directory:%@", contentsOfDirectory);
-        
-    }
 
+        UIImage *faceImage = [UIImage imageWithContentsOfFile:filePath];
+
+        [self.arrayOfFaces addObject:faceImage];
+    
+        NSLog(@"ArrayOFfacesContents:%@",[self.arrayOfFaces description]);
+
+    
+    
+    
+        NSString *plistPath = [self returnPathForPlist];
+        [self.filePathArray writeToFile:plistPath atomically:YES];
     
 }
 
 
+-(void)removeFaceAtIndexPosition:(int)position {
+    
+    NSString *pathToBeRemoved = [self.filePathArray objectAtIndex:position];
+  
+    NSError *newError = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:pathToBeRemoved error:&newError];
 
+    
+    [self.filePathArray removeObjectAtIndex:position];
+    [self.arrayOfFaces removeObjectAtIndex:position];
+    NSLog(@"The Contents of self.arrayOfFaces after deletion:%@",[self.arrayOfFaces description]);
+    
+    
+    NSString *plistPath = [self returnPathForPlist];
+    [self.filePathArray writeToFile:plistPath atomically:YES];
 
-
-
-
-
-
-
-
-
-
-
+    
+    
+}
 
 
 

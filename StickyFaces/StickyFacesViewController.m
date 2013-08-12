@@ -6,16 +6,15 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+#import "TabButton.h"
+
 #import "StickyFacesViewController.h"
 #import "UIDevice+Resolutions.h"
 #import "FaceCell.h"
 #import "SMPageControl.h"
 #import "SpringBoardLayoutAttributes.h"
-//#import "WCAlertView.h"
 #import "FavoritesViewController.h"
-#import "UIViewController+RECurtainViewController.h"
-#import "TutorialView.h"
-#import "MyUnwindSegue.h"
 
 
 #import "FlashCheckView.h"
@@ -115,6 +114,7 @@
  
     self.view.backgroundColor = [UIColor catalogViewColor];
     self.trueView.backgroundColor = [UIColor backgroundViewColor];
+
     
     UIImage *smiley = [UIImage imageNamed:@"Grid"];
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, smiley.size.width, smiley.size.height)];
@@ -169,6 +169,7 @@
     [[[[UIApplication sharedApplication] delegate] window] addSubview:self.favoritesFlashView];
 
 
+    
     
 }
 
@@ -594,6 +595,79 @@
 }
 
 
+
+#pragma mark -  Swipe to Reveal Download Methods
+
+////1 Add Swipe down gesture to UICollectionView.
+//-(void)addSwipeDownGesture {
+//    
+//    UISwipeGestureRecognizer *swipeDownGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeDownGestureRecognized:)];
+//    
+//    swipeDownGesture.direction = UISwipeGestureRecognizerDirectionDown;
+//    
+//    [self.trueView addGestureRecognizer:swipeDownGesture];
+//    
+//}
+//
+//
+//- (UIImageView *)_layerSnapshotWithTransform:(CATransform3D)transform fromView:(UIView *)originalView;
+//{
+//    
+//    UIView *subView = originalView;
+//    subView.backgroundColor= [UIColor backgroundViewColor];
+//    
+//	if (UIGraphicsBeginImageContextWithOptions){
+//        UIGraphicsBeginImageContextWithOptions(CGSizeMake(subView.bounds.size.width,subView.bounds.size.height), NO, [UIScreen mainScreen].scale);
+//    }
+//	else {
+//        //        UIGraphicsBeginImageContext(subView.bounds.size);
+//    }
+//	
+//	[subView.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
+//	UIGraphicsEndImageContext();
+//	
+//    UIImageView *snapshotImageView = [[UIImageView alloc]initWithImage:snapshot];
+//    
+//    return snapshotImageView;
+//}
+//
+//
+//-(void)swipeDownGestureRecognized:(id)sender {
+//
+//
+////Hide the two Tab Buttons if swipe is recognized
+//    NSArray *subViews = self.parentViewController.view.subviews;
+//    for (UIView *subView in subViews) {
+//        if ([subView isKindOfClass:[TabButton class]]) {
+//            subView.hidden = YES;
+//        }
+//    }
+//    
+//    
+//    
+//    NSLog(@"The Swipe Down Gesture Was Recognized");
+//    //2 Once Swipe is recognized, take a snapshot of the UICollectionView
+//    
+//    UIImageView *snapShotView = [self _layerSnapshotWithTransform:CATransform3DIdentity fromView:self.trueView];
+//    snapShotView.frame = CGRectMake(0, 244, snapShotView.bounds.size.width, snapShotView.bounds.size.height);
+//    
+//    
+//    [self.view addSubview:snapShotView];
+//    self.trueView.hidden = YES;
+//    
+//    
+//    
+//
+//    
+//    
+//}
+
+
+//3 Add Snapshot to hiearchy.
+//4 Hide actual UICollectionView
+//5 Have actual snapshot be able to be dragged up/down with touch.
+//6 If Snapshot view is released past a certain threshold either have it translated and revelead a little bit or have it snap back into place and removed from the hiearchy and have the UICollectionView revealed. 
 
 
 

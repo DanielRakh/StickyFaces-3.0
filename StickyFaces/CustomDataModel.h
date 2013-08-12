@@ -8,18 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-
-
-
-
 @interface CustomDataModel : NSObject
 
 
-@property (nonatomic, strong) NSMutableArray *transferArray;
+@property (nonatomic, strong) NSMutableArray *arrayOfFaces;
 
 
--(UIImage *)retrieveFaceAtIndexPosition:(int)position;
-
+-(void)removeFaceAtIndexPosition:(int)position;
 
 
 

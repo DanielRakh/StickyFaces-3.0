@@ -10,11 +10,17 @@
 
 @implementation goBackToCustomFaces
 
--(void)perform {
-    
-    
-    
-    [self.sourceViewController dismissViewControllerAnimated:NO completion:nil];
-}
+
+
+//-(void)perform {
+//    
+//    NSLog(@"Perform method called!");
+//    
+//    
+//    [self.sourceViewController dismissViewControllerAnimated:NO completion:^{
+//        NSLog(@"On completion");
+//    }];
+//
+//}
 
 @end

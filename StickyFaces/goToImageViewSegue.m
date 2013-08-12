@@ -7,7 +7,6 @@
 //
 
 #import "goToImageViewSegue.h"
-#import "CameraShutterView.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation goToImageViewSegue
@@ -18,7 +17,6 @@
     UIViewController *source = (UIViewController *)self.sourceViewController;
     UIViewController *destination  = (UIViewController *)self.destinationViewController;
     
-//    CameraShutterView *shutterView = source.view.subviews[2];
 
     
     CATransition* transition = [CATransition animation];
