@@ -25,8 +25,9 @@
 @property (nonatomic, strong) IBOutlet UIButton *editButton;
 @property (nonatomic, strong) UIImage *deleteButton;
 @property (nonatomic, strong) UIImage *checkmarkButton;
-@property (nonatomic, strong) FlashCheckView *confirmedView;
 
+
+@property (nonatomic, strong) FlashCheckView *pasteFlashView;
 
 
 
@@ -120,10 +121,10 @@
     
     
     //Adding the "Ready To Paste" View onto the hiearchy and making it transparent
-    self.confirmedView = [[FlashCheckView alloc]initWithFrame:CGRectMake(0, 20, 320, 548)];
-    self.confirmedView.alpha = 0.0f;
-    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.confirmedView];
+    self.pasteFlashView = [[FlashCheckView alloc]initWithFrame:CGRectMake(0, 0, 320, 568) andStyle:kConfirmedToPaste];
+    self.pasteFlashView.alpha = 0.0f;
     
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.pasteFlashView];
     
     
     
@@ -139,12 +140,32 @@
 }
 
 
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    
+    if (self.dataModel.arrayOfFaces.count == 0) {
+        UIImage *noFaces = [UIImage imageNamed:@"NoFaces"];
+        
+        UIImageView *imageView = [[UIImageView alloc]initWithImage:noFaces];
+        imageView.center = self.view.center;
+        [self.facesCollectionView addSubview:imageView];
+        
+        [self animateWithRepeatedBounce:self.addFace];
+        
+    }
+    else if (self.dataModel.arrayOfFaces.count >= 1) {
+        
+    
+//        
+    }
+}
+
+
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    
-    
     
     
     if ((self.dataModel.arrayOfFaces.count > 0) && (!isDeletionModeActive)) {
@@ -237,6 +258,7 @@
 
     
     UIImage *faceImage = [self.dataModel.arrayOfFaces objectAtIndex:indexPath.item];
+    NSLog(@"Size of FaceImage on cell:%@", NSStringFromCGSize(faceImage.size));
     
 
     [cell.faceButton setImage:faceImage forState:UIControlStateNormal];
@@ -244,14 +266,15 @@
   
     [cell.deleteButton addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
 //    [cell.faceButton addTarget:self action:@selector(displayCopyHUB) forControlEvents:UIControlEventTouchUpInside];
+    [cell.faceButton addTarget:self action:@selector(copy:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.faceButton addTarget:self action:@selector(displayPasteView:) forControlEvents:UIControlEventTouchUpInside];
     
     
     
     
     [cell.faceButton addTarget:self
                         action:@selector(animateWithBounce:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.faceButton addTarget:self
-                        action:@selector(flashConfirmedView:) forControlEvents:UIControlEventTouchUpInside];
+  
    
     
     
@@ -262,22 +285,57 @@
     
 }
 
+- (void)displayPasteView:(id)sender
 
-
--(void)flashConfirmedView:(id)sender  {
+{
     
-    [UIView animateWithDuration:0.8 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.confirmedView.alpha = 1.0f;
+    NSLog(@"Class of Sender:%@",[sender class]);
+    
+//    
+//    if(![self getAlertView]){
+//        
+//        [self performSelector:@selector(displayAlertView) withObject:self.view];
+//        [self setAlertView:YES];
+    
+        
+
+        
+        
+        if ([sender isKindOfClass:[UIButton class]]) {
+            
+            [UIView animateWithDuration:0.8 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                self.pasteFlashView.alpha = 1.0f;
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.8f animations:^{
+                    self.pasteFlashView.alpha = 0.0f;
+                }];
+            }];
+            
+            
+        }
+
+        
+}
+
+
+-(void)animateWithRepeatedBounce:(UIView*)theView
+{
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction animations:^{
+        
+        theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.2, 1.2);
     } completion:^(BOOL finished) {
-        [UIView animateWithDuration:0.8f animations:^{
-            self.confirmedView.alpha = 0.0f;
+        [UIView animateWithDuration:0.2 animations:^{
+            theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                theView.transform = CGAffineTransformIdentity;
+            } completion:^(BOOL finished) {
+                
+            }];
         }];
     }];
     
-    
-    
 }
-
 
 -(void)animateWithBounce:(UIView*)theView
 {
@@ -404,6 +462,9 @@
 }
 
 
+
+
+
 #pragma mark -  Copy & Paste Methods
 
 
@@ -411,13 +472,11 @@
     
     NSIndexPath *indexPath = [self.facesCollectionView indexPathForCell:(CustomFaceCell *)sender.superview.superview];
     
-//    UIImage *faceImage = [self.dataModel getCopyFaceAtIndex:indexPath.item];
+    UIImage *faceImage = [self.dataModel getCopyFaceAtIndex:indexPath.item];
     
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-    
-//    NSData *imgData = UIImagePNGRepresentation(faceImage);
-    
-//    [pasteboard setData:imgData forPasteboardType:[UIPasteboardTypeListImage objectAtIndex:0]];
+
+    pasteboard.image = faceImage;
 }
 
 #pragma mark - gesture-recognition action methods

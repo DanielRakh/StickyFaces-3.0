@@ -240,6 +240,7 @@
 		2BC2BFB816CF70C700EEC319 /* image82Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BFB616CF70C100EEC319 /* image82Hi@2x.png */; };
 		2BC2BFC516CF76C000EEC319 /* image57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BFC316CF76B400EEC319 /* image57@2x.png */; };
 		2BC2BFC616CF76C000EEC319 /* image57Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BFC416CF76BA00EEC319 /* image57Hi@2x.png */; };
+		2BC5FF0517BA1A4100EB0F15 /* NoFaces@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC5FF0417BA1A4100EB0F15 /* NoFaces@2x.png */; };
 		2BD7617016E97FA900706600 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7616F16E97FA900706600 /* ImageIO.framework */; };
 		2BD7617216E97FB400706600 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7617116E97FB400706600 /* AVFoundation.framework */; };
 		2BD7617916EA688A00706600 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7617816EA688A00706600 /* ConfirmViewController.m */; };
@@ -616,6 +617,7 @@
 		2BC2BFB616CF70C100EEC319 /* image82Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image82Hi@2x.png"; sourceTree = "<group>"; };
 		2BC2BFC316CF76B400EEC319 /* image57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image57@2x.png"; sourceTree = "<group>"; };
 		2BC2BFC416CF76BA00EEC319 /* image57Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image57Hi@2x.png"; sourceTree = "<group>"; };
+		2BC5FF0417BA1A4100EB0F15 /* NoFaces@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoFaces@2x.png"; sourceTree = "<group>"; };
 		2BD7616F16E97FA900706600 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		2BD7617116E97FB400706600 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2BD7617716EA688900706600 /* ConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmViewController.h; sourceTree = "<group>"; };
@@ -1108,6 +1110,7 @@
 		2BBAAD2A17B2E9E90018FDA4 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
+				2BC5FF0417BA1A4100EB0F15 /* NoFaces@2x.png */,
 				2BBAAD3A17B580330018FDA4 /* Grid@2x.png */,
 				2B9D172017AEFA77003B7B7E /* CheckMarkButton@2x.png */,
 				2B74B8EB17ADE53000A66EA9 /* CameraButton@2x.png */,
@@ -1699,6 +1702,7 @@
 				2BB22F6F17B0301900446D02 /* DeleteButton@2x.png in Resources */,
 				2BBAAD3B17B580350018FDA4 /* Grid@2x.png in Resources */,
 				2B0F8F9417B850B2003F4E68 /* CustomFacePaths.plist in Resources */,
+				2BC5FF0517BA1A4100EB0F15 /* NoFaces@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

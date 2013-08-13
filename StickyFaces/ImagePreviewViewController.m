@@ -15,6 +15,7 @@
 @interface ImagePreviewViewController ()
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *newestImageView;
 
 @property (nonatomic, strong) PointsView *pointsView;
 
@@ -28,8 +29,6 @@
 @end
 
 @implementation ImagePreviewViewController
-
-
 
 
 -(CAShapeLayer *)createTransparentBackground {
@@ -50,7 +49,7 @@
 
 -(UIImage *)renderImageFromLayer:(CALayer *)layer {
     
-    UIGraphicsBeginImageContextWithOptions(layer.bounds.size, NO, [UIScreen mainScreen].scale);
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(layer.bounds.size.width, layer.bounds.size.height), NO, [UIScreen mainScreen].scale);
     [layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *renderedImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -62,12 +61,7 @@
 
 -(IBAction)cropFace:(id)sender {
     
-    
-//    CAShapeLayer *transparentBackground = [self createTransparentBackground];
-//    [self.imageView.layer addSublayer:transparentBackground];
-    
-    
-    
+        
     UIImage *passedImage = [self maskImage:self.imageView.image toPath:self.pointsView.aPath];
     
 
@@ -83,10 +77,8 @@
     faceLayer.shadowColor = [UIColor blackColor].CGColor;
     faceLayer.shadowOpacity = 1.0;
     faceLayer.shadowOffset = CGSizeMake(0, 1.0);
-    
 
-    
-    
+   
     
     [self.imageView.layer addSublayer:faceLayer];
     
@@ -148,8 +140,9 @@
 -(void)setupElements {
   
 
-    
+//    
     self.pointsView = [[PointsView alloc]initWithImageView:self.imageView];
+//    self.pointsView = [[PointsView alloc]initWithNewImageView:self.newestImageView];
     self.pointsView.userInteractionEnabled = YES;
     
     
@@ -159,11 +152,7 @@
     [self.view bringSubviewToFront:self.cropButton];
     [self.view bringSubviewToFront:self.resetPointsButton];
     [self.view bringSubviewToFront:self.backToCamButton];
-    
 
-    
-
-    
 }
 
 - (void)viewDidLoad
@@ -180,12 +169,7 @@
     
     
     [self setupElements];
-    
-    
-    
-    
-    
-    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -206,8 +190,6 @@
     
     
     if ([segue.identifier isEqualToString:@"goToEditView"]) {
-        
-  
         
         EditViewController *editViewController = (EditViewController *)segue.destinationViewController;
         editViewController.faceImage = self.croppedImage;

@@ -56,6 +56,26 @@
     
 }
 
+
+-(id)initWithNewImageView:(UIImageView *)imageView {
+    
+    self = [super initWithFrame:imageView.frame];
+    if (self) {
+        
+        
+        
+        [self setUp];
+        [self pointForObjectAtIndex];
+        [self createPointView];
+        
+        
+        
+    }
+    
+    return self;
+    
+}
+
 -(id)initWithImageView:(UIImageView *)imageView {
     
     self = [super initWithFrame:imageView.frame];

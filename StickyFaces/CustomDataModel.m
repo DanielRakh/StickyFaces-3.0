@@ -8,6 +8,8 @@
 
 #import "CustomDataModel.h"
 #import "EditViewController.h"
+#import "UIImage+Resize.h"
+
 
 @interface CustomDataModel ()
 
@@ -224,6 +226,32 @@
     
 }
 
+
+-(UIImage *)getCopyFaceAtIndex:(int)indexPath {
+    
+    UIImage *faceImage = [self.arrayOfFaces objectAtIndex:indexPath];
+    
+    NSLog(@"Size of faceImageBefore Copy:%@",NSStringFromCGSize(faceImage.size));
+    
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(faceImage.size.width, faceImage.size.height), NO, 0);
+    [faceImage drawAtPoint:CGPointMake(-10, -60)];
+
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+
+
+    UIGraphicsEndImageContext();
+    
+//    UIImage *scaledImage = [faceImage resizedImageToSize:CGSizeMake(faceImage.size.width/4, faceImage.size.height/4)];
+    
+//    NSLog(@"Scaled Image Size:(%f,%f)",scaledImage.size.width,scaledImage.size.height);
+    
+    return newImage;
+    
+    
+    
+    
+    
+}
 
 
 

@@ -21,13 +21,22 @@
     if (self) {
         // Initialization code
         
+        self.clipsToBounds = NO;
+        
+//        self.backgroundColor = [UIColor orangeColor];
+        
         self.faceButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.faceButton.frame =  CGRectMake(0, 0, 121, 140);
+//        self.faceButton.backgroundColor = [UIColor colorWithRed:0.000 green:0.000 blue:1.000 alpha:0.650];
+        self.faceButton.frame =  CGRectMake(0, 0, 113, 150);
+//          self.faceButton.frame =  CGRectMake(0, 0, 320, 427);
+
+//        self.faceButton.frame = CGRectMake(0, 0, 95, 110);
         self.faceButton.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
         self.faceButton.adjustsImageWhenHighlighted = YES;
         self.faceButton.adjustsImageWhenDisabled = YES;
         self.faceButton.userInteractionEnabled = YES;
         self.faceButton.highlighted = NO;
+        self.faceButton.clipsToBounds = NO;
         self.faceButton.showsTouchWhenHighlighted = NO;
    
         
@@ -38,7 +47,7 @@
         UIImage *deleteButtonImage = [UIImage imageNamed:@"DeleteButton"];
         
         
-        self.deleteButton = [[UIButton alloc]initWithFrame:CGRectMake(frame.size.width/40, frame.size.width/40, deleteButtonImage.size.width, deleteButtonImage.size.height)];
+        self.deleteButton = [[UIButton alloc]initWithFrame:CGRectMake(self.bounds.size.width/60, self.bounds.size.width/60, deleteButtonImage.size.width, deleteButtonImage.size.height)];
         [self.deleteButton setImage:deleteButtonImage forState:UIControlStateNormal];
         
         

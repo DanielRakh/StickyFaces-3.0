@@ -15,6 +15,7 @@
 
 
 -(void)removeFaceAtIndexPosition:(int)position;
+-(UIImage *)getCopyFaceAtIndex:(int)indexPath;
 
 
 

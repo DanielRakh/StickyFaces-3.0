@@ -89,16 +89,15 @@
     
     
     
-   UIImage *resizedImage = [self.faceImage resizedImageToSize:CGSizeMake(121, 140)];
+    NSLog(@"FaceImage Size:%@", NSStringFromCGSize(self.faceImage.size));
     
-    NSLog(@"Resized Image Size:%@",NSStringFromCGSize(resizedImage.size));
+//   UIImage *resizedImage = [self.faceImage resizedImageToSize:CGSizeMake(127 ,170)];
     
-    [self saveImageInPhone:UIImagePNGRepresentation(resizedImage)];
+//    NSLog(@"Resized Image Size:%@",NSStringFromCGSize(resizedImage.size));
     
+    [self saveImageInPhone:UIImagePNGRepresentation(self.faceImage)];
     
-    //Is there a way to obtain the indexPath of an empty cell?
-    //What if I name the string based on enumerating the filepath...grabbing the string of the last file name and changing a nu
-    
+        
 }
 
 
@@ -137,31 +136,14 @@
     [[NSNotificationCenter defaultCenter]postNotificationName:@"imageSaved" object:nil userInfo:faceDict];
     
 
-//    
+  
     [self performSelector:@selector(performUnwindSegue) withObject:self];
     
-//    [self.presentingViewController.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 
     
 }
 
 
-/*
-
--(CAShapeLayer *)createTransparentBackground {
-    
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, self.faceView.bounds.size.width, self.faceView.bounds.size.height) cornerRadius:0];
-
-    CAShapeLayer *fillLayer = [CAShapeLayer layer];
-    fillLayer.path = path.CGPath;
-    fillLayer.fillRule = kCAFillRuleEvenOdd;
-    fillLayer.fillColor = [UIColor colorWithWhite:0.000 alpha:0.750].CGColor;
-    fillLayer.opacity = 0.5;
-    
-    return fillLayer;
-    
-}
-*/
 
 - (void)didReceiveMemoryWarning
 {

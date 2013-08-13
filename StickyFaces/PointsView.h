@@ -17,6 +17,7 @@
 
 
 -(id)initWithImageView:(UIImageView *)imageView;
+-(id)initWithNewImageView:(UIImageView *)imageView;
 
 -(void)repositionPoints;
 
