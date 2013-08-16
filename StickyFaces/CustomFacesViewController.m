@@ -6,6 +6,8 @@
 //
 //
 
+
+#import <QuartzCore/QuartzCore.h>
 #import "CustomFacesViewController.h"
 #import "goBackToCustomFaces.h"
 #import "UIColor+StickyFacesColors.h"
@@ -14,21 +16,24 @@
 #import "CustomDataModel.h"
 #import "FlashCheckView.h"
 #import "V9Layout.h"
+#import "AddFaceCell.h"
 
 
 @interface CustomFacesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, V9LayoutDelegate>
 {
+    
+//    UIImageView *noFacesImageView; 
 }
 
-@property (nonatomic) IBOutlet UIButton *addFace;
+@property (nonatomic, strong)  UIButton *addFace;
 
-@property (nonatomic, strong) IBOutlet UIButton *editButton;
+@property (nonatomic, weak) IBOutlet UIButton *editButton;
 @property (nonatomic, strong) UIImage *deleteButton;
 @property (nonatomic, strong) UIImage *checkmarkButton;
 
 
 @property (nonatomic, strong) FlashCheckView *pasteFlashView;
-
+@property (nonatomic, strong) UIImageView *noFacesImageView;
 
 
 -(IBAction)toggleDeleteMode:(id)sender;
@@ -48,10 +53,16 @@
     if (isDeletionModeActive) {
         
         [self deactivateDeletionMode:sender];
+
     } else if (!isDeletionModeActive) {
         
         
         [self activateDeletionMode:sender];
+        
+        
+        
+        
+        
     }
 }
 
@@ -77,6 +88,8 @@
     //Setting up CollectionView
     self.facesCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 44, 320, 419) collectionViewLayout:collectionViewLayout];
     [self.facesCollectionView registerClass:[CustomFaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
+    [self.facesCollectionView registerClass:[AddFaceCell class] forCellWithReuseIdentifier:@"AddFaceCell"];
+    
     
     [self.facesCollectionView setIndicatorStyle:UIScrollViewIndicatorStyleWhite];
     [self.facesCollectionView setPagingEnabled:YES];
@@ -113,13 +126,7 @@
     
     
     
-    //Setting up the Add Face Button in Nav Bar
-    UIImage *addFaceImage = [UIImage imageNamed:@"SmileyAdd.png"];
-    self.addFace.frame = CGRectMake(0, 0, addFaceImage.size.width, addFaceImage.size.height);
-    self.addFace.center = CGPointMake(280, 22);
-    [self.addFace setImage:addFaceImage forState:UIControlStateNormal];
-    
-    
+
     //Adding the "Ready To Paste" View onto the hiearchy and making it transparent
     self.pasteFlashView = [[FlashCheckView alloc]initWithFrame:CGRectMake(0, 0, 320, 568) andStyle:kConfirmedToPaste];
     self.pasteFlashView.alpha = 0.0f;
@@ -129,6 +136,24 @@
     
     
     [self.view bringSubviewToFront:self.facesCollectionView];
+    
+    
+    
+    UIImage *addFaceImage = [UIImage imageNamed:@"SmileyCell"];
+    self.addFace.frame = CGRectMake(0, 0, addFaceImage.size.width, addFaceImage.size.height);
+    self.addFace.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds)+ 80);
+    [self.addFace setImage:addFaceImage forState:UIControlStateNormal];
+    self.addFace.hidden = YES;
+    
+    
+    //Create View for when No Faces are in the CollectionView. 
+    UIImage *noFaces = [UIImage imageNamed:@"NoFaces.png"];
+    self.noFacesImageView = [[UIImageView alloc]initWithImage:noFaces];
+    self.noFacesImageView.center = CGPointMake(self.view.center.x, self.view.center.y - 140);
+    [self.facesCollectionView addSubview:self.noFacesImageView];
+    self.noFacesImageView.hidden = YES;
+    
+    [self.view bringSubviewToFront:self.addFace];
     
     
 }
@@ -144,21 +169,24 @@
     
     [super viewDidAppear:animated];
     
+
+    UIImage *editFaceImage = [UIImage imageNamed:@"SmileyDelete.png"];
+    self.editButton.frame = CGRectMake(0, 0, editFaceImage.size.width, editFaceImage.size.height);
+    self.editButton.center = CGPointMake(280, 22);
+    [self.editButton setImage:editFaceImage forState:UIControlStateNormal];
+    [self.editButton setImage:[UIImage imageNamed:@"StopEditCheckmark"] forState:UIControlStateSelected];
+
+    
     if (self.dataModel.arrayOfFaces.count == 0) {
-        UIImage *noFaces = [UIImage imageNamed:@"NoFaces"];
         
-        UIImageView *imageView = [[UIImageView alloc]initWithImage:noFaces];
-        imageView.center = self.view.center;
-        [self.facesCollectionView addSubview:imageView];
         
+       self.noFacesImageView.hidden = NO;
+        self.addFace.hidden = NO;
+        [self animateWithBounce:self.noFacesImageView];
         [self animateWithRepeatedBounce:self.addFace];
         
     }
-    else if (self.dataModel.arrayOfFaces.count >= 1) {
-        
-    
-//        
-    }
+
 }
 
 
@@ -171,12 +199,16 @@
     if ((self.dataModel.arrayOfFaces.count > 0) && (!isDeletionModeActive)) {
         
         self.editButton.hidden = NO;
-        [self.editButton setBackgroundImage:self.deleteButton forState:UIControlStateNormal];
+        self.noFacesImageView.hidden = YES;
+        self.addFace.hidden = YES;
+
         
     } else if ((self.dataModel.arrayOfFaces.count > 0) && (isDeletionModeActive)) {
         
         self.editButton.hidden = NO;
-        [self.editButton setBackgroundImage:self.checkmarkButton forState:UIControlStateNormal];
+//        self.addFace.hidden = YES;
+//        self.editButton setImage:<#(UIImage *)#> forState:<#(UIControlState)#>
+        
         
     }
     else
@@ -201,8 +233,12 @@
         
         isDeletionModeActive = YES;
         
+//        self.addFace.hidden = YES;
         
-        [self.editButton setBackgroundImage:self.checkmarkButton forState:UIControlStateNormal];
+        
+        self.editButton.selected = YES;
+        
+        [self animateWithRepeatedBounce:self.editButton];
         
         
         V9Layout *layout = (V9Layout *)self.facesCollectionView.collectionViewLayout;
@@ -215,8 +251,13 @@
 -(void)deactivateDeletionMode:(id)sender {
     
     isDeletionModeActive = NO;
+    self.editButton.selected = NO;
     
-    [self.editButton setBackgroundImage:self.deleteButton forState:UIControlStateNormal];
+
+//    self.addFace.hidden = NO;
+//    [self animateWithBounce:self.addFace];
+    
+    [self.editButton.layer removeAllAnimations];
     
     //    [self.trueView reloadData];
     
@@ -240,7 +281,7 @@
     
     
 
-    return self.dataModel.arrayOfFaces.count;
+    return self.dataModel.arrayOfFaces.count + 1;
     
     
 }
@@ -251,9 +292,25 @@
     
     
     
-    static NSString *CellIdentifier = @"FaceCell";
+    static NSString *CustomCellIdentifier = @"FaceCell";
+    static NSString *AddFaceCellIdentifier = @"AddFaceCell";
     
-    CustomFaceCell *cell =[theCollectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    if (indexPath.item == self.dataModel.arrayOfFaces.count) {
+        
+        AddFaceCell *addFaceCell = [self.facesCollectionView dequeueReusableCellWithReuseIdentifier:AddFaceCellIdentifier forIndexPath:indexPath];
+//     [addFaceCell.faceButton addTarget:self action:@selector(animateWithBounce:) forControlEvents:UIControlEventTouchUpInside];
+     [addFaceCell.faceButton addTarget:self action:@selector(openUpTheCamera:) forControlEvents:UIControlEventTouchUpInside];
+
+        
+        
+        return addFaceCell;
+    }
+    
+    else {
+    
+    
+    CustomFaceCell *cell =[theCollectionView dequeueReusableCellWithReuseIdentifier:CustomCellIdentifier forIndexPath:indexPath];
     
 
     
@@ -265,7 +322,7 @@
     
   
     [cell.deleteButton addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
-//    [cell.faceButton addTarget:self action:@selector(displayCopyHUB) forControlEvents:UIControlEventTouchUpInside];
+//  [cell.faceButton addTarget:self action:@selector(displayCopyHUB) forControlEvents:UIControlEventTouchUpInside];
     [cell.faceButton addTarget:self action:@selector(copy:) forControlEvents:UIControlEventTouchUpInside];
     [cell.faceButton addTarget:self action:@selector(displayPasteView:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -274,6 +331,11 @@
     
     [cell.faceButton addTarget:self
                         action:@selector(animateWithBounce:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+    
+   
   
    
     
@@ -281,6 +343,7 @@
     
     
     return cell;
+    }
     
     
 }
@@ -403,7 +466,15 @@
     
     int lastItem = [self.facesCollectionView numberOfItemsInSection:0];
     
-    NSIndexPath *FVCindexPath = [NSIndexPath indexPathForItem:lastItem inSection:0];
+    //This is the indexPath for the item that already exists in the section. We are going to move this
+    NSIndexPath *indexPathForLastCell = [NSIndexPath indexPathForItem:lastItem-1 inSection:0];
+    NSIndexPath *indexPathToMoveLastCell = [NSIndexPath indexPathForItem:lastItem inSection:0];
+    
+//    NSIndexPath *indexPathToInsertNewCell = [NSIndexPath indexPathForItem:lastItem inSection:0];
+
+    
+    
+//    [self returnPointForLastCell:FVCindexPath];
     
     NSDictionary *dictToPass = [notification userInfo];
     
@@ -411,10 +482,14 @@
     
     [self.facesCollectionView performBatchUpdates:^{
         
-        [self.facesCollectionView insertItemsAtIndexPaths:@[FVCindexPath]];
-        
+        [self.facesCollectionView moveItemAtIndexPath:indexPathForLastCell toIndexPath:indexPathToMoveLastCell];
+
+        [self.facesCollectionView insertItemsAtIndexPaths:@[indexPathForLastCell]];
+
     } completion:^(BOOL finished) {
         
+        self.noFacesImageView.hidden = YES;
+        self.addFace.hidden = YES;
         NSLog(@"performBatch updates was called for insertion!");
     }];
     
@@ -423,6 +498,19 @@
     
 }
 
+
+-(void)returnPointForLastCell:(NSIndexPath *)indxPath {
+    
+
+    UICollectionViewCell *lastCell = [self.facesCollectionView cellForItemAtIndexPath:indxPath];
+    
+    
+    
+    CGPoint actualPoint = [self.facesCollectionView convertPoint:lastCell.center fromView:self.view];
+    
+    NSLog(@"Last Cell's Center Point:%@",NSStringFromCGPoint(actualPoint));
+    
+}
 
 -(void)delete:(UIButton *)sender {
     
@@ -447,6 +535,10 @@
         if (self.dataModel.arrayOfFaces.count == 0) {
             isDeletionModeActive = NO;
             self.editButton.hidden = YES;
+            
+            
+            [self performSelector:@selector(revealFacesImageView) withObject:self afterDelay:0.2];
+            
         }
         
         
@@ -462,6 +554,18 @@
 }
 
 
+-(void)revealFacesImageView {
+    
+
+    self.noFacesImageView.hidden = NO;
+    self.addFace.hidden = NO;
+
+    [self animateWithBounce:self.noFacesImageView];
+    [self animateWithRepeatedBounce:self.addFace];
+
+    
+    
+}
 
 
 
@@ -495,7 +599,7 @@
 {
     CGPoint touchPoint = [touch locationInView:self.facesCollectionView];
     NSIndexPath *indexPath = [self.facesCollectionView indexPathForItemAtPoint:touchPoint];
-    if (indexPath && [gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]])
+    if ((indexPath && [gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]])  | (indexPath.item == self.dataModel.arrayOfFaces.count))
     {
         return NO;
     }
@@ -522,6 +626,16 @@
             }
         }
     }
+    
+}
+
+
+
+#pragma mark Segue Methods
+
+-(void)openUpTheCamera:(id)sender {
+    
+    [self performSegueWithIdentifier:@"performModalSegue" sender:self];
     
 }
 

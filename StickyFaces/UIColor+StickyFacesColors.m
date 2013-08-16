@@ -17,8 +17,9 @@
 
 }
 + (UIColor *)cameraViewColor {
-//    return [UIColor colorWithRed:0.204 green:0.596 blue:0.859 alpha:1.000];
-    return [UIColor colorWithRed:0.318 green:0.651 blue:0.863 alpha:1.000];
+    return [UIColor colorWithRed:0.204 green:0.596 blue:0.859 alpha:1.000];
+//    return [UIColor colorWithRed:0.245 green:0.649 blue:0.877 alpha:1.000];
+    
 
 
 }

@@ -133,7 +133,6 @@
 		2BAB52DC16A4D1720095549F /* image53Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB52AA16A4D1710095549F /* image53Hi@2x.png */; };
 		2BAB52DE16A4D1720095549F /* image54Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB52AC16A4D1710095549F /* image54Hi@2x.png */; };
 		2BAB61C117AA3A7F0011527B /* AddFace@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB61C017AA3A7F0011527B /* AddFace@2x.png */; };
-		2BAB61C917AAE8EA0011527B /* SmileyAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB61C817AAE8EA0011527B /* SmileyAdd@2x.png */; };
 		2BAB61D517AB5B500011527B /* CustomFaceIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BAB61D417AB5B500011527B /* CustomFaceIcon@2x.png */; };
 		2BAB8BC117908B86009B8A67 /* TabButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAB8BC017908B86009B8A67 /* TabButton.m */; };
 		2BAC73BD1781525E004D227F /* goBackToCameraView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC73BC1781525E004D227F /* goBackToCameraView.m */; };
@@ -240,7 +239,6 @@
 		2BC2BFB816CF70C700EEC319 /* image82Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BFB616CF70C100EEC319 /* image82Hi@2x.png */; };
 		2BC2BFC516CF76C000EEC319 /* image57@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BFC316CF76B400EEC319 /* image57@2x.png */; };
 		2BC2BFC616CF76C000EEC319 /* image57Hi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC2BFC416CF76BA00EEC319 /* image57Hi@2x.png */; };
-		2BC5FF0517BA1A4100EB0F15 /* NoFaces@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BC5FF0417BA1A4100EB0F15 /* NoFaces@2x.png */; };
 		2BD7617016E97FA900706600 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7616F16E97FA900706600 /* ImageIO.framework */; };
 		2BD7617216E97FB400706600 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BD7617116E97FB400706600 /* AVFoundation.framework */; };
 		2BD7617916EA688A00706600 /* ConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BD7617816EA688A00706600 /* ConfirmViewController.m */; };
@@ -338,6 +336,12 @@
 		2BF1CDA416D6AEFA0064363B /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CDA216D6AEEA0064363B /* Icon-Small@2x.png */; };
 		2BF1CDA616D6B0C70064363B /* LogoBackground(4)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CDA516D6B0C70064363B /* LogoBackground(4)@2x.png */; };
 		2BF1CDA816D6D8F20064363B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF1CDA716D6D8EF0064363B /* Default.png */; };
+		2BF23FF717BB27850047099D /* SmileyAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF23FF517BB27850047099D /* SmileyAdd@2x.png */; };
+		2BF23FFA17BB2AF50047099D /* SmileyDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF23FF917BB2AF40047099D /* SmileyDelete@2x.png */; };
+		2BF23FFE17BC3FF40047099D /* StopEditCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF23FFD17BC3FF40047099D /* StopEditCheckmark@2x.png */; };
+		2BF2400117BD4C940047099D /* AddFaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2400017BD4C940047099D /* AddFaceCell.m */; };
+		2BF2400317BDA6D10047099D /* SmileyCell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF2400217BDA6D10047099D /* SmileyCell@2x.png */; };
+		2BF2400517BDAEDE0047099D /* NoFaces@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF2400417BDAEDE0047099D /* NoFaces@2x.png */; };
 		2BF61A9516D2DB2600DBFDE4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF61A9416D2DB2600DBFDE4 /* Default@2x.png */; };
 		2BF61A9D16D2E31100DBFDE4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF61A9C16D2E31000DBFDE4 /* Default-568h@2x.png */; };
 		2BF61ABF16D443B400DBFDE4 /* LogoBackground(5)@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF61ABE16D443B400DBFDE4 /* LogoBackground(5)@2x.png */; };
@@ -502,7 +506,6 @@
 		2BAB52AA16A4D1710095549F /* image53Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image53Hi@2x.png"; sourceTree = "<group>"; };
 		2BAB52AC16A4D1710095549F /* image54Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image54Hi@2x.png"; sourceTree = "<group>"; };
 		2BAB61C017AA3A7F0011527B /* AddFace@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddFace@2x.png"; sourceTree = "<group>"; };
-		2BAB61C817AAE8EA0011527B /* SmileyAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SmileyAdd@2x.png"; sourceTree = "<group>"; };
 		2BAB61D417AB5B500011527B /* CustomFaceIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CustomFaceIcon@2x.png"; sourceTree = "<group>"; };
 		2BAB8BBF17908B86009B8A67 /* TabButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabButton.h; sourceTree = "<group>"; };
 		2BAB8BC017908B86009B8A67 /* TabButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabButton.m; sourceTree = "<group>"; };
@@ -617,7 +620,6 @@
 		2BC2BFB616CF70C100EEC319 /* image82Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image82Hi@2x.png"; sourceTree = "<group>"; };
 		2BC2BFC316CF76B400EEC319 /* image57@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image57@2x.png"; sourceTree = "<group>"; };
 		2BC2BFC416CF76BA00EEC319 /* image57Hi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image57Hi@2x.png"; sourceTree = "<group>"; };
-		2BC5FF0417BA1A4100EB0F15 /* NoFaces@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoFaces@2x.png"; sourceTree = "<group>"; };
 		2BD7616F16E97FA900706600 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		2BD7617116E97FB400706600 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		2BD7617716EA688900706600 /* ConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmViewController.h; sourceTree = "<group>"; };
@@ -717,6 +719,13 @@
 		2BF1CDA216D6AEEA0064363B /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
 		2BF1CDA516D6B0C70064363B /* LogoBackground(4)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoBackground(4)@2x.png"; sourceTree = "<group>"; };
 		2BF1CDA716D6D8EF0064363B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		2BF23FF517BB27850047099D /* SmileyAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SmileyAdd@2x.png"; sourceTree = "<group>"; };
+		2BF23FF917BB2AF40047099D /* SmileyDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SmileyDelete@2x.png"; sourceTree = "<group>"; };
+		2BF23FFD17BC3FF40047099D /* StopEditCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StopEditCheckmark@2x.png"; sourceTree = "<group>"; };
+		2BF23FFF17BD4C940047099D /* AddFaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFaceCell.h; sourceTree = "<group>"; };
+		2BF2400017BD4C940047099D /* AddFaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFaceCell.m; sourceTree = "<group>"; };
+		2BF2400217BDA6D10047099D /* SmileyCell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SmileyCell@2x.png"; sourceTree = "<group>"; };
+		2BF2400417BDAEDE0047099D /* NoFaces@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NoFaces@2x.png"; sourceTree = "<group>"; };
 		2BF61A9416D2DB2600DBFDE4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		2BF61A9C16D2E31000DBFDE4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		2BF61ABE16D443B400DBFDE4 /* LogoBackground(5)@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LogoBackground(5)@2x.png"; sourceTree = "<group>"; };
@@ -1110,7 +1119,11 @@
 		2BBAAD2A17B2E9E90018FDA4 /* UI Elements */ = {
 			isa = PBXGroup;
 			children = (
-				2BC5FF0417BA1A4100EB0F15 /* NoFaces@2x.png */,
+				2BF2400417BDAEDE0047099D /* NoFaces@2x.png */,
+				2BF2400217BDA6D10047099D /* SmileyCell@2x.png */,
+				2BF23FFD17BC3FF40047099D /* StopEditCheckmark@2x.png */,
+				2BF23FF517BB27850047099D /* SmileyAdd@2x.png */,
+				2BF23FF917BB2AF40047099D /* SmileyDelete@2x.png */,
 				2BBAAD3A17B580330018FDA4 /* Grid@2x.png */,
 				2B9D172017AEFA77003B7B7E /* CheckMarkButton@2x.png */,
 				2B74B8EB17ADE53000A66EA9 /* CameraButton@2x.png */,
@@ -1124,7 +1137,6 @@
 				2BB22F6E17B0301900446D02 /* DeleteButton@2x.png */,
 				2B9C68B517AEF00F0057D90B /* PasteFlash@2x.png */,
 				2BAB61D417AB5B500011527B /* CustomFaceIcon@2x.png */,
-				2BAB61C817AAE8EA0011527B /* SmileyAdd@2x.png */,
 				2BAB61C017AA3A7F0011527B /* AddFace@2x.png */,
 				2BDBEA80179B946400A756B5 /* Heart@2x.png */,
 				2B1EBA5B1789076900A30B8B /* Camera@2x.png */,
@@ -1320,6 +1332,8 @@
 				2BB2A4111672D781007AA1A7 /* SpringBoardLayoutAttributes.m */,
 				2BBAAD3417B340440018FDA4 /* CustomFaceCell.h */,
 				2BBAAD3517B340440018FDA4 /* CustomFaceCell.m */,
+				2BF23FFF17BD4C940047099D /* AddFaceCell.h */,
+				2BF2400017BD4C940047099D /* AddFaceCell.m */,
 			);
 			name = "CollectionView Classes";
 			sourceTree = "<group>";
@@ -1686,7 +1700,6 @@
 				2B1EBA5C1789076900A30B8B /* Camera@2x.png in Resources */,
 				2BDBEA82179B946400A756B5 /* Heart@2x.png in Resources */,
 				2BAB61C117AA3A7F0011527B /* AddFace@2x.png in Resources */,
-				2BAB61C917AAE8EA0011527B /* SmileyAdd@2x.png in Resources */,
 				2BAB61D517AB5B500011527B /* CustomFaceIcon@2x.png in Resources */,
 				2B74B8EE17ADE53100A66EA9 /* CameraButton@2x.png in Resources */,
 				2B74B8EF17ADE53100A66EA9 /* CancelButton@2x.png in Resources */,
@@ -1702,7 +1715,11 @@
 				2BB22F6F17B0301900446D02 /* DeleteButton@2x.png in Resources */,
 				2BBAAD3B17B580350018FDA4 /* Grid@2x.png in Resources */,
 				2B0F8F9417B850B2003F4E68 /* CustomFacePaths.plist in Resources */,
-				2BC5FF0517BA1A4100EB0F15 /* NoFaces@2x.png in Resources */,
+				2BF23FF717BB27850047099D /* SmileyAdd@2x.png in Resources */,
+				2BF23FFA17BB2AF50047099D /* SmileyDelete@2x.png in Resources */,
+				2BF23FFE17BC3FF40047099D /* StopEditCheckmark@2x.png in Resources */,
+				2BF2400317BDA6D10047099D /* SmileyCell@2x.png in Resources */,
+				2BF2400517BDAEDE0047099D /* NoFaces@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1745,6 +1762,7 @@
 				2B9D172A17AF03A5003B7B7E /* SIAlertView.m in Sources */,
 				2BBAAD3617B340440018FDA4 /* CustomFaceCell.m in Sources */,
 				2BBAAD3917B360640018FDA4 /* V9Layout.m in Sources */,
+				2BF2400117BD4C940047099D /* AddFaceCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
