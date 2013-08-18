@@ -182,6 +182,11 @@
     //Begin initial animation... 
     [self initialPresentationWithChildViewController:self.catalogViewController andLeftTabView:self.leftTabButton withLeftIcon:self.leftTabIcon andRightTabView:self.rightTabButton withRightIcon:self.rightTabIcon andCenterTabView:self.centerTabButton withCenterIcon:self.centerTabIcon];
     
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pushTabButtonsForDeletionButton) name:@"DeletionModeOn" object:nil];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(bounceTabButtonsBackAfterDeletion) name:@"DeletionModeOff" object:nil];
+    
 }
 
 
@@ -394,6 +399,33 @@ else if (sender == self.leftTabButton ) {
     }];
 
     
+}
+
+
+
+
+#pragma mark 
+
+-(void)pushTabButtonsForDeletionButton {
+    
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.leftTabButton.center = CGPointMake(self.leftTabButton.center.x - 150, self.leftTabButton.center.y);
+        self.leftTabIcon.center = self.leftTabButton.center;
+        self.rightTabButton.center = CGPointMake(self.rightTabButton.center.x + 150, self.rightTabButton.center.y);
+        self.rightTabIcon.center = self.rightTabButton.center;
+        
+    } completion:^(BOOL finished) {
+        NSLog(@"Animation Complete");
+    }];
+    
+}
+
+
+
+-(void)bounceTabButtonsBackAfterDeletion {
+    
+    [self bounceRightTab:self.rightTabButton withRightIcon:self.rightTabIcon andLeftTabButton:self.leftTabButton withLeftIcon:self.leftTabIcon];
+
 }
 
 
@@ -818,6 +850,9 @@ else if (sender == self.leftTabButton ) {
     
     return snapshotImageView;
 }
+
+
+
 
 
 
