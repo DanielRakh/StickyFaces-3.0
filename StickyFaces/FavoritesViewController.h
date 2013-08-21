@@ -8,22 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "StickyFacesViewController.h"
-#import "SpringboardLayout.h"
-
 
 
 @class DataModel;
 
 
-@interface FavoritesViewController : UIViewController <UICollectionViewDataSource,UICollectionViewDelegate , SpringBoardLayoutDelegate, StickyFacesViewControllerDelegate, UIGestureRecognizerDelegate>
-{
+@interface FavoritesViewController : UIViewController <StickyFacesViewControllerDelegate, UIGestureRecognizerDelegate>
 
-}
 
-@property (weak, nonatomic) IBOutlet UICollectionView *trueView;
+@property (strong, nonatomic)  UICollectionView *trueView;
 @property (weak, nonatomic) DataModel *dataModel;
 
 
 - (void)activateDeletionMode:(id)sender;
+
 
 @end

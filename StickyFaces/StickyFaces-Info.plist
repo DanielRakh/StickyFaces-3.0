@@ -27,7 +27,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.stickyfaces.01</string>
+	<string>com.stickyfaces.03</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -61,11 +61,11 @@
 			<key>TintColor</key>
 			<dict>
 				<key>Blue</key>
-				<real>0.2980392277240753</real>
+				<real>0.29803922772407532</real>
 				<key>Green</key>
-				<real>0.2980392277240753</real>
+				<real>0.29803922772407532</real>
 				<key>Red</key>
-				<real>0.2980392277240753</real>
+				<real>0.29803922772407532</real>
 			</dict>
 			<key>Translucent</key>
 			<false/>

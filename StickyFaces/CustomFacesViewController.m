@@ -25,22 +25,16 @@
     
 }
 
-@property (nonatomic, strong)  UIButton *addFace;
-
-
+@property (nonatomic, strong) UIButton *addFace;
 @property (nonatomic, strong) UIButton *stopDelete;
-
 @property (nonatomic, strong) UIImage *deleteButton;
 @property (nonatomic, strong) UIImage *checkmarkButton;
-
-
 @property (nonatomic, strong) FlashCheckView *pasteFlashView;
 @property (nonatomic, strong) NoFacesView *noFacesView;
 
 
 
 @end
-
 @implementation CustomFacesViewController
 {
     BOOL isDeletionModeActive;
@@ -77,20 +71,14 @@
     
     [self.facesCollectionView setPagingEnabled:YES];
     [self.facesCollectionView setBackgroundColor:[UIColor backgroundViewColor]];
+    self.facesCollectionView.showsHorizontalScrollIndicator = NO;
+    self.facesCollectionView.showsVerticalScrollIndicator = NO;
     
     self.facesCollectionView.dataSource = self;
     self.facesCollectionView.delegate = self;
     
     [self.view addSubview:self.facesCollectionView];
-    
-    
-    
-    //Setting up CollectionView Layout To Scroll Vertical (have items being inserted horiztonally). 
-//    SpringboardLayout *layout = (SpringboardLayout *)self.facesCollectionView.collectionViewLayout;
-//    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    
 
-    
     //Setting up Nav Bar Icon
     UIImage *camera = [UIImage imageNamed:@"CustomFaceIcon.png"];
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, camera.size.width, camera.size.height)];
@@ -118,8 +106,8 @@
     
     
 
-//    [self.view bringSubviewToFront:self.facesCollectionView];
-    
+
+    //Setting up "No Favorites View" 
     self.noFacesView = [[NoFacesView alloc]initWithFrame:CGRectMake(0, 0, 320, 419)];
     [self.noFacesView.addFace addTarget:self action:@selector(openUpTheCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.facesCollectionView addSubview:self.noFacesView];
@@ -525,6 +513,7 @@
         
         if (self.dataModel.arrayOfFaces.count == 0) {
             isDeletionModeActive = NO;
+            [self deactivateDeletionMode:self];
             
         [self performSelector:@selector(revealFacesImageView) withObject:self afterDelay:0.2];
             

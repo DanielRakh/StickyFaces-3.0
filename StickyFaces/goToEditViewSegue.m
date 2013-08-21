@@ -16,9 +16,7 @@
     UIViewController *source = (UIViewController *)self.sourceViewController;
     UIViewController *destination  = (UIViewController *)self.destinationViewController;
     
-    
     [source presentViewController:destination animated:NO completion:nil];
-
 }
 
 @end

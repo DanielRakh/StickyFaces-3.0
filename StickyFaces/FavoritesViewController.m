@@ -6,32 +6,42 @@
 //
 //
 
+#import "NewContainerViewController.h"
 #import "FavoritesViewController.h"
 #import "UIDevice+Resolutions.h"
 #import "FaceCell.h"
 #import "UIColor+StickyFacesColors.h"
 #import "DataModel.h"
+#import "V9Layout.h" 
+#import "FaceCell.h"
+#import "FlashCheckView.h"
+#import "NoFavoritesView.h"
 
 
-@interface FavoritesViewController ()
+@interface FavoritesViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, V9LayoutDelegate>
+{
+    int itemNumber; 
+}
+
+@property (nonatomic, strong) UIButton *addFace;
+@property (nonatomic, strong) UIButton *stopDelete;
+@property (nonatomic, strong) UIImage *deleteButton;
+@property (nonatomic, strong) UIImage *checkmarkButton;
+@property (nonatomic, strong) FlashCheckView *pasteFlashView;
+@property (nonatomic, strong) NoFavoritesView *noFavoritesView;
 
 
-@property (nonatomic) int itemNumber;
-
-@property (strong, nonatomic) IBOutlet UIButton *editButton;
-@property (strong, nonatomic) UIImage *deleteButton;
-@property (strong, nonatomic) UIImage *checkmarkButton;
-
-
--(IBAction)toggleDeleteMode:(id)sender;
 
 
 @end
 
 @implementation FavoritesViewController
+
+
 {
     BOOL isDeletionModeActive;
 }
+
 
 
 
@@ -63,13 +73,26 @@
     self.view.backgroundColor = [UIColor favoritesViewColor];
     
     
+    V9Layout *collectionViewLayout = [[V9Layout alloc]initWithItemsInOneRow:3];
+    
+    
+    
+    
     // Setting up the Collection View
     self.trueView.backgroundColor = [UIColor backgroundViewColor];
-    [self.trueView registerClass:[FaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
     
-    //Setting up the Collection View Layout
-    SpringboardLayout *layout =(SpringboardLayout *)self.trueView.collectionViewLayout;
-    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    self.trueView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 44, 320, 419) collectionViewLayout:collectionViewLayout];
+    [self.trueView registerClass:[FaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
+    self.trueView.pagingEnabled = YES;
+    self.trueView.backgroundColor = [UIColor backgroundViewColor];
+    self.trueView.showsVerticalScrollIndicator= NO;
+    self.trueView.showsHorizontalScrollIndicator = NO;
+    self.trueView.dataSource = self;
+    self.trueView.delegate = self;
+    
+    [self.view addSubview:self.trueView];
+    
+ 
     
     
     
@@ -87,6 +110,35 @@
     longPress.delegate = self;
     [self.trueView addGestureRecognizer:longPress];
     
+    
+    //Adding the "Ready To Paste" View onto the hiearchy and making it transparent
+    self.pasteFlashView = [[FlashCheckView alloc]initWithFrame:CGRectMake(0, 0, 320, 568) andStyle:kConfirmedToPaste];
+    self.pasteFlashView.alpha = 0.0f;
+    
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.pasteFlashView];
+    
+
+    
+    
+    //Setting up "No Favorites View"
+    self.noFavoritesView = [[NoFavoritesView alloc]initWithFrame:CGRectMake(0, 0, 320, 419)];
+    [self.trueView addSubview:self.noFavoritesView];
+    self.noFavoritesView.hidden = YES;
+    
+
+    //Adding the "Done!" Button to end deletion mode
+    UIImage *stopDelete = [UIImage imageNamed:@"StopDelete"];
+    self.stopDelete = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.stopDelete.frame = CGRectMake(0, 0, stopDelete.size.width, stopDelete.size.height);
+    self.stopDelete.center = CGPointMake(self.view.bounds.size.width/2.0f,CGRectGetMaxY(self.view.bounds)+100);
+    
+    [self.stopDelete setImage:stopDelete forState:UIControlStateNormal];
+    
+    
+    [[[[UIApplication sharedApplication] delegate] window] addSubview:self.stopDelete];
+    
+    
+    [self.stopDelete addTarget:self action:@selector(deactivateDeletionMode:) forControlEvents:UIControlEventTouchUpInside];
 
     
 
@@ -97,12 +149,23 @@
     
     [super viewDidAppear:YES];
     
+    
+    
+    
+    //Display AlertView
     if(![self getAlertView]){
         
         [self performSelector:@selector(displayAlertView) withObject:self.view];
         [self setAlertView:YES];
     }
 
+    if ([self.dataModel favoritesFaceCount] == 0) {
+
+        [self revealFacesImageView];
+        
+        
+    }
+    
     
     NSLog(@"Favorites View Controller has appeared!");
 
@@ -113,44 +176,23 @@
 {
     [super viewWillAppear:animated];
     
-    
-    
 
     
-    if (([self.dataModel favoritesFaceCount] > 0) && (!isDeletionModeActive)) {
+    if ([self.dataModel favoritesFaceCount] > 0) {
         
-        self.editButton.hidden = NO;
-        [self.editButton setBackgroundImage:self.deleteButton forState:UIControlStateNormal];
         
-    } else if (([self.dataModel favoritesFaceCount] > 0) && (isDeletionModeActive)) {
-        
-        self.editButton.hidden = NO;
-        [self.editButton setBackgroundImage:self.checkmarkButton forState:UIControlStateNormal];
-        
+        self.noFavoritesView.hidden = YES;
+     
     }
-    else
-    {
-        self.editButton.hidden = YES;
-    }
-
 }
+
+
 
 -(void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:YES];
     
     [self deactivateDeletionMode:self];
-}
-
-
-
--(void)viewDidDisappear:(BOOL)animated {
-    
-    [super viewDidDisappear:YES];
-    
-    NSLog(@"Favorites View Controller has disappeared!");
-
-    
 }
 
 
@@ -166,11 +208,17 @@
         
         isDeletionModeActive = YES;
                 
-                
-        [self.editButton setBackgroundImage:self.checkmarkButton forState:UIControlStateNormal];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"DeletionModeOn" object:nil];
         
         
-        SpringboardLayout *layout = (SpringboardLayout *)self.trueView.collectionViewLayout;
+        [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+            self.stopDelete.center = CGPointMake(CGRectGetMidX(self.parentViewController.view.bounds), CGRectGetMaxY(self.parentViewController.view.bounds)-30);
+        } completion:^(BOOL finished) {
+            [self animateWithBounce:self.stopDelete];
+        }];
+        
+        
+        V9Layout *layout = (V9Layout *)self.trueView.collectionViewLayout;
         [layout invalidateLayout];
         
     }
@@ -181,13 +229,17 @@
     
     isDeletionModeActive = NO;
 
-    [self.editButton setBackgroundImage:self.deleteButton forState:UIControlStateNormal];
     
+    [UIView animateWithDuration:0.25 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.stopDelete.center = CGPointMake(CGRectGetMidX(self.parentViewController.view.bounds), CGRectGetMaxY(self.parentViewController.view.bounds)+100);
+    } completion:^(BOOL finished) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"DeletionModeOff" object:nil];
+    }];
 //    [self.trueView reloadData];
     
-    SpringboardLayout *layout = (SpringboardLayout *)self.trueView.collectionViewLayout;
+    V9Layout *layout = (V9Layout *)self.trueView.collectionViewLayout;
     [layout invalidateLayout];
-    
 
 }
 
@@ -305,18 +357,34 @@ NSIndexPath *indexPath = [self.trueView indexPathForCell:(FaceCell *)sender.supe
     
     if ([self.dataModel favoritesFaceCount] == 0) {
         isDeletionModeActive = NO;
-        self.editButton.hidden = YES;
+        [self deactivateDeletionMode:self];
+        
+        
+        [self performSelector:@selector(revealFacesImageView) withObject:self afterDelay:0.2];
+    
     }
-  
-    
-    
+
+
+
     
   
 }
 
 
 
-
+-(void)revealFacesImageView {
+    
+    
+    self.noFavoritesView.hidden = NO;
+    
+    [self animateWithBounce:self.noFavoritesView];
+    
+    NSLog(@"Class of parent:%@",[self.parentViewController class]);
+    
+    
+    
+    
+}
 
 
 
@@ -495,6 +563,47 @@ NSIndexPath *indexPath = [self.trueView indexPathForCell:(FaceCell *)sender.supe
 }
 
 
+
+#pragma mark - UIView Animation methods
+-(void)animateWithRepeatedBounce:(UIView*)theView
+{
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionAutoreverse | UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction animations:^{
+        
+        theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.2, 1.2);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                theView.transform = CGAffineTransformIdentity;
+            } completion:^(BOOL finished) {
+                
+            }];
+        }];
+    }];
+    
+}
+
+-(void)animateWithBounce:(UIView*)theView
+{
+    
+    [UIView animateWithDuration:0.2 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        
+        theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1.2, 1.2);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.2 animations:^{
+            theView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.9, 0.9);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.2 animations:^{
+                theView.transform = CGAffineTransformIdentity;
+            } completion:^(BOOL finished) {
+                
+            }];
+        }];
+    }];
+    
+    
+}
 
 
 
