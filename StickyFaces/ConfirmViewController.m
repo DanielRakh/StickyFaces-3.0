@@ -19,6 +19,8 @@
 #import "goBackToCameraView.h"
 #import "UIColor+StickyFacesColors.h"
 
+#import "SIAlertView.h"
+
 
 @interface ConfirmViewController () 
 {
@@ -165,6 +167,14 @@ BOOL frontCameraIsOn;
     
 
     [self.captureManager.captureSession startRunning];
+    
+
+    
+    if (![self getAlertView]) {
+        [self displayAlertView];
+        [self setAlertView:YES];
+    }
+    
     
 }
 
@@ -435,8 +445,66 @@ BOOL frontCameraIsOn;
 }
 
 
+#pragma mark 
+#pragma mark - First Alert View
+
+-(BOOL)getAlertView{
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	NSNumber *preference = [prefs objectForKey:@"FirstCameraAlertView"];
+	if(preference == nil){
+		return NO;
+		
+	}
+	else{
+		return [preference boolValue];
+	}
+}
+
+-(void)setAlertView:(BOOL)preference{
+	NSNumber *pref = [NSNumber numberWithBool:preference];
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	[prefs setObject:pref forKey:@"FirstCameraAlertView"];
+	[prefs synchronize];
+}
 
 
+
+
+
+-(void)displayAlertView {
+    
+    SIAlertView *_alertView =[[SIAlertView alloc]initWithTitle:@"Congratulations!" andMessage:@"You have just won a million dollars!"];
+    
+    
+    
+    [_alertView addButtonWithTitle:@"Say What?" type:SIAlertViewButtonTypeDestructive handler:^(SIAlertView *alertView) {
+        
+        alertView =[[SIAlertView alloc]initWithTitle:@"Just Kidding!" andMessage:@"But let's see that reaction anyway. Put a smile on that face and align it as best as you can to the cut-out."];
+        
+        
+        
+        [alertView addButtonWithTitle:@"Got it!" type:SIAlertViewButtonTypeDestructive handler:^(SIAlertView *alertView) {
+        }];
+        
+        
+        alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+        alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
+        alertView.viewBackgroundColor = [UIColor backgroundViewColor];
+        
+        [alertView show];
+    }];
+
+
+    _alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+    _alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
+    _alertView.viewBackgroundColor = [UIColor backgroundViewColor];
+    
+    [_alertView show];
+    
+    
+    
+
+}
 
 
 

@@ -18,6 +18,8 @@
 #import "V9Layout.h"
 #import "AddFaceCell.h"
 #import "NoFacesView.h"
+#import "SIAlertView.h"
+#import "TabButton.h"
 
 
 @interface CustomFacesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, V9LayoutDelegate>
@@ -25,12 +27,15 @@
     
 }
 
+@property (strong, nonatomic)  UICollectionView *facesCollectionView;
 @property (nonatomic, strong) UIButton *addFace;
 @property (nonatomic, strong) UIButton *stopDelete;
 @property (nonatomic, strong) UIImage *deleteButton;
 @property (nonatomic, strong) UIImage *checkmarkButton;
 @property (nonatomic, strong) FlashCheckView *pasteFlashView;
 @property (nonatomic, strong) NoFacesView *noFacesView;
+
+@property (nonatomic, weak) IBOutlet UIView *background;
 
 
 
@@ -42,29 +47,35 @@
 }
 
 
-
-
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor catalogViewColor];
+    self.background.backgroundColor = [UIColor backgroundViewColor];
+    
+    
+    //Create background view to serve as a place for camera button;
+    UIView *backgroundCollectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 44, 320, 524)];
+    backgroundCollectionView.backgroundColor = [UIColor backgroundViewColor];
+    
+    [self.view addSubview:backgroundCollectionView];
+    
+ 
+    
+    
     
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(insertNewFaces:) name:@"imageSaved" object:nil];
     
 
-    
-    self.view.backgroundColor = [UIColor cameraViewColor];
-    
     V9Layout *collectionViewLayout = [[V9Layout alloc]initWithItemsInOneRow:3];
     
     
     
     //Setting up CollectionView
-    self.facesCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 44, 320, 419) collectionViewLayout:collectionViewLayout];
+    self.facesCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, 320, 463) collectionViewLayout:collectionViewLayout];
     [self.facesCollectionView registerClass:[CustomFaceCell class] forCellWithReuseIdentifier:@"FaceCell"];
     [self.facesCollectionView registerClass:[AddFaceCell class] forCellWithReuseIdentifier:@"AddFaceCell"];
     
@@ -77,7 +88,7 @@
     self.facesCollectionView.dataSource = self;
     self.facesCollectionView.delegate = self;
     
-    [self.view addSubview:self.facesCollectionView];
+    [backgroundCollectionView addSubview:self.facesCollectionView];
 
     //Setting up Nav Bar Icon
     UIImage *camera = [UIImage imageNamed:@"CustomFaceIcon.png"];
@@ -85,6 +96,18 @@
     imageView.image = camera;
     imageView.center = CGPointMake(160, 22);
     [self.view addSubview:imageView];
+    
+    
+    //Setting up the Camera Button
+    TabButton *cameraButton = [self createTabButtonWithColor:[UIColor cameraViewColor] andPosition:CGPointMake(CGRectGetMidX(self.view.bounds),CGRectGetMaxY(self.view.bounds) - 84)];
+    
+    UIImageView *cameraIcon = [self createTabButtonIconForButton:cameraButton];
+
+    
+    [backgroundCollectionView addSubview:cameraButton];
+    [backgroundCollectionView addSubview:cameraIcon];
+    
+    
     
     
     
@@ -111,8 +134,16 @@
     self.noFacesView = [[NoFacesView alloc]initWithFrame:CGRectMake(0, 0, 320, 419)];
     [self.noFacesView.addFace addTarget:self action:@selector(openUpTheCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.facesCollectionView addSubview:self.noFacesView];
-    self.noFacesView.hidden = YES;
     
+    
+    if (self.dataModel.arrayOfFaces.count == 0) {
+        
+    self.noFacesView.hidden = NO;
+    
+    }
+    else if (self.dataModel.arrayOfFaces.count > 0){
+        self.noFacesView.hidden = YES;
+    }
     
     
     UIImage *stopDelete = [UIImage imageNamed:@"StopDelete"];
@@ -134,39 +165,18 @@
 }
 
 
-
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
--(void)viewDidAppear:(BOOL)animated {
-    
-    [super viewDidAppear:animated];
-    
-    
-    if (self.dataModel.arrayOfFaces.count == 0) {
-        
-       self.noFacesView.hidden = NO;
-        [self animateWithBounce:self.noFacesView];
-        [self animateWithRepeatedBounce:self.noFacesView.addFace];
-        
-    }
-    
-
-}
-
-
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 
-    if (self.dataModel.arrayOfFaces.count > 0)  {
+    if (self.dataModel.arrayOfFaces.count == 0) {
+        
+        self.noFacesView.hidden = NO;
+        [self animateWithBounce:self.noFacesView];
+        [self animateWithRepeatedBounce:self.noFacesView.addFace];
+    }
+    
+   else if (self.dataModel.arrayOfFaces.count > 0)  {
         
         self.noFacesView.hidden = YES;
     }     
@@ -333,12 +343,6 @@
     
     NSLog(@"Class of Sender:%@",[sender class]);
     
-//    
-//    if(![self getAlertView]){
-//        
-//        [self performSelector:@selector(displayAlertView) withObject:self.view];
-//        [self setAlertView:YES];
-    
         
 
         
@@ -439,6 +443,35 @@
 #pragma mark -
 #pragma mark - Face Button Methods
 
+-(TabButton *)createTabButtonWithColor:(UIColor *)color andPosition:(CGPoint)position {
+    
+    TabButton *tabbutton = [[TabButton alloc]initWithFrame:CGRectMake(0, 0, 60, 60)];
+    tabbutton.center = position;
+    tabbutton.innerCircle.backgroundColor = color;
+    
+    //    [tabbutton addTarget:self action:@selector(buttonPress:) forControlEvents:UIControlEventTouchDown | UIControlEventTouchDragEnter];
+    //    [tabbutton addTarget:self action:@selector(buttonRelease:) forControlEvents:UIControlEventTouchDragExit | UIControlEventTouchUpOutside];
+    //    [tabbutton addTarget:self action:@selector(buttonTransition:) forControlEvents:UIControlEventTouchUpInside];
+    
+    return tabbutton;
+}
+
+-(UIImageView *)createTabButtonIconForButton:(TabButton *)tabButton {
+    
+    UIImageView *tmpImageView = [[UIImageView alloc]init];
+    UIImage *icon = [UIImage imageNamed:@"Camera"];
+    
+    tmpImageView.frame = CGRectMake(0, 0, icon.size.width, icon.size.height);
+    
+    tmpImageView.image = icon;
+    
+    tmpImageView.center = tabButton.center;
+    
+    return tmpImageView;
+    
+    
+}
+
 
 
 -(void)insertNewFaces:(NSNotification *)notification {
@@ -469,6 +502,13 @@
         
         self.noFacesView.hidden = YES;
         self.addFace.hidden = YES;
+        
+            if(![self getAlertView]){
+        
+                [self displayAlertView];
+                
+            [self setAlertView:YES];
+            }
         NSLog(@"performBatch updates was called for insertion!");
     }];
     
@@ -617,6 +657,52 @@
 }
 
 
+
+#pragma mark
+#pragma mark - First Alert View
+
+-(BOOL)getAlertView{
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	NSNumber *preference = [prefs objectForKey:@"FirstFaceAlertView"];
+	if(preference == nil){
+		return NO;
+		
+	}
+	else{
+		return [preference boolValue];
+	}
+}
+
+-(void)setAlertView:(BOOL)preference{
+	NSNumber *pref = [NSNumber numberWithBool:preference];
+	NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+	[prefs setObject:pref forKey:@"FirstFaceAlertView"];
+	[prefs synchronize];
+}
+
+
+
+
+
+-(void)displayAlertView {
+    
+    
+    SIAlertView *alertView =[[SIAlertView alloc]initWithTitle:@"Great Job!" andMessage:@"Now when you're texting, you can use your real face instead of an emoji! Just tap on the face, open up your Messages app and paste it in the conversation."];
+    
+    
+    
+    [alertView addButtonWithTitle:@"Got it!" type:SIAlertViewButtonTypeDestructive handler:^(SIAlertView *alertView) {
+        NSLog(@"Button Tapped");
+    }];
+  
+    alertView.transitionStyle = SIAlertViewTransitionStyleDropDown;
+    alertView.backgroundStyle = SIAlertViewBackgroundStyleSolid;
+    alertView.viewBackgroundColor = [UIColor backgroundViewColor];
+    
+    [alertView show];
+    
+    
+}
 
 
 @end

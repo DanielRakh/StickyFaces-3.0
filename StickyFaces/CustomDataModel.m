@@ -184,9 +184,6 @@
         NSLog(@"The filePath is: %@", filePath);
     
     
-
-    
-    
         //Save image to file.
         [imageData writeToFile:filePath atomically:YES];
         

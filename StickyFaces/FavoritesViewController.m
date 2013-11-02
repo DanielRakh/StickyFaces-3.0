@@ -43,11 +43,6 @@
 }
 
 
-
-
-
-
-
 //Method called by Nav Bar Item to toggle cells into delete mode. 
 -(IBAction)toggleDeleteMode:(id)sender
 {
@@ -359,9 +354,6 @@ NSIndexPath *indexPath = [self.trueView indexPathForCell:(FaceCell *)sender.supe
         isDeletionModeActive = NO;
         [self deactivateDeletionMode:self];
         
-        
-        [self performSelector:@selector(revealFacesImageView) withObject:self afterDelay:0.2];
-    
     }
 
 
@@ -379,14 +371,16 @@ NSIndexPath *indexPath = [self.trueView indexPathForCell:(FaceCell *)sender.supe
     
     [self animateWithBounce:self.noFavoritesView];
     
-    NSLog(@"Class of parent:%@",[self.parentViewController class]);
-    
-    
     
     
 }
 
 
+-(void)postBounceNotification {
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"bounceCatalogButton" object:self];
+
+    
+}
 
 #pragma mark -  Copy & Paste Methods 
 
@@ -583,6 +577,9 @@ NSIndexPath *indexPath = [self.trueView indexPathForCell:(FaceCell *)sender.supe
     }];
     
 }
+
+
+
 
 -(void)animateWithBounce:(UIView*)theView
 {

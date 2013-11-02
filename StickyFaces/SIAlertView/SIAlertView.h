@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, SIAlertViewTransitionStyle) {
 };
 
 @class SIAlertView;
+
 typedef void(^SIAlertViewHandler)(SIAlertView *alertView);
 
 @interface SIAlertView : UIView

@@ -32,8 +32,6 @@
     noFavoritesView.backgroundColor = [UIColor backgroundViewColor];
     
     
-    
-    
     //Create View for when No Faces are in the CollectionView.
     UIImage *noFavorites = [UIImage imageNamed:@"NoFavorites.png"];
     UIImageView *noFavoritesImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, noFavorites.size.width, noFavorites.size.height)];
